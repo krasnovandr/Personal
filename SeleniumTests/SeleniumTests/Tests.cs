@@ -7,6 +7,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.PhantomJS;
 using OpenQA.Selenium.Support.UI;
 
 namespace SeleniumTests
@@ -15,6 +16,7 @@ namespace SeleniumTests
     public class Tests
     {
         private IWebDriver driver;
+        private IJavaScriptExecutor javaScriptExecutor;
         private StringBuilder verificationErrors;
         private string baseURL;
         private string shedulePageUrl;
@@ -23,7 +25,9 @@ namespace SeleniumTests
         [SetUp]
         public void SetupTest()
         {
-            driver = new FirefoxDriver();
+            driver = new ChromeDriver();
+            //driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+            javaScriptExecutor = driver as IJavaScriptExecutor;
             baseURL = "http://www.bsuir.by/";
             verificationErrors = new StringBuilder();
             shedulePageUrl = "/online/showpage.jsp?PageID=94599&resID=100229&lang=ru&menuItemID=101492";
@@ -45,19 +49,24 @@ namespace SeleniumTests
 
         [Test]
         public void SearchGroupSchedule()
-        {
-           driver.Navigate().GoToUrl(baseURL + shedulePageUrl);
-            
+        {//*[@id="main-menu"]/li[1]/a
+           driver.Navigate().GoToUrl(baseURL);
+            //li.main-menu-item:nth-child(2) > a:nth-child(1) > span:nth-child(1)
             Actions actions = new Actions(driver);
-            var menuHoverLink = driver.FindElement(By.LinkText("Студентам"));
-            actions.MoveToElement(menuHoverLink);
+            var menuHoverLink = driver.FindElement(By.CssSelector("#main-menu > li:nth-child(1)"));
+            //javaScriptExecutor.ExecuteScript("document.getElementsByClassName('menu-popup column3').setAttribute('display', 'block')");
+            //MouseOver Logic --- ends ---
+            actions.MoveToElement(menuHoverLink).MoveByOffset(menuHoverLink.Location.X,menuHoverLink.Location.Y).Build().Perform();
+            //actions.MoveByOffset(menuHoverLink.Location.X,menuHoverLink.Location.Y).Click();
+            Thread.Sleep(5000);                            
             //driver.Navigate(menuHoverLink)moveToElement(menuHoverLink);
            // driver.Navigate().GoToUrl(baseURL + shedulePageUrl);
-            driver.FindElement(By.LinkText("Расписание")).Click();
+            driver.FindElement(By.XPath("//a[@href='/online/showpage.jsp?PageID=94599&resID=100229&lang=ru&menuItemID=101492']")).Click();
             driver.FindElement(By.LinkText("Расписание групп")).Click();
             driver.FindElement(By.Id("studentGroupTab:studentGroupForm:searchStudentGroup")).Clear();
             driver.FindElement(By.Id("studentGroupTab:studentGroupForm:searchStudentGroup")).SendKeys("533701");
             driver.FindElement(By.Id("studentGroupTab:studentGroupForm:j_idt21")).Click();
+            Thread.Sleep(5000);  
             Assert.AreEqual("Расписание для группы 533701", driver.FindElement(By.XPath("//*[@id=\"tableForm:schedulePanel\"]/span")).Text);
         }
 
