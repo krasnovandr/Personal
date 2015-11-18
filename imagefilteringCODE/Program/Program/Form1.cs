@@ -15,13 +15,14 @@ namespace Program
         public Form1()
         {
             InitializeComponent();
-            
+
         }
 
         public static Bitmap image;
         public static string full_name_of_image = "\0";
         public static UInt32[,] pixel;
-
+        public static UInt32[,] defaultpixel;
+        int filterMatrixSize;
         //открытие изображения
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -32,18 +33,26 @@ namespace Program
                 try
                 {
                     full_name_of_image = open_dialog.FileName;
+                    filterMatrixSize = int.Parse(this.textBoxMatrixSize.Text);
                     image = new Bitmap(open_dialog.FileName);
-                    //this.pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-                    this.Width = image.Width + 40;
-                    this.Height = image.Height + 75;
+                    this.pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                    this.textBoxMatrixSize.TextChanged += textBoxMatrixSize_TextChanged;
+                    this.Width = image.Width + 150;
+                    this.Height = image.Height + 150;
                     this.pictureBox1.Size = image.Size;
                     pictureBox1.Image = image;
                     pictureBox1.Invalidate(); //????
                     //получение матрицы с пикселями
                     pixel = new UInt32[image.Height, image.Width];
+                    defaultpixel = new UInt32[image.Height, image.Width];
+
                     for (int y = 0; y < image.Height; y++)
                         for (int x = 0; x < image.Width; x++)
+                        {
                             pixel[y, x] = (UInt32)(image.GetPixel(x, y).ToArgb());
+                            defaultpixel[y, x] = (UInt32)(image.GetPixel(x, y).ToArgb());
+                        }
+
                 }
                 catch
                 {
@@ -52,6 +61,11 @@ namespace Program
                     "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        void textBoxMatrixSize_TextChanged(object sender, EventArgs e)
+        {
+            filterMatrixSize = int.Parse(this.textBoxMatrixSize.Text);
         }
 
         //сохранение изображения
@@ -81,7 +95,7 @@ namespace Program
             }
         }
 
-     //Повышение резкости
+        //Повышение резкости
         private void повыситьРезкостьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (full_name_of_image != "\0")
@@ -127,7 +141,7 @@ namespace Program
         {
             if (full_name_of_image != "\0")
             {
-                pixel = Filter.MedianFiltration(image.Width, image.Height, pixel, 5, Filters.Median);
+                pixel = Filter.MedianFiltration(image.Width, image.Height, pixel, filterMatrixSize, Filters.Median);
                 FromPixelToBitmap();
                 FromBitmapToScreen();
             }
@@ -137,7 +151,7 @@ namespace Program
         {
             if (full_name_of_image != "\0")
             {
-                pixel = Filter.MedianFiltration(image.Width, image.Height, pixel, 3, Filters.Erosion);
+                pixel = Filter.MedianFiltration(image.Width, image.Height, pixel, filterMatrixSize, Filters.Erosion);
                 FromPixelToBitmap();
                 FromBitmapToScreen();
             }
@@ -147,10 +161,21 @@ namespace Program
         {
             if (full_name_of_image != "\0")
             {
-                pixel = Filter.MedianFiltration(image.Width, image.Height, pixel, 3,Filters.BuildUp);
+                pixel = Filter.MedianFiltration(image.Width, image.Height, pixel, filterMatrixSize, Filters.BuildUp);
                 FromPixelToBitmap();
                 FromBitmapToScreen();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (full_name_of_image != "\0")
+            {
+                pixel = defaultpixel;
+                FromPixelToBitmap();
+                FromBitmapToScreen();
+            }
+    
         }
     }
 }

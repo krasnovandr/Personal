@@ -22,36 +22,54 @@ namespace Program
             int gap = (int)(N / 2);
             int tmpH = H + 2 * gap;
             int tmpW = W + 2 * gap;
+            double div = 0;
             UInt32[,] newpixel = new UInt32[H, W];
 
             var tmppixel = FillTempMatrix(W, H, pixel, tmpH, tmpW, gap);
             //применение ядра свертки
-            RGB ColorOfPixel = new RGB();
-            RGB ColorOfCell = new RGB();
+            var colorOfPixel = new RGB();
+           
             for (int i = gap; i < tmpH - gap; i++)
+            {
                 for (int j = gap; j < tmpW - gap; j++)
                 {
-                    ColorOfPixel.R = 0;
-                    ColorOfPixel.G = 0;
-                    ColorOfPixel.B = 0;
+                    colorOfPixel.R = 0;
+                    colorOfPixel.G = 0;
+                    colorOfPixel.B = 0;
+                    div = 0;
                     for (int k = 0; k < N; k++)
+                    {
                         for (int m = 0; m < N; m++)
                         {
-                            ColorOfCell = calculationOfColor(tmppixel[i - gap + k, j - gap + m], matryx[k, m]);
-                            ColorOfPixel.R += ColorOfCell.R;
-                            ColorOfPixel.G += ColorOfCell.G;
-                            ColorOfPixel.B += ColorOfCell.B;
+                            RGB colorOfCell = CalculationOfColor(tmppixel[i - gap + k, j - gap + m], matryx[k, m]);
+                            colorOfPixel.R += colorOfCell.R;
+                            colorOfPixel.G += colorOfCell.G;
+                            colorOfPixel.B += colorOfCell.B;
+                            div += matryx[k, m];
                         }
-                    //контролируем переполнение переменных
-                    if (ColorOfPixel.R < 0) ColorOfPixel.R = 0;
-                    if (ColorOfPixel.R > 255) ColorOfPixel.R = 255;
-                    if (ColorOfPixel.G < 0) ColorOfPixel.G = 0;
-                    if (ColorOfPixel.G > 255) ColorOfPixel.G = 255;
-                    if (ColorOfPixel.B < 0) ColorOfPixel.B = 0;
-                    if (ColorOfPixel.B > 255) ColorOfPixel.B = 255;
 
-                    newpixel[i - gap, j - gap] = build(ColorOfPixel);
+                    }
+
+
+                    if (div <= 0) div = 1;
+
+                    //контролируем переполнение переменных
+                    colorOfPixel.R = (float)(colorOfPixel.R / div);
+                    if (colorOfPixel.R < 0) colorOfPixel.R = 0;
+                    if (colorOfPixel.R > 255) colorOfPixel.R = 255;
+
+                    colorOfPixel.G = (float)(colorOfPixel.G / div);
+                    if (colorOfPixel.G < 0) colorOfPixel.G = 0;
+                    if (colorOfPixel.G > 255) colorOfPixel.G = 255;
+
+                    colorOfPixel.B = (float)(colorOfPixel.B / div);
+                    if (colorOfPixel.B < 0) colorOfPixel.B = 0;
+                    if (colorOfPixel.B > 255) colorOfPixel.B = 255;
+
+                    newpixel[i - gap, j - gap] = Build(colorOfPixel);
                 }
+            }
+             
 
             return newpixel;
         }
@@ -94,7 +112,7 @@ namespace Program
                     if (colorOfPixel.B < 0) colorOfPixel.B = 0;
                     if (colorOfPixel.B > 255) colorOfPixel.B = 255;
 
-                    newpixel[i - gap, j - gap] = build(colorOfPixel);
+                    newpixel[i - gap, j - gap] = Build(colorOfPixel);
                 }
 
             return newpixel;
@@ -122,6 +140,7 @@ namespace Program
             {
                 for (int j = 0; j < gap; j++)
                 {
+                    //левая сторона
                     tmppixel[i, j] = pixel[i - gap, j];
                     tmppixel[i, tmpW - 1 - j] = pixel[i - gap, W - 1 - j];
                 }
@@ -188,7 +207,7 @@ namespace Program
         }
 
         //вычисление нового цвета
-        public static RGB calculationOfColor(UInt32 pixel, double coefficient)
+        public static RGB CalculationOfColor(UInt32 pixel, double coefficient)
         {
             RGB Color = new RGB();
             Color.R = (float)(coefficient * ((pixel & 0x00FF0000) >> 16));
@@ -198,7 +217,7 @@ namespace Program
         }
 
         //сборка каналов
-        public static UInt32 build(RGB ColorOfPixel)
+        public static UInt32 Build(RGB ColorOfPixel)
         {
             UInt32 Color;
             Color = 0xFF000000 | ((UInt32)ColorOfPixel.R << 16) | ((UInt32)ColorOfPixel.G << 8) | ((UInt32)ColorOfPixel.B);
