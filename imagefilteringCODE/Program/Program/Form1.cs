@@ -81,21 +81,7 @@ namespace Program
             }
         }
 
-        //яркость контрастность
-        private void яркостьконтрастностьToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form2 BrightnessForm = new Form2(this);
-            BrightnessForm.ShowDialog(); //just 'Show' for the control Form1
-        }
-
-        //цветовой Баланс
-        private void цветовойБалансToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form3 ColorBalanceForm = new Form3(this);
-            ColorBalanceForm.ShowDialog();
-        }
-
-        //Повышение резкости
+     //Повышение резкости
         private void повыситьРезкостьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (full_name_of_image != "\0")
