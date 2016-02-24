@@ -1,4 +1,4 @@
-﻿namespace AudioNetwork.Services
+﻿namespace ServiceLayer.Helpers
 {
     public static class FilePathContainer
     {

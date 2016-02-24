@@ -1,14 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
-using AudioNetwork.Helpers;
-using AudioNetwork.Models;
-using AudioNetwork.Services;
 using DataLayer.Models;
-using DataLayer.Repositories;
 using Microsoft.AspNet.Identity;
+using ServiceLayer.Interfaces;
+using ServiceLayer.Models;
 
-namespace AudioNetwork.Controllers
+namespace AudioNetwork.Web.Controllers
 {
     public class PlayListController : Controller
     {

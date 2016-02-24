@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AudioNetwork.Models
+namespace ServiceLayer.Models
 {
     public class UserSearchModel
     {

@@ -3,29 +3,16 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Web.Hosting;
 using System.Windows.Forms;
-using AudioNetwork.Helpers;
-using AudioNetwork.Models;
 using DataLayer.Interfaces;
-using System.Threading;
+using ServiceLayer.Helpers;
+using ServiceLayer.Interfaces;
+using ServiceLayer.Models;
 
-namespace AudioNetwork.Services
+namespace ServiceLayer.Services
 {
-    public interface IWallService
-    {
-        List<WallItemViewModel> GetWall(string userId);
-        WallItemViewModel GetWallItem(string userId, int wallItemId);
-        void AddWallItem(WallItemViewModel wallItemView);
-        void RemoveWallItem(string userId, int wallItemId);
-        string GetWallItemImage(int wallItemId);
-        IEnumerable<WallItemViewModel> GetUserNews(string userId);
-
-        IEnumerable<FriendUpdateViewModel> GetFriendUpdates(string userId);
-        void SetLikeDislike(int wallItemId, string userId, bool like, bool dislike);
-        List<WallItemLikeDislikeViewModel> GetWallItemLikeDislikes(int wallItemId);
-    }
-
     public class WallService : IWallService
     {
         private readonly IWallRepository _wallRepository;

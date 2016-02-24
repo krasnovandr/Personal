@@ -1,30 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Web;
-using AudioNetwork.Helpers;
-using AudioNetwork.Models;
 using DataLayer.Interfaces;
-using DataLayer.Repositories;
 using LastFmServices;
+using ServiceLayer.Helpers;
+using ServiceLayer.Interfaces;
+using ServiceLayer.Models;
 using TagLib;
 using VkService;
 using VkService.Models;
 using File = TagLib.File;
 
-namespace AudioNetwork.Services
+namespace ServiceLayer.Services
 {
-    public interface IUploadService
-    {
-        void SaveSongFromVkUpdatePicture(SongViewModel song, string userid);
-        void UploadSong(string fileExtension, string fileName, string pathSong, string songId,
-            string absoluteSongCoverPath, string userId);
-
-        void UploadConversationImage(string imagePath, string conversationId);
-        void UploadUserImage(string imagePath, string userId);
-        List<SongViewModel> GetSongVk(string userId, VkUserModel model);
-    }
     public class UploadService : IUploadService
     {
         private readonly IMusicRepository _musicRepository;

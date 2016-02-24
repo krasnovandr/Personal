@@ -4,15 +4,16 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using AudioNetwork.Helpers;
-using AudioNetwork.Models;
-using AudioNetwork.Services;
 using ICSharpCode.SharpZipLib.Zip;
 using Microsoft.AspNet.Identity;
+using MusicRecognition.Models;
 using Newtonsoft.Json;
-using RecognitionService.Models;
+using ServiceLayer.Helpers;
+using ServiceLayer.Interfaces;
+using ServiceLayer.Models;
+using ServiceLayer.Services;
 
-namespace AudioNetwork.Controllers
+namespace AudioNetwork.Web.Controllers
 {
     public class UploadController : Controller
     {

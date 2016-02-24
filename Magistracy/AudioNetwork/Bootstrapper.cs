@@ -1,13 +1,14 @@
 using System.Web.Mvc;
-using AudioNetwork.Services;
 using DataLayer.Interfaces;
 using DataLayer.Models;
 using DataLayer.Repositories;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Practices.Unity;
+using ServiceLayer.Interfaces;
+using ServiceLayer.Services;
 using Unity.Mvc4;
 
-namespace AudioNetwork
+namespace AudioNetwork.Web
 {
     public static class Bootstrapper
     {

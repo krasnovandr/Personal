@@ -1,9 +1,9 @@
 ﻿using System.Web.Mvc;
-using AudioNetwork.Models;
-using AudioNetwork.Services;
 using Microsoft.AspNet.Identity;
+using ServiceLayer.Interfaces;
+using ServiceLayer.Models;
 
-namespace AudioNetwork.Controllers
+namespace AudioNetwork.Web.Controllers
 {
     public class UsersController : Controller
     {

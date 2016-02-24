@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace AudioNetwork.Helpers
+namespace ServiceLayer.Helpers
 {
     public static class DateTimeHelper
     {
@@ -12,7 +9,7 @@ namespace AudioNetwork.Helpers
 
         public static long ToJavaScriptMilliseconds(this DateTime dt)
         {
-            return (long)((dt.ToUniversalTime().Ticks - DatetimeMinTimeTicks) / 10000);
+            return (dt.ToUniversalTime().Ticks - DatetimeMinTimeTicks) / 10000;
         }
     }
 }

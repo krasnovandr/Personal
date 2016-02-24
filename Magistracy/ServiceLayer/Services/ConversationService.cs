@@ -1,33 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using AudioNetwork.Helpers;
-using AudioNetwork.Models;
 using DataLayer.Interfaces;
 using DataLayer.Models;
-using DataLayer.Repositories;
+using ServiceLayer.Helpers;
+using ServiceLayer.Interfaces;
+using ServiceLayer.Models;
 
-namespace AudioNetwork.Services
+namespace ServiceLayer.Services
 {
-    public interface IConversationService
-    {
-        List<ConversationViewModel> GetConversations(int type, string userId);
-        ConversationViewModel GetConversation(string userId, string conversationId);
-        List<UserViewModel> GetConversationPeople(string conversationId);
-        SongViewModel GetConversationCurrentSong(Conversation conversation);
-        List<SongViewModel> GetConversationSongs(ConversationViewModel conversation);
-        void AddConversation(string userId, ConversationViewModel conversationModel);
-        ConversationViewModel AddOrGetDialog(string userId, string myId);
-        void RemoveConversation(string userId, ConversationViewModel conversationViewModel);
-        void AddMessageToConversation(string myId, string text, string conversationId, List<Song> songs);
-        void RemoveMessageFromConversation(string myId, string messageId, string conversationId);
-        void AddUserToConversation(string userId, string conversationId);
-        void RemoveUserFromConversation(string id, string conversationId);
-        int GetMyNotReadMessagesCount(string myId);
-        int ReadConversationMessages(string myId, string conversationId);
-        void UpdateConversationCurrentSong(string conversationId, string songId);
-        List<ConversationViewModel> GetMusicConversations(string userId);
-        List<MessageViewModel> GetConversationMessages(ConversationViewModel conversationViewModel, string userId);
-    }
     public class ConversationService : IConversationService
     {
         private readonly IMusicRepository _musicRepository;

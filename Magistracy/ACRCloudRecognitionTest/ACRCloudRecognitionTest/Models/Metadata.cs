@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace RecognitionService.Models
+namespace MusicRecognition.Models
 {
     public class Metadata
     {

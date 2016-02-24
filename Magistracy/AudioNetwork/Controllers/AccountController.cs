@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using AudioNetwork.Helpers;
-using AudioNetwork.Services;
 using DataLayer.EF;
 using DataLayer.Interfaces;
 using DataLayer.Models;
-using DataLayer.Repositories;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
-using AudioNetwork.Models;
+using ServiceLayer.Helpers;
+using ServiceLayer.Models;
 
-
-namespace AudioNetwork.Controllers
+namespace AudioNetwork.Web.Controllers
 {
     public class AccountController : Controller
     {

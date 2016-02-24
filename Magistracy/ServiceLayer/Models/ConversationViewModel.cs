@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using DataLayer.Models;
-using TagLib.Riff;
 
-namespace AudioNetwork.Models
+namespace ServiceLayer.Models
 {
     public class ConversationViewModel
     {

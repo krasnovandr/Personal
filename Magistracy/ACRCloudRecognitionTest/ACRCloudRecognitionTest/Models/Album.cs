@@ -1,4 +1,4 @@
-﻿namespace RecognitionService.Models
+﻿namespace MusicRecognition.Models
 {
     public class Album
     {

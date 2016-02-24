@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using AudioNetwork.Helpers;
+using ServiceLayer.Helpers;
 
-namespace AudioNetwork.Models
+namespace ServiceLayer.Models
 {
     public class SongChartModel
     {

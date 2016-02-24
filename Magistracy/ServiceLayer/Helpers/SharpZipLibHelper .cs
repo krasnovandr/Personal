@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Web;
 using ICSharpCode.SharpZipLib.Zip;
 
-namespace AudioNetwork.Helpers
+namespace ServiceLayer.Helpers
 {
     public class SharpZipLibHelper
     {

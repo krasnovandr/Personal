@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Web;
-using AudioNetwork.Models;
 using AutoMapper;
 using DataLayer.Models;
-using DataLayer.Repositories;
+using ServiceLayer.Models;
 using TagLib;
 using VkService.Models;
 
-namespace AudioNetwork.Helpers
+namespace ServiceLayer.Helpers
 {
     public static class ModelConverters
     {

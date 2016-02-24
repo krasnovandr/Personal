@@ -1,12 +1,11 @@
 ﻿using System.Drawing;
 using System.IO;
 using System.Linq;
-using AudioNetwork.Helpers;
-using DataLayer;
 using LastFmServices;
+using ServiceLayer.Helpers;
 using TagLib;
 
-namespace AudioNetwork.Services
+namespace ServiceLayer.Services
 {
     public static class SongPictureGetter
     {

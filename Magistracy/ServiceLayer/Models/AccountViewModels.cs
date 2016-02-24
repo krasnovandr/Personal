@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AudioNetwork.Models
+namespace ServiceLayer.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

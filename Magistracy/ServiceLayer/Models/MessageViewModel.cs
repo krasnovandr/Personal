@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace AudioNetwork.Models
+namespace ServiceLayer.Models
 {
     public class MessageViewModel
     {

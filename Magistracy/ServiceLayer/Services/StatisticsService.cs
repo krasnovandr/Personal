@@ -1,23 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using AudioNetwork.Helpers;
-using AudioNetwork.Models;
 using DataLayer.Interfaces;
-using DataLayer.Repositories;
+using ServiceLayer.Helpers;
+using ServiceLayer.Interfaces;
+using ServiceLayer.Models;
 
-namespace AudioNetwork.Services
+namespace ServiceLayer.Services
 {
-    public interface IStatisticsService
-    {
-        IEnumerable<SongViewModel> GetFavouriteSongs(string userId);
-        IEnumerable<SongViewModel> GetFavouriteSongs();
-        IEnumerable<SongViewModel> GetLastListenedSongs(string userId);
-        IEnumerable<SongViewModel> GetLastAdded();
-        IEnumerable<SongChartModel> GetChartData(string songId);
-    }
-
     public class StatisticsService : IStatisticsService
     {
         private readonly IStatisticsRepository _statisticsRepository;

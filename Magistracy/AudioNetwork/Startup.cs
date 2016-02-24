@@ -1,12 +1,9 @@
-﻿using AudioNetwork.Hubs;
-using AudioNetwork.Services;
-using DataLayer.Repositories;
-using Microsoft.AspNet.SignalR;
+﻿using AudioNetwork.Web;
 using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(AudioNetwork.Startup))]
-namespace AudioNetwork
+[assembly: OwinStartup(typeof(Startup))]
+namespace AudioNetwork.Web
 {
     public partial class Startup
     {

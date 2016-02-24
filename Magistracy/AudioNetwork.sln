@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioNetwork", "AudioNetwork\AudioNetwork.csproj", "{D4FAB2D5-275B-4BA8-A3DD-6766E7D989FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioNetwork.Web", "AudioNetwork\AudioNetwork.Web.csproj", "{D4FAB2D5-275B-4BA8-A3DD-6766E7D989FE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{3231C569-19E8-4C87-A9F9-9F1B18EBFEBC}"
 EndProject

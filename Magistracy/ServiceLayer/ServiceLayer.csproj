@@ -69,6 +69,13 @@
     <Compile Include="Helpers\ModelConverters.cs" />
     <Compile Include="Helpers\SharpZipLibHelper .cs" />
     <Compile Include="Helpers\StringHelper.cs" />
+    <Compile Include="Interfaces\IConversationService.cs" />
+    <Compile Include="Interfaces\IMusicService.cs" />
+    <Compile Include="Interfaces\IPlaylistService.cs" />
+    <Compile Include="Interfaces\IStatisticsService.cs" />
+    <Compile Include="Interfaces\IUploadService.cs" />
+    <Compile Include="Interfaces\IUserService.cs" />
+    <Compile Include="Interfaces\IWallService.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ConversationViewModel.cs" />
     <Compile Include="Models\FriendUpdateViewModel.cs" />
@@ -82,7 +89,7 @@
     <Compile Include="Models\WallItemViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ConversationService.cs" />
-    <Compile Include="Services\FilePathContainer.cs" />
+    <Compile Include="Helpers\FilePathContainer.cs" />
     <Compile Include="Services\MusicService.cs" />
     <Compile Include="Services\PlaylistService.cs" />
     <Compile Include="Services\SongPictureGetter.cs" />

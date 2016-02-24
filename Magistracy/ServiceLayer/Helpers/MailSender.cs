@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mail;
-using System.Web;
+﻿using System.Net.Mail;
 using DataLayer.Models;
+
 //Request.Url.Authority 
-namespace AudioNetwork.Helpers
+namespace ServiceLayer.Helpers
 {
     public static class MailSender
     {

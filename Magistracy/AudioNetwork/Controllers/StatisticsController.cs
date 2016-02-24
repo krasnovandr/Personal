@@ -1,8 +1,8 @@
 ﻿using System.Web.Mvc;
-using AudioNetwork.Services;
 using Microsoft.AspNet.Identity;
+using ServiceLayer.Interfaces;
 
-namespace AudioNetwork.Controllers
+namespace AudioNetwork.Web.Controllers
 {
     public class StatisticsController : Controller
     {

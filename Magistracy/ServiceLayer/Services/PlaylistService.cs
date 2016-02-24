@@ -1,23 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using AudioNetwork.Helpers;
-using AudioNetwork.Models;
 using DataLayer.Interfaces;
 using DataLayer.Models;
-using DataLayer.Repositories;
+using ServiceLayer.Helpers;
+using ServiceLayer.Interfaces;
+using ServiceLayer.Models;
 
-namespace AudioNetwork.Services
+namespace ServiceLayer.Services
 {
-    public interface IPlaylistService
-    {
-        List<PlaylistViewModel> GetMyPlaylists(string userId);
-        List<PlaylistViewModel> GetPlaylists();
-        List<SongViewModel> GetSongs(string userId, string playlistId);
-        void AddPlayList(string userId, PlaylistViewModel playListModel);
-        void RemovePlaylist(string userId, string playlistId);
-        void SaveCurrentPlaylist(string userId, string currentPlayList, List<Song> playlistSongs);
-        bool RemoveSongFromPlaylist(string songId, string s);
-    }
+
 
     public class PlaylistService : IPlaylistService
     {

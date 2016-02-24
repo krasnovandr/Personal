@@ -1,9 +1,6 @@
-﻿using System;
-using AudioNetwork.Services;
-using DataLayer.Repositories;
-using Microsoft.AspNet.SignalR;
+﻿using Microsoft.AspNet.SignalR;
 
-namespace AudioNetwork.Hubs
+namespace AudioNetwork.Web.Hubs
 {
     public class TestUserModel
     {
