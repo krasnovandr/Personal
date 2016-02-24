@@ -2,6 +2,7 @@
 using System.Linq;
 using AudioNetwork.Helpers;
 using AudioNetwork.Models;
+using DataLayer.Interfaces;
 using DataLayer.Repositories;
 
 namespace AudioNetwork.Services

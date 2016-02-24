@@ -3,22 +3,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using DataLayer.EF;
+using DataLayer.Interfaces;
 using DataLayer.Models;
 
 namespace DataLayer.Repositories
 {
-    public interface IWallRepository
-    {
-        List<WallItem> GetWall(string userId);
-        WallItem GetWallIem(string userId, int wallItemId);
-        void AddWallItem(string userId, WallItem wallItem, IEnumerable<string> songsId, string pictureId);
-        void RemoveWallItem(string userId, int wallItemId);
-        List<Song> GetWallItemSongs(string userId, int wallItemId);
-        void SetLikeDislike(int wallItemId, string userId, bool like, bool dislike);
-        List<WallItemLikeDislike> GetWallItemLikeDislikes(int wallItemId);
-        string GetWallItemImage(int wallItemId);
-    }
-
     public class WallRepository : IWallRepository
     {
         public List<WallItem> GetWall(string userId)

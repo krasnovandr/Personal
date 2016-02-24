@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataLayer
+namespace DataLayer.Interfaces
 {
-    class FileSaver
+    public interface IUnitOfWork : IDisposable
     {
+        void Save();
     }
 }

@@ -1,5 +1,6 @@
 using System.Web.Mvc;
 using AudioNetwork.Services;
+using DataLayer.Interfaces;
 using DataLayer.Models;
 using DataLayer.Repositories;
 using Microsoft.AspNet.Identity.EntityFramework;
