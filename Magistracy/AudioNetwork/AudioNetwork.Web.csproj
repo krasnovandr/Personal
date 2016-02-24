@@ -257,6 +257,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\MyNewContext.mdf" />
+    <Content Include="App_Data\MyNewContext_log.ldf">
+      <DependentUpon>MyNewContext.mdf</DependentUpon>
+    </Content>
     <Content Include="bin\libacrcloud_extr_tool.dll" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -394,7 +398,6 @@
     <Content Include="Views\Recognition\ViewRecognition.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Content\SongsAlbumCovers\" />
     <Folder Include="Content\Songs\" />
     <Folder Include="Content\WallItemsImages\" />
