@@ -4,10 +4,9 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using DataLayer.EF;
-using DataLayer.Models;
 using Microsoft.AspNet.Identity;
 
-namespace AudioNetwork
+namespace AudioNetwork.Web
 {
     public class MvcApplication : HttpApplication
     {

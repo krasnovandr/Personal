@@ -1,8 +1,7 @@
 using System;
 using Microsoft.Practices.Unity;
-using Microsoft.Practices.Unity.Configuration;
 
-namespace AudioNetwork.App_Start
+namespace AudioNetwork.Web
 {
     /// <summary>
     /// Specifies the Unity configuration for the main container.

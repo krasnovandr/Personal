@@ -1,7 +1,6 @@
-﻿using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace AudioNetwork
+namespace AudioNetwork.Web
 {
     public class FilterConfig
     {

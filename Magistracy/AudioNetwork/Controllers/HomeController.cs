@@ -1,7 +1,6 @@
 ﻿using System.Web.Mvc;
-using Newtonsoft.Json;
 
-namespace AudioNetwork.Controllers
+namespace AudioNetwork.Web.Controllers
 {
     public class HomeController : Controller
     {

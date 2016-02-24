@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace AudioNetwork.Controllers
+namespace AudioNetwork.Web.Controllers
 {
     public class RecognitionController : Controller
     {

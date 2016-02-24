@@ -1,12 +1,9 @@
-﻿using System;
-using System.Net.Mail;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 
-namespace AudioNetwork
+namespace AudioNetwork.Web
 {
     public partial class Startup
     {
