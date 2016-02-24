@@ -1,0 +1,67 @@
+﻿<div ng-controller="StatisticsController" class="container-fluid">
+
+    <div class="col-md-8 col-md-offset-2">
+        <select class="form-control"
+                ng-model="currentStatisticType"
+                ng-change="changeStatisticType(type)"
+                ng-options="type as type.Name for type in statisticTypes"></select>
+        Всего {{favouriteSongs.length}} песен
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    <a href="" ng-click="order('Title')">Трэк</a>
+                    <span class="sortorder" ng-show="predicate === 'Title'" ng-class="{reverse:reverse}"></span>
+                </th>
+                <th>
+                    <a href="" ng-click="order('DurationFormatted')">Продолжительность</a>
+                    <span class="sortorder" ng-show="predicate === 'DurationFormatted'" ng-class="{reverse:reverse}"></span>
+                </th>
+                <th ng-show="currentStatisticType.Type==1 || currentStatisticType.Type==4">
+                    <a href="" ng-click="order('ListenCount')">Прослушиваний</a>
+                    <span class="sortorder" ng-show="predicate === 'ListenCount'" ng-class="{reverse:reverse}"></span>
+                </th>
+                <th ng-show="currentStatisticType.Type==2">
+                    <a href="" ng-click="order('LastListenDateFormatted')">Прослушано</a>
+                    <span class="sortorder" ng-show="predicate === 'LastListenDateFormatted'" ng-class="{reverse:reverse}"></span>
+                </th>
+
+                <th ng-show="currentStatisticType.Type==3">
+                    <a href="" ng-click="order('AddDateFormatted')">Добавлено</a>
+                    <span class="sortorder" ng-show="predicate === 'AddDateFormatted'" ng-class="{reverse:reverse}"></span>
+                </th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="song in songs | orderBy:predicate:reverse">
+                <td width="80%">
+                    <span>{{song.Artist}}</span>
+                    <span> - </span>
+                    <span>{{song.Title}}</span>
+
+                </td>
+                <td>
+                    <span>{{song.DurationFormatted}}</span>
+                </td>
+                <td ng-show="currentStatisticType.Type==1 || currentStatisticType.Type==4">
+                    <span>{{song.ListenCount}}</span>
+                </td>
+                <td ng-show="currentStatisticType.Type==2">
+                    <span>{{song.LastListenDateFormatted}}</span>
+                </td>
+                <td ng-show="currentStatisticType.Type==3">
+                    <span>{{song.AddDateFormatted}}</span>
+                </td>
+                <td>
+                    <button ng-show="CurrentSong.SongId!=song.SongId" class=" btn-default pull-right" ng-click="changeSongAndPlay(song)">
+                        <span class="glyphicon glyphicon-play"></span>
+                    </button>
+                    <button ng-show="CurrentSong.SongId==song.SongId && audio.paused == false" class="btn-default pull-right" ng-click="pause()">
+                        <span class="glyphicon glyphicon-pause"></span>
+                    </button>
+                    <button ng-show="CurrentSong.SongId==song.SongId && audio.paused == true" class="btn-default pull-right" ng-click="play()">
+                        <span class="glyphicon glyphicon-play"></span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

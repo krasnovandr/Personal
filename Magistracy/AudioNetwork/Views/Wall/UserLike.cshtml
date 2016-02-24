@@ -1,0 +1,28 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title" nh-show="likeModal">Запись оценили</h3>
+</div>
+
+<div class="modal-body">
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                Пользователь
+            </th>
+            <th>
+                Заходил
+            </th>
+        </tr>
+        <tr ng-repeat="user in usersLike">
+            <td>
+                <img class="pull-left" ng-src="{{user.AvatarFilePath}}" width="50" height="50" />
+                <a href="/#/Users/{{user.Id}} ">{{user.FirstName}} {{user.LastName}}</a>
+            </td>
+            <td>
+                {{user.LastActivityDate}}
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="close" ng-click="cancel()">закрыть</button>
+</div>

@@ -1,0 +1,131 @@
+﻿<div ng-controller="ConversationsController" class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                Сейчас играет
+                <div class="col-md-4">
+                    <div>Беседа: {{currentConversation.Name}}</div>
+                    <a class="btn-link" ng-click="open()"> Участников{{currentConversationPeople.length}}</a>
+                    <button ng-show="currentConversation.CurrentSong" class="btn-default" ng-click="listenConversationMusic()">
+                        <span class="glyphicon glyphicon-music"></span>
+                    </button>
+                </div>
+                <div class="col-md-7" ng-show="currentConversation.CurrentSong != null">
+                    <img ng-src="{{currentConversation.CurrentSong.SongAlbumCoverPath}}" width="50" height="50" />
+                    <a href="/#/Songs/{{currentConversation.CurrentSong.SongId}} ">
+                        <span>{{currentConversation.CurrentSong.Title}}</span>-
+                        <span>{{currentConversation.CurrentSong.Artist}}</span>
+                    </a>
+                    <span>{{currentConversation.CurrentSong.DurationFormatted}}</span>
+                </div>
+
+                @*<button class="btn-default" ng-click="changeSongAndPlay(userInfo.CurrentSong)">
+                        <span class="glyphicon glyphicon-play"></span>
+                    </button>*@
+            </div>
+        </div>
+        <div class="col-md-3 col-md-offset-1">
+            Плэйлист беседы
+            <button class="btn-default" ng-click="musicModal()">
+                Добавить<span class="glyphicon glyphicon-music"></span>
+            </button>
+            <input class="form-control" type="search" ng-model="titleSearch" placeholder="Введите название трека" />
+        </div>
+    </div>
+    <div class="row top15">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="row">
+                <div class="col-md-11">
+                    <div class="pre-scrollable480 element" scroll="messages">
+                        <div ng-repeat="message in messages ">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img ng-src="{{message.FromAvatarPath}}" width="80" height="80" /><br />
+                                    {{message.FromName}}
+                                </div>
+                                <div class="col-md-8">
+                                    @*<span>{{message.Text}}</span><span>{{message.FromName}}</span><span>{{message.MessageDate}}</span>*@
+                                    <span ng-bind-html="message.Text | linky"></span>
+                                    <div ng-repeat="song in message.MessageSongs">
+                                        <div class="row top10">
+                                            <div class="col-md-1">
+                                                <button ng-show="CurrentSong.SongId!=song.SongId" class="btn-default pull-right" ng-click="changeSongAndPlay(song)">
+                                                    <span class="glyphicon glyphicon-play"></span>
+                                                </button>
+                                                <button ng-show="CurrentSong.SongId==song.SongId && audio.paused == false" class="btn-default pull-right" ng-click="pause()">
+                                                    <span class="glyphicon glyphicon-pause"></span>
+                                                </button>
+                                                <button ng-show="CurrentSong.SongId==song.SongId && audio.paused == true" class="btn-default pull-right" ng-click="play()">
+                                                    <span class="glyphicon glyphicon-play"></span>
+                                                </button>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <span>{{song.Title}}</span> - <span>{{song.Artist}}</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    @*<span>{{message.Text}}</span><span>{{message.FromName}}</span><span>{{message.MessageDate}}</span>*@
+                                    {{message.MessageDate}}
+                                    <a ng-show="message.FromId==logState.Id" ng-click="removeMessage(message)" class="close">×</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <span class="text-danger">{{userWritiingMessage}}</span>
+                    <textarea class="form-control" ng-model="newMessage" ng-focus="messageTyped(e)"></textarea>
+                    <button ng-click="addMessageToConversation()" class="btn-success">Отправить</button>
+                    <button class="btn-default" ng-click="musicMessageModal()">
+                        <span class="glyphicon glyphicon-music"></span>
+                    </button>
+                </div>
+                <div class="col-md-5">
+                    <div ng-repeat="song in messageSongs">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <span>{{song.Title}}</span>-
+                                <span>{{song.Artist}}</span>
+                            </div>
+                            <div class="col-md-1">
+                                <a ng-click="removeMessageSong(song,$index)" class="close">×</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-3">
+            <div class="pre-scrollable480">
+
+                <div ng-repeat="song in currentConversation.ConversationSongs  | filter:titleSearch">
+                    <div class="thumbnail clearfix">
+                        <img class="pull-left" ng-src="{{song.SongAlbumCoverPath}}" width="50" height="50" />
+                        <span>{{song.Title}}</span>-
+                        <span>{{song.Artist}}</span><br />
+                        <span>{{song.DurationFormatted}}</span>
+                        <button ng-show="CurrentSong.SongId!=song.SongId" class="btn-default pull-right" ng-click="changeConversationSong(song);changeSongAndPlay(song);">
+                            <span class="glyphicon glyphicon-play"></span>
+                        </button>
+                        <button ng-show="CurrentSong.SongId==song.SongId && audio.paused == false" class="btn-default pull-right" ng-click="pause()">
+                            <span class="glyphicon glyphicon-pause"></span>
+                        </button>
+                        <button ng-show="CurrentSong.SongId==song.SongId && audio.paused == true" class="btn-default pull-right" ng-click="play()">
+                            <span class="glyphicon glyphicon-play"></span>
+                        </button>
+                        <button class="btn-default pull-right" ng-click="removeSongFromPlaylist(song,$index)">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

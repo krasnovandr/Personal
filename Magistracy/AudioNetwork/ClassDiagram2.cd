@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AudioNetwork.Controllers.AccountController" Collapsed="true">
+    <Position X="2.5" Y="4.5" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="AudioNetwork.Controllers.AccountController.ChallengeResult">
+        <TypeIdentifier>
+          <NewMemberFileName>Controllers\AccountController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAACgAAAAACAAAAAAAAEAAAABIoIAAAAQAAQAAAA=</HashCode>
+      <FileName>Controllers\AccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Controllers.StatisticsController" Collapsed="true">
+    <Position X="6" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAACAAAIAAAAIAAACACAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\StatisticsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Web.Mvc.Controller" Collapsed="true">
+    <Position X="6.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AudioNetwork.BundleConfig" Collapsed="true">
+    <Position X="18.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\BundleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.FilterConfig" Collapsed="true">
+    <Position X="18.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\FilterConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.RouteConfig" Collapsed="true">
+    <Position X="27" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Startup" Collapsed="true">
+    <Position X="23.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAgAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\Startup.Auth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Bootstrapper" Collapsed="true">
+    <Position X="16.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAACAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Bootstrapper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.MvcApplication" Collapsed="true">
+    <Position X="20" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.App_Start.UnityConfig" Collapsed="true">
+    <Position X="18.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\UnityConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.App_Start.UnityWebActivator" Collapsed="true">
+    <Position X="20" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\UnityMvcActivator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Controllers.ConversationController" Collapsed="true">
+    <Position X="8" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAkAADAAAIAIAAgAgAABJAAQAACQAAYAAAAAAAAIQA=</HashCode>
+      <FileName>Controllers\ConversationController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Controllers.HomeController" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Controllers.MusicController" Collapsed="true">
+    <Position X="9.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AmAAAAAAAEAAAAAAQAAABAAAAEAAAEAAAAAAAQAAkAA=</HashCode>
+      <FileName>Controllers\MusicController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Controllers.PlayListController" Collapsed="true">
+    <Position X="4.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAAAAAAAAAAAAAQAAAgYAAAAAAAAAAAAAMAg=</HashCode>
+      <FileName>Controllers\PlayListController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Controllers.UploadController" Collapsed="true">
+    <Position X="10" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAJAAAQgAAAAAgAAAAAAAAgAAgAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Controllers\UploadController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Controllers.UsersController" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAkgAAAAAAAAAABAAAAAABBAAQAAAQAAFEGMAAAAAAA=</HashCode>
+      <FileName>Controllers\UsersController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Controllers.WallController" Collapsed="true">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAIEAAACAAAAA=</HashCode>
+      <FileName>Controllers\WallController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Helpers.DateTimeHelper" Collapsed="true">
+    <Position X="25.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Helpers\DateTimeHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Helpers.MailSender" Collapsed="true">
+    <Position X="23.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Helpers\MailSender.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Helpers.ModelConverters" Collapsed="true">
+    <Position X="16.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAACAAAAADIADAARAAAAAAAAAAAAAgEAQANBAI=</HashCode>
+      <FileName>Helpers\ModelConverters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Helpers.StringHelper" Collapsed="true">
+    <Position X="27" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Helpers\StringHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Hubs.TestUserModel" Collapsed="true">
+    <Position X="16.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Hubs\ConversationHub.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Hubs.ConversationHub" Collapsed="true">
+    <Position X="20" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAABAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Hubs\ConversationHub.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Models.ExternalLoginConfirmationViewModel" Collapsed="true">
+    <Position X="27" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Models.ManageUserViewModel" Collapsed="true">
+    <Position X="25.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAEAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Models.LoginViewModel" Collapsed="true">
+    <Position X="21.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAQAAAAAgAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Models.RegisterViewModel" Collapsed="true">
+    <Position X="25.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAACAQAAAAAAIAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Models.LoginResult" Collapsed="true">
+    <Position X="20" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Models.ConversationViewModel" Collapsed="true">
+    <Position X="23.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAQAAAAAgAwAQCAAABgAQAABABSAAAQAAIAAAAAAA=</HashCode>
+      <FileName>Models\ConversationViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Models.MessageViewModel" Collapsed="true">
+    <Position X="27" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAQAAAAAIhIAAAAEAAAACAAAAAA=</HashCode>
+      <FileName>Models\MessageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Models.PlaylistViewModel" Collapsed="true">
+    <Position X="23.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgABAAAAAABAgAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Models\PlaylistViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Models.SongChartModel" Collapsed="true">
+    <Position X="18.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAA=</HashCode>
+      <FileName>Models\SongViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Models.SongViewModel" Collapsed="true">
+    <Position X="21.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACQAIBBAgzAEAAIAIAAAAAEIAIAAAGIAAASEBAQoI=</HashCode>
+      <FileName>Models\SongViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Models.UserSearchModel" Collapsed="true">
+    <Position X="23.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEABAAAAAAAIAAIAAAQAAAIAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Models\UserViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Models.UserViewModel" Collapsed="true">
+    <Position X="27" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAEAAACQCAAAIABCKAAQASQKEAJAQIQDIBQABEgg=</HashCode>
+      <FileName>Models\UserViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Models.VkUserModel" Collapsed="true">
+    <Position X="16.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAACAAAQAAAAAAA=</HashCode>
+      <FileName>Models\VkUserModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Models.WallItemViewModel" Collapsed="true">
+    <Position X="18.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAmAAAAASAAAAAIAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Models\WallItemViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Properties.Settings" Collapsed="true">
+    <Position X="16.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Services.ConversationService" BaseTypeListCollapsed="true">
+    <Position X="13.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAkAIDAAgABIAAkAAAABJAAQAACAAAYAAAAAAAAIgA=</HashCode>
+      <FileName>Services\ConversationService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.138" />
+  </Class>
+  <Class Name="AudioNetwork.Services.FilePathContainer" Collapsed="true">
+    <Position X="16.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABABIgAIAAAAAAAAAAAQEAABAAABAAAAAAA=</HashCode>
+      <FileName>Services\FilePathContainer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Services.MusicService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AkAAEAAAAgAAAAAAQAAAAAAAAEAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Services\MusicService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AudioNetwork.Services.PlaylistService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAIBAAAAAAAAAQAAAEAAAAAAAAAAAIAAEAg=</HashCode>
+      <FileName>Services\PlaylistService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AudioNetwork.Services.SongPictureGetter" Collapsed="true">
+    <Position X="20" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAABAAAAA=</HashCode>
+      <FileName>Services\SongPictureGetter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioNetwork.Services.StatisticsService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="25.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAgAAAIAAACAAAAAAAAEAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Services\StatisticsService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AudioNetwork.Services.UploadService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgBAAIAgAgABAAAEAAAAEAAACAAAAAAAgAAkAAAAAAA=</HashCode>
+      <FileName>Services\UploadService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AudioNetwork.Services.UserService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="25.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAEAAAAgAgAAAABAAAAAAABAQQAAAAAAFAAIAAAAAAA=</HashCode>
+      <FileName>Services\UserService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AudioNetwork.Services.WallService" BaseTypeListCollapsed="true">
+    <Position X="12" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAgAAAAAQAAAAAAAAAAAAAACAAAAEAAACAAAAA=</HashCode>
+      <FileName>Services\WallService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.213" />
+  </Class>
+  <Interface Name="AudioNetwork.Services.IConversationService" Collapsed="true">
+    <Position X="16.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAkAADAAAAAIAAkAAAABJAAQAACAAAYAAAAAAAAIgA=</HashCode>
+      <FileName>Services\ConversationService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AudioNetwork.Services.IMusicService" Collapsed="true">
+    <Position X="18.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AkAAEAAAAAAAAAAAQAAAAAAAAEAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Services\MusicService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AudioNetwork.Services.IPlaylistService" Collapsed="true">
+    <Position X="20" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAIAAAAAAAAAAQAAAEAAAAAAAAAAAIAAEAg=</HashCode>
+      <FileName>Services\PlaylistService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AudioNetwork.Services.IStatisticsService" Collapsed="true">
+    <Position X="21.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAIAAACAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Services\StatisticsService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AudioNetwork.Services.IUploadService" Collapsed="true">
+    <Position X="23.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAEAAAAAAAACAAAAAAAAAAkAAAAAAA=</HashCode>
+      <FileName>Services\UploadService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AudioNetwork.Services.IUserService" Collapsed="true">
+    <Position X="11.5" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAEAAAAAAAAAAABAAAAAAABAAQAAAAAAFAAIAAAAAAA=</HashCode>
+      <FileName>Services\UserService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AudioNetwork.Services.IWallService" Collapsed="true">
+    <Position X="27" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\WallService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="System.Web.Mvc.IAuthorizationFilter" Collapsed="true">
+    <Position X="1.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Enum Name="AudioNetwork.Models.ConversationType" Collapsed="true">
+    <Position X="16.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAIAEIAAAAAAAAA=</HashCode>
+      <FileName>Models\ConversationViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

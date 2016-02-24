@@ -1,0 +1,60 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">Беседа  {{currentConversation.Name}}</h3>
+</div>
+
+<div class="modal-body container-fluid" >
+    <div class="row">
+        <div class="col-md-12">
+            <input type="file" nv-file-select uploader="uploader" /><br />
+            <div class="well my-drop-zone" nv-file-over="" nv-file-drop="" uploader="uploader">Перетащите картинку сюда</div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Название</th>
+                        <th ng-show="uploader.isHTML5">Размер</th>
+                        <th ng-show="uploader.isHTML5">Прогресс</th>
+                        <th>Результат</th>
+                        <th>Дейстивя</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in uploader.queue">
+                        <td>
+                            <strong>{{ item.file.name }}</strong>
+                            <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div>
+                        </td>
+                        <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                        <td ng-show="uploader.isHTML5">
+                            <div class="progress" style="margin-bottom: 0;">
+                                <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                            <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                            <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                        </td>
+                        <td nowrap>
+                            <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                <span class="glyphicon glyphicon-upload"></span> Загрузить
+                            </button>
+                            <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                                <span class="glyphicon glyphicon-ban-circle"></span> Отменить
+                            </button>
+                            <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                                <span class="glyphicon glyphicon-trash"></span> Удалить
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+<div class="modal-footer">
+    <button class="close" ng-click="cancel()">закрыть</button>
+</div>
+

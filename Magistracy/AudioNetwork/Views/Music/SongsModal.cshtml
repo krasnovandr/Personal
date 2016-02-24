@@ -1,0 +1,29 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">Музыка</h3>
+    <input class="form-control" type="search" ng-model="musicSearch" placeholder="название песни..." /><br />
+</div>
+
+<div class="modal-body pre-scrollable container">
+ 
+    <div ng-repeat="song in  songs| filter:musicSearch">
+        <div class="row">
+            <div class="col-md-1">
+                <img class="pull-left" ng-src="{{song.SongAlbumCoverPath}}" width="50" height="50" />
+            </div>
+            <div class="col-md-4">
+                <span>{{song.Title}}</span>-
+                <span>{{song.Artist}}</span>
+                <button class="btn-default pull-right" ng-click="addSong(song,$index)">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </div>
+            <div class="col-md-1">
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="close" ng-click="cancel()">закрыть</button>
+</div>
+

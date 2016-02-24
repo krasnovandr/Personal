@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html ng-app="AudioNetworkApp">
+<head>
+    <title></title>
+</head>
+<body>
+    <div ng-controller="HomeController" class="container">
+        <nav ng-controller="LoginController" class="navbar navbar-default ">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <ul class="nav navbar-nav">
+                        <li ng-class="{ active: isActive('/Home') }"><a class="navbar-brand" ng-show="logState.LoggedIn" href="/#/Home">Моя страница</a></li>
+                    </ul>
+                </div>
+                <div class="collapse navbar-collapse" ng-class="{'in':!navCollapsed}">
+                    <ul class="nav navbar-nav">
+                        <li ng-class="{ active: isActive('/Users') }"><a ng-show="logState.LoggedIn" href="/#/Users">Люди</a></li>
+                        <li ng-class="{ active: isActive('/Friends') }"><a ng-show="logState.LoggedIn" href="/#/Friends">Друзья</a></li>
+                        <li ng-class="{ active: isActive('/Conversations') }"> <a ng-show="logState.LoggedIn" href="/#/Conversations">Cообщения<span class="badge">{{messagesCount}}</span></a></li>
+                        <li ng-class="{ active: isActive('/EditConversations') }"> <a ng-show="logState.LoggedIn" href="/#/EditConversations">Редактировать беседы</a></li>
+                        @*<li><a ng-show="logState.LoggedIn" href="/#/Music">Музыка</a></li>*@
+
+                        <li ng-show="logState.LoggedIn" class=" btn-group" dropdown is-open="status.isopen">
+                            <a class="btn btn-link dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+                                Музыка <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li ng-class="{ active: isActive('/Player') }"><a ng-show="logState.LoggedIn" href="/#/Player">Плеер</a></li>
+                                <li ng-class="{ active: isActive('/Playlists') }"><a ng-show="logState.LoggedIn" href="/#/Playlists">Плейлисты</a></li>
+                                <li ng-class="{ active: isActive('/Upload') }"><a ng-show="logState.LoggedIn" href="/#/Upload">Загрузить</a></li>
+                                <li ng-class="{ active: isActive('/Recognition') }"><a ng-show="logState.LoggedIn" href="/#/Recognition">Распознование</a></li>
+                            </ul>
+                        </li>
+                        <li ng-class="{ active: isActive('/Statistics') }"> <a ng-show="logState.LoggedIn" href="/#/Statistics">Статистика</a></li>
+                        <li ng-class="{ active: isActive('/News') }"> <a ng-show="logState.LoggedIn" href="/#/News">Новости</a></li>
+                        <li >
+                            <button ng-show="logState.LoggedIn && showPlayer" ng-click="changePlayerVisibility()">
+                                <span class="glyphicon glyphicon-circle-arrow-down"></span>
+                            </button>
+                            <button ng-show="logState.LoggedIn && showPlayer==false" ng-click="changePlayerVisibility()">
+                                <span class="glyphicon glyphicon-circle-arrow-up"></span>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li ng-class="{ active: isActive('/Login') }"><a ng-hide="logState.LoggedIn" href="/#/Login"><span class="glyphicon glyphicon-user"></span> Войти</a></li>
+                        <li ng-class="{ active: isActive('/Register') }"><a ng-hide="logState.LoggedIn" href="/#/Register"><span class="glyphicon glyphicon-log-in"></span> Зарегистрироваться</a></li>
+                        <li><a class="btn btn-link" ng-click="logout()" ng-show="logState.LoggedIn"> <span class="glyphicon glyphicon-log-in"></span>Выйти</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div ng-show="logState.LoggedIn && showPlayer" class="container">
+
+        @*<div collapse="isCollapsed">
+                <div class="well well-lg">Some content</div>
+            </div>*@
+        <nav class="navbar navbar-default navbar-fixed-bottom ">
+            @*<a class="btn btn-link" ng-hide="isCollapsed" ng-click="hidePlayer()"><span class="glyphicon glyphicon-arrow-down" ></span></a>
+                <a class="btn btn-link" ng-show="isCollapsed" ng-click="showPlayer()"><span class="glyphicon glyphicon-arrow-up"></span></a>*@
+            <div class="row">
+                @*<div class="col-md-2 col-md-offset-1">
+                        <a href="/#/Songs/{{CurrentSong.SongId}} ">
+                            <img class="img-thumbnail" ng-src="{{CurrentSong.SongAlbumCoverPath}}" width="120" height="120" />
+                        </a>
+
+                    </div>*@
+                <div class="col-md-2">
+                    <button class="btn-default" ng-click="previous()">
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                    </button>
+                    <button ng-show="audio.paused==true" class="btn-default" id="play" ng-click="play()">
+                        <span class="glyphicon glyphicon-play"></span>
+                    </button>
+                    <button ng-show="audio.paused==false" class="btn-default" ng-click="pause()">
+                        <span class="glyphicon glyphicon-pause"></span>
+                    </button>
+                    <button class="btn-default" ng-click="restart()">
+                        <span class="glyphicon glyphicon-stop"></span>
+                    </button>
+                    <button class="btn-default" ng-click="next()">
+                        <span class="glyphicon glyphicon-arrow-right"></span>
+                    </button>
+                    <button class="btn-default" ng-click="audio.looped=!audio.looped" ng-class="{'btn-default':audio.looped == true,'btn-danger':audio.looped == false}">
+                        <span class="glyphicon glyphicon-repeat">
+                        </span>
+                    </button>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        <a href="/#/Songs/{{CurrentSong.SongId}} ">
+                            <span>{{CurrentSong.Artist}}</span>
+                            <span> - </span>
+                            <span>{{CurrentSong.Title}}</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>{{currentTime}}</span>
+                        </div>
+                        <div class="col-md-8">
+                            <canvas id="canvas" class="SongProgress"></canvas>
+                        </div>
+                        <div class="col-md-1">
+                            <span>{{duration}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <input type="range" class="progress-bar progress-bar-striped" min="0" max="100" value="50" ng-model="soundVolume.volume" />
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div ng-view></div>
+
+    <script src="~/Scripts/Libs/angular.min.js"></script>
+
+    <script src="~/Scripts/Libs/angular-route.min.js"></script>
+    <script src="~/Scripts/Libs/angular-sanitize.min.js"></script>
+    <script src="~/Scripts/FileApploader/angular-file-upload.js"></script>
+    <script src="~/Scripts/Libs/scroll.js"></script>
+    <script src="~/Scripts/angular-ui/ui-bootstrap.js"></script>
+    <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+    <script src="~/Scripts/Libs/angular-drag-and-drop-lists.js"></script>
+    <script src="~/Scripts/Libs/VirtualScroller/module.js"></script>
+    <script src="~/Scripts/Libs/d3-min.js"></script>
+    <script src="~/Scripts/Libs/line-chart.min.js"></script>
+    <script src="~/Scripts/Libs/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.2.0.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script src="~/Scripts/AudioNetworkApp.js"></script>
+    @Scripts.Render("~/bundles/AngularServices")
+    @Scripts.Render("~/bundles/AngularControllers")
+    @Scripts.Render("~/bundles/Recognize")
+
+
+    @Styles.Render("~/Content/css")
+</body>
+</html>
+

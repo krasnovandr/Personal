@@ -1,0 +1,173 @@
+﻿<div ng-controller="SongUploadController" nv-file-drop="" uploader="uploader">
+    <div class="row">
+        <div class="col-md-5">
+            <button class="btn-default" ng-click="vkDownload=true">
+                Загрузить из вконтакте
+                <span class="glyphicon glyphicon-upload"></span>
+            </button>
+            <button class="btn-default" ng-click="vkDownload=false">
+                Загрузить
+                <span class="glyphicon glyphicon-upload"></span>
+            </button>
+        </div>
+
+    </div>
+
+    <div class="row" ng-if="vkDownload==false">
+        <div class="col-md-3">
+            <h3>Выерите файл</h3>
+            <div ng-show="uploader.isHTML5">
+                <!-- 3. nv-file-over uploader="link" over-class="className" -->
+                <div class="well my-drop-zone" nv-file-over="" uploader="uploader">
+                    Переместите файл в формате mp3
+                </div>
+                <!-- Example: nv-file-drop="" uploader="{Object}" options="{Object}" filters="{String}" -->
+                @*<div nv-file-drop="" uploader="uploader" options="{ url: '/foo' }">
+                        <div nv-file-over="" uploader="uploader" over-class="another-file-over-class" class="well my-drop-zone">
+                            Another drop zone with its own settings
+                        </div>
+                    </div>*@
+            </div>
+            <!-- Example: nv-file-select="" uploader="{Object}" options="{Object}" filters="{String}" -->
+            Выбрать файлы
+            <input type="file" nv-file-select="" uploader="uploader" multiple /><br />
+            @*Single
+                <input type="file" nv-file-select="" uploader="uploader" />*@
+        </div>
+        <div class="col-md-6" style="margin-bottom: 40px">
+            <h3>Очередь загрузки</h3>
+            <p>Количестов файлов: {{ uploader.queue.length }}</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th width="50%">Навзание</th>
+                        <th ng-show="uploader.isHTML5">Размер</th>
+                        <th ng-show="uploader.isHTML5">Прогресс</th>
+                        <th>Статус</th>
+                        <th>Действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in uploader.queue">
+                        <td><strong>{{ item.file.name }}</strong></td>
+                        <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                        <td ng-show="uploader.isHTML5">
+                            <div class="progress" style="margin-bottom: 0;">
+                                <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                            <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                            <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                        </td>
+                        <td nowrap>
+                            <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                <span class="glyphicon glyphicon-upload"></span> загрузить
+                            </button>
+                            <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                                <span class="glyphicon glyphicon-ban-circle"></span> отменить
+                            </button>
+                            <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                                <span class="glyphicon glyphicon-trash"></span> удалить
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <div>
+
+                    <div class="progress" style="">
+                        <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+                    <span class="glyphicon glyphicon-upload"></span> загрузить все
+                </button>
+                <button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
+                    <span class="glyphicon glyphicon-ban-circle"></span> отменить все
+                </button>
+                <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+                    <span class="glyphicon glyphicon-trash"></span> удалить все
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row top15" ng-if="vkDownload==true">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    Введите данные своей учетной записи вконтакте
+                    <form ng-submit="addUserVkInfo()" name="vkForm" novalidate>
+                        <div class="form-group">
+                            <label for="userName">Логин:</label>
+                            <input type="text" class="form-control" name="userName" ng-model="vkAccountData.Login" id="userName" required />
+                            <span style="color:red" ng-show="vkForm.userName.$dirty && vkForm.userName.$invalid">
+                                <span ng-show="vkForm.userName.$error.required">Введите логин</span>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Пароль:</label>
+                            <input type="password" class="form-control" id="password" ng-model="vkAccountData.Password" />
+                        </div>
+                        <div class="form-group">
+                            <label for="rememberMe">Искать тексты:</label>
+                            <input type="checkbox" id="rememberMe" ng-model="vkAccountData.findLyrics" />
+                        </div>
+                        @*<div class="form-group">
+                                <span style="color:red">{{loginError}}</span>
+                            </div>*@
+                        <button class="btn btn-default" type="submit"
+                                ng-disabled="vkForm.userName.$dirty && vkForm.userName.$invalid">
+                            Загрузить
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            Найдено {{vkSongs.length}} песен
+            <button ng-show="vkSongs.length > 0" class="btn-default pull-right" ng-click="saveSongs()">
+                <span class="glyphicon glyphicon-plus-sign">Добвить все</span>
+            </button>
+            <table class="table table-striped" ng-repeat="song in vkSongs">
+                <tr>
+                    <td width="80%">
+                        <span>{{song.Title}}</span>-
+                        <span>{{song.Artist}}</span>
+                        <span>{{song.Year}}</span><br />
+                    </td>
+                    <td>
+                        <span>{{song.DurationFormatted}}</span>
+                    </td>
+                    <td>
+                        <button ng-show="CurrentSong.SongId!=song.SongId" class=" btn-default pull-right" ng-click="changeSongAndPlay(song)">
+                            <span class="glyphicon glyphicon-play"></span>
+                        </button>
+                        <button ng-show="CurrentSong.SongId==song.SongId && audio.paused == false" class="btn-default pull-right" ng-click="pause()">
+                            <span class="glyphicon glyphicon-pause"></span>
+                        </button>
+                        <button ng-show="CurrentSong.SongId==song.SongId && audio.paused == true" class="btn-default pull-right" ng-click="play()">
+                            <span class="glyphicon glyphicon-play"></span>
+                        </button>
+
+                        <button ng-show="song.Added == true" class="btn-default pull-right" ng-click="removeSong(song)">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                        <button ng-show="!song.Removed && !song.Added" class="btn-default pull-right" ng-click="saveSong(song)">
+                            <span class="glyphicon glyphicon-plus-sign"></span>
+                        </button>
+                        <button ng-show="song.Removed == true" class="btn-default pull-right" ng-click="saveSong(song)">
+                            <span class="glyphicon glyphicon-plus-sign"></span>
+                        </button>
+                        @*<div data-scroll-loader></div>*@
+                    </td>
+
+
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

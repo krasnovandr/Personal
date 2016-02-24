@@ -1,0 +1,241 @@
+﻿<div ng-controller="UserController" class="container-fluid" ng-init="additionalFields=false">
+    <div class="row">
+        <div class="col-md-2">
+            <span class="h4"> Друзья</span>
+            <div ng-repeat="user in userFriends">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img ng-src="{{user.AvatarFilePath}}" />
+                    </div>
+                    <div class="col-md-6">
+                        <a href="/#/Users/{{user.Id}} ">{{user.FirstName}} {{user.LastName}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-7">
+            <div class="row">
+                <div class="row" ng-show="userInfo.CurrentSong != null">
+                    <span>{{userInfo.CurrentSong.Title}}</span>
+                    <span>{{userInfo.CurrentSong.Artist}}</span>
+                    <button class="btn-default" ng-click="changeSongAndPlay(userInfo.CurrentSong)">
+                        <span class="glyphicon glyphicon-play"></span>
+                    </button>
+                    <span>{{user.LastActivityDate}}</span>
+                </div>
+                <form class="form-group-sm">
+                    <div class="row top10">
+                        <div class="col-md-5">
+                            <img ng-click="openPictureModal()" class="thumbnail" width="200" height="200" ng-src="{{userInfo.AvatarFilePath}}" />
+                            <a class="btn-link" href="/#/Conversations/{{userid}}?dialog=true">Написать Сообщение</a>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Последняя активность</label>
+                                <label> {{userInfo.LastActivityDate}}</label>
+                            </div>
+                            <div class="form-group">
+                                <label>Имя:</label>
+                                <label> {{userInfo.FirstName}}</label>
+                            </div>
+                            <input type="button" class="btn btn-primary" ng-click="additionalFields=!additionalFields" value="Дополнительные сведения" />
+                            <div ng-show="additionalFields">
+
+                                <div class="form-group">
+                                    <label>Фамилия:</label>
+                                    <label> {{userInfo.LastName}}</label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Дата рождения:</label>
+                                    <label> {{userInfo.BirthDateFormatted}}</label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Cтрана:</label>
+                                    <label> {{userInfo.Country}}</label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Город:</label>
+                                    <label> {{userInfo.City}}</label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Почта:</label>
+                                    <label> {{userInfo.Email}}</label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Любимый жанр(один):</label>
+                                    <label> {{userInfo.BestGenre}}</label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Самый не любимый жанр:</label>
+                                    <label> {{userInfo.WorstGenre}}</label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Последняя песня, засевшая в голову:</label>
+                                    <label> {{userInfo.LastEntrenchedSong}}</label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Любимая отечественная группа:</label>
+                                    <label> {{userInfo.BestNativeArtist}}</label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Любимая зарубежная группа:</label>
+                                    <label> {{userInfo.BestForeignArtist}}</label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Любимый вокалист/вокалистка:</label>
+                                    <label> {{userInfo.BestVocalist}}</label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Лучший будильник:</label>
+                                    <label> {{userInfo.BestAlarmClock}}</label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Лучшая колыбельная:</label>
+                                    <label> {{userInfo.BestSleeping}}</label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Лучшая расслабляющая музыка:</label>
+                                    <label> {{userInfo.BestRelaxSong}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row top15 container-fluid" ng-controller="WallController">
+                <div class="col-md-12">
+                    Мои записи {{wallItems.length}}
+                    <textarea class="form-control" ng-model="Note"></textarea>
+                    <button ng-click="addWallItem()" class="btn-success">Отправить</button>
+                    <button ng-click="open()" type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-music"></span>
+                    </button>
+                    <div ng-repeat="song in wallItemSons">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <span>{{song.Title}}</span>-
+                                <span>{{song.Artist}}</span>
+                            </div>
+                            <div class="col-md-1">
+                                <a ng-click="removeWallItemSong(song,$index)" class="close">×</a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row top10">
+                        <div ng-repeat="item in wallItems">
+                            <div class="row top10">
+                                <div class="col-md-2">
+                                    <img ng-src="{{item.AddByUser.AvatarFilePath}}" />
+
+                                </div>
+
+                                <div class="col-md-8">
+                                    <strong>{{item.AddByUser.FirstName}} {{item.AddByUser.LastName}}</strong><br />
+                                    <span ng-bind-html="item.Note | linky"></span>
+
+
+
+                                    <div class="row top10" ng-show="{{item.ImagePath !=''}}">
+                                        <span>{{item.Header}}</span>
+                                        <a href="{{item.Note}} " target=" _blank">
+                                            <img ng-src="{{item.ImagePath}}" />
+                                        </a>
+                                    </div>
+                                    <div ng-repeat="songItem in item.ItemSongs">
+                                        <div class="row top10">
+                                            <div class="col-md-1">
+                                                <button ng-show="CurrentSong.SongId!=songItem.SongId" class="btn-default pull-right" id="play" ng-click="changeSongAndPlay(songItem,$index)">
+                                                    <span class="glyphicon glyphicon-play"></span>
+                                                </button>
+                                                <button ng-show="CurrentSong.SongId==songItem.SongId && audio.paused == false" class="btn-default pull-right" ng-click="pause()">
+                                                    <span class="glyphicon glyphicon-pause"></span>
+                                                </button>
+                                                <button ng-show="CurrentSong.SongId==songItem.SongId && audio.paused == true" class="btn-default pull-right" ng-click="play()">
+                                                    <span class="glyphicon glyphicon-play"></span>
+                                                </button>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <span>{{songItem.Title}}</span>
+                                                <span>{{songItem.Artist}}</span>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span>{{songItem.DurationFormatted}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                @*<div class="col-md-2">
+                                    <a ng-show="" ng-click="removeWallItem(item)" class="close">×</a>
+                                </div>*@
+
+                            </div>
+                            <div class="top5 row">
+                                <div class="col-md-2">
+                                    {{item.AddDateFormatted}}
+                                </div>
+                                <div class="col-md-offset-6 col-md-3">
+                                    <button ng-click="like(item)">
+                                        <span class="glyphicon glyphicon-thumbs-up"></span>
+                                    </button>
+                                    <button ng-click="openLikeModal(true,item)">
+                                        <span class="text-danger">{{item.LikesCount}}</span>
+                                    </button>
+                                    <button ng-click="dislike(item)">
+                                        <span class="glyphicon glyphicon-thumbs-down"></span>
+                                    </button>
+                                    <button ng-click="openLikeModal(false,item)">
+                                        <span class="text-danger">{{item.DislikesCount}}</span>
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="col-md-3">
+            <span class="h4">Музыка пользователя</span>
+            <input class="form-control" type="search" ng-model="titleSearch" placeholder="Введите название трека" />
+            <div ng-repeat="songItem in userMusic  | filter:titleSearch">
+                <div class="row top10">
+                    <div class="col-md-1">
+                        <button ng-show="CurrentSong.SongId!=songItem.SongId" class="btn-default pull-right" id="play" ng-click="changeSongAndPlay(songItem,$index)">
+                            <span class="glyphicon glyphicon-play"></span>
+                        </button>
+                        <button ng-show="CurrentSong.SongId==songItem.SongId && audio.paused == false" class="btn-default pull-right" ng-click="pause()">
+                            <span class="glyphicon glyphicon-pause"></span>
+                        </button>
+                        <button ng-show="CurrentSong.SongId==songItem.SongId && audio.paused == true" class="btn-default pull-right" ng-click="play()">
+                            <span class="glyphicon glyphicon-play"></span>
+                        </button>
+
+                    </div>
+                    <div class="col-md-6">
+                        <span>{{songItem.Title}}</span>
+                        <span>{{songItem.Artist}}</span>
+                    </div>
+                    <div class="col-md-1">
+                        <span>{{songItem.DurationFormatted}}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

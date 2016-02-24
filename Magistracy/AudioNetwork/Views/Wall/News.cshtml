@@ -1,0 +1,99 @@
+﻿<div ng-controller="NewsController" class="container-fluid" ng-init="NewsParams.showUpdates = false">
+    <button ng-if="NewsParams.showUpdates == false" class="col-md-offset-2 btn btn-default" ng-click="getFriendUpdates();NewsParams.showUpdates = true">
+        Обновления друзей
+    </button>
+    <button ng-if="NewsParams.showUpdates == true"  class="col-md-offset-2 btn btn-default" ng-click="getNews();NewsParams.showUpdates = false">
+        Новости
+    </button>
+    <div class="row" ng-if="NewsParams.showUpdates == false">
+        <div class="col-md-8 col-md-offset-2">
+            Всего {{news.length}} записей
+            <div ng-repeat="item in news">
+                <div class="row top10">
+                    <div class="col-md-2">
+                        <img ng-src="{{item.AddByUser.AvatarFilePath}}" />
+
+                    </div>
+                    <div class="col-md-8">
+                        <strong>{{item.AddByUser.FirstName}} {{item.AddByUser.LastName}}</strong><br />
+                        <span ng-bind-html="item.Note | linky" class=""></span><br />
+                        <div ng-repeat="songItem in item.ItemSongs">
+                            <div class="row top10">
+                                <div class="col-md-1">
+                                    <button ng-show="CurrentSong.SongId!=songItem.SongId" class="btn-default pull-right" id="play" ng-click="changeSongAndPlay(songItem,$index)">
+                                        <span class="glyphicon glyphicon-play"></span>
+                                    </button>
+                                    <button ng-show="CurrentSong.SongId==songItem.SongId && audio.paused == false" class="btn-default pull-right" ng-click="pause()">
+                                        <span class="glyphicon glyphicon-pause"></span>
+                                    </button>
+                                    <button ng-show="CurrentSong.SongId==songItem.SongId && audio.paused == true" class="btn-default pull-right" ng-click="play()">
+                                        <span class="glyphicon glyphicon-play"></span>
+                                    </button>
+                                    @*<button ng-click="changeSongAndPlay(songItem)">
+                                            <span class="glyphicon glyphicon-play"></span>
+                                        </button>*@
+
+                                </div>
+                                <div class="col-md-6">
+                                    <span>{{songItem.Title}}</span>
+                                    <span>{{songItem.Artist}}</span>
+                                </div>
+                                <div class="col-md-1">
+                                    <span>{{song.DurationFormatted}}</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+
+                        @*<a ng-click="removeWallItem(item)" class="close">×</a>*@
+                        {{item.AddDateFormatted}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" ng-if="NewsParams.showUpdates == true">
+        <div class="col-md-9 col-md-offset-2">
+            <div ng-repeat="item in updates">
+                <div class="row top10">
+                    <div class="col-md-2">
+                        <img ng-src="{{item.Friend.AvatarFilePath}}" />
+                    </div>
+                    <div class="col-md-8">
+                        <strong>{{item.Friend.FirstName}} {{item.Friend.LastName}}</strong><br />
+                        <div ng-repeat="songItem in item.Songs">
+                            <div class="row top10">
+                                <div class="col-md-1">
+                                    <button ng-show="CurrentSong.SongId!=songItem.SongId" class="btn-default pull-right" id="play" ng-click="changeSongAndPlay(songItem,$index)">
+                                        <span class="glyphicon glyphicon-play"></span>
+                                    </button>
+                                    <button ng-show="CurrentSong.SongId==songItem.SongId && audio.paused == false" class="btn-default pull-right" ng-click="pause()">
+                                        <span class="glyphicon glyphicon-pause"></span>
+                                    </button>
+                                    <button ng-show="CurrentSong.SongId==songItem.SongId && audio.paused == true" class="btn-default pull-right" ng-click="play()">
+                                        <span class="glyphicon glyphicon-play"></span>
+                                    </button>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <span>{{songItem.Title}}</span>
+                                    <span>{{songItem.Artist}}</span>
+                                </div>
+                                <div class="col-md-1">
+                                    <span>{{songItem.DurationFormatted}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        {{item.DateFormatted}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

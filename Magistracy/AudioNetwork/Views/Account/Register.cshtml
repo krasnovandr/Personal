@@ -1,0 +1,77 @@
+﻿<div ng-controller="RegisterController" class="container-fluid">
+    <div class="row">
+        <div class="col-md-5 col-md-offset-4">
+            <form ng-submit="register()" name="registerForm" ng-hide="confirmed" novalidate>
+                <div class="form-group">
+                    <label for="userName">Логин:</label>
+                    <input type="text" class="form-control" name="userName" ng-model="userName" id="userName" required />
+                    <div style="color:red" ng-show="registerForm.$submitted || registerForm.userName.$touched">
+                        <span ng-show="registerForm.userName.$error.required">Введите логин</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="userName">Имя:</label>
+                    <input type="text" class="form-control" name="firstName" ng-model="firstName" id="firstName" required />
+                    <div style="color:red" ng-show="registerForm.$submitted || registerForm.firstName.$touched">
+                        <span ng-show="registerForm.firstName.$error.required">Введите имя</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="userName">Фамилия:</label>
+                    <input type="text" class="form-control" name="lastName" ng-model="lastName" id="lastName" required />
+                    <div style="color:red" ng-show="registerForm.$submitted || registerForm.lastName.$touched">
+                        <span ng-show="registerForm.lastName.$error.required">Введите фамилию</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" name="email" ng-model="email" id="email" required />
+                    <div style="color:red" ng-show="registerForm.$submitted || registerForm.email.$touched">
+                        <span ng-show="registerForm.email.$error.required">Введите email.</span>
+                        <span ng-show="registerForm.email.$error.email">Email введен некорректно</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Пароль:</label>
+                    <input type="password" class="form-control" name="password" id="password" ng-model="password" required />
+                    <div style="color:red" ng-show="registerForm.$submitted || registerForm.password.$touched">
+                        <span ng-show="registerForm.password.$error.required">Введите пароль</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Повторите пароль:</label>
+                    <input type="password" class="form-control" data-password-verify="password" name="confirmPassword" id="password" ng-model="confirmPassword" required />
+                    <div style="color:red" ng-show="registerForm.$submitted || registerForm.confirmPassword.$touched">
+                        <span ng-show="registerForm.confirmPassword.$error.required">Введите логин</span>
+                    </div>
+                </div>
+                <div style="color:red" ng-show="registerForm.$submitted || registerForm.password.$touched ||  registerForm.confirmPassword.$touched">
+                    <span ng-show="registerForm.confirmPassword.$error.passwordVerify">Пароли не совпадают</span>
+                </div>
+                <button class="btn btn-default" type="submit"
+                        ng-disabled="!registerForm.$valid">
+                    Зарегестрироваться
+                </button>
+            </form>
+        </div>
+        <div class="row top15">
+            <div class="col-md-8 col-md-offset-4">
+                <div ng-show="emailSend" class="alert alert-info" role="alert">
+                    На почтовый адрес  {{email}}  Вам высланы дальнейшие инструкции по завершению регистрации
+                </div>
+                <div class="alert alert-danger" role="alert" ng-show="registerError != ''">
+                    {{registerError}}
+                </div>
+                <div ng-show="confirmed" class="alert alert-success" role="alert">
+                    <span>Ваша регистрация успешно подтверждена!</span>
+                </div>
+                <div class="alert alert-danger" role="alert" ng-show="confirmedError != ''">
+                    <span>{{confirmedError}}</span>
+                    <button class="btn btn-default" type="button" ng-click="confirmRegistration()">
+                        Отправить письмо
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

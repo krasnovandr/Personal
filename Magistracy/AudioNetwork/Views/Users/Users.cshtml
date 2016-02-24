@@ -1,0 +1,56 @@
+﻿<div ng-controller="UsersController">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="input-group">
+                    @*<input class="form-control form-group-sm" type="search" ng-model="search.$" placeholder="Поиск..." />*@
+                    <input class="form-control form-group-lg" type="search" ng-model="searchModel.FirstName" placeholder="Имя" />
+                    <input class="form-control form-group-lg" type="search" ng-model="searchModel.LastName" placeholder="Фамилия" />
+                    <input class="form-control form-group-lg" type="search" ng-model="searchModel.City" placeholder="Город" />
+                    <input class="form-control form-group-lg" type="search" ng-model="searchModel.Country" placeholder="Страна" />
+                    <input class="form-control form-group-lg" type="search" ng-model="searchModel.Genres" placeholder="Предпочитаемый жанр" />
+                    <input class="form-control form-group-lg" type="search" ng-model="searchModel.Atrists" placeholder="Предпочитаемый исполнитель" />
+                    <input class="form-control form-group-lg" type="date" ng-model="searchModel.BirthDate" placeholder="дата рождения" />
+                </div>
+
+            </div><div class="col-md-2">
+                <button class="btn btn-lg btn-default" type="button" ng-click="searchUsers()"><span class="glyphicon glyphicon-search"></span>Поиск</button>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table ">
+                <tr>
+                    <th></th>
+                    <th>Действие</th>
+                    <th>Слушает</th>
+                    <th>Последняя Активность</th>
+                </tr>
+                <tr ng-repeat="user in users| filter:titleSearch |onlineUsersFilter: onlineFilter">
+                    <td>
+                        <a href="/#/Users/{{user.Id}} ">
+                            <img ng-src="{{user.AvatarFilePath}}" width="80" height="80">
+                        </a>
+                        <a href="/#/Users/{{user.Id}} ">{{user.FirstName}}</a>
+                    </td>
+                    <td>
+                        <button class="btn-default" ng-click="addFriend(user)">
+                            Добавить
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button><br />
+                        <a class="btn-link" href="/#/Conversations/{{user.Id}}?dialog=true">Написать Сообщение</a>
+                    </td>
+                    <td>
+                        <a href="/#/Songs/{{user.CurrentSong.SongId}} ">
+                            <span>{{user.CurrentSong.Artist}}</span>
+                            <span> - </span>
+                            <span>{{user.CurrentSong.Title}}</span>
+                        </a>
+                    </td>
+                    <td>
+                        <span>{{user.LastActivityDate}}</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

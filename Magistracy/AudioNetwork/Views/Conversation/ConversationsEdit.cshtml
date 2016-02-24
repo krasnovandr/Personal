@@ -1,0 +1,94 @@
+﻿<div ng-controller="ConversationEditController" class="container-fluid">
+    <div class="row">
+        @*ng-if="isNewConversations==true"*@
+        <div class="col-md-3" ng-if="newConversation.isNewConversations==true">
+            <form name="addNewConvForm" novalidate>
+                <div class="form-group">
+                    <label>Название беседы:</label>
+                    <input type="text" class="form-control" name="newConversationName" ng-model="newConversation.newConversationName" required>
+                    <span style="color:red" ng-show="addNewConvForm.newConversationName.$dirty && addNewConvForm.newConversationName.$invalid">
+                        <span ng-show="addNewConvForm.newConversationName.$error.required">Введите название</span>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label>Открытая беседа:</label>
+                    <input type="checkbox" class="checkbox" ng-model="newConversation.musicConversation">
+                </div>
+                <button class="btn-success " ng-disabled="!addNewConvForm.$valid" ng-click="addConversation()">Добавить беседу</button>
+                <button class="btn-link" ng-click="newConversation.isNewConversations=false">Скрыть</button>
+            </form>
+        </div>
+        <div class="col-md-4">
+            Беседы
+            <button ng-hide="newConversation.isNewConversations" ng-click="newConversation.isNewConversations=true">Создать беседу<span class="glyphicon-plus"></span></button>
+            <select class="form-control" ng-model="currentConversationType" ng-change="changeConversationType(conversationType)" ng-options="conversationType as conversationType.Title for conversationType in conversationTypes"></select>
+            <input type="text" placeholder="Навзание беседы" ng-model="conversationTitle" class=" form-control" id="conversationSearch">
+
+            <div ng-repeat="conversation in conversations | filter:conversationTitle">
+                <div class="row top5">
+                    <div class="col-md-3">
+                        <button ng-click="previewConversationPeople(conversation)" class="btn-link"> {{conversation.Name}}</button>
+                    </div>
+                    <div class="col-md-1">
+                        <button class="btn-default" ng-click="removeConversation(conversation)">
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-4" ng-if="newConversation.isNewConversations==false">
+            <div class="row">
+                <div class="col-md-3">
+                    <img ng-src="{{currentConversation.ConversationAvatarFilePath}}" width="80" height="80" />
+                </div>
+                <div class="col-md-6" ng-show="currentConversation">
+                    <button class="btn-default" ng-click="changeAvatarModal('lg')">
+                        <span class="glyphicon glyphicon-music"></span>
+                    </button>
+                    <h4>Беседа {{currentConversation.Name}}</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div ng-repeat="user in currentConversationPeople">
+                    <div class="row top5">
+                        <div class="col-md-3">
+                            <img ng-src="{{user.AvatarFilePath}}" width="80" height="80" />
+                        </div>
+                        <div class="col-md-3">
+                            <span>{{user.FirstName}} {{user.LastName}}</span>
+                        </div>
+                        <div class="col-md-1" ng-if="currentConversation.IsDialog==false">
+                            <button class="btn-default" ng-click="removeUserFromConversation(user)">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-if="newConversation.isNewConversations==false" class="col-md-4">
+            <h4>Друзья</h4>
+            <div ng-repeat="user in friends">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img ng-src="{{user.AvatarFilePath}}" width="50" height="50" />
+                    </div>
+                    <div class="col-md-3">
+                        <span>{{user.FirstName}} {{user.LastName}}</span>
+                    </div>
+                    <div class="col-md-3">
+                        <span>{{user.LastActivityDate}}</span>
+                    </div>
+                    <div class="col-md-1" ng-if="currentConversation.IsDialog==false">
+                        <button class="btn-default" ng-click="addUserToConversation(user)">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>`
+</div>

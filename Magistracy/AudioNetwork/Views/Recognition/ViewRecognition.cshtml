@@ -1,0 +1,42 @@
+﻿<div ng-controller="RecognizeController" class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <p>Нажмите на микрофон для начала записи.</p>
+                <p id="output"></p>
+            </div>
+            <div class="col-md-9" ng-show="recognizedResult != null">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img ng-src="{{recognizedResult.AlbumCoverPath}}" />
+                    </div>
+                    <div class="col-md-3 h4">
+                        <span>{{recognizedResult.Artist}}</span>
+                    </div>
+                    <div class="col-md-3 h4">
+                        <span>{{recognizedResult.Album}}</span>
+                    </div>
+                    <div class="col-md-3 h4">
+                        <span> {{recognizedResult.Title}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row top30">
+            <div class="col-md-5">
+                <canvas id="analyser" width="640" height="480"></canvas>
+            </div>
+            <div class="col-md-2">
+                <div class="row ">
+                    <img id="record" ng-class="{ recording: recording }" ng-src="~/Content/Images/mic128.png" ng-click="toggleRecording();">
+                </div>
+                @*<div class="row top15">
+                        <img ng-show="recording === true" ng-src="~/Content/Images/giphy.gif">
+                    </div>*@
+            </div>
+            <div class="col-md-5">
+                <canvas id="wavedisplay" width="640" height="480"></canvas>
+            </div>
+        </div>
+    </div>
+</div>

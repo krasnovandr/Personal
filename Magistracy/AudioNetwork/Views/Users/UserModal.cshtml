@@ -1,0 +1,37 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">Участники беседы {{currentConversation.Name}}</h3>
+</div>
+
+<div class="modal-body pre-scrollable">
+    <table class="table">
+        <tr>
+            <th>
+                Участник
+            </th>
+            <th>
+                Заходил
+            </th>
+            <th>
+                Действие
+            </th>
+        </tr>
+        <tr ng-repeat="user in currentConversationPeople">
+
+            <td>
+                <img class="pull-left" ng-src="{{user.AvatarFilePath}}" width="50" height="50" />
+                <a href="/#/Users/{{user.Id}} ">{{user.FirstName}} {{user.LastName}}</a>
+            </td>
+            <td>
+                {{user.LastActivityDate}}
+            </td>
+            <td>
+                <button class="btn-default pull-right" ng-click="removeUserFromConversation(user)">
+                    <span class="glyphicon glyphicon-remove-circle"></span>
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="close" ng-click="cancel()">закрыть</button>
+</div>

@@ -1,0 +1,71 @@
+﻿<div ng-controller="ConversationsController" class="container-fluid">
+    <div class="row">
+        <div class="col-md-7 ">
+            <span>Мои беседы</span>
+            <select class="form-control" ng-model="currentConversationType" ng-change="changeConversationType(conversationType)" ng-options="conversationType as conversationType.Title for conversationType in conversationTypes"></select>
+            <div class="icon-addon addon-md">
+                <input type="text" placeholder="Навзание беседы" ng-model="conversationTitle" class=" form-control" id="conversationSearch">
+                <label for="conversationSearch" class="glyphicon glyphicon-search" rel="tooltip" title="email"></label>
+            </div>
+            <table class="table">
+                <tr>
+                    <th>Беседа</th>
+                    <th>Участников</th>
+                    <th>Непрочитано</th>
+                    <th>Последнее сообщение</th>
+                    <th>Сейчас играет:</th>
+                </tr>
+                <tr ng-repeat="conversation in conversations | filter:conversationTitle" ng-click="changeConversationAndRead(conversation)">
+                    <td>
+                        <img class="pull-left" ng-src="{{conversation.ConversationAvatarFilePath}}" width="50" height="50" />
+                        <a class="btn btn-link" href="/#/Conversations/{{conversation.ConversationId}}"> {{conversation.Name}}</a>
+                    </td>
+                    <td>
+                        <span><span class="badge">{{conversation.ConversationUsers.length}}</span></span>
+                    </td>
+                    <td>
+                        <span><span class="badge">{{conversation.NotReadCount}}</span></span>
+                    </td>
+                    <td>
+                        <span>{{conversation.LastMessageDateWithFormat}}</span><br />
+                    </td>
+                    <td>
+                        <a href="/#/Songs/{{conversation.CurrentSong.SongId}} ">
+                            <span>{{conversation.CurrentSong.Artist}} - {{conversation.CurrentSong.Title}}</span>
+                        </a>
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+        <div class="col-md-5">
+            <span>Открытые беседы</span>
+            <div class="icon-addon addon-md">
+                <input type="text" placeholder="Навзание беседы" ng-model="openConversationTitle" class=" form-control" id="openConversationSearch">
+                <label for="openConversationSearch" class="glyphicon glyphicon-search" rel="tooltip" title="email"></label>
+            </div>
+            <div ng-repeat="conversation in openConversations | filter:openConversationTitle">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img  ng-click="startConversation(conversation)" ng-src="{{conversation.ConversationAvatarFilePath}}" width="50" height="50" />
+                    </div>
+                    <div class="col-md-3">
+                        {{conversation.Name}}
+                    </div>
+                    <div class="col-md-4">
+                        <span ng-show="conversation.currentsong != null">Сейчас играет:</span>
+                        <a ng-show="conversation.currentsong != null"  href="/#/Songs/{{conversation.CurrentSong.SongId}} ">
+                            <span>{{conversation.CurrentSong.Artist}} - {{conversation.CurrentSong.Title}}</span>
+                        </a>
+                    </div>
+                    <div class="col-md-3" ng-show="conversation.CreatorId != logState.Id">
+                        <button class="btn" ng-click="addUserToConversation(logState.Id,conversation.ConversationId)">
+                            <span class="glyphicon">Вступить</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

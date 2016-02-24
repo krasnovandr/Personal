@@ -1,0 +1,71 @@
+﻿<div ng-controller="PlaylistsController">
+    <div class="col-md-2">
+        <div>
+            <span class="text-info">Мои плейлисты</span>
+            <button ng-hide="isNewPlaylist" ng-click="isNewPlaylist=true"><span class="glyphicon-plus"></span></button>
+            <button ng-show="isNewPlaylist" ng-click="addPlaylist()">Добавить</button>
+            <button ng-show="isNewPlaylist" ng-click="isNewPlaylist=false;newPlaylistName=''">Отменить</button>
+            <input required type="text" ng-show="isNewPlaylist" class="form-control" ng-model="newPlaylistName">
+        </div>
+        <table class="table">
+            <tr ng-repeat="playlist in playLists">
+                <td>
+                    <button ng-click="previewPlaylist(playlist)" class="btn-info"> {{playlist.PlayListName}}</button>
+                    
+                </td>
+                <td>
+                    <button class="btn-default" ng-click="removePlaylist(playlist)" ng-hide="playlist.DefaultPlaylist==true">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>  
+                </td>
+            </tr>
+        </table>
+        <button class="btn-success pull-right" ng-click="savePlaylist(currentPlayList,currentPlayListSongs)">
+            <span class="glyphicon glyphicon-list">Сохранить плэйлист</span>
+        </button>
+    </div>
+    <div class="col-md-4">
+        <p>Текущий плэйлист:{{currentPlayList.PlayListName}}</p>
+        <ul dnd-list="currentPlayListSongs">
+            <li ng-repeat="song in currentPlayListSongs"
+                dnd-draggable="song"
+                dnd-moved="currentPlayListSongs.splice($index, 1)"
+                dnd-effect-allowed="move"
+                @*dnd-selected="playlistsModel.selected = song"*@
+                ng-class="{'selected': playlistsModel.selected === song}">
+                <img class="pull-left" ng-src="{{song.SongAlbumCoverPath}}" width="30" height="30" />
+                <span>{{song.Artist}}</span> - <span>{{song.Title}}</span>
+                <button class="btn-default pull-right" ng-click="removeFromPlaylist($index)">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+            </li>
+
+        </ul>
+
+
+    </div>
+    <div class="col-md-4">
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary" ng-click="getSongs()">Вся музыка</button>
+            <button type="button" class="btn btn-primary" ng-click="getMyMusic()">Моя музыка</button>
+        </div>
+        <input class="form-control" type="search" ng-model="titleSearch" placeholder="Введите название трека" /><br /><br /><br />
+        <ul dnd-list="songs">
+            <li ng-repeat="song in songs | filter:titleSearch"
+                dnd-draggable="song"
+                dnd-effect-allowed="move"
+                dnd-selected="playlistsModel.selected = song"
+                @*ng-class="{'selected': playlistsModel.selected === song}*@>
+                @*<div ng-repeat=" song in songs | filter:titlesearch">*@
+                <div class="thumbnail clearfix">
+                    <img class="pull-left" ng-src="{{song.SongAlbumCoverPath}}" width="40" height="40" />
+                    <span>{{song.Artist}}</span> - <span>{{song.Title}}</span>
+                    <button class="btn-default pull-right" id="play" ng-click="addSongToPlaylist(song)">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>
+                @* </div> *@
+            </li>
+        </ul>
+    </div>
+</div>
