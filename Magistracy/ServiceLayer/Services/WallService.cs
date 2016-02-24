@@ -1,22 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity.Core.Objects;
 using System.Drawing;
 using System.Linq;
-using System.Net.Mime;
 using System.Text.RegularExpressions;
-using System.Web;
 using System.Web.Hosting;
+using System.Windows.Forms;
 using AudioNetwork.Helpers;
 using AudioNetwork.Models;
 using DataLayer.Interfaces;
-using DataLayer.Repositories;
-
-using System;
-using System.Drawing;
-using System.Windows.Forms;
 using System.Threading;
-using System.IO;
+
 namespace AudioNetwork.Services
 {
     public interface IWallService

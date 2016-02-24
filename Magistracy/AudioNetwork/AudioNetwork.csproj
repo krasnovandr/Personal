@@ -41,11 +41,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper">
-      <HintPath>..\packages\AutoMapper.3.3.0\lib\net40\AutoMapper.dll</HintPath>
-    </Reference>
-    <Reference Include="AutoMapper.Net4">
-      <HintPath>..\packages\AutoMapper.3.3.0\lib\net40\AutoMapper.Net4.dll</HintPath>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="Duke.Owin.VkontakteMiddleware">
       <HintPath>..\packages\Duke.Owin.VkontakteMiddleware.1.2.0.0\lib\net45\Duke.Owin.VkontakteMiddleware.dll</HintPath>
@@ -248,59 +246,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\DateTimeHelper.cs" />
-    <Compile Include="Helpers\MailSender.cs" />
-    <Compile Include="Helpers\SharpZipLibHelper .cs" />
-    <Compile Include="Helpers\StringHelper.cs" />
     <Compile Include="Hubs\ConversationHub.cs" />
     <Compile Include="Hubs\TestHub.cs" />
-    <Compile Include="Models\ConversationViewModel.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Models\FriendUpdateViewModel.cs" />
-    <Compile Include="Models\SongRecognitionModel.cs" />
-    <Compile Include="Models\VkUserModel.cs" />
-    <Compile Include="Models\WallItemLikeDislikeViewModel.cs" />
-    <Compile Include="Models\WallItemViewModel.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\ModelConverters.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\MessageViewModel.cs" />
-    <Compile Include="Models\PlaylistViewModel.cs" />
-    <Compile Include="Models\SongViewModel.cs" />
-    <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ConversationService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Services\FilePathContainer.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Services\MusicService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Services\PlaylistService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Services\SongPictureGetter.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Services\StatisticsService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Services\UploadService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Services\UserService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Services\WallService.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -463,6 +416,10 @@
       <Project>{50cdbcc0-297d-411f-8f5f-c0b194c06134}</Project>
       <Name>LastFmServices</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ServiceLayer\ServiceLayer.csproj">
+      <Project>{092dfd02-b766-416b-bfa6-47f7dbe7c702}</Project>
+      <Name>ServiceLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VkService\VkService.csproj">
       <Project>{c5efd174-9912-4ce0-80b7-56eedc2ce589}</Project>
       <Name>VkService</Name>
@@ -498,7 +455,6 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Import Project="..\packages\AutoMapper.3.3.0\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.0\tools\AutoMapper.targets')" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

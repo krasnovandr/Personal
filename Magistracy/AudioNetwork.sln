@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VkService", "VkService\VkSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicRecognition", "ACRCloudRecognitionTest\ACRCloudRecognitionTest\MusicRecognition.csproj", "{760F23A1-26E0-441D-B5CB-D471F0246BEF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLayer", "ServiceLayer\ServiceLayer.csproj", "{092DFD02-B766-416B-BFA6-47F7DBE7C702}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -94,6 +96,18 @@ Global
 		{760F23A1-26E0-441D-B5CB-D471F0246BEF}.Release|x64.Build.0 = Release|x64
 		{760F23A1-26E0-441D-B5CB-D471F0246BEF}.Release|x86.ActiveCfg = Release|x86
 		{760F23A1-26E0-441D-B5CB-D471F0246BEF}.Release|x86.Build.0 = Release|x86
+		{092DFD02-B766-416B-BFA6-47F7DBE7C702}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{092DFD02-B766-416B-BFA6-47F7DBE7C702}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{092DFD02-B766-416B-BFA6-47F7DBE7C702}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{092DFD02-B766-416B-BFA6-47F7DBE7C702}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{092DFD02-B766-416B-BFA6-47F7DBE7C702}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{092DFD02-B766-416B-BFA6-47F7DBE7C702}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{092DFD02-B766-416B-BFA6-47F7DBE7C702}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{092DFD02-B766-416B-BFA6-47F7DBE7C702}.Release|Any CPU.Build.0 = Release|Any CPU
+		{092DFD02-B766-416B-BFA6-47F7DBE7C702}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{092DFD02-B766-416B-BFA6-47F7DBE7C702}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{092DFD02-B766-416B-BFA6-47F7DBE7C702}.Release|x64.ActiveCfg = Release|Any CPU
+		{092DFD02-B766-416B-BFA6-47F7DBE7C702}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
