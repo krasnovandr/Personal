@@ -1,0 +1,96 @@
+﻿<div ng-controller="KnowledgeSessionController" class="container">
+    <div class="row" ng-hide="friendsPhase">
+        <div class="col-md-5 ">
+            <h4>Создание сессии обмена ресурсами</h4>
+        </div>
+        <div class="col-md-5 ">
+            <h4>Сессии в которых я учавствую</h4>
+        </div>
+    </div>
+    <div class="row" ng-hide="friendsPhase">
+        <div class="col-md-5 ">
+            <form name="knowledgeSessionForm" novalidate>
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="theme" name="theme" id="theme" required>
+                </div>
+                <div class="form-group">
+                    <span style="color:red" ng-show="knowledgeSessionForm.theme.$dirty && knowledgeSessionForm.theme.$invalid">
+                        <span ng-show="knowledgeSessionForm.theme.$error.required">Введите тему</span>
+                    </span>
+                </div>
+
+                <button ng-disabled="knowledgeSessionForm.theme.$error.required" class="btn btn-default" ng-click="createSession(theme)">Создать</button>
+            </form>
+        </div>
+        <div class="col-md-5 ">
+            <table class="table table-condensed">
+                @*<tr>
+                    <th>Номер</th>
+                    <th>Название</th>
+                    <th> </th>
+                </tr>*@
+                <tr ng-repeat="session in mySessions" >
+                    <td><span>{{$index + 1}}</span></td>
+                    <td><span>{{session.Theme}}</span></td>
+                    <td>
+                        <button class="btn btn-default pull-right" ng-click="check()">
+                            <span>Просмотр</span>
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row" ng-show="friendsPhase">
+        <div class="col-md-5 ">
+            <h3>{{theme}}</h3>
+        </div>
+    </div>
+    <div class="row" ng-show="friendsPhase">
+        <div class="col-md-2 ">
+            <h4>Добавьте друзей</h4>
+            <button class="btn btn-success " ng-click="startFirstRound()">
+                <span class="glyphicon glyphicon-ok"> Начать</span>
+            </button>
+        </div>
+        <div class="col-md-4 bg-primary">
+            <h4>Участники</h4>
+            <div ng-repeat="member in members" class="panel-group ">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span>{{member.FirstName}}</span>
+                        <span>{{member.LastName}}</span>
+                    </div>
+                    <div class="panel-body">
+                        <img ng-src="{{member.AvatarFilePath}}" width="80" height="80" />
+                        <button class="btn btn-default pull-right" ng-click="removeUserFromSession($index,member)">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-4 bg-primary">
+            <h4>Друзья</h4>
+            <div ng-repeat="user in friends" class="panel-group ">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span>{{user.FirstName}}</span>
+                        <span>{{user.LastName}}</span>
+                    </div>
+                    <div class="panel-body">
+                        <img ng-src="{{user.AvatarFilePath}}" width="80" height="80" />
+                        <button class="btn btn-default pull-right" ng-click="addUserToSession($index,user)">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+

@@ -118,8 +118,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -127,8 +128,13 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -230,10 +236,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ConversationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KnowledgeSessionController.cs" />
     <Compile Include="Controllers\MusicController.cs" />
     <Compile Include="Controllers\PlayListController.cs" />
     <Compile Include="Controllers\RecognitionController.cs" />
@@ -247,7 +255,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\ConversationHub.cs" />
+    <Compile Include="Hubs\KnowledgeSessionHub.cs" />
     <Compile Include="Hubs\TestHub.cs" />
+    <Compile Include="MyProfile.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -257,10 +267,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\MyNewContext.mdf" />
-    <Content Include="App_Data\MyNewContext_log.ldf">
-      <DependentUpon>MyNewContext.mdf</DependentUpon>
-    </Content>
     <Content Include="bin\libacrcloud_extr_tool.dll" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -269,6 +275,7 @@
     <Content Include="Content\ConversationCovers\DefaultConversation.jpg" />
     <Content Include="Content\Images\DefaultAvatar.png" />
     <Content Include="Content\Images\loading.gif" />
+    <Content Include="Content\template.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -280,6 +287,8 @@
     <Content Include="Scripts\Controllers\ConversationsEditController.js" />
     <Content Include="Scripts\Controllers\HomeController.js" />
     <Content Include="Scripts\Controllers\ConversationsController.js" />
+    <Content Include="Scripts\Controllers\KnowledgeSession\FirstRoundController.js" />
+    <Content Include="Scripts\Controllers\KnowledgeSession\KnowledgeSessionController.js" />
     <Content Include="Scripts\Controllers\RecognizeController.js" />
     <Content Include="Scripts\Controllers\SongUploadController.js" />
     <Content Include="Scripts\Controllers\PlayerController.js" />
@@ -290,8 +299,10 @@
     <Content Include="Scripts\Controllers\UserController.js" />
     <Content Include="Scripts\Controllers\StatisticsController.js" />
     <Content Include="Scripts\Controllers\WallController.js" />
+    <Content Include="Scripts\Factories\KnowledgeSessionService.js" />
     <Content Include="Scripts\Factories\RecognizeService.js" />
     <Content Include="Scripts\Factories\AuthorizationService.js" />
+    <Content Include="Scripts\Factories\SignalRSvc.js" />
     <Content Include="Scripts\Factories\UploadService.js" />
     <Content Include="Scripts\Factories\StatisticsService.js" />
     <Content Include="Scripts\Factories\WallService.js" />
@@ -396,8 +407,11 @@
     <Content Include="Views\Wall\News.cshtml" />
     <Content Include="Views\Wall\UserLike.cshtml" />
     <Content Include="Views\Recognition\ViewRecognition.cshtml" />
+    <Content Include="Views\KnowledgeSession\Index.cshtml" />
+    <Content Include="Views\KnowledgeSession\FirstRound.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Content\SongsAlbumCovers\" />
     <Folder Include="Content\Songs\" />
     <Folder Include="Content\WallItemsImages\" />

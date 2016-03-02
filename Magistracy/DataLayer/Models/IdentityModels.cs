@@ -10,7 +10,8 @@ namespace DataLayer.Models
     {
         public ApplicationUser()
         {
-            //   this.Friends = new List<Friend>();
+            KnowledgeSessions =  new HashSet<KnowledgeSession>();
+            KnowledgeSessionRoles = new HashSet<KnowledgeSessionRole>();
         }
         public DateTime LastActivity { get; set; }
         public DateTime? BirthDate { get; set; }
@@ -44,5 +45,8 @@ namespace DataLayer.Models
         public virtual ICollection<WallItem> WallItems { get; set; }
         public string VkLogin { get; set; }
         public string VkPassword { get; set; }
+
+        public virtual ICollection<KnowledgeSession> KnowledgeSessions { get; set; }
+        public virtual ICollection<KnowledgeSessionRole> KnowledgeSessionRoles { get; set; }
     }
 }

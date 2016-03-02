@@ -1,0 +1,17 @@
+﻿<div class="col-md-4 bg-info">
+    <h4>Друзья asdasdas</h4>
+    <div ng-repeat="user in friends" class="panel-group ">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span>{{user.FirstName}}</span>
+                <span>{{user.LastName}}</span>
+            </div>
+            <div class="panel-body">
+                <img ng-src="{{user.AvatarFilePath}}" width="80" height="80" />
+                <button class="btn btn-primary pull-right" ng-click="addUserToConversation(user)">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

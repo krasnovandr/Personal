@@ -1,4 +1,5 @@
 ﻿using AudioNetwork.Web;
+using Microsoft.AspNet.SignalR;
 using Microsoft.Owin;
 using Owin;
 
@@ -19,7 +20,12 @@ namespace AudioNetwork.Web
           //() => new TestHub(new UserService(new UserRepository(), new MusicRepository())));
             
             ConfigureAuth(app);
-            app.MapSignalR();
+            var hubConfiguration = new HubConfiguration
+            {
+                EnableDetailedErrors = true,
+                EnableJavaScriptProxies = false
+            };
+            app.MapSignalR(hubConfiguration);
         }
     }
 }

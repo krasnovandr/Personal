@@ -10,14 +10,15 @@
         $rootScope.canvas.width = 450;
         $rootScope.canvas.height = 10;
         $rootScope.timeElapsed = 0;
-     
+        $rootScope.currentSession = {};
+
         $scope.isActive = function (viewLocation) {
             var active = (viewLocation === $location.path());
             return active;
         };
 
         $rootScope.chat = $.connection.conversationHub;
-        $.connection.hub.start().done(function () { });
+     
         //$rootScope.testHub = $.connection.testHub;
 
         $rootScope.$watch('soundVolume.volume', function () {

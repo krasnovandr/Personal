@@ -1,5 +1,5 @@
 ﻿angular.module('AudioNetworkApp')
-.controller('LoginController', function ($scope, $rootScope, $http, $location, authorizationService) {
+.controller('LoginController', function ($,$scope, $rootScope, $http, $location, authorizationService) {
     //$scope.loginForm = {
     //    emailAddress: '',
     //    password: '',
@@ -12,7 +12,8 @@
     $scope.loginError = '';
     $scope.rememberMe = false;
     $scope.providers = [];
-
+    $rootScope.showPlayer = false;
+   
     $scope.login = function () {
         var loginData =
         {
@@ -23,7 +24,7 @@
         authorizationService.login(loginData).success(function (answer) {
             if (answer.Success) {
                 $rootScope.logState.LoggedIn = !$rootScope.logState.LoggedIn;
-                checkLogin();
+                $rootScope.checkLogin();
                 $scope.loginError = '';
                 //$location.path('/Home');
 
@@ -40,18 +41,19 @@
         });
     };
 
-    function checkLogin() {
-        authorizationService.checkLogin().success(function (answer) {
+    $rootScope.checkLogin = function(parameters) {
+        authorizationService.checkLogin().success(function(answer) {
             if (answer.LoggedIn) {
                 //$rootScope.logState.UserName = answer.UserName;
                 //$rootScope.logState.LoggedIn = answer.LoggedIn;
                 //$rootScope.logState.Id = answer.Id;
                 $rootScope.logState = answer;
-                $location.path('/Home');
+                //$location.path('/Home');
             } else {
+                $location.path('/Login');
             }
         });
-    }
+    };
 
     $scope.repeatMail = function () {
         var data = {
@@ -62,7 +64,7 @@
         });
     };
 
-    checkLogin();
+    $rootScope.checkLogin();
     $scope.getexternalProviders = function () {
         authorizationService.getLoginProviders().success(function (providers) {
             $scope.providers = providers;

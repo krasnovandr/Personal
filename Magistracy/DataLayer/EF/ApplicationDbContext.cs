@@ -25,6 +25,11 @@ namespace DataLayer.EF
         public DbSet<WallItemImages> WallItemImages { get; set; }
         public DbSet<WallItemLikeDislike> WallItemLikeDislike { get; set; }
 
+        public DbSet<KnowledgeSession> KnowledgeSessions { get; set; }
+        public DbSet<KnowledgeSessionRole> KnowledgeSessionRoles { get; set; }
+        public DbSet<Node> Nodes { get; set; }
+
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<ApplicationUser>().HasMany(c => c.Songs)

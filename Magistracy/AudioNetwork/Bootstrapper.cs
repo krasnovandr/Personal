@@ -40,7 +40,10 @@ namespace AudioNetwork.Web
             container.RegisterType<IPlaylistService, PlaylistService>();
             container.RegisterType<IWallService, WallService>();
             container.RegisterType<IUploadService, UploadService>();
+            container.RegisterType<IUnitOfWork, EfUnitOfWork>();
+            container.RegisterType<IKnowledgeSessionService, KnowledgeSessionService>();
 
+            
             RegisterTypes(container);
 
             return container;

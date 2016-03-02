@@ -34,7 +34,8 @@ namespace AudioNetwork.Web
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/AngularControllers")
-                .IncludeDirectory("~/Scripts/Controllers", "*.js"));
+                .IncludeDirectory("~/Scripts/Controllers", "*.js")
+                .IncludeDirectory("~/Scripts/Controllers/KnowledgeSession", "*.js"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/AngularServices")

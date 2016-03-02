@@ -70,6 +70,7 @@
     <Compile Include="Helpers\SharpZipLibHelper .cs" />
     <Compile Include="Helpers\StringHelper.cs" />
     <Compile Include="Interfaces\IConversationService.cs" />
+    <Compile Include="Interfaces\IKnowledgeSessionService.cs" />
     <Compile Include="Interfaces\IMusicService.cs" />
     <Compile Include="Interfaces\IPlaylistService.cs" />
     <Compile Include="Interfaces\IStatisticsService.cs" />
@@ -79,7 +80,9 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ConversationViewModel.cs" />
     <Compile Include="Models\FriendUpdateViewModel.cs" />
+    <Compile Include="Models\KnowledgeSessionViewModel.cs" />
     <Compile Include="Models\MessageViewModel.cs" />
+    <Compile Include="Models\NodeViewModel.cs" />
     <Compile Include="Models\PlaylistViewModel.cs" />
     <Compile Include="Models\SongRecognitionModel.cs" />
     <Compile Include="Models\SongViewModel.cs" />
@@ -90,6 +93,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ConversationService.cs" />
     <Compile Include="Helpers\FilePathContainer.cs" />
+    <Compile Include="Services\KnowledgeSessionService.cs" />
     <Compile Include="Services\MusicService.cs" />
     <Compile Include="Services\PlaylistService.cs" />
     <Compile Include="Services\SongPictureGetter.cs" />

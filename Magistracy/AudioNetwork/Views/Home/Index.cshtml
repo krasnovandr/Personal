@@ -1,11 +1,11 @@
 ﻿<!DOCTYPE html>
-<html ng-app="AudioNetworkApp">
+<html ng-app="AudioNetworkApp" ng-init="startApplication()">
 <head>
     <title></title>
 </head>
 <body>
     <div ng-controller="HomeController" class="container">
-        <nav ng-controller="LoginController" class="navbar navbar-default ">
+        <nav ng-controller="LoginController" class="navbar navbar-default " ng-init="checkLogin()">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed" aria-expanded="false" aria-controls="navbar">
@@ -25,7 +25,6 @@
                         <li ng-class="{ active: isActive('/Conversations') }"> <a ng-show="logState.LoggedIn" href="/#/Conversations">Cообщения<span class="badge">{{messagesCount}}</span></a></li>
                         <li ng-class="{ active: isActive('/EditConversations') }"> <a ng-show="logState.LoggedIn" href="/#/EditConversations">Редактировать беседы</a></li>
                         @*<li><a ng-show="logState.LoggedIn" href="/#/Music">Музыка</a></li>*@
-
                         <li ng-show="logState.LoggedIn" class=" btn-group" dropdown is-open="status.isopen">
                             <a class="btn btn-link dropdown-toggle" dropdown-toggle ng-disabled="disabled">
                                 Музыка <span class="caret"></span>
@@ -39,7 +38,8 @@
                         </li>
                         <li ng-class="{ active: isActive('/Statistics') }"> <a ng-show="logState.LoggedIn" href="/#/Statistics">Статистика</a></li>
                         <li ng-class="{ active: isActive('/News') }"> <a ng-show="logState.LoggedIn" href="/#/News">Новости</a></li>
-                        <li >
+                        <li ng-class="{ active: isActive('/KnowledgeSession') }"> <a ng-show="logState.LoggedIn" href="/#/KnowledgeSession">Обмен ресурсами</a></li>
+                        <li>
                             <button ng-show="logState.LoggedIn && showPlayer" ng-click="changePlayerVisibility()">
                                 <span class="glyphicon glyphicon-circle-arrow-down"></span>
                             </button>
@@ -139,7 +139,7 @@
     <script src="~/Scripts/Libs/line-chart.min.js"></script>
     <script src="~/Scripts/Libs/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/jquery.signalR-2.2.0.js"></script>
-    <script src="~/signalr/hubs"></script>
+    @*<script src="~/signalr/hubs"></script>*@
     <script src="~/Scripts/AudioNetworkApp.js"></script>
     @Scripts.Render("~/bundles/AngularServices")
     @Scripts.Render("~/bundles/AngularControllers")

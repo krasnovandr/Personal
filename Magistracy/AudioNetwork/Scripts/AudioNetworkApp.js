@@ -159,6 +159,37 @@ angularApp.directive('ngThumb', ['$window', function ($window) {
     };
 }]);
 
+
+angularApp.directive('users', ['$window', function ($window) {
+    return {
+        restrict: 'A',
+        templateUrl: function(elem, attr) {
+            return '/Content/template.html';
+        },
+        link: function (scope, element, attributes) {
+            if (!helper.support) return;
+
+        }
+    };
+}]);
+
+angularApp.directive('toggleClass', function() {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            element.bind('click', function() {
+                if (element.attr("class") == "panel panel-default") {
+                    element.removeClass("panel panel-default");
+                    element.addClass(attrs.toggleClass);
+                } else {
+                    element.removeClass("panel panel-info");
+                    element.addClass("panel panel-default");
+                }
+            });
+        }
+    };
+});
+
 var config = function ($routeProvider) {
     $routeProvider.
       when('/Login', {
@@ -203,12 +234,25 @@ var config = function ($routeProvider) {
           templateUrl: 'Wall/ViewNews',
       }).when('/Recognition', {
           templateUrl: 'Recognition/ViewRecognition',
+      }).when('/KnowledgeSession', {
+          templateUrl: 'KnowledgeSession/Index',
+      }).when('/KnowledgeSession/FirstRound/:id', {
+          templateUrl: 'KnowledgeSession/FirstRound',
       }).
+
        otherwise({
-           redirectTo: '/Login'
+           redirectTo: '/Home'
        });
 };
 
 config.$inject = ['$routeProvider'];
 
 angularApp.config(config);
+
+//angularApp.run(function ($) { // instance-injector
+//    // This is an example of a run block.
+//    // You can have as many of these as you want.
+//    // You can only inject instances (not Providers)
+//    // into run blocks
+   
+//});

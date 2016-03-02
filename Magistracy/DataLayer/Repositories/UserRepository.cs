@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,14 @@ using DataLayer.Models;
 
 namespace DataLayer.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : IUserRepository, ExtendedRepository<ApplicationUser>
     {
+        private ApplicationDbContext db;
+
+        public UserRepository(ApplicationDbContext context)
+        {
+            this.db = context;
+        }
         public IEnumerable<ApplicationUser> GetUsers(string userId)
         {
             using (var db = new ApplicationDbContext())
@@ -75,7 +82,7 @@ namespace DataLayer.Repositories
                     user.Country = userInfo.Country;
                     user.FirstName = userInfo.FirstName;
                     user.LastName = userInfo.LastName;
-                    user.BirthDate = userInfo.BirthDate?? DateTime.Now;
+                    user.BirthDate = userInfo.BirthDate ?? DateTime.Now;
                     user.LastEntrenchedSong = userInfo.LastEntrenchedSong;
                     user.WorstGenre = userInfo.WorstGenre;
                     user.LastActivity = DateTime.Now;
@@ -157,7 +164,7 @@ namespace DataLayer.Repositories
             var friends = new List<ApplicationUser>();
             using (var db = new ApplicationDbContext())
             {
-                var friendsId = db.Friends.Where(m => m.UserId == userId && m.Confirmed== false).Select(m => m.FriendId);
+                var friendsId = db.Friends.Where(m => m.UserId == userId && m.Confirmed == false).Select(m => m.FriendId);
 
                 foreach (var friendId in friendsId)
                 {
@@ -183,7 +190,6 @@ namespace DataLayer.Repositories
             }
             return friends;
         }
-
 
         public IEnumerable<ApplicationUser> GetFriends(string userId)
         {
@@ -230,6 +236,45 @@ namespace DataLayer.Repositories
 
                 db.SaveChanges();
             }
+        }
+
+        public IEnumerable<ApplicationUser> GetAll()
+        {
+            return db.Users;
+        }
+
+        public ApplicationUser Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ApplicationUser Get(string id)
+        {
+            return db.Users.Find(id);
+        }
+
+        public void Create(ApplicationUser item)
+        {
+            db.Users.Add(item);
+        }
+
+        public void Update(ApplicationUser item)
+        {
+            db.Entry(item).State = EntityState.Modified;
+        }
+
+        
+
+        public void Delete(string id)
+        {
+            var user = db.Users.Find(id);
+            if (user != null)
+                db.Users.Remove(user);
         }
     }
 }

@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\ExtendedRepository.cs" />
     <Compile Include="Interfaces\IConversationRepository.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -66,6 +67,20 @@
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />
     <Compile Include="Interfaces\IWallRepository.cs" />
+    <Compile Include="Migrations\201602261952454_UpdateKnowledge.cs" />
+    <Compile Include="Migrations\201602261952454_UpdateKnowledge.Designer.cs">
+      <DependentUpon>201602261952454_UpdateKnowledge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602272140559_UpdateNode.cs" />
+    <Compile Include="Migrations\201602272140559_UpdateNode.Designer.cs">
+      <DependentUpon>201602272140559_UpdateNode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602282201482_AddSuggestionTable.cs" />
+    <Compile Include="Migrations\201602282201482_AddSuggestionTable.Designer.cs">
+      <DependentUpon>201602282201482_AddSuggestionTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SessionNodeSuggestions.cs" />
+    <Compile Include="Repositories\KnowledgeSessionRepository.cs" />
     <Compile Include="Migrations\201502021751111_InitialCreate.cs" />
     <Compile Include="Migrations\201502021751111_InitialCreate.Designer.cs">
       <DependentUpon>201502021751111_InitialCreate.cs</DependentUpon>
@@ -350,14 +365,21 @@
     <Compile Include="Migrations\201506111932002_ChengeFieldName2.Designer.cs">
       <DependentUpon>201506111932002_ChengeFieldName2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602251923133_StartKnowledgeTransferUpdates.cs" />
+    <Compile Include="Migrations\201602251923133_StartKnowledgeTransferUpdates.Designer.cs">
+      <DependentUpon>201602251923133_StartKnowledgeTransferUpdates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="EF\ApplicationDbContext.cs" />
     <Compile Include="Models\Conversation.cs" />
     <Compile Include="Models\Friend.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\KnowledgeSession.cs" />
+    <Compile Include="Models\KnowledgeSessionRoles.cs" />
     <Compile Include="Models\ListenedSong.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\MessageSongs.cs" />
+    <Compile Include="Models\Node.cs" />
     <Compile Include="Models\NotReadMessage.cs" />
     <Compile Include="Models\Playlist.cs" />
     <Compile Include="Models\PlaylistItem.cs" />
@@ -369,7 +391,7 @@
     <Compile Include="Models\WallItemsSongs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ConversationRepository.cs" />
-    <Compile Include="Repositories\EFUnitOfWork.cs" />
+    <Compile Include="Repositories\EfUnitOfWork.cs" />
     <Compile Include="Repositories\MusicRepository.cs" />
     <Compile Include="Repositories\PlaylistRepository.cs" />
     <Compile Include="Repositories\StatisticsRepository.cs" />
@@ -589,6 +611,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506111932002_ChengeFieldName2.resx">
       <DependentUpon>201506111932002_ChengeFieldName2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602251923133_StartKnowledgeTransferUpdates.resx">
+      <DependentUpon>201602251923133_StartKnowledgeTransferUpdates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602261952454_UpdateKnowledge.resx">
+      <DependentUpon>201602261952454_UpdateKnowledge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602272140559_UpdateNode.resx">
+      <DependentUpon>201602272140559_UpdateNode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602282201482_AddSuggestionTable.resx">
+      <DependentUpon>201602282201482_AddSuggestionTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

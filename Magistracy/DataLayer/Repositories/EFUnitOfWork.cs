@@ -5,55 +5,51 @@ using System.Text;
 using System.Threading.Tasks;
 using DataLayer.EF;
 using DataLayer.Interfaces;
+using DataLayer.Models;
 
 namespace DataLayer.Repositories
 {
-    public class EFUnitOfWork : IUnitOfWork
+    public class EfUnitOfWork : IUnitOfWork
     {
-        private ApplicationDbContext db;
-        //private PhoneRepository phoneRepository;
-        //private OrderRepository orderRepository;
 
-        public EFUnitOfWork(string connectionString)
+        private readonly ApplicationDbContext db = new ApplicationDbContext();
+        private KnowledgeSessionRepository _knowledgeSessionRepository;
+        private UserRepository _userRepository;
+
+        public IRepository<KnowledgeSession> KnowledgeSessions
         {
-            db = new ApplicationDbContext();
+            get
+            {
+                return _knowledgeSessionRepository ??
+                    (_knowledgeSessionRepository = new KnowledgeSessionRepository(db));
+            }
         }
-        //public IRepository<Phone> Phones
-        //{
-        //    get
-        //    {
-        //        if (phoneRepository == null)
-        //            phoneRepository = new PhoneRepository(db);
-        //        return phoneRepository;
-        //    }
-        //}
 
-        //public IRepository<Order> Orders
-        //{
-        //    get
-        //    {
-        //        if (orderRepository == null)
-        //            orderRepository = new OrderRepository(db);
-        //        return orderRepository;
-        //    }
-        //}
+        public ExtendedRepository<ApplicationUser> Users
+        {
+            get
+            {
+                return _userRepository ??
+                       (_userRepository = new UserRepository(db));
+            }
+        }
 
         public void Save()
         {
             db.SaveChanges();
         }
 
-        private bool disposed = false;
+        private bool _disposed = false;
 
         public virtual void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            if (!_disposed)
             {
                 if (disposing)
                 {
                     db.Dispose();
                 }
-                this.disposed = true;
+                _disposed = true;
             }
         }
 
