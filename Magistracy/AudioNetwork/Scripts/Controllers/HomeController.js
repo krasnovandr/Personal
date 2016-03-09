@@ -17,7 +17,7 @@
             return active;
         };
 
-        $rootScope.chat = $.connection.conversationHub;
+        //$rootScope.chat = $.connection.conversationHub;
      
         //$rootScope.testHub = $.connection.testHub;
 
@@ -169,14 +169,14 @@
 
         $rootScope.TotalNotReadMessages();
 
-        $rootScope.chat.client.newMessage = function (message) {
-            $timeout(function () {
-                $rootScope.$apply(function () {
-                    $rootScope.TotalNotReadMessages();
+        //$rootScope.chat.client.newMessage = function (message) {
+        //    $timeout(function () {
+        //        $rootScope.$apply(function () {
+        //            $rootScope.TotalNotReadMessages();
 
-                });
-            }, 0);
-        };
+        //        });
+        //    }, 0);
+        //};
 
         $scope.text = "";
 

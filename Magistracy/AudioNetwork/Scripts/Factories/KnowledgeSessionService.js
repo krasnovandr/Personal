@@ -12,6 +12,23 @@
             return $http({ method: 'POST', url: 'KnowledgeSession/AddMembers', data: dataToTransfer });
         },
 
+        saveSuggestedNodes: function (nodes, currentSessiosId) {
+            var dataToTransfer = {
+                nodes: nodes,
+                sessionId: currentSessiosId
+            };
+            return $http({ method: 'POST', url: 'KnowledgeSession/SaveSuggestedNodes', data: dataToTransfer });
+        },
+
+        getMembers: function (sessionId) {
+            return $http({
+                url: 'KnowledgeSession/GetMembers',
+                method: "GET",
+                params: { sessionId: sessionId }
+            });
+        },
+
+       
         get: function (id) {
             return $http({
                 url: 'KnowledgeSession/GetSession',
@@ -33,6 +50,14 @@
                 url: 'KnowledgeSession/GetUserSessions',
                 method: "GET",
                 params: { userId: userId }
+            });
+        },
+
+        checkUserSuggestion: function (sessionId) {
+            return $http({
+                url: 'KnowledgeSession/CheckUserSuggestion',
+                method: "GET",
+                params: { sessionId: sessionId }
             });
         },
 

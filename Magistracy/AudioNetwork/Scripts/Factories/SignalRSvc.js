@@ -4,16 +4,15 @@
     var initialize = function () {
         //Getting the connection object
         connection = $.hubConnection();
-        $.connection.hub.logging = true;
         //Creating proxy
         this.proxy = connection.createHubProxy('knowledgeSessionHub');
-
+        connection.logging = true;
         //Starting connection
         connection.start();
 
         //Publishing an event when server pushes a greeting message
         this.proxy.on('firstRoundStartedInfo', function (message) {
-            $rootScope.$emit("firstRoundStartedInfo", message);
+            $rootScope.$emit("firstRoundStartedInfo");
         });
     };
 

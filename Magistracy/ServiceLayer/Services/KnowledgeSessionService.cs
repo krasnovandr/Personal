@@ -6,6 +6,7 @@ using DataLayer.Interfaces;
 using DataLayer.Models;
 using ServiceLayer.Interfaces;
 using ServiceLayer.Models;
+using ServiceLayer.Models.KnowledgeSession;
 
 namespace ServiceLayer.Services
 {
@@ -91,6 +92,7 @@ namespace ServiceLayer.Services
             var sessionViewModel = Mapper.Map<KnowledgeSession, KnowledgeSessionViewModel>(session);
             sessionViewModel.Nodes = Mapper.Map<ICollection<Node>, List<NodeViewModel>>(session.Nodes);
             sessionViewModel.Users = Mapper.Map<ICollection<ApplicationUser>, List<UserViewModel>>(session.Users);
+            sessionViewModel.NodesSuggestions = Mapper.Map<ICollection<SessionNodeSuggestions>, List<NodeViewModel>>(session.NodesSuggestions);
 
             return sessionViewModel;
         }
@@ -126,6 +128,84 @@ namespace ServiceLayer.Services
                 Mapper.Map<List<KnowledgeSession>, List<KnowledgeSessionViewModel>>(userSessions);
 
             return userSessionsViewModel;
+        }
+
+        public bool SaveSuggestedNodes(List<NodeViewModel> nodes, string userId, int sessionId)
+        {
+            var session = db.KnowledgeSessions.Get(sessionId);
+
+            var nodesList = Mapper.Map<List<NodeViewModel>, List<SessionNodeSuggestions>>(nodes);
+            foreach (var node in nodesList)
+            {
+                node.DateCreation = DateTime.Now;
+                node.SuggestedBy = userId;
+                session.NodesSuggestions.Add(node);
+
+            }
+            var firstNode = nodes.FirstOrDefault();
+
+            if (firstNode != null)
+            {
+                var result = CheckSessionSuggestions(sessionId, firstNode.Level);
+                if (result)
+                {
+                    session.SessionState = (int)SessionState.FirstRoundMainBoard;
+                }
+            }
+
+            try
+            {
+                db.Save();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public List<UserViewModel> GetMembers(int sessionId)
+        {
+            var session = db.KnowledgeSessions.Get(sessionId);
+
+            var members = Mapper.Map<ICollection<ApplicationUser>, List<UserViewModel>>(session.Users);
+            var suggestions = Mapper.Map<ICollection<SessionNodeSuggestions>, List<NodeViewModel>>(session.NodesSuggestions);
+
+            foreach (var member in members)
+            {
+                member.SessionSuggestion = CheckUserSuggestion(sessionId, member.Id, null);
+                member.SuggestedNodes = suggestions.Where(m => m.CreatedBy == member.Id).ToList();
+            }
+            return members;
+        }
+
+        public bool CheckSessionSuggestions(int sessionId, int? level)
+        {
+            var session = db.KnowledgeSessions.Get(sessionId);
+            level = level ?? 1;
+
+            var usersWithSuggestions = session.NodesSuggestions.Where(m => m.Level == level).Select(m => m.SuggestedBy).Distinct();
+            var sessionUsers = session.Users.Select(m => m.Id).Distinct();
+
+            return usersWithSuggestions.Count() == sessionUsers.Count();
+        }
+
+        public bool CheckUserSuggestion(int sessionId, string userid, int? level)
+        {
+            var session = db.KnowledgeSessions.Get(sessionId);
+            level = level ?? 1;
+
+            foreach (var nodeSuggestion in session.NodesSuggestions)
+            {
+                if (nodeSuggestion.SuggestedBy == userid && nodeSuggestion.Level == level)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+            //return  session.NodesSuggestions.Any(m => m.SuggestedBy.Id == userid);
         }
 
 

@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataLayer.Models;
-using JetBrains.Annotations;
 using ServiceLayer.Models;
+using ServiceLayer.Models.KnowledgeSession;
 
 namespace ServiceLayer.Interfaces
 {
@@ -20,5 +16,8 @@ namespace ServiceLayer.Interfaces
         KnowledgeSessionViewModel GetSession(int sessionId);
         List<NodeViewModel> GetSessionNodeByLevel(int sessionId, int level);
         List<KnowledgeSessionViewModel> GetUserSessions(string userId);
+        bool SaveSuggestedNodes(List<NodeViewModel> nodes, string userId, int sessionId);
+        List<UserViewModel> GetMembers(int sessionId);
+        bool CheckUserSuggestion(int sessionId, string userid, int? level);
     }
 }

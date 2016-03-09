@@ -80,9 +80,10 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ConversationViewModel.cs" />
     <Compile Include="Models\FriendUpdateViewModel.cs" />
-    <Compile Include="Models\KnowledgeSessionViewModel.cs" />
+    <Compile Include="Models\KnowledgeSession\SessionState.cs" />
+    <Compile Include="Models\KnowledgeSession\KnowledgeSessionViewModel.cs" />
     <Compile Include="Models\MessageViewModel.cs" />
-    <Compile Include="Models\NodeViewModel.cs" />
+    <Compile Include="Models\KnowledgeSession\NodeViewModel.cs" />
     <Compile Include="Models\PlaylistViewModel.cs" />
     <Compile Include="Models\SongRecognitionModel.cs" />
     <Compile Include="Models\SongViewModel.cs" />

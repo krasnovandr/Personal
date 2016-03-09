@@ -20,12 +20,13 @@ namespace AudioNetwork.Web
           //() => new TestHub(new UserService(new UserRepository(), new MusicRepository())));
             
             ConfigureAuth(app);
-            var hubConfiguration = new HubConfiguration
-            {
-                EnableDetailedErrors = true,
-                EnableJavaScriptProxies = false
-            };
-            app.MapSignalR(hubConfiguration);
+            //var hubConfiguration = new HubConfiguration
+            //{
+            //    EnableDetailedErrors = true,
+            //    EnableJavaScriptProxies = false
+            //};
+            //app.MapSignalR(hubConfiguration);
+            app.MapSignalR();
         }
     }
 }

@@ -14,8 +14,9 @@ namespace DataLayer.Models
         }
         public int Id { get; set; }
         public string Name { get; set; }
-        public ApplicationUser SuggestedBy { get; set; }
+        public string SuggestedBy { get; set; }
         public DateTime DateCreation { get; set; }
+        public int? ParentId { get; set; }
         public int Level { get; set; }
 
         public virtual ICollection<KnowledgeSession> KnowledgeSessions { get; set; }

@@ -157,12 +157,12 @@ function ($, $scope, $routeParams, $location, $interval, messagesService, userSe
             $scope.updateAllIncomingMessages();
         });
     }, true);
-
-    //$rootScope.chat.client.newMessage = function (message) {
-    //    $rootScope.$apply(function () {
-    //        $scope.updateAllIncomingMessages();
-    //    });
-    //};
+    $rootScope.chat = $.connection.conversationHub;
+    $rootScope.chat.client.newMessage = function (message) {
+        $rootScope.$apply(function () {
+            $scope.updateAllIncomingMessages();
+        });
+    };
 
     //$rootScope.testHub.client.newM = function (message) {
     //    $rootScope.$apply(function () {

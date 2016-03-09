@@ -19,6 +19,7 @@ namespace DataLayer.Models
         public DateTime CreationDate { get; set; }
         public string Theme { get; set; }
         public string CreatorId { get; set; }
+        public int SessionState { get; set; }
 
         public virtual ICollection<ApplicationUser> Users { get; set; }
         public virtual ICollection<Node> Nodes { get; set; }

@@ -1,5 +1,5 @@
 ﻿angular.module('AudioNetworkApp')
-    .controller('KnowledgeSessionController', function ($, $scope, $http, $location, $rootScope, knowledgeSessionService, userService, signalRSvc) {
+    .controller('KnowledgeSessionController', function ($, $scope, $http, $location, $rootScope, knowledgeSessionService, userService) {
 
         $scope.friendsPhase = false;
         $scope.theme = '';
@@ -7,7 +7,6 @@
         $scope.members = [];
         $scope.firstRound = false;
         $scope.mySessions = [];
-        signalRSvc.initialize();
 
         knowledgeSessionService.getUserSessions($rootScope.logState.Id).success(function (result) {
             $scope.mySessions = result;
@@ -34,23 +33,31 @@
 
             });
         };
-        $scope.check = function(parameters) {
-            signalRSvc.sendRequest();
-        }
-       
-        updateMessage = function () {
-            alert('Вы были добавлены в новую сессию обмена ресурсами!');
+
+        $rootScope.myHub  = $.connection.knowledgeSessionHub;
+        $rootScope.myHub.client.updateClient = function (message) {
+            alert('Вы были добавлены в новую сессию обмена ресурсами');
         };
 
-        $scope.$parent.$on("firstRoundStartedInfo", function (e, message) {
-            $scope.$apply(function () {
-                updateMessage()
-            });
+        $.connection.hub.start().done(function () {
+
+         
         });
+
+        $scope.viewSession = function (currentSession) {
+            if (currentSession.SessionState == 0) {
+                $location.path('/KnowledgeSession/FirstRound/' + currentSession.Id);
+            }
+            if (currentSession.SessionState == 1) {
+                $location.path('/KnowledgeSession/FirstRoundMainBoard/' + currentSession.Id);
+            }
+        };
+
         $scope.addUserToSession = function (friendIndex, user) {
             $scope.members.push(user);
             $scope.friends.splice(friendIndex, 1);
         };
+
         $scope.removeUserFromSession = function (membersIndex, user) {
             $scope.members.splice(membersIndex, 1);
             $scope.friends.push(user);

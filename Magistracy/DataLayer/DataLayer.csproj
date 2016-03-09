@@ -79,6 +79,18 @@
     <Compile Include="Migrations\201602282201482_AddSuggestionTable.Designer.cs">
       <DependentUpon>201602282201482_AddSuggestionTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603041902141_AddSessionState.cs" />
+    <Compile Include="Migrations\201603041902141_AddSessionState.Designer.cs">
+      <DependentUpon>201603041902141_AddSessionState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603042029093_AddparentId.cs" />
+    <Compile Include="Migrations\201603042029093_AddparentId.Designer.cs">
+      <DependentUpon>201603042029093_AddparentId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603042145082_UpdateSuggestedBy.cs" />
+    <Compile Include="Migrations\201603042145082_UpdateSuggestedBy.Designer.cs">
+      <DependentUpon>201603042145082_UpdateSuggestedBy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\SessionNodeSuggestions.cs" />
     <Compile Include="Repositories\KnowledgeSessionRepository.cs" />
     <Compile Include="Migrations\201502021751111_InitialCreate.cs" />
@@ -623,6 +635,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602282201482_AddSuggestionTable.resx">
       <DependentUpon>201602282201482_AddSuggestionTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603041902141_AddSessionState.resx">
+      <DependentUpon>201603041902141_AddSessionState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603042029093_AddparentId.resx">
+      <DependentUpon>201603042029093_AddparentId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603042145082_UpdateSuggestedBy.resx">
+      <DependentUpon>201603042145082_UpdateSuggestedBy.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

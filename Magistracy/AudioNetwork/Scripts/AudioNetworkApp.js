@@ -238,7 +238,10 @@ var config = function ($routeProvider) {
           templateUrl: 'KnowledgeSession/Index',
       }).when('/KnowledgeSession/FirstRound/:id', {
           templateUrl: 'KnowledgeSession/FirstRound',
+      }).when('/KnowledgeSession/FirstRoundMainBoard/:id', {
+          templateUrl: 'KnowledgeSession/FirstRoundMainBoard',
       }).
+
 
        otherwise({
            redirectTo: '/Home'

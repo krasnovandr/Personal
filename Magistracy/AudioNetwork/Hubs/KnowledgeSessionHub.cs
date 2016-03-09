@@ -12,9 +12,9 @@ namespace AudioNetwork.Web.Hubs
         private List<UserViewModel> _users;
 
 
-        public void NewContosoChatMessage(string name, string message)
+        public void FirstRoundStarted()
         {
-            Clients.All.addNewMessageToPage(name, message);
+            Clients.All.updateClient("lol");
         }
     }
 }

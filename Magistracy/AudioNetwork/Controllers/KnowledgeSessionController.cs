@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using AudioNetwork.Web.Hubs;
 using DataLayer.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.SignalR;
 using ServiceLayer.Interfaces;
 using ServiceLayer.Models;
+using ServiceLayer.Models.KnowledgeSession;
 
 namespace AudioNetwork.Web.Controllers
 {
@@ -23,6 +26,12 @@ namespace AudioNetwork.Web.Controllers
         }
 
         public ActionResult FirstRound()
+        {
+            return View();
+        }
+
+
+        public ActionResult FirstRoundMainBoard()
         {
             return View();
         }
@@ -58,9 +67,38 @@ namespace AudioNetwork.Web.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult GetMembers(int sessionId)
+        {
+            var result = _knowledgeSessionService.GetMembers(sessionId);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult CheckUserSuggestion(int sessionId)
+        {
+            var result = _knowledgeSessionService.CheckUserSuggestion(sessionId,User.Identity.GetUserId(),null);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+
+        //public JsonResult GetMembersWithSuggestion(int sessionId)
+        //{
+        //    var result = _knowledgeSessionService.GetMembers(sessionId);
+        //    return Json(result, JsonRequestBehavior.AllowGet);
+        //}
+        
         public JsonResult GetSessionNodeByLevel(int sessionId, int level)
         {
             var result = _knowledgeSessionService.GetSessionNodeByLevel(sessionId, level);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SaveSuggestedNodes(List<NodeViewModel> nodes, int sessionId)
+        {
+            bool result = _knowledgeSessionService.SaveSuggestedNodes(nodes, User.Identity.GetUserId(), sessionId);
+            
+            var context = GlobalHost.ConnectionManager.GetHubContext<KnowledgeSessionHub>();
+            context.Clients.All.userAddSuggestion(User.Identity.GetUserId());
+         
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

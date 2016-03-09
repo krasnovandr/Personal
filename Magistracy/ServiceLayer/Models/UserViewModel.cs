@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using ServiceLayer.Models.KnowledgeSession;
+using TagLib.Riff;
 
 namespace ServiceLayer.Models
 {
@@ -72,5 +75,9 @@ namespace ServiceLayer.Models
         public string VkPassword { get; set; }
         public SongViewModel CurrentSong { get; set; }
         public bool LoggedIn { get; set; }
+
+        public bool SessionSuggestion { get; set; }
+
+        public List<NodeViewModel> SuggestedNodes { get; set; }
     }
 }

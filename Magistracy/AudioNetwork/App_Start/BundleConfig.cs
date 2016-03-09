@@ -44,6 +44,9 @@ namespace AudioNetwork.Web
 
             bundles.Add(new ScriptBundle("~/bundles/Recognize")
                 .IncludeDirectory("~/Scripts/Recognize", "*.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/Libs")
+                .IncludeDirectory("~/Scripts/Libs", "*.js"));
                    //   .Include("~/Scripts/AudioNetworkApp.js"));
 
             bundles.Add(new ScriptBundle("~/Scripts/Controller/*.js"));
