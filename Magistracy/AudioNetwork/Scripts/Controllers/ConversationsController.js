@@ -1,6 +1,6 @@
 ﻿angular.module('AudioNetworkApp')
 .controller('ConversationsController',
-function ($, $scope, $routeParams, $location, $interval, messagesService, userService, $timeout, $rootScope, musicService, $modal) {
+function ($, $scope, $routeParams, $location, $interval, messagesService, userService, $timeout, $rootScope, musicService, $uibModal) {
     $scope.conversationId = $routeParams.id;
 
     $scope.conversations = [];
@@ -29,7 +29,7 @@ function ($, $scope, $routeParams, $location, $interval, messagesService, userSe
 
     $scope.open = function (size) {
 
-        var modalInstance = $modal.open({
+        var modalInstance = $uibModal.open({
             templateUrl: 'Users/ViewUsersModal',
             size: size,
             scope: $scope
@@ -54,7 +54,7 @@ function ($, $scope, $routeParams, $location, $interval, messagesService, userSe
 
     $scope.musicModal = function (size) {
 
-        var musicModalInstance = $modal.open({
+        var musicModalInstance = $uibModal.open({
             templateUrl: 'Music/ViewSongsModal',
             size: size,
             scope: $scope
@@ -83,7 +83,7 @@ function ($, $scope, $routeParams, $location, $interval, messagesService, userSe
     };
     $scope.musicMessageModal = function (size) {
 
-        var musicMessageModal = $modal.open({
+        var musicMessageModal = $uibModal.open({
             templateUrl: 'Music/ViewSongsModal',
             size: size,
             scope: $scope

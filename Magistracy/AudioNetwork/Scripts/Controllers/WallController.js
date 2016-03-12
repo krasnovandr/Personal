@@ -1,5 +1,5 @@
 ﻿angular.module('AudioNetworkApp').
-    controller('WallController', function ($scope, wallService, $routeParams, $rootScope, $modal, musicService) {
+    controller('WallController', function ($scope, wallService, $routeParams, $rootScope, $uibModal, musicService) {
         $rootScope.wallItems = [];
         $scope.songIndexes = [];
         $scope.Note = "";
@@ -75,7 +75,7 @@
 
         $scope.open = function (size) {
 
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'Music/ViewSongsModal',
                 size: size,
                 scope: $scope
@@ -102,7 +102,7 @@
 
         $scope.openLikeModal = function (like, wallItem) {
             $scope.likeModal = like;
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'Wall/ViewLikeModal',
                 scope: $scope
             });

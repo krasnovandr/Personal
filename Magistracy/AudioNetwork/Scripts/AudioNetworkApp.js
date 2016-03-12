@@ -236,10 +236,10 @@ var config = function ($routeProvider) {
           templateUrl: 'Recognition/ViewRecognition',
       }).when('/KnowledgeSession', {
           templateUrl: 'KnowledgeSession/Index',
-      }).when('/KnowledgeSession/FirstRound/:id', {
-          templateUrl: 'KnowledgeSession/FirstRound',
-      }).when('/KnowledgeSession/FirstRoundMainBoard/:id', {
-          templateUrl: 'KnowledgeSession/FirstRoundMainBoard',
+      }).when('/KnowledgeSession/Round/:id', {
+          templateUrl: 'KnowledgeSession/Round',
+      }).when('/KnowledgeSession/RoundLevelVote/:id', {
+          templateUrl: 'KnowledgeSession/RoundLevelVote',
       }).
 
 

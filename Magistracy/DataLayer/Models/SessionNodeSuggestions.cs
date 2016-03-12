@@ -10,7 +10,8 @@ namespace DataLayer.Models
     {
         public SessionNodeSuggestions()
         {
-            KnowledgeSessions =  new HashSet<KnowledgeSession>();
+            KnowledgeSessions = new HashSet<KnowledgeSession>();
+            Suggestions = new HashSet<Suggestion>();
         }
         public int Id { get; set; }
         public string Name { get; set; }
@@ -20,5 +21,10 @@ namespace DataLayer.Models
         public int Level { get; set; }
 
         public virtual ICollection<KnowledgeSession> KnowledgeSessions { get; set; }
+        public virtual ICollection<Suggestion> Suggestions { get; set; }
     }
+
+
+
+
 }

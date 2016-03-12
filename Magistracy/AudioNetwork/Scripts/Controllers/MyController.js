@@ -1,5 +1,5 @@
 ﻿angular.module('AudioNetworkApp').
-controller('MyController', function ($scope, userService, FileUploader, $modal) {
+controller('MyController', function ($scope, userService, FileUploader, $uibModal) {
 
 
     // $scope.rows = [];
@@ -25,10 +25,10 @@ controller('MyController', function ($scope, userService, FileUploader, $modal) 
         userService.updateUser($scope.userInfo).success(function () {
         });
     };
-
+    $scope.animationsEnabled = true;
     $scope.openPictureModal = function (size) {
 
-        var modalInstance = $modal.open({
+        var modalInstance = $uibModal.open({
             templateUrl: 'Users/ViewUserPictureModal',
             size: size,
             scope: $scope

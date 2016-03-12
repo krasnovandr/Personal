@@ -17,7 +17,8 @@ namespace ServiceLayer.Interfaces
         List<NodeViewModel> GetSessionNodeByLevel(int sessionId, int level);
         List<KnowledgeSessionViewModel> GetUserSessions(string userId);
         bool SaveSuggestedNodes(List<NodeViewModel> nodes, string userId, int sessionId);
-        List<UserViewModel> GetMembers(int sessionId);
+        List<UserViewModel> GetMembers(int sessionId, int? level);
+        List<UserViewModel> GetOrderedMembers(int sessionId, int? level);
         bool CheckUserSuggestion(int sessionId, string userid, int? level);
     }
 }

@@ -12,6 +12,7 @@ namespace DataLayer.Models
         {
             KnowledgeSessions =  new HashSet<KnowledgeSession>();
             KnowledgeSessionRoles = new HashSet<KnowledgeSessionRole>();
+            LevelVotes = new HashSet<LevelVote>();
         }
         public DateTime LastActivity { get; set; }
         public DateTime? BirthDate { get; set; }
@@ -48,5 +49,6 @@ namespace DataLayer.Models
 
         public virtual ICollection<KnowledgeSession> KnowledgeSessions { get; set; }
         public virtual ICollection<KnowledgeSessionRole> KnowledgeSessionRoles { get; set; }
+        public virtual ICollection<LevelVote> LevelVotes { get; set; }
     }
 }

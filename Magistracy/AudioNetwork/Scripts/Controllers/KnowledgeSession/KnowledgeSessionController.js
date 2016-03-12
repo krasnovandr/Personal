@@ -29,7 +29,7 @@
         };
         $scope.startFirstRound = function () {
             knowledgeSessionService.addMembers($scope.members, $rootScope.currentSession.Id).success(function (userFriends) {
-                $location.path('/KnowledgeSession/FirstRound/' + $rootScope.currentSession.Id);
+                $location.path('/KnowledgeSession/Round/' + $rootScope.currentSession.Id);
 
             });
         };
@@ -46,10 +46,10 @@
 
         $scope.viewSession = function (currentSession) {
             if (currentSession.SessionState == 0) {
-                $location.path('/KnowledgeSession/FirstRound/' + currentSession.Id);
+                $location.path('/KnowledgeSession/Round/' + currentSession.Id).search({ level: '1' });
             }
             if (currentSession.SessionState == 1) {
-                $location.path('/KnowledgeSession/FirstRoundMainBoard/' + currentSession.Id);
+                $location.path('/KnowledgeSession/RoundLevelVote/' + currentSession.Id).search({ level: '1' });
             }
         };
 

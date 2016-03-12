@@ -47,7 +47,10 @@ namespace AudioNetwork.Web
 
             bundles.Add(new ScriptBundle("~/bundles/Libs")
                 .IncludeDirectory("~/Scripts/Libs", "*.js"));
-                   //   .Include("~/Scripts/AudioNetworkApp.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/Angular")
+                .IncludeDirectory("~/Scripts/Libs/Angular", "*.js")
+                .IncludeDirectory("~/Scripts/Libs/angular-ui", "*.js"));
 
             bundles.Add(new ScriptBundle("~/Scripts/Controller/*.js"));
         }

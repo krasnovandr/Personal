@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Helpers\DateTimeHelper.cs" />
     <Compile Include="Helpers\MailSender.cs" />
+    <Compile Include="Helpers\MappingsProfile.cs" />
     <Compile Include="Helpers\ModelConverters.cs" />
     <Compile Include="Helpers\SharpZipLibHelper .cs" />
     <Compile Include="Helpers\StringHelper.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Interfaces\IKnowledgeSessionService.cs" />
     <Compile Include="Interfaces\IMusicService.cs" />
     <Compile Include="Interfaces\IPlaylistService.cs" />
+    <Compile Include="Interfaces\ISessionVoteService.cs" />
     <Compile Include="Interfaces\IStatisticsService.cs" />
     <Compile Include="Interfaces\IUploadService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
@@ -80,6 +82,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ConversationViewModel.cs" />
     <Compile Include="Models\FriendUpdateViewModel.cs" />
+    <Compile Include="Models\KnowledgeSession\LevelVoteViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\SessionState.cs" />
     <Compile Include="Models\KnowledgeSession\KnowledgeSessionViewModel.cs" />
     <Compile Include="Models\MessageViewModel.cs" />
@@ -97,6 +100,7 @@
     <Compile Include="Services\KnowledgeSessionService.cs" />
     <Compile Include="Services\MusicService.cs" />
     <Compile Include="Services\PlaylistService.cs" />
+    <Compile Include="Services\SessionVoteService.cs" />
     <Compile Include="Services\SongPictureGetter.cs" />
     <Compile Include="Services\StatisticsService.cs" />
     <Compile Include="Services\UploadService.cs" />

@@ -91,7 +91,27 @@
     <Compile Include="Migrations\201603042145082_UpdateSuggestedBy.Designer.cs">
       <DependentUpon>201603042145082_UpdateSuggestedBy.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603092009038_AddCommentVoteSuggestionTables.cs" />
+    <Compile Include="Migrations\201603092009038_AddCommentVoteSuggestionTables.Designer.cs">
+      <DependentUpon>201603092009038_AddCommentVoteSuggestionTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603092033589_Add_LeveVotesTable.cs" />
+    <Compile Include="Migrations\201603092033589_Add_LeveVotesTable.Designer.cs">
+      <DependentUpon>201603092033589_Add_LeveVotesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603092126262_LevelVoteTableUpdateField.cs" />
+    <Compile Include="Migrations\201603092126262_LevelVoteTableUpdateField.Designer.cs">
+      <DependentUpon>201603092126262_LevelVoteTableUpdateField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603112008026_AddLevelVoteRelationship.cs" />
+    <Compile Include="Migrations\201603112008026_AddLevelVoteRelationship.Designer.cs">
+      <DependentUpon>201603112008026_AddLevelVoteRelationship.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\LevelVote.cs" />
     <Compile Include="Models\SessionNodeSuggestions.cs" />
+    <Compile Include="Models\Suggestion.cs" />
+    <Compile Include="Models\Vote.cs" />
     <Compile Include="Repositories\KnowledgeSessionRepository.cs" />
     <Compile Include="Migrations\201502021751111_InitialCreate.cs" />
     <Compile Include="Migrations\201502021751111_InitialCreate.Designer.cs">
@@ -404,6 +424,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ConversationRepository.cs" />
     <Compile Include="Repositories\EfUnitOfWork.cs" />
+    <Compile Include="Repositories\LevelVoteRepository.cs" />
     <Compile Include="Repositories\MusicRepository.cs" />
     <Compile Include="Repositories\PlaylistRepository.cs" />
     <Compile Include="Repositories\StatisticsRepository.cs" />
@@ -644,6 +665,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603042145082_UpdateSuggestedBy.resx">
       <DependentUpon>201603042145082_UpdateSuggestedBy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603092009038_AddCommentVoteSuggestionTables.resx">
+      <DependentUpon>201603092009038_AddCommentVoteSuggestionTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603092033589_Add_LeveVotesTable.resx">
+      <DependentUpon>201603092033589_Add_LeveVotesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603092126262_LevelVoteTableUpdateField.resx">
+      <DependentUpon>201603092126262_LevelVoteTableUpdateField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603112008026_AddLevelVoteRelationship.resx">
+      <DependentUpon>201603112008026_AddLevelVoteRelationship.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

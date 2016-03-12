@@ -79,5 +79,7 @@ namespace ServiceLayer.Models
         public bool SessionSuggestion { get; set; }
 
         public List<NodeViewModel> SuggestedNodes { get; set; }
+        public bool LevelSuggestion { get; set; }
+        public List<LevelVoteViewModel> VotesResults { get; set; }
     }
 }

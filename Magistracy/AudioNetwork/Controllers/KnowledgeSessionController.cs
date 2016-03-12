@@ -25,13 +25,17 @@ namespace AudioNetwork.Web.Controllers
             return View();
         }
 
-        public ActionResult FirstRound()
+        public ActionResult Round()
         {
             return View();
         }
 
+        public ActionResult RoundLevelVote()
+        {
+            return View();
+        }
 
-        public ActionResult FirstRoundMainBoard()
+        public ActionResult RoundWinnerVote()
         {
             return View();
         }
@@ -69,10 +73,15 @@ namespace AudioNetwork.Web.Controllers
 
         public JsonResult GetMembers(int sessionId)
         {
-            var result = _knowledgeSessionService.GetMembers(sessionId);
+            var result = _knowledgeSessionService.GetMembers(sessionId,null);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult GetOrderedMembers(int sessionId)
+        {
+            var result = _knowledgeSessionService.GetOrderedMembers(sessionId, null);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
         public JsonResult CheckUserSuggestion(int sessionId)
         {
             var result = _knowledgeSessionService.CheckUserSuggestion(sessionId,User.Identity.GetUserId(),null);

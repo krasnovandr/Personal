@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataLayer.EF;
 using DataLayer.Interfaces;
 using DataLayer.Models;
@@ -15,6 +11,7 @@ namespace DataLayer.Repositories
         private readonly ApplicationDbContext db = new ApplicationDbContext();
         private KnowledgeSessionRepository _knowledgeSessionRepository;
         private UserRepository _userRepository;
+        private LevelVoteRepository _levelVoteRepository;
 
         public IRepository<KnowledgeSession> KnowledgeSessions
         {
@@ -24,6 +21,16 @@ namespace DataLayer.Repositories
                     (_knowledgeSessionRepository = new KnowledgeSessionRepository(db));
             }
         }
+
+        public IRepository<LevelVote> LevelVotes
+        {
+            get
+            {
+                return _levelVoteRepository ??
+                    (_levelVoteRepository = new LevelVoteRepository(db));
+            }
+        }
+
 
         public ExtendedRepository<ApplicationUser> Users
         {
@@ -59,4 +66,6 @@ namespace DataLayer.Repositories
             GC.SuppressFinalize(this);
         }
     }
+
+ 
 }

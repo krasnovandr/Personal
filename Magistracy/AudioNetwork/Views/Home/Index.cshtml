@@ -25,11 +25,11 @@
                         <li ng-class="{ active: isActive('/Conversations') }"> <a ng-show="logState.LoggedIn" href="/#/Conversations">Cообщения<span class="badge">{{messagesCount}}</span></a></li>
                         <li ng-class="{ active: isActive('/EditConversations') }"> <a ng-show="logState.LoggedIn" href="/#/EditConversations">Редактировать беседы</a></li>
                         @*<li><a ng-show="logState.LoggedIn" href="/#/Music">Музыка</a></li>*@
-                        <li ng-show="logState.LoggedIn" class=" btn-group" dropdown is-open="status.isopen">
-                            <a class="btn btn-link dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+                        <li ng-show="logState.LoggedIn" class=" btn-group" uib-dropdown dropdown-append-to-body is-open="status.isopen">
+                            <a class="btn btn-link" uib-dropdown-toggle id="btn-append-to-body">
                                 Музыка <span class="caret"></span>
                             </a>
-                            <ul class="dropdown-menu" role="menu">
+                            <ul uib-dropdown-menu class="dropdown-menu" role="menu" aria-labelledby="btn-append-to-body">
                                 <li ng-class="{ active: isActive('/Player') }"><a ng-show="logState.LoggedIn" href="/#/Player">Плеер</a></li>
                                 <li ng-class="{ active: isActive('/Playlists') }"><a ng-show="logState.LoggedIn" href="/#/Playlists">Плейлисты</a></li>
                                 <li ng-class="{ active: isActive('/Upload') }"><a ng-show="logState.LoggedIn" href="/#/Upload">Загрузить</a></li>
@@ -124,21 +124,21 @@
     </div>
 
     <div ng-view></div>
-    <script src="~/Scripts/Libs/jquery-1.10.2.min.js"></script>
-   
-    <script src="~/Scripts/Libs/angular.min.js"></script>
-
-    <script src="~/Scripts/Libs/angular-route.min.js"></script>
-    <script src="~/Scripts/Libs/angular-sanitize.min.js"></script>
+    <script src="~/Scripts/Libs/Other/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/Libs/Angular/angular.min.js"></script>
+    <script src="~/Scripts/Libs/Angular/angular-route.min.js"></script>
+    <script src="~/Scripts/Libs/Angular/angular-sanitize.min.js"></script>
+    <script src="~/Scripts/Libs/angular-ui/ui-bootstrap.js"></script>
+    <script src="~/Scripts/Libs/angular-ui/ui-bootstrap-tpls.min.js"></script>
     <script src="~/Scripts/FileApploader/angular-file-upload.js"></script>
-    <script src="~/Scripts/Libs/scroll.js"></script>
-    <script src="~/Scripts/angular-ui/ui-bootstrap.js"></script>
-    <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
-    <script src="~/Scripts/Libs/angular-drag-and-drop-lists.js"></script>
+    <script src="~/Scripts/Libs/Other/scroll.js"></script>
+
+    <script src="~/Scripts/Libs/Angular/angular-drag-and-drop-lists.js"></script>
     <script src="~/Scripts/Libs/VirtualScroller/module.js"></script>
-    <script src="~/Scripts/Libs/d3-min.js"></script>
-    <script src="~/Scripts/Libs/line-chart.min.js"></script>
-    <script src="~/Scripts/jquery.signalR-2.2.0.js"></script>    
+    <script src="~/Scripts/Libs/Other/d3-min.js"></script>
+    <script src="~/Scripts/Libs/Other/line-chart.min.js"></script>
+    <script src="~/Scripts/Libs/Other/jquery.signalR-2.2.0.js"></script>
+    <script src="~/Scripts/Libs/Other/bootstrap.js"></script>
     <script src="~/signalr/hubs"></script>    
    
     <script src="~/Scripts/AudioNetworkApp.js"></script>

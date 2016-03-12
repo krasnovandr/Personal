@@ -1,6 +1,6 @@
 ﻿angular.module('AudioNetworkApp')
 .controller('ConversationEditController',
-function ($, $scope, $routeParams, $location, $interval, messagesService, userService, $timeout, $rootScope, musicService, $modal, FileUploader) {
+function ($, $scope, $routeParams, $location, $interval, messagesService, userService, $timeout, $rootScope, musicService, $uibModal, FileUploader) {
     $scope.conversationId = $routeParams.id;
 
     $scope.conversations = [];
@@ -23,7 +23,7 @@ function ($, $scope, $routeParams, $location, $interval, messagesService, userSe
 
     $scope.changeAvatarModal = function (size) {
 
-        var avatarModal = $modal.open({
+        var avatarModal = $uibModal.open({
             templateUrl: 'Conversation/ChangeAvatarModal',
             size: size,
             scope: $scope

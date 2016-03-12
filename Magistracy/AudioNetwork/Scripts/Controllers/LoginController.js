@@ -26,7 +26,7 @@
                 $rootScope.logState.LoggedIn = !$rootScope.logState.LoggedIn;
                 $rootScope.checkLogin();
                 $scope.loginError = '';
-                //$location.path('/Home');
+                $location.path('/Home');
 
             } else {
                 $scope.loginError = answer.Message;

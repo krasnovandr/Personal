@@ -42,8 +42,9 @@ namespace AudioNetwork.Web
             container.RegisterType<IUploadService, UploadService>();
             container.RegisterType<IUnitOfWork, EfUnitOfWork>();
             container.RegisterType<IKnowledgeSessionService, KnowledgeSessionService>();
+            container.RegisterType<ISessionVoteService, SessionVoteService>();
 
-            
+
             RegisterTypes(container);
 
             return container;

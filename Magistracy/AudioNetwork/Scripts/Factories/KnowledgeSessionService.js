@@ -20,6 +20,33 @@
             return $http({ method: 'POST', url: 'KnowledgeSession/SaveSuggestedNodes', data: dataToTransfer });
         },
 
+        levelVote: function (dataToTransfer) {
+            return $http({ method: 'POST', url: 'SessionVote/LevelVote', data: dataToTransfer });
+        },
+
+        checkUserLevelVote: function (session, level, userId) {
+            return $http({
+                url: 'SessionVote/CheckUserLevelVote',
+                method: "GET",
+                params: { session: session, level: level, userId: userId }
+            });
+        },
+
+        checkVoteFinished: function (session, level) {
+            return $http({
+                url: 'SessionVote/CheckVoteFinished',
+                method: "GET",
+                params: { session: session, level: level }
+            });
+        },
+        getVoteResults: function (session, level) {
+            return $http({
+                url: 'SessionVote/GetVoteResults',
+                method: "GET",
+                params: { session: session, level: level }
+            });
+        },
+
         getMembers: function (sessionId) {
             return $http({
                 url: 'KnowledgeSession/GetMembers',
@@ -28,7 +55,14 @@
             });
         },
 
-       
+        getOrderedMembers: function (sessionId) {
+            return $http({
+                url: 'KnowledgeSession/GetOrderedMembers',
+                method: "GET",
+                params: { sessionId: sessionId }
+            });
+        },
+
         get: function (id) {
             return $http({
                 url: 'KnowledgeSession/GetSession',
@@ -60,6 +94,8 @@
                 params: { sessionId: sessionId }
             });
         },
+
+
 
     };
 

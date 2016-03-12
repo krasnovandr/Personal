@@ -29,6 +29,11 @@ namespace DataLayer.EF
         public DbSet<KnowledgeSessionRole> KnowledgeSessionRoles { get; set; }
         public DbSet<Node> Nodes { get; set; }
 
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Suggestion> Suggestions { get; set; }
+        public DbSet<Vote> Votes { get; set; }
+        public DbSet<LevelVote> LevelVotes { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

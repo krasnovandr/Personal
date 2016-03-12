@@ -10,6 +10,7 @@ namespace DataLayer.Interfaces
     public interface IUnitOfWork : IDisposable
     {
         IRepository<KnowledgeSession> KnowledgeSessions { get; }
+        IRepository<LevelVote> LevelVotes { get; }
         ExtendedRepository<ApplicationUser> Users { get; }
         void Save();
     }
