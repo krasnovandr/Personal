@@ -1,5 +1,5 @@
 ﻿angular.module('AudioNetworkApp').
-controller('UserController',function ($scope, $http, userService, $routeParams, FileUploader, musicService,$modal)
+controller('UserController', function ($scope, $http, userService, $routeParams, FileUploader, musicService, $uibModal)
  {
 
     $scope.userid = $routeParams.id;
@@ -14,7 +14,7 @@ controller('UserController',function ($scope, $http, userService, $routeParams, 
 
     $scope.openPictureModal = function (size) {
 
-        var modalInstance = $modal.open({
+        var modalInstance = $uibModal.open({
             templateUrl: 'Users/ViewUserPictureModal',
             size: size,
             scope: $scope

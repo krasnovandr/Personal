@@ -13,7 +13,8 @@ namespace ServiceLayer.Interfaces
     {
         int AddLevelVote(LevelVoteViewModel levelVote);
         bool CheckLevelVoteFinished(int sessionId, int level);
-        bool CheckUserForLevelVote(int session, int level, string id);
+        LevelVoteViewModel CheckUserForLevelVote(int session, int level, string id);
         List<LevelVoteViewModel> GetVoteResults(int sessionId, int value, string id);
+        bool AddSuggestionVote(VoteViewModel voteViewModel, int sessionId);
     }
 }

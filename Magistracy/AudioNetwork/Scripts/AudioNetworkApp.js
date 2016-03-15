@@ -240,6 +240,8 @@ var config = function ($routeProvider) {
           templateUrl: 'KnowledgeSession/Round',
       }).when('/KnowledgeSession/RoundLevelVote/:id', {
           templateUrl: 'KnowledgeSession/RoundLevelVote',
+      }).when('/KnowledgeSession/RoundWinnerVote/:id', {
+          templateUrl: 'KnowledgeSession/RoundWinnerVote',
       }).
 
 

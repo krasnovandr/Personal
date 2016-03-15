@@ -25,6 +25,13 @@ namespace AudioNetwork.Web
         {
             var container = new UnityContainer();
 
+            RegisterTypes(container);
+
+            return container;
+        }
+
+        public static void RegisterTypes(IUnityContainer container)
+        {
             container.RegisterType<IUserRepository, UserRepository>();
             container.RegisterType<IdentityUser, ApplicationUser>();
             container.RegisterType<IMusicRepository, MusicRepository>();
@@ -43,16 +50,7 @@ namespace AudioNetwork.Web
             container.RegisterType<IUnitOfWork, EfUnitOfWork>();
             container.RegisterType<IKnowledgeSessionService, KnowledgeSessionService>();
             container.RegisterType<ISessionVoteService, SessionVoteService>();
-
-
-            RegisterTypes(container);
-
-            return container;
-        }
-
-        public static void RegisterTypes(IUnityContainer container)
-        {
-
+            container.RegisterType<ISessionSuggestionService, SessionSuggestionService>();
         }
     }
 }

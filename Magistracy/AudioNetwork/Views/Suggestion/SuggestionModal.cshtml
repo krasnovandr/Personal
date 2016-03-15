@@ -1,0 +1,46 @@
+﻿
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h3 class="modal-title">
+
+        <span>Внесение предложения</span>
+        <span ng-if="suggestedType === suggestionEnum.add">по добавлению</span>
+        <span ng-if="suggestedType === suggestionEnum.edit">по редактированию</span>
+        <span ng-if="suggestedType === suggestionEnum.remove">по удалению</span>
+    </h3>
+</div>
+
+<div class="modal-dialog" draggable="true" id="myModal">
+    <div class="row">
+        <div class="col-md-8">
+            <form name="suggestionForm" novalidate>
+                <div class="form-group" ng-show="suggestedType === suggestionEnum.edit">
+                    <label for="prevoius">Предыдущий вариант</label>
+                    <input type="text" class="form-control" ng-model="nodeForChanges.Name" ng-disabled="true" id="prevoius">
+                </div>
+
+                <div class="form-group" ng-hide="suggestedType === suggestionEnum.remove">
+                    <label for="suggestion">Предложение</label>
+                    <input type="text" class="form-control" ng-model="suggestion" name="suggestion" id="suggestion" required>
+                </div>
+                <div class="form-group">
+                    <span style="color:red" ng-show="suggestionForm.suggestion.$dirty && suggestionForm.suggestion.$invalid">
+                        <span ng-show="suggestionForm.suggestion.$error.required">Введите предложение</span>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Коментарий</label>
+                    <textarea class="form-control" ng-model="comment" name="comment" id="comment" cols="30" rows="7"></textarea>
+                </div>
+                <button ng-disabled="suggestionForm.suggestion.$error.required"
+                        class="btn btn-default"
+                        ng-click="makeSuggestion(suggestion,comment)">
+                    Предложить
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    @*<button class="close" ng-click="cancel()">закрыть</button>*@
+</div>

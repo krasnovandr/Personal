@@ -40,6 +40,7 @@ namespace AudioNetwork.Web.Controllers
             return View();
         }
 
+   
         public JsonResult Create(KnowledgeSessionViewModel knowledgeSessionViewModel)
         {
             var result = _knowledgeSessionService.CreateSession(knowledgeSessionViewModel, User.Identity.GetUserId());
@@ -82,6 +83,13 @@ namespace AudioNetwork.Web.Controllers
             var result = _knowledgeSessionService.GetOrderedMembers(sessionId, null);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult GetWinner(int sessionId)
+        {
+            var result = _knowledgeSessionService.GetWinner(sessionId, null);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult CheckUserSuggestion(int sessionId)
         {
             var result = _knowledgeSessionService.CheckUserSuggestion(sessionId,User.Identity.GetUserId(),null);

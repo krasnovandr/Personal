@@ -199,7 +199,7 @@ namespace ServiceLayer.Services
                     browser.Height = 480;
                     browser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(DocumentCompleted);
 
-                    while (browser.ReadyState != WebBrowserReadyState.C)
+                    while (browser.ReadyState != WebBrowserReadyState.Complete)
                     {
                         Application.DoEvents();
                     }

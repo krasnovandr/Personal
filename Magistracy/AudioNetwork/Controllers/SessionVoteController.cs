@@ -17,6 +17,8 @@ namespace AudioNetwork.Web.Controllers
             _hubContext = GlobalHost.ConnectionManager.GetHubContext<KnowledgeSessionHub>();
         }
 
+
+
         public JsonResult LevelVote(LevelVoteViewModel levelVoteModel)
         {
             var result = _sessionVoteService.AddLevelVote(levelVoteModel);
@@ -43,6 +45,12 @@ namespace AudioNetwork.Web.Controllers
         public JsonResult CheckUserLevelVote(int session, int level, string userId)
         {
             var result = _sessionVoteService.CheckUserForLevelVote(session, level, userId);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SuggestionVote(int sessionId, VoteViewModel voteViewModel)
+        {
+            var result = _sessionVoteService.AddSuggestionVote(voteViewModel, sessionId);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

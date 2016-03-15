@@ -15,9 +15,11 @@ namespace DataLayer.Models
             Votes = new HashSet<Vote>();
         }
         public int Id { get; set; }
-        public string SuggestedBy { get; set; }
+        public virtual ApplicationUser SuggestedBy { get; set; }
         public DateTime SuggestionDate { get; set; }
         public int Type { get; set; }
+        public string Value { get; set; }
+        public int Status { get; set; }
 
         public virtual ICollection<SessionNodeSuggestions> Nodes { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }

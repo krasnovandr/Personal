@@ -14,13 +14,16 @@ namespace ServiceLayer.Services
     {
         private readonly IUnitOfWork _db;
         private readonly ISessionVoteService _sessionVoteService;
+        private readonly ISessionSuggestionService _sessionSuggestionService;
 
         public KnowledgeSessionService(
             IUnitOfWork db, 
-            ISessionVoteService sessionVoteService)
+            ISessionVoteService sessionVoteService, 
+            ISessionSuggestionService sessionSuggestionService)
         {
             this._db = db;
             _sessionVoteService = sessionVoteService;
+            _sessionSuggestionService = sessionSuggestionService;
         }
 
         public int CreateSession(KnowledgeSessionViewModel knowledgeSession, string userId)
@@ -171,20 +174,27 @@ namespace ServiceLayer.Services
 
         public List<UserViewModel> GetMembers(int sessionId,int? level)
         {
-            var session = _db.KnowledgeSessions.Get(sessionId);
             level = level ?? 1;
+            var session = _db.KnowledgeSessions.Get(sessionId);
             var members = Mapper.Map<ICollection<ApplicationUser>, List<UserViewModel>>(session.Users);
-            var suggestions = Mapper.Map<ICollection<SessionNodeSuggestions>, List<NodeViewModel>>(session.NodesSuggestions);
 
             foreach (var member in members)
             {
-                member.SessionSuggestion = CheckUserSuggestion(sessionId, member.Id, null);
-                member.SuggestedNodes = suggestions.Where(m => m.CreatedBy == member.Id&& m.Level == level).ToList();
-                member.LevelSuggestion = _sessionVoteService.CheckUserForLevelVote(sessionId, level.Value,member.Id);
-                member.VotesResults = _sessionVoteService.GetVoteResults(sessionId, level.Value,member.Id);
+                FillMemberViewModel(sessionId, level.Value, member);
             }
 
             return members;
+        }
+
+        private void FillMemberViewModel(int sessionId, int level, UserViewModel member)
+        {
+            var session = _db.KnowledgeSessions.Get(sessionId);
+            var suggestions = Mapper.Map<ICollection<SessionNodeSuggestions>, List<NodeViewModel>>(session.NodesSuggestions);
+
+            member.SessionSuggestion = CheckUserSuggestion(sessionId, member.Id, null);
+            member.SuggestedNodes = suggestions.Where(m => m.CreatedBy == member.Id && m.Level == level).ToList(); ;
+            member.LevelSuggestion = _sessionVoteService.CheckUserForLevelVote(sessionId, level, member.Id);
+            member.VotesResults = _sessionVoteService.GetVoteResults(sessionId, level, member.Id);
         }
 
         public List<UserViewModel> GetOrderedMembers(int sessionId, int? level)
@@ -192,6 +202,21 @@ namespace ServiceLayer.Services
             var members = this.GetMembers(sessionId, level);
 
             return members.OrderByDescending(m => m.VotesResults.Count()).ToList();
+        }
+
+
+        public UserViewModel GetWinner(int sessionId, int? level)
+        {
+            var winner = this.GetOrderedMembers(sessionId, level).FirstOrDefault();
+
+            if (winner == null)throw new Exception("No members");
+
+            foreach (var winnerNode in winner.SuggestedNodes)
+            {
+                _sessionSuggestionService.UpdateNodeWithSuggestions(sessionId, level, winnerNode);
+            }
+            
+            return winner;
         }
 
         public bool CheckSessionSuggestions(int sessionId, int? level)
@@ -221,6 +246,8 @@ namespace ServiceLayer.Services
             return false;
             //return  session.NodesSuggestions.Any(m => m.SuggestedBy.Id == userid);
         }
+
+   
 
 
         public bool AddUserToSession(ApplicationIdentity user)

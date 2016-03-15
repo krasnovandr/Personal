@@ -109,7 +109,7 @@ namespace AudioNetwork.Web.Controllers
         }
 
         [AllowAnonymous]
-        public async Task<JsonResult> RepeatMail(string userName)
+        public JsonResult RepeatMail(string userName)
         {
             ApplicationUser user = this.UserManager.FindByName(userName);
             if (user != null && Request.Url != null)

@@ -107,6 +107,18 @@
     <Compile Include="Migrations\201603112008026_AddLevelVoteRelationship.Designer.cs">
       <DependentUpon>201603112008026_AddLevelVoteRelationship.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603131016538_UpdateSuggestionCommentTables.cs" />
+    <Compile Include="Migrations\201603131016538_UpdateSuggestionCommentTables.Designer.cs">
+      <DependentUpon>201603131016538_UpdateSuggestionCommentTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603132217326_AddStatusToSuggestiontable.cs" />
+    <Compile Include="Migrations\201603132217326_AddStatusToSuggestiontable.Designer.cs">
+      <DependentUpon>201603132217326_AddStatusToSuggestiontable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603141736525_AddValueFieldToSuggestionTable.cs" />
+    <Compile Include="Migrations\201603141736525_AddValueFieldToSuggestionTable.Designer.cs">
+      <DependentUpon>201603141736525_AddValueFieldToSuggestionTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\LevelVote.cs" />
     <Compile Include="Models\SessionNodeSuggestions.cs" />
@@ -677,6 +689,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603112008026_AddLevelVoteRelationship.resx">
       <DependentUpon>201603112008026_AddLevelVoteRelationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603131016538_UpdateSuggestionCommentTables.resx">
+      <DependentUpon>201603131016538_UpdateSuggestionCommentTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603132217326_AddStatusToSuggestiontable.resx">
+      <DependentUpon>201603132217326_AddStatusToSuggestiontable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603141736525_AddValueFieldToSuggestionTable.resx">
+      <DependentUpon>201603141736525_AddValueFieldToSuggestionTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

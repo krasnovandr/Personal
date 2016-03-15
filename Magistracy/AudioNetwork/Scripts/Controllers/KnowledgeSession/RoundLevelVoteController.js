@@ -6,7 +6,7 @@
         $scope.curentNodeIndex = 0;
         $scope.members = {};
         $scope.level = $routeParams.level;
-        $scope.levelVoted = false;
+        $scope.levelVoted = {};
 
         $scope.voteFinished = false;
 
@@ -21,7 +21,8 @@
                     $scope.levelVoted = resultVoted;
                 });
             });
-        }();
+        };
+        $scope.initializeMembers();
 
         knowledgeSessionService.checkVoteFinished($scope.sessionId, $scope.level).success(function (result) {
             $scope.voteFinished = result;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ServiceLayer.Models.KnowledgeSession
 {
@@ -10,5 +11,7 @@ namespace ServiceLayer.Models.KnowledgeSession
         public string CreatedBy { get; set; }
         public int Level { get; set; }
         public int? ParentId { get; set; }
+        public SuggestionViewModel CurrentSuggestion { get; set; }
+        public List<SuggestionViewModel> Suggestions { get; set; }
     }
 }

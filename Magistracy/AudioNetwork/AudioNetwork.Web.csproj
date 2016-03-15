@@ -248,6 +248,7 @@
     <Compile Include="Controllers\PlayListController.cs" />
     <Compile Include="Controllers\RecognitionController.cs" />
     <Compile Include="Controllers\SessionVoteController.cs" />
+    <Compile Include="Controllers\SuggestionController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\UsersController.cs">
       <SubType>Code</SubType>
@@ -1191,6 +1192,7 @@
     <Content Include="Views\KnowledgeSession\RoundLevelVote.cshtml" />
     <Content Include="Views\KnowledgeSession\RoundWinnerVote.cshtml" />
     <Content Include="Scripts\Libs\Angular\version.json" />
+    <Content Include="Views\Suggestion\SuggestionModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

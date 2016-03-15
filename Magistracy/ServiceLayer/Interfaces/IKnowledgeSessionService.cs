@@ -20,5 +20,6 @@ namespace ServiceLayer.Interfaces
         List<UserViewModel> GetMembers(int sessionId, int? level);
         List<UserViewModel> GetOrderedMembers(int sessionId, int? level);
         bool CheckUserSuggestion(int sessionId, string userid, int? level);
+        UserViewModel GetWinner(int sessionId, int? level);
     }
 }
