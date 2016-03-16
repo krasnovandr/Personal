@@ -1,0 +1,30 @@
+﻿
+<div class="modal-header">
+  <button type="button" class="close" ng-click="cancel()">&times;</button>
+  <h3 class="modal-title">
+    <span>Проглосовавшие</span>
+  </h3>
+</div>
+
+<div class="modal-body" id="myModal">
+  <div class="row">
+    <div class="col-md-8">
+      <div ng-repeat="vote in votesBy" class="panel-group ">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <span>{{vote.VoteByUser.FirstName}}</span>
+            <span>{{vote.VoteByUser.LastName}}</span>
+          </div>
+          <div class="panel-body">
+            <img ng-src="{{vote.VoteByUser.AvatarFilePath}}" width="80" height="80" />
+            @*<button class="btn btn-default pull-right" ng-click="removeUserFromSession($index,member)">
+            <span class="glyphicon glyphicon-remove"></span>
+          </button>*@
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+</div>

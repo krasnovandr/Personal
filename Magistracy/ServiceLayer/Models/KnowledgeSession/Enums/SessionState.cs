@@ -1,4 +1,4 @@
-﻿namespace ServiceLayer.Models.KnowledgeSession
+﻿namespace ServiceLayer.Models.KnowledgeSession.Enums
 {
     public enum SessionState
     {

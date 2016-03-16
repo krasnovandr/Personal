@@ -1,5 +1,34 @@
 ﻿<div ng-controller="RoundWinnerVoteController" class="container">
-    <div class="row">
+
+  <style type="text/css">
+    /* show the move cursor as the user moves the mouse over the panel header.*/
+    #draggablePanelList .panel-heading {
+      cursor: move;
+    }
+  </style>
+
+  <!-- Bootstrap 3 panel list. -->
+  <div class="col-md-6">
+    <div class="panel panel-success" panel-info id="draggablePanelList">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-8">
+            <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> Chat - Miguel</h3>
+          </div>
+          <div class="col-md-4 ">
+            <a href="#"><span id="minim_chat_window" class="glyphicon glyphicon-minus pull-right"></span></a>
+            <a href="#"><span class="glyphicon glyphicon-remove pull-right"></span></a>
+          </div>
+        </div>
+
+      </div>
+      <div class="panel-body">Body ...</div>
+      <div class="panel-footer">Footer</div>
+    </div>
+  </div>
+
+
+  @*<div class="row">
         <div class="col-md-6">
             <h4>Победившее предложение</h4>
 
@@ -17,51 +46,50 @@
             <tbody>
                 <tr>
                     <td class="col-md-12">
-                        <div ng-repeat="node in winner.SuggestedNodes" class="col-md-3">
-                            <div class="panel"
-                                 ng-class="{'panel-success':node.CurrentSuggestion.Type == suggestionEnum.add,
+                    <div ng-repeat="node in winner.SuggestedNodes" class="col-md-3">
+                        <div class="panel"
+                             ng-class="{'panel-success':node.CurrentSuggestion.Type == suggestionEnum.add,
                                                 'panel-info'   :node.CurrentSuggestion.Type == suggestionEnum.edit,
                                                 'panel-danger' :node.CurrentSuggestion.Type == suggestionEnum.remove,
                                                 'panel-default':node.CurrentSuggestion == null
                                                }">
-                                <div class="panel-heading" ng-if="node.CurrentSuggestion == null">
-                                    <button class="btn btn-danger" ng-click="openSuggestionModal(suggestionEnum.remove,node)" tooltip-placement="top" uib-tooltip="Внести предложение по удалению блока">
-                                        <span class="glyphicon glyphicon-remove-circle"></span>
-                                    </button>
-                                    <button class="btn btn-warning" ng-click="openSuggestionModal(suggestionEnum.edit,node)" tooltip-placement="top" uib-tooltip="Внести предложение по редактированию блока">
-                                        <span class="glyphicon glyphicon-pencil"></span>
-                                    </button>
-                                    <button class="btn btn-info pull-right" ng-click="goToRoundWinnerVote()" tooltip-placement="top" uib-tooltip="Просмотреть историю блока">
-                                        <span class="glyphicon glyphicon-book"></span>
-                                    </button>
-                                </div>
-                                <div class="panel-heading" ng-if="node.CurrentSuggestion != null">
-                                  <button ng-click="suggestionVote(voteEnum.up,node)" tooltip-placement="top" uib-tooltip="Проглосовать за предложение">
+                            <div class="panel-heading" ng-if="node.CurrentSuggestion == null">
+                                <button class="btn btn-danger" ng-click="openSuggestionModal(suggestionEnum.remove,node)" tooltip-placement="top" uib-tooltip="Внести предложение по удалению блока">
+                                    <span class="glyphicon glyphicon-remove-circle"></span>
+                                </button>
+                                <button class="btn btn-warning" ng-click="openSuggestionModal(suggestionEnum.edit,node)" tooltip-placement="top" uib-tooltip="Внести предложение по редактированию блока">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </button>
+                                <button class="btn btn-info pull-right" ng-click="goToRoundWinnerVote()" tooltip-placement="top" uib-tooltip="Просмотреть историю блока">
+                                    <span class="glyphicon glyphicon-book"></span>
+                                </button>
+                            </div>
+                            <div class="panel-heading" ng-if="node.CurrentSuggestion != null">
+                                <button ng-click="suggestionVote(voteEnum.up,node)" tooltip-placement="top" uib-tooltip="Проглосовать за предложение">
                                     <span class="glyphicon glyphicon-thumbs-up"></span>
-                                  </button>
-                                    <button ng-click="openLikeModal(true,item)">
-                                        <span class="text-danger">0</span>
-                                    </button>
-                                  <button ng-click="suggestionVote(voteEnum.down,node)" tooltip-placement="top" uib-tooltip="Проглосовать против предложения">
+                                </button>
+                                <button ng-click="openVoteUsersModal(node.CurrentSuggestion.VotesUp)">
+                                    <span class="text-danger">{{node.CurrentSuggestion.VotesUp.length}}</span>
+                                </button>
+                                <button ng-click="suggestionVote(voteEnum.down,node)" tooltip-placement="top" uib-tooltip="Проглосовать против предложения">
                                     <span class="glyphicon glyphicon-thumbs-down"></span>
-                                  </button>
-                                    <button ng-click="openLikeModal(false,item)">
-                                        <span class="text-danger">0</span>
-                                    </button>
+                                </button>
+                                <button ng-click="openVoteUsersModal(node.CurrentSuggestion.VotesDown)">
+                                    <span class="text-danger">{{node.CurrentSuggestion.VotesDown.length}}</span>
+                                </button>
+                                <button class="btn btn-info pull-right" ng-click="viewComments()" tooltip-placement="top" uib-tooltip="Просмотреть коментарии">
+                                    <span class="glyphicon glyphicon-comment"></span>
+                                </button>
+                            </div>
+                            <div class="panel-body">
 
-                                    <button class="btn btn-info pull-right" ng-click="viewComments()" tooltip-placement="top" uib-tooltip="Просмотреть коментарии">
-                                        <span class="glyphicon glyphicon-comment"></span>
-                                    </button>
+                                <div ng-if="node.CurrentSuggestion.Type == suggestionEnum.edit">
+                                    <textarea readonly cols="30" rows="5">{{node.CurrentSuggestion.Value}}</textarea>
                                 </div>
-                                <div class="panel-body">
-
-                                    <div ng-if="node.CurrentSuggestion.Type == suggestionEnum.edit">
-                                      <textarea readonly cols="30" rows="5" >{{node.CurrentSuggestion.Value}}</textarea>
-                                    </div>
-                                    <textarea readonly cols="30" rows="5">{{node.Name}}</textarea>
-                                </div>
+                                <textarea readonly cols="30" rows="5">{{node.Name}}</textarea>
                             </div>
                         </div>
+                    </div>
                     <td>
                 </tr>
             </tbody>
@@ -74,34 +102,34 @@
             <tbody ui:sortable ng:model="members">
                 <tr ng-repeat="member in members" ng-show="$index != 0" class="warning">
                     <td class="info">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <a href="/#/Users/{{member.Id}} ">
-                                    <span>{{member.FirstName}}</span>
-                                    <span>{{member.LastName}}</span>
-                                </a>
-                            </div>
-                            <div class="panel-body">
-                                <img ng-src="{{member.AvatarFilePath}}" width="80" height="80" />
-                            </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a href="/#/Users/{{member.Id}} ">
+                                <span>{{member.FirstName}}</span>
+                                <span>{{member.LastName}}</span>
+                            </a>
                         </div>
+                        <div class="panel-body">
+                            <img ng-src="{{member.AvatarFilePath}}" width="80" height="80" />
+                        </div>
+                    </div>
                     <td>
                     <td class="col-md-9">
-                        <div ng-repeat="node in member.SuggestedNodes">
-                            <div class="col-md-4">
-                                <div class="panel panel-default ">
-                                    <div class="panel-heading">
-                                        <span>{{$index + 1}}</span>
-                                    </div>
-                                    <div class="panel-body">
-                                      <textarea readonly cols="30" rows="5" >{{node.Name}}</textarea>
-                                    </div>
+                    <div ng-repeat="node in member.SuggestedNodes">
+                        <div class="col-md-4">
+                            <div class="panel panel-default ">
+                                <div class="panel-heading">
+                                    <span>{{$index + 1}}</span>
+                                </div>
+                                <div class="panel-body">
+                                    <textarea readonly cols="30" rows="5">{{node.Name}}</textarea>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     <td>
                 </tr>
             </tbody>
         </table>
-    </div>
+    </div>*@
 </div>

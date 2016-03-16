@@ -7,6 +7,7 @@ using DataLayer.Models;
 using ServiceLayer.Interfaces;
 using ServiceLayer.Models;
 using ServiceLayer.Models.KnowledgeSession;
+using ServiceLayer.Models.KnowledgeSession.Enums;
 
 namespace ServiceLayer.Services
 {
@@ -214,6 +215,7 @@ namespace ServiceLayer.Services
             foreach (var winnerNode in winner.SuggestedNodes)
             {
                 _sessionSuggestionService.UpdateNodeWithSuggestions(sessionId, level, winnerNode);
+                _sessionVoteService.UpdateSuggestionsWithVotes(sessionId, level, winnerNode);
             }
             
             return winner;

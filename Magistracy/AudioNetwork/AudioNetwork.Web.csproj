@@ -278,6 +278,9 @@
     <Content Include="Content\ConversationCovers\DefaultConversation.jpg" />
     <Content Include="Content\Images\DefaultAvatar.png" />
     <Content Include="Content\Images\loading.gif" />
+    <Content Include="Content\Images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\SimpleChat.css" />
     <Content Include="Content\template.html" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="favicon.ico" />
@@ -1093,6 +1096,7 @@
     <Content Include="Scripts\i18n\angular-locale_zh.js" />
     <Content Include="Scripts\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\i18n\angular-locale_zu.js" />
+    <Content Include="Scripts\Libs\Other\jquery-ui.js" />
     <Content Include="Scripts\Libs\Other\jquery.signalR-2.2.0.js" />
     <Content Include="Scripts\Libs\Other\jquery.signalR-2.2.0.min.js" />
     <Content Include="Scripts\Libs\Angular\angular-drag-and-drop-lists.js" />
@@ -1193,13 +1197,14 @@
     <Content Include="Views\KnowledgeSession\RoundWinnerVote.cshtml" />
     <Content Include="Scripts\Libs\Angular\version.json" />
     <Content Include="Views\Suggestion\SuggestionModal.cshtml" />
+    <Content Include="Views\SessionVote\VoteUsersModal.cshtml" />
+    <Content Include="Views\KnowledgeSession\CommentsChat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\SongsAlbumCovers\" />
     <Folder Include="Content\Songs\" />
     <Folder Include="Content\WallItemsImages\" />
-    <Folder Include="Views\SessionVote\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

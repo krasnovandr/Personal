@@ -1,24 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AutoMapper;
 using DataLayer.Interfaces;
 using DataLayer.Models;
 using ServiceLayer.Interfaces;
-using ServiceLayer.Models;
 using ServiceLayer.Models.KnowledgeSession;
+using ServiceLayer.Models.KnowledgeSession.Enums;
 
 namespace ServiceLayer.Services
 {
     public class SessionVoteService : ISessionVoteService
     {
         private readonly IUnitOfWork db;
+        private readonly ISessionSuggestionService _sessionSuggestionService;
 
-        public SessionVoteService(IUnitOfWork db)
+        public SessionVoteService(
+            IUnitOfWork db,
+            ISessionSuggestionService sessionSuggestionService)
         {
             this.db = db;
+            _sessionSuggestionService = sessionSuggestionService;
         }
 
         private const double levelVoteFinishedValue = 60;
@@ -95,18 +97,89 @@ namespace ServiceLayer.Services
                 VoteBy = db.Users.Get(voteViewModel.VoteBy),
             };
 
-            var session = db.KnowledgeSessions.Get(sessionId);
-
-            var node = session.NodesSuggestions.FirstOrDefault(m => m.Id == voteViewModel.Node.Id);
-
-            if (node == null) return false;
-
-            var suggestion = node.Suggestions.FirstOrDefault(m => m.Status == (int) SuggestionStatus.Open);
-
+            var suggestion = GetCurrentSuggestion(voteViewModel.Node.Id, sessionId);
             if (suggestion == null) return false;
 
-            suggestion.Votes.Add(vote);
+            var voteBefore =
+                suggestion.Votes.FirstOrDefault(m => m.VoteBy.Id == voteViewModel.VoteBy);
 
+            if (voteBefore != null)
+            {
+                if (voteBefore.Type == voteViewModel.Type)
+                {
+                    return false;
+                }
+
+                voteBefore.Type = voteViewModel.Type;
+            }
+            else
+            {
+                suggestion.Votes.Add(vote);
+
+            }
+
+            var voteFinished = CheckVoteFinished(suggestion.Votes, sessionId);
+
+            if (voteFinished != VoteResultTypes.NotFinished)
+                suggestion.Status = (int)SuggestionStatus.Closed;
+
+            if (voteFinished == VoteResultTypes.Up)
+            {
+                switch (suggestion.Type)
+                {
+                    case (int)SuggestionTypes.Add: break;
+
+                    case (int)SuggestionTypes.Edit:
+                        var node = suggestion.Nodes.FirstOrDefault(m => m.Id == voteViewModel.Node.Id);
+                        if (node != null) node.Name = suggestion.Value;
+                        break;
+                    case (int)SuggestionTypes.Remove:
+                        RemoveNodeFromSuggestion(voteViewModel.Node.Id, sessionId);
+                        break;
+                }
+            }
+
+            if (voteFinished == VoteResultTypes.Down && suggestion.Type == (int)SuggestionTypes.Add)
+            {
+                RemoveNodeFromSuggestion(voteViewModel.Node.Id, sessionId);
+            }
+
+            return SaveToDb();
+        }
+
+        private void RemoveNodeFromSuggestion(int nodeId, int sessionId)
+        {
+            var session = db.KnowledgeSessions.Get(sessionId);
+            var nodeToRemove =
+                session.NodesSuggestions.FirstOrDefault(m => m.Id == nodeId);
+            if (nodeToRemove != null)
+                session.NodesSuggestions.Remove(nodeToRemove);
+        }
+
+        private VoteResultTypes CheckVoteFinished(ICollection<Vote> votes, int sessionId)
+        {
+            var sessionUsers = db.KnowledgeSessions.Get(sessionId).Users.Count;
+
+            var votesUp = votes.Where(m => m.Type == (int)VoteTypes.Up);
+            var votesDown = votes.Where(m => m.Type == (int)VoteTypes.Down);
+
+            double coefficientUp = (double)votesUp.Count() / sessionUsers;
+            if (coefficientUp * 100 >= levelVoteFinishedValue)
+            {
+                return VoteResultTypes.Up;
+            }
+
+            double coefficientDown = (double)votesDown.Count() / sessionUsers;
+            if (coefficientDown * 100 >= (100 - levelVoteFinishedValue))
+            {
+                return VoteResultTypes.Down;
+            }
+
+            return VoteResultTypes.NotFinished;
+        }
+
+        private bool SaveToDb()
+        {
             try
             {
                 db.Save();
@@ -116,6 +189,35 @@ namespace ServiceLayer.Services
             {
                 return false;
             }
+        }
+
+        private Suggestion GetCurrentSuggestion(int nodeId, int sessionId)
+        {
+            var session = db.KnowledgeSessions.Get(sessionId);
+
+            var node = session.NodesSuggestions.FirstOrDefault(m => m.Id == nodeId);
+
+            if (node == null) return null;
+
+            var suggestion = node.Suggestions.FirstOrDefault(m => m.Status == (int)SuggestionStatus.Open);
+
+            if (suggestion == null) return null;
+
+            return suggestion;
+        }
+
+        public bool UpdateSuggestionsWithVotes(int sessionId, int? level, NodeViewModel winnerNode)
+        {
+            var suggestion = GetCurrentSuggestion(winnerNode.Id, sessionId);
+            if (suggestion == null) return false;
+
+
+            var upVotes = suggestion.Votes.Where(m => m.Type == (int)VoteTypes.Up);
+            var downVotes = suggestion.Votes.Where(m => m.Type == (int)VoteTypes.Down);
+            winnerNode.CurrentSuggestion.VotesDown = Mapper.Map<IEnumerable<Vote>, List<VoteViewModel>>(downVotes);
+            winnerNode.CurrentSuggestion.VotesUp = Mapper.Map<IEnumerable<Vote>, List<VoteViewModel>>(upVotes);
+
+            return true;
         }
     }
 }

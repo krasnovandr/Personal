@@ -6,6 +6,7 @@ using DataLayer.Interfaces;
 using DataLayer.Models;
 using ServiceLayer.Interfaces;
 using ServiceLayer.Models.KnowledgeSession;
+using ServiceLayer.Models.KnowledgeSession.Enums;
 
 namespace ServiceLayer.Services
 {

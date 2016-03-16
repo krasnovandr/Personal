@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using DataLayer.Models;
 using ServiceLayer.Models.KnowledgeSession;
 
 namespace ServiceLayer.Interfaces

@@ -31,6 +31,7 @@ namespace AudioNetwork.Web
                       "~/Content/bootstrap.css",
                       "~/Content/jasny-bootstrap.css",
                       "~/Content/bootstrap-fileinput/css/fileinput.css",
+                      "~/Content/jquery-ui.css",
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/AngularControllers")

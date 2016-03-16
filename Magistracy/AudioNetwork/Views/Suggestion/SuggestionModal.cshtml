@@ -32,11 +32,11 @@
                     <label for="comment">Коментарий</label>
                     <textarea class="form-control" ng-model="comment" name="comment" id="comment" cols="30" rows="7"></textarea>
                 </div>
-                <button ng-disabled="suggestionForm.suggestion.$error.required"
-                        class="btn btn-default"
-                        ng-click="makeSuggestion(suggestion,comment)">
-                    Предложить
-                </button>
+              <button ng-disabled="suggestedType !== suggestionEnum.remove && suggestionForm.suggestion.$error.required"
+                      class="btn btn-default"
+                      ng-click="makeSuggestion(suggestion,comment)">
+                Предложить
+              </button>
             </form>
         </div>
     </div>
