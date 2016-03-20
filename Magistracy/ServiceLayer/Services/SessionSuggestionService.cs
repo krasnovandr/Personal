@@ -94,6 +94,46 @@ namespace ServiceLayer.Services
 
         }
 
+        public bool AddComment(int sessionId, string comment, int nodeId, string userId)
+        {
+            var session = _db.KnowledgeSessions.Get(sessionId);
+            var node = session.NodesSuggestions.FirstOrDefault(m => m.Id == nodeId);
+            if (node == null) return false;
+
+            var suggestion = node.Suggestions.FirstOrDefault(m => m.Status == (int)SuggestionStatus.Open);
+           
+            if (suggestion == null) return false;
+            
+            suggestion.Comments.Add(new Comment
+            {
+                Date = DateTime.Now,
+                CommentBy = _db.Users.Get(userId),
+                Value = comment,
+            });
+
+            try
+            {
+                _db.Save();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public List<CommentViewModel> GetComments(int sessionId, int nodeId)
+        {
+            var session = _db.KnowledgeSessions.Get(sessionId);
+            var node = session.NodesSuggestions.FirstOrDefault(m => m.Id == nodeId);
+            if (node == null) return null;
+           
+            var suggestion = node.Suggestions.FirstOrDefault(m => m.Status == (int)SuggestionStatus.Open);
+           
+            if (suggestion == null) return null;
+            
+            return Mapper.Map<ICollection<Comment>, List<CommentViewModel>>(suggestion.Comments);
+        }
 
     }
 }

@@ -245,6 +245,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KnowledgeSessionController.cs" />
     <Compile Include="Controllers\MusicController.cs" />
+    <Compile Include="Controllers\NodeHistoryController.cs" />
     <Compile Include="Controllers\PlayListController.cs" />
     <Compile Include="Controllers\RecognitionController.cs" />
     <Compile Include="Controllers\SessionVoteController.cs" />
@@ -1199,6 +1200,7 @@
     <Content Include="Views\Suggestion\SuggestionModal.cshtml" />
     <Content Include="Views\SessionVote\VoteUsersModal.cshtml" />
     <Content Include="Views\KnowledgeSession\CommentsChat.cshtml" />
+    <Content Include="Views\NodeHistory\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

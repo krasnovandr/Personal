@@ -47,7 +47,8 @@
                 //$rootScope.logState.UserName = answer.UserName;
                 //$rootScope.logState.LoggedIn = answer.LoggedIn;
                 //$rootScope.logState.Id = answer.Id;
-                $rootScope.logState = answer;
+              $rootScope.logState = answer;
+
                 //$location.path('/Home');
             } else {
                 $location.path('/Login');

@@ -42,12 +42,15 @@ namespace ServiceLayer.Helpers
                 .ForMember(dest => dest.SuggetedByUser, opt => opt.MapFrom(src => src.SuggetedBy))
                 .ForMember(dest => dest.VoteByUser, opt => opt.MapFrom(src => src.VoteBy));
             Mapper.CreateMap<Suggestion, SuggestionViewModel>()
-                .ForMember(dest => dest.SuggestedBy, opt => opt.MapFrom(src => src.SuggestedBy));
+                .ForMember(dest => dest.SuggestedBy, opt => opt.MapFrom(src => src.SuggestedBy))
+                .ForMember(dest => dest.Comments, opt => opt.MapFrom(src => src.Comments));
 
             Mapper.CreateMap<Vote, VoteViewModel>()
                 .ForMember(dest => dest.VoteBy, opt => opt.MapFrom(src => src.VoteBy.Id))
                 .ForMember(dest => dest.VoteByUser, opt => opt.MapFrom(src => src.VoteBy));
 
+            Mapper.CreateMap<Comment, CommentViewModel>()
+                .ForMember(dest => dest.CommentBy, opt => opt.MapFrom(src => src.CommentBy));
 
         }
     }

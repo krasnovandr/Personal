@@ -79,6 +79,7 @@
     <Compile Include="Interfaces\IUploadService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Interfaces\IWallService.cs" />
+    <Compile Include="Models\KnowledgeSession\CommentViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\Enums\VoteResultTypes.cs" />
     <Compile Include="Models\KnowledgeSession\NodeSuggestionViewModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />

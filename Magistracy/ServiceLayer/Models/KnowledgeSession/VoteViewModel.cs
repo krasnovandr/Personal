@@ -13,6 +13,8 @@ namespace ServiceLayer.Models.KnowledgeSession
         public UserViewModel VoteByUser { get; set; }
         public string VoteBy { get; set; }
         public DateTime VoteDate { get; set; }
-        public NodeViewModel Node { get; set; }
+        public int NodeId { get; set; }
+
+        //public NodeViewModel Node { get; set; }
     }
 }

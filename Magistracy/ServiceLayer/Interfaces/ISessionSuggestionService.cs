@@ -8,5 +8,7 @@ namespace ServiceLayer.Interfaces
     {
         bool MakeNodeSuggestion(NodeSuggestionViewModel nodeSuggestionViewModel);
         void UpdateNodeWithSuggestions(int sessionId, int? level, NodeViewModel winnerNode);
+        bool AddComment(int sessionId, string comment, int nodeView, string getUserId);
+        List<CommentViewModel> GetComments(int sessionId, int nodeId);
     }
 }

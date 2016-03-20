@@ -18,5 +18,6 @@ namespace ServiceLayer.Models.KnowledgeSession
 
         public List<VoteViewModel> VotesUp { get; set; }
         public List<VoteViewModel> VotesDown { get; set; }
+        public List<CommentViewModel> Comments { get; set; }
     }
 }

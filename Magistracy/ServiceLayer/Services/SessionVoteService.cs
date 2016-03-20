@@ -97,7 +97,7 @@ namespace ServiceLayer.Services
                 VoteBy = db.Users.Get(voteViewModel.VoteBy),
             };
 
-            var suggestion = GetCurrentSuggestion(voteViewModel.Node.Id, sessionId);
+            var suggestion = GetCurrentSuggestion(voteViewModel.NodeId, sessionId);
             if (suggestion == null) return false;
 
             var voteBefore =
@@ -130,18 +130,18 @@ namespace ServiceLayer.Services
                     case (int)SuggestionTypes.Add: break;
 
                     case (int)SuggestionTypes.Edit:
-                        var node = suggestion.Nodes.FirstOrDefault(m => m.Id == voteViewModel.Node.Id);
+                        var node = suggestion.Nodes.FirstOrDefault(m => m.Id == voteViewModel.NodeId);
                         if (node != null) node.Name = suggestion.Value;
                         break;
                     case (int)SuggestionTypes.Remove:
-                        RemoveNodeFromSuggestion(voteViewModel.Node.Id, sessionId);
+                        RemoveNodeFromSuggestion(voteViewModel.NodeId, sessionId);
                         break;
                 }
             }
 
             if (voteFinished == VoteResultTypes.Down && suggestion.Type == (int)SuggestionTypes.Add)
             {
-                RemoveNodeFromSuggestion(voteViewModel.Node.Id, sessionId);
+                RemoveNodeFromSuggestion(voteViewModel.NodeId, sessionId);
             }
 
             return SaveToDb();

@@ -16,6 +16,10 @@
         down: 1,
       };
       $scope.votesBy = [];
+      $scope.showComments = false;
+      $scope.comments = [];
+      $scope.commentsToNode = {};
+
       knowledgeSessionService.getOrderedMembers($scope.sessionId).success(function (orderedMembers) {
         if (orderedMembers.length != 0) {
           $scope.members = orderedMembers;
@@ -68,6 +72,7 @@
 
       $scope.openVoteUsersModal = function (members) {
         $scope.votesBy = members;
+
         var modalInstance = $uibModal.open({
           templateUrl: 'SessionVote/VoteUsersModal',
           size: 'lg',
@@ -84,7 +89,7 @@
 
         var suggestionVoteModel = {
           Type: type,
-          Node: node,
+          NodeId: node.Id,
           VoteBy: $rootScope.logState.Id
         };
 
@@ -94,26 +99,34 @@
       };
 
 
-      var panelList = $('#draggablePanelList');
-      panelList.draggable({
-        containment: "window"
-
-        //panelList.sortable({
-        //  // Only make the .panel-heading child elements support dragging.
-        //  // Omit this to make then entire <li>...</li> draggable.
-        //  handle: '.panel-heading',
-        //  update: function () {
-        //    $('.panel', panelList).each(function (index, elem) {
-        //      var $listItem = $(elem),
-        //          newIndex = $listItem.index();
-
-        //      // Persist the new indices.
-        //    });
-        //  }
-        //});
-      });
-
-      panelList.resizable();
 
 
+
+      $scope.viewComments = function (node) {
+
+        $scope.showComments = true;
+        $scope.commentsToNode = node;
+        $scope.comments = node.CurrentSuggestion.Comments;
+        var panelList = $('#draggablePanelList');
+        panelList.draggable({
+          containment: "window"
+        });
+        //panelList.css({ 'top': -307, 'left': -122 });
+        panelList.resizable();
+      };
+
+      $scope.closeComments = function () {
+        $scope.showComments = false;
+        $scope.commentsToNode = {};
+      };
+
+      $scope.addComment = function (comment) {
+        knowledgeSessionService.addComment(comment, $scope.sessionId, $scope.commentsToNode.Id)
+          .success(function (result) {
+            if (result) {
+              $scope.comments = result;
+              $scope.comments = "";
+            }
+          });
+      };
     });
