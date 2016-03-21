@@ -10,10 +10,13 @@ namespace AudioNetwork.Web.Controllers
     {
         private readonly IHubContext _hubContext;
         private readonly ISessionVoteService _sessionVoteService;
+        private readonly IHistoryService _historyService;
 
-        public SessionVoteController(ISessionVoteService sessionVoteService)
+        public SessionVoteController(
+            ISessionVoteService sessionVoteService, IHistoryService historyService) 
         {
             _sessionVoteService = sessionVoteService;
+            _historyService = historyService;
             _hubContext = GlobalHost.ConnectionManager.GetHubContext<KnowledgeSessionHub>();
         }
 
@@ -25,10 +28,12 @@ namespace AudioNetwork.Web.Controllers
         public JsonResult LevelVote(LevelVoteViewModel levelVoteModel)
         {
             var result = _sessionVoteService.AddLevelVote(levelVoteModel);
-            var finished = _sessionVoteService.CheckLevelVoteFinished(levelVoteModel.SessionId, levelVoteModel.Level);
+            var winner = _sessionVoteService.CheckLevelVoteFinished(levelVoteModel.SessionId, levelVoteModel.Level);
 
-            if (finished)
+
+            if (string.IsNullOrEmpty(winner) == false)
             {
+                _historyService.UpdateHistoryWithWinner(levelVoteModel.SessionId, levelVoteModel.Level, winner);
                 _hubContext.Clients.All.levelVoteFinished(levelVoteModel.SessionId, levelVoteModel.Level);
             }
             return Json(result, JsonRequestBehavior.AllowGet);

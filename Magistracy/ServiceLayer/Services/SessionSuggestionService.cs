@@ -24,9 +24,9 @@ namespace ServiceLayer.Services
             var session = _db.KnowledgeSessions.Get(nodeSuggestionViewModel.SessionId);
             SessionNodeSuggestions node;
 
-            if (nodeSuggestionViewModel.Node != null)
+            if (nodeSuggestionViewModel.NodeId != null)
             {
-                node = session.NodesSuggestions.FirstOrDefault(m => m.Id == nodeSuggestionViewModel.Node.Id);
+                node = session.NodesSuggestions.FirstOrDefault(m => m.Id == nodeSuggestionViewModel.NodeId);
             }
             else
             {

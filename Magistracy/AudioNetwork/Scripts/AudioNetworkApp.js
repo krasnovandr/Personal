@@ -259,8 +259,9 @@ var config = function ($routeProvider) {
       templateUrl: 'KnowledgeSession/RoundLevelVote',
     }).when('/KnowledgeSession/RoundWinnerVote/:id', {
       templateUrl: 'KnowledgeSession/RoundWinnerVote',
+    }).when('/NodeHistory', {
+      templateUrl: 'NodeHistory/Index',
     }).
-
 
      otherwise({
        redirectTo: '/Home'

@@ -1,1 +1,57 @@
-﻿
+﻿<div ng-controller="NodeHistoryController" class="container">
+  <h4 class="col-md-offset-4">История изменения блока <em><span class="text-info">{{nodeHistory[0].Node.Name}}</span></em></h4>
+  <div ng-repeat="historyRecord in nodeHistory">
+
+    <div class="row ">
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <span class="label label-info">{{$index + 1}}</span>
+            {{historyRecord.Value}}
+          </div>
+          <div class="panel-footer">
+            <em><span class="text-primary">Утверждено:</span></em>
+            <time class="text-muted"><i>{{historyRecord.Date | ctime | date:'MMM dd yyyy HH:mm:ss'}}</i></time>
+
+          </div>
+        </div>
+      </div>
+      @*<svg><line id="line1" /></svg>*@
+      <div class="col-md-8 ">
+        <table class="table table-condensed">
+          <tr class="success" ng-repeat="suggestion in historyRecord.Suggestions"
+              ng-class="{'success':$index === 0,
+                           'danger' :$index !== 0}">
+            <td><span class="label label-default">{{$index + 1}}</span></td>
+            <td>
+              <img ng-src="{{suggestion.SuggestedBy.AvatarFilePath}}" width="50" height="50" />
+
+              <span>{{suggestion.SuggestedBy.FirstName}}</span>
+              <span>{{suggestion.SuggestedBy.LastName}}</span>
+            </td>
+            <td>
+              <em><span class="text-primary">Предложено:</span></em><br/>
+              <time class="text-muted"><i>{{suggestion.SuggestionDate | ctime | date:'MMM dd yyyy HH:mm:ss'}}</i></time>
+            </td>
+            <td>
+              <span>{{suggestion.Value}}</span>
+            </td>
+            <td>
+              <button ng-click="openVoteUsersModal(suggestion.VotesUp)">
+                <span class="text-danger">{{suggestion.VotesUp.length}}</span>
+              </button>
+              <button ng-click="openVoteUsersModal(suggestion.VotesDown)">
+                <span class="text-danger">{{suggestion.VotesDown.length}}</span>
+              </button>
+            </td>
+            <td>
+              <button class="btn btn-info pull-right" ng-click="viewComments(suggestion.Comments,false,historyRecord.Value)" tooltip-placement="top" uib-tooltip="Просмотреть коментарии">
+                <span class="glyphicon glyphicon-comment"></span>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div><div ng-include="'Content/Templates/CommentsChat.html'"></div>
+</div>

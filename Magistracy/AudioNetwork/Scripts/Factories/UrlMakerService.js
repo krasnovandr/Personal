@@ -4,8 +4,8 @@
       $location.path('/KnowledgeSession/RoundWinnerVote/' + sessionId).search({ level: level });
     },
 
-    getNodeHistory: function (sessionId, nodeId) {
-      $location.path('/NodeHistory/Get').search({ sessionId: sessionId, nodeId: nodeId });
+    viewNodeHistory: function (sessionId, nodeId) {
+      $location.path('/NodeHistory').search({ sessionId: sessionId, nodeId: nodeId });
     },
   };
 });

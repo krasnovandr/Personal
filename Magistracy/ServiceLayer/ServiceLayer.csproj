@@ -71,6 +71,7 @@
     <Compile Include="Helpers\SharpZipLibHelper .cs" />
     <Compile Include="Helpers\StringHelper.cs" />
     <Compile Include="Interfaces\IConversationService.cs" />
+    <Compile Include="Interfaces\IHistoryService.cs" />
     <Compile Include="Interfaces\IKnowledgeSessionService.cs" />
     <Compile Include="Interfaces\IMusicService.cs" />
     <Compile Include="Interfaces\IPlaylistService.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Interfaces\IWallService.cs" />
     <Compile Include="Models\KnowledgeSession\CommentViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\Enums\VoteResultTypes.cs" />
+    <Compile Include="Models\KnowledgeSession\NodeHistoryViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\NodeSuggestionViewModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ConversationViewModel.cs" />
@@ -106,6 +108,7 @@
     <Compile Include="Services\ConversationService.cs" />
     <Compile Include="Helpers\FilePathContainer.cs" />
     <Compile Include="Interfaces\ISessionSuggestionService.cs" />
+    <Compile Include="Services\HistoryService.cs" />
     <Compile Include="Services\KnowledgeSessionService.cs" />
     <Compile Include="Services\MusicService.cs" />
     <Compile Include="Services\PlaylistService.cs" />

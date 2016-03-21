@@ -13,14 +13,13 @@ namespace ServiceLayer.Services
     public class SessionVoteService : ISessionVoteService
     {
         private readonly IUnitOfWork db;
-        private readonly ISessionSuggestionService _sessionSuggestionService;
+        private readonly IHistoryService _historyService;
 
         public SessionVoteService(
-            IUnitOfWork db,
-            ISessionSuggestionService sessionSuggestionService)
+            IUnitOfWork db, IHistoryService historyService)
         {
             this.db = db;
-            _sessionSuggestionService = sessionSuggestionService;
+            _historyService = historyService;
         }
 
         private const double levelVoteFinishedValue = 60;
@@ -46,8 +45,9 @@ namespace ServiceLayer.Services
             return levelVote.Id;
         }
 
-        public bool CheckLevelVoteFinished(int sessionId, int level)
+        public string CheckLevelVoteFinished(int sessionId, int level)
         {
+            bool voteFinished = false;
             var levelVotes = db.LevelVotes.GetAll()
                 .Where(m => m.Level == level && m.SessionId == sessionId);
 
@@ -55,17 +55,22 @@ namespace ServiceLayer.Services
 
             var firstGroup = usersGroup.FirstOrDefault();
             var sessionUsers = db.KnowledgeSessions.Get(sessionId).Users;
-            if (firstGroup != null)
+            if (firstGroup == null) return null;
+
+            double coefficient = (double)firstGroup.Count() / sessionUsers.Count;
+            voteFinished = coefficient * 100 >= levelVoteFinishedValue;
+
+
+            if (voteFinished)
             {
-                double coefficient = (double)firstGroup.Count() / sessionUsers.Count;
-                if (coefficient * 100 >= levelVoteFinishedValue)
-                {
-                    return true;
-                }
+                var firstOrDefault = firstGroup.FirstOrDefault();
+                if (firstOrDefault != null) return firstOrDefault.SuggetedBy.Id;
+                return null;
             }
-
-
-            return false;
+            else
+            {
+                return null;
+            }
         }
 
         public LevelVoteViewModel CheckUserForLevelVote(int sessionId, int level, string id)
@@ -120,18 +125,25 @@ namespace ServiceLayer.Services
 
             var voteFinished = CheckVoteFinished(suggestion.Votes, sessionId);
 
-            if (voteFinished != VoteResultTypes.NotFinished)
-                suggestion.Status = (int)SuggestionStatus.Closed;
+            //if (voteFinished != VoteResultTypes.NotFinished)
+            //    suggestion.Status = (int)SuggestionStatus.Closed;
 
             if (voteFinished == VoteResultTypes.Up)
             {
+                suggestion.Status = (int)SuggestionStatus.Accepted;
                 switch (suggestion.Type)
                 {
                     case (int)SuggestionTypes.Add: break;
 
                     case (int)SuggestionTypes.Edit:
                         var node = suggestion.Nodes.FirstOrDefault(m => m.Id == voteViewModel.NodeId);
-                        if (node != null) node.Name = suggestion.Value;
+                        if (node != null)
+                        {
+                            node.Name = suggestion.Value;
+                            _historyService.AddRecord(sessionId, node.Id, node.Name, suggestion.SuggestedBy.Id, suggestion.Id);
+
+                        }
+
                         break;
                     case (int)SuggestionTypes.Remove:
                         RemoveNodeFromSuggestion(voteViewModel.NodeId, sessionId);
@@ -139,9 +151,15 @@ namespace ServiceLayer.Services
                 }
             }
 
-            if (voteFinished == VoteResultTypes.Down && suggestion.Type == (int)SuggestionTypes.Add)
+
+            if (voteFinished == VoteResultTypes.Down)
             {
-                RemoveNodeFromSuggestion(voteViewModel.NodeId, sessionId);
+                suggestion.Status = (int)SuggestionStatus.Declined;
+                if (suggestion.Type == (int)SuggestionTypes.Add)
+                {
+                    RemoveNodeFromSuggestion(voteViewModel.NodeId, sessionId);
+
+                }
             }
 
             return SaveToDb();

@@ -33,6 +33,7 @@ namespace DataLayer.EF
         public DbSet<Suggestion> Suggestions { get; set; }
         public DbSet<Vote> Votes { get; set; }
         public DbSet<LevelVote> LevelVotes { get; set; }
+        public DbSet<NodeHistory> NodeHistory { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

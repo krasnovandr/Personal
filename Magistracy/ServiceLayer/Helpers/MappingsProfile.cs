@@ -7,6 +7,7 @@ using AutoMapper;
 using DataLayer.Models;
 using ServiceLayer.Models;
 using ServiceLayer.Models.KnowledgeSession;
+using ServiceLayer.Models.KnowledgeSession.Enums;
 
 namespace ServiceLayer.Helpers
 {
@@ -43,7 +44,9 @@ namespace ServiceLayer.Helpers
                 .ForMember(dest => dest.VoteByUser, opt => opt.MapFrom(src => src.VoteBy));
             Mapper.CreateMap<Suggestion, SuggestionViewModel>()
                 .ForMember(dest => dest.SuggestedBy, opt => opt.MapFrom(src => src.SuggestedBy))
-                .ForMember(dest => dest.Comments, opt => opt.MapFrom(src => src.Comments));
+                .ForMember(dest => dest.Comments, opt => opt.MapFrom(src => src.Comments))
+                .ForMember(dest => dest.VotesUp, opt => opt.MapFrom(src => src.Votes.Where(m => m.Type == (int)VoteTypes.Up)))
+                .ForMember(dest => dest.VotesDown, opt => opt.MapFrom(src => src.Votes.Where(m => m.Type == (int)VoteTypes.Down)));
 
             Mapper.CreateMap<Vote, VoteViewModel>()
                 .ForMember(dest => dest.VoteBy, opt => opt.MapFrom(src => src.VoteBy.Id))

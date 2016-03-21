@@ -2,7 +2,8 @@
 {
     public enum SuggestionStatus
     {
-        Closed,
+        Accepted,
+        Declined,
         Open  
     }
 }

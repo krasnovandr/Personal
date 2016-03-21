@@ -125,8 +125,14 @@
         params: { sessionId: sessionId }
       });
     },
-
-
+    
+    getHitory: function (sessionId,nodeId) {
+      return $http({
+        url: 'NodeHistory/GetHistory',
+        method: "GET",
+        params: { sessionId: sessionId, nodeId: nodeId }
+      });
+    },
 
   };
 

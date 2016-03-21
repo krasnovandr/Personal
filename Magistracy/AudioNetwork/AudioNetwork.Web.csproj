@@ -283,11 +283,13 @@
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\SimpleChat.css" />
     <Content Include="Content\template.html" />
+    <Content Include="Content\Templates\CommentsChat.html" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\Controllers\KnowledgeSession\NodeHistoryController.js" />
     <Content Include="Scripts\Libs\Angular\angular-animate.js" />
     <Content Include="Scripts\Libs\Angular\angular-animate.min.js" />
     <Content Include="Scripts\Libs\Angular\angular-aria.js" />

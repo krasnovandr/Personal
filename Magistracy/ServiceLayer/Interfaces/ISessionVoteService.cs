@@ -12,7 +12,7 @@ namespace ServiceLayer.Interfaces
     public interface ISessionVoteService:IDisposable
     {
         int AddLevelVote(LevelVoteViewModel levelVote);
-        bool CheckLevelVoteFinished(int sessionId, int level);
+        string CheckLevelVoteFinished(int sessionId, int level);
         LevelVoteViewModel CheckUserForLevelVote(int session, int level, string id);
         List<LevelVoteViewModel> GetVoteResults(int sessionId, int value, string id);
         bool AddSuggestionVote(VoteViewModel voteViewModel, int sessionId);

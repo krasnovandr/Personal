@@ -1,5 +1,5 @@
 ﻿angular.module('AudioNetworkApp')
-    .controller('RoundWinnerVoteController', function ($, $scope, $http, $location, $rootScope, knowledgeSessionService, userService, $routeParams, $uibModal) {
+    .controller('RoundWinnerVoteController', function ($, $scope, $http, $location, $rootScope, knowledgeSessionService, userService, $routeParams, $uibModal, urlMakerService) {
 
       $scope.sessionId = $routeParams.id;
       $scope.members = [];
@@ -17,8 +17,10 @@
       };
       $scope.votesBy = [];
       $scope.showComments = false;
+      $scope.newComment = {value:''};
       $scope.comments = [];
-      $scope.commentsToNode = {};
+      $scope.nodeName = "";
+      $scope.newCommentAvailable = true;
 
       knowledgeSessionService.getOrderedMembers($scope.sessionId).success(function (orderedMembers) {
         if (orderedMembers.length != 0) {
@@ -53,7 +55,7 @@
           var suggestionModel = {
             SuggestedBy: $rootScope.logState.Id,
             Type: $scope.suggestedType,
-            Node: $scope.nodeForChanges,
+            NodeId: $scope.nodeForChanges == null ? null : $scope.nodeForChanges.Id,
             Suggestion: suggestion,
             Comment: comment,
             SessionId: $scope.sessionId,
@@ -103,15 +105,14 @@
 
 
       $scope.viewComments = function (node) {
-
         $scope.showComments = true;
+        $scope.nodeName = node.Name;
         $scope.commentsToNode = node;
         $scope.comments = node.CurrentSuggestion.Comments;
         var panelList = $('#draggablePanelList');
         panelList.draggable({
           containment: "window"
         });
-        //panelList.css({ 'top': -307, 'left': -122 });
         panelList.resizable();
       };
 
@@ -120,13 +121,18 @@
         $scope.commentsToNode = {};
       };
 
-      $scope.addComment = function (comment) {
-        knowledgeSessionService.addComment(comment, $scope.sessionId, $scope.commentsToNode.Id)
+      $scope.addComment = function (newValue) {
+        knowledgeSessionService.addComment(newValue, $scope.sessionId, $scope.commentsToNode.Id)
           .success(function (result) {
             if (result) {
               $scope.comments = result;
-              $scope.comments = "";
+              //$scope.newComment = '';
+              $scope.newComment.Value = '';
             }
           });
+      };
+
+      $scope.viewHistory = function (node) {
+        urlMakerService.viewNodeHistory($scope.sessionId, node.Id);
       };
     });

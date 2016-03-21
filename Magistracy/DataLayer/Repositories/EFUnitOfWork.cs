@@ -12,6 +12,16 @@ namespace DataLayer.Repositories
         private KnowledgeSessionRepository _knowledgeSessionRepository;
         private UserRepository _userRepository;
         private LevelVoteRepository _levelVoteRepository;
+        private NodeHistoryRepository _nodeHistoryRepository;
+
+        public IRepository<NodeHistory> NodesHistory
+        {
+            get
+            {
+                return _nodeHistoryRepository ??
+                    (_nodeHistoryRepository = new NodeHistoryRepository(db));
+            }
+        }
 
         public IRepository<KnowledgeSession> KnowledgeSessions
         {
