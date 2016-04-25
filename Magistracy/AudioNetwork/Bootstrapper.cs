@@ -4,6 +4,7 @@ using DataLayer.Models;
 using DataLayer.Repositories;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Practices.Unity;
+using ServiceLayer.Helpers;
 using ServiceLayer.Interfaces;
 using ServiceLayer.Services;
 using Unity.Mvc4;
@@ -49,9 +50,13 @@ namespace AudioNetwork.Web
             container.RegisterType<IUploadService, UploadService>();
             container.RegisterType<IUnitOfWork, EfUnitOfWork>();
             container.RegisterType<IKnowledgeSessionService, KnowledgeSessionService>();
-            container.RegisterType<ISessionVoteService, SessionVoteService>();
+            container.RegisterType<IKnowledgeSessionMemberService, KnowledgeSessionMemberService>();
+            container.RegisterType<ILevelVoteService, LevelVoteService>();
+            container.RegisterType<ISuggestionVoteService, SuggestionVoteService>();
             container.RegisterType<ISessionSuggestionService, SessionSuggestionService>();
             container.RegisterType<IHistoryService, HistoryService>();
+            container.RegisterType<IVoteFinishHelper, VoteFinishHelper>();
+            container.RegisterType<INodeService, NodeService>();
         }
     }
 }

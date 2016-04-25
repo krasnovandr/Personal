@@ -4,6 +4,7 @@
       $scope.sessionId = $routeParams.id;
       $scope.members = [];
       $scope.level = $routeParams.level;
+      $scope.parentId = $routeParams.parentId;
       $scope.winner = {};
       $scope.suggestionEnum = {
         add: 0,
@@ -22,7 +23,7 @@
       $scope.nodeName = "";
       $scope.newCommentAvailable = true;
 
-      knowledgeSessionService.getOrderedMembers($scope.sessionId).success(function (orderedMembers) {
+      knowledgeSessionService.getOrderedMembers($scope.sessionId, $scope.parentId).success(function (orderedMembers) {
         if (orderedMembers.length != 0) {
           $scope.members = orderedMembers;
         }
@@ -30,7 +31,7 @@
       });
 
       $scope.updateWinner = function () {
-        knowledgeSessionService.getWinner($scope.sessionId).success(function (winner) {
+        knowledgeSessionService.getWinner($scope.sessionId, $scope.parentId).success(function (winner) {
           $scope.winner = winner;
         });
       };
@@ -60,7 +61,8 @@
             Comment: comment,
             SessionId: $scope.sessionId,
             Level: $scope.level,
-            WinnerId: $scope.winner.Id
+            WinnerId: $scope.winner.Id,
+            ParentId: $scope.parentId
           };
 
           knowledgeSessionService.makeSuggestion(suggestionModel).success(function (result) {

@@ -1,9 +1,11 @@
 ﻿angular.module('AudioNetworkApp')
-    .controller('RoundController', function ($, $scope, $http, $location, $rootScope, knowledgeSessionService, userService, $routeParams, $timeout) {
+    .controller('RoundController', function ($, $scope, $http, $location, $rootScope, knowledgeSessionService, userService, $routeParams, $timeout, urlMakerService) {
 
         $scope.session = {};
         $scope.rootNode = {};
         $scope.sessionId = $routeParams.id;
+        $scope.parentId = $routeParams.parentId;
+        $scope.level = $routeParams.level;
         $scope.usersMode = false;
         $scope.nodes = [];
         $scope.curentNodeIndex = 0;
@@ -15,17 +17,16 @@
                 $scope.viewRoundLevelVote();
             }
         });
-        knowledgeSessionService.getLevelNodes($scope.sessionId, 0).success(function (result) {
-            $scope.rootNode = result[0];
+        knowledgeSessionService.getNode($scope.sessionId, $scope.parentId).success(function (result) {
+            $scope.rootNode = result;
         });
-        knowledgeSessionService.checkUserSuggestion($scope.sessionId).success(function (result) {
+        knowledgeSessionService.checkUserSuggestion($scope.sessionId, $scope.parentId).success(function (result) {
             $scope.usersMode = result;
             if (result) {
-                knowledgeSessionService.getMembers($scope.sessionId).success(function (members) {
+              knowledgeSessionService.getMembers($scope.sessionId, $scope.parentId).success(function (members) {
                     $scope.members = members;
                 });
             }
-
         });
 
         $rootScope.myHub = $.connection.knowledgeSessionHub;
@@ -51,9 +52,9 @@
         $scope.addNewNode = function (newNodeName) {
             var node = {
                 Name: newNodeName,
-                Level: 1,
+                Level: $scope.level,
             };
-            node.ParentId = node.Level - 1;
+            node.ParentId = $scope.parentId;
             $scope.newNodeName = "";
             $scope.nodes.push(node);
         };
@@ -72,8 +73,8 @@
                 }
             });
         };
-
+        
         $scope.viewRoundLevelVote = function () {
-            $location.path('/KnowledgeSession/RoundLevelVote/' + $scope.sessionId).search({ level: '1' });
+          urlMakerService.viewRoundLevelVote($scope.sessionId, $scope.level, $scope.parentId);
         };
     });

@@ -139,6 +139,18 @@
     <Compile Include="Migrations\201603202139406_UpdateHistoryTable1.Designer.cs">
       <DependentUpon>201603202139406_UpdateHistoryTable1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603231857079_UpdateLevelVoteTable.cs" />
+    <Compile Include="Migrations\201603231857079_UpdateLevelVoteTable.Designer.cs">
+      <DependentUpon>201603231857079_UpdateLevelVoteTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603231901203_UpdateTablesWithParent.cs" />
+    <Compile Include="Migrations\201603231901203_UpdateTablesWithParent.Designer.cs">
+      <DependentUpon>201603231901203_UpdateTablesWithParent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603232135266_LevelVoteTableUpdates.cs" />
+    <Compile Include="Migrations\201603232135266_LevelVoteTableUpdates.Designer.cs">
+      <DependentUpon>201603232135266_LevelVoteTableUpdates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\LevelVote.cs" />
     <Compile Include="Models\NodeHistory.cs" />
@@ -735,6 +747,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603202139406_UpdateHistoryTable1.resx">
       <DependentUpon>201603202139406_UpdateHistoryTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603231857079_UpdateLevelVoteTable.resx">
+      <DependentUpon>201603231857079_UpdateLevelVoteTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603231901203_UpdateTablesWithParent.resx">
+      <DependentUpon>201603231901203_UpdateTablesWithParent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603232135266_LevelVoteTableUpdates.resx">
+      <DependentUpon>201603232135266_LevelVoteTableUpdates.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

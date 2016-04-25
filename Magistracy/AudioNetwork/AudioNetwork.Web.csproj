@@ -245,6 +245,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KnowledgeSessionController.cs" />
     <Compile Include="Controllers\MusicController.cs" />
+    <Compile Include="Controllers\NodeController.cs" />
     <Compile Include="Controllers\NodeHistoryController.cs" />
     <Compile Include="Controllers\PlayListController.cs" />
     <Compile Include="Controllers\RecognitionController.cs" />
@@ -1209,6 +1210,7 @@
     <Folder Include="Content\SongsAlbumCovers\" />
     <Folder Include="Content\Songs\" />
     <Folder Include="Content\WallItemsImages\" />
+    <Folder Include="Views\Node\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

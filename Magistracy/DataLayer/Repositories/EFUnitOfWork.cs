@@ -51,9 +51,17 @@ namespace DataLayer.Repositories
             }
         }
 
-        public void Save()
+        public bool Save()
         {
-            db.SaveChanges();
+            try
+            {
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         private bool _disposed = false;
@@ -77,5 +85,5 @@ namespace DataLayer.Repositories
         }
     }
 
- 
+
 }

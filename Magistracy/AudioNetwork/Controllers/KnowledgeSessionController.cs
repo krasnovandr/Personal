@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using AudioNetwork.Web.Hubs;
 using DataLayer.Models;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.SignalR;
 using ServiceLayer.Interfaces;
 using ServiceLayer.Models;
 using ServiceLayer.Models.KnowledgeSession;
@@ -14,10 +12,14 @@ namespace AudioNetwork.Web.Controllers
     {
         // GET: KnowledgeSession
         private readonly IKnowledgeSessionService _knowledgeSessionService;
+        private readonly IKnowledgeSessionMemberService _knowledgeSessionMemberService;
 
-        public KnowledgeSessionController(IKnowledgeSessionService knowledgeSessionService)
+        public KnowledgeSessionController(
+            IKnowledgeSessionService knowledgeSessionService,
+            IKnowledgeSessionMemberService knowledgeSessionMemberService)
         {
             _knowledgeSessionService = knowledgeSessionService;
+            _knowledgeSessionMemberService = knowledgeSessionMemberService;
         }
 
         public ActionResult Index()
@@ -40,7 +42,7 @@ namespace AudioNetwork.Web.Controllers
             return View();
         }
 
-   
+
         public JsonResult Create(KnowledgeSessionViewModel knowledgeSessionViewModel)
         {
             var result = _knowledgeSessionService.CreateSession(knowledgeSessionViewModel, User.Identity.GetUserId());
@@ -50,15 +52,11 @@ namespace AudioNetwork.Web.Controllers
 
         public ActionResult AddMembers(List<ApplicationUser> members, int sessionId)
         {
-            _knowledgeSessionService.AddmembersToSession(members, sessionId);
+            _knowledgeSessionMemberService.AddmembersToSession(members, sessionId);
             return new EmptyResult();
         }
 
-        public JsonResult AddNode(NodeViewModel node, int sessionId)
-        {
-            var result = _knowledgeSessionService.AddNodeToSession(node, sessionId, User.Identity.GetUserId());
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
+
 
         public JsonResult GetSession(int sessionId)
         {
@@ -68,31 +66,42 @@ namespace AudioNetwork.Web.Controllers
 
         public JsonResult GetUserSessions(string userId)
         {
-            var result = _knowledgeSessionService.GetUserSessions(userId);
+            var result = _knowledgeSessionMemberService.GetUserSessions(userId);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetMembers(int sessionId, int parentId)
+        {
+            var result = _knowledgeSessionMemberService.GetMembers(new NodeIdentifyModel
+            {
+                SessionId = sessionId,
+                ParentId = parentId
+            });
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetMembers(int sessionId)
+        public JsonResult GetOrderedMembers(int sessionId, int parentId)
         {
-            var result = _knowledgeSessionService.GetMembers(sessionId,null);
+            var result = _knowledgeSessionMemberService.GetOrderedMembers(new NodeIdentifyModel
+            {
+                SessionId = sessionId,
+                ParentId = parentId
+            });
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetOrderedMembers(int sessionId)
+        public JsonResult GetWinner(int sessionId, int parentId)
         {
-            var result = _knowledgeSessionService.GetOrderedMembers(sessionId, null);
+            var result = _knowledgeSessionMemberService.GetWinner(new NodeIdentifyModel
+            {
+                SessionId = sessionId,
+                ParentId = parentId
+            });
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetWinner(int sessionId)
+        public JsonResult CheckUserSuggestion(NodeIdentifyModel identifyModel)
         {
-            var result = _knowledgeSessionService.GetWinner(sessionId, null);
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult CheckUserSuggestion(int sessionId)
-        {
-            var result = _knowledgeSessionService.CheckUserSuggestion(sessionId,User.Identity.GetUserId(),null);
+            var result = _knowledgeSessionMemberService.CheckUserSuggestion(identifyModel, User.Identity.GetUserId());
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
@@ -102,22 +111,8 @@ namespace AudioNetwork.Web.Controllers
         //    var result = _knowledgeSessionService.GetMembers(sessionId);
         //    return Json(result, JsonRequestBehavior.AllowGet);
         //}
-        
-        public JsonResult GetSessionNodeByLevel(int sessionId, int level)
-        {
-            var result = _knowledgeSessionService.GetSessionNodeByLevel(sessionId, level);
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
 
-        public JsonResult SaveSuggestedNodes(List<NodeViewModel> nodes, int sessionId)
-        {
-            bool result = _knowledgeSessionService.SaveSuggestedNodes(nodes, User.Identity.GetUserId(), sessionId);
-            
-            var context = GlobalHost.ConnectionManager.GetHubContext<KnowledgeSessionHub>();
-            context.Clients.All.userAddSuggestion(User.Identity.GetUserId());
-         
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
+
 
 
         protected override void Dispose(bool disposing)

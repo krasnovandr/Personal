@@ -3,6 +3,7 @@
 
         $scope.session = {};
         $scope.sessionId = $routeParams.id;
+        $scope.parentId = $routeParams.parentId;
         $scope.curentNodeIndex = 0;
         $scope.members = {};
         $scope.level = $routeParams.level;
@@ -14,17 +15,22 @@
             $scope.session = result;
         });
 
+        $scope.levelVoteType = {
+          levelStarted:0,
+          levelFinished:1
+        };
+
         $scope.initializeMembers = function () {
-            knowledgeSessionService.getMembers($scope.sessionId).success(function (members) {
+          knowledgeSessionService.getMembers($scope.sessionId, $scope.parentId).success(function (members) {
                 $scope.members = members;
-                knowledgeSessionService.checkUserLevelVote($scope.sessionId, $scope.level, $rootScope.logState.Id).success(function (resultVoted) {
+                knowledgeSessionService.checkUserLevelVote($scope.sessionId, $rootScope.logState.Id, $scope.parentId, $scope.levelVoteType.levelStarted).success(function (resultVoted) {
                     $scope.levelVoted = resultVoted;
                 });
             });
         };
         $scope.initializeMembers();
 
-        knowledgeSessionService.checkVoteFinished($scope.sessionId, $scope.level).success(function (result) {
+        knowledgeSessionService.checkVoteFinished($scope.sessionId,$scope.parentId,$scope.levelVoteType.levelStarted).success(function (result) {
             $scope.voteFinished = result;
             if (result) {
                 knowledgeSessionService.getOrderedMembers($scope.sessionId).success(function (orderedMembers) {
@@ -45,7 +51,8 @@
                 SuggetedBy: member.Id,
                 SessionId: $scope.sessionId,
                 Level: $scope.level,
-                VoteBy: $rootScope.logState.Id
+                VoteBy: $rootScope.logState.Id,
+                ParentId: $scope.parentId
             };
 
             knowledgeSessionService.levelVote(levelVoteData).success(function (result) {
@@ -59,6 +66,6 @@
         });
 
         $scope.goToRoundWinnerVote = function () {
-            urlMakerService.roundWinnerVoteUrl($scope.sessionId, $scope.level);
+          urlMakerService.roundWinnerVoteUrl($scope.sessionId, $scope.parentId, $scope.level);
         };
     });

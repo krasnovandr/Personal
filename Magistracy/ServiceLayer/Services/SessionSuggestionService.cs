@@ -36,7 +36,7 @@ namespace ServiceLayer.Services
                     Name = nodeSuggestionViewModel.Suggestion,
                     DateCreation = DateTime.Now,
                     SuggestedBy = nodeSuggestionViewModel.WinnerId,
-
+                    ParentId = nodeSuggestionViewModel.ParentId 
                 };
                 session.NodesSuggestions.Add(node);
             }

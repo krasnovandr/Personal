@@ -13,6 +13,6 @@ namespace DataLayer.Interfaces
         IRepository<NodeHistory> NodesHistory { get; }
         IRepository<LevelVote> LevelVotes { get; }
         ExtendedRepository<ApplicationUser> Users { get; }
-        void Save();
+        bool Save();
     }
 }

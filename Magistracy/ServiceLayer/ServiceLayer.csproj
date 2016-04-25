@@ -72,16 +72,21 @@
     <Compile Include="Helpers\StringHelper.cs" />
     <Compile Include="Interfaces\IConversationService.cs" />
     <Compile Include="Interfaces\IHistoryService.cs" />
+    <Compile Include="Interfaces\IKnowledgeSessionMemberService.cs" />
     <Compile Include="Interfaces\IKnowledgeSessionService.cs" />
     <Compile Include="Interfaces\IMusicService.cs" />
+    <Compile Include="Interfaces\INodeService.cs" />
     <Compile Include="Interfaces\IPlaylistService.cs" />
-    <Compile Include="Interfaces\ISessionVoteService.cs" />
+    <Compile Include="Interfaces\IVoteFinishHelper.cs" />
+    <Compile Include="Interfaces\ISuggestionVoteService.cs" />
+    <Compile Include="Interfaces\ILevelVoteService.cs" />
     <Compile Include="Interfaces\IStatisticsService.cs" />
     <Compile Include="Interfaces\IUploadService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Interfaces\IWallService.cs" />
     <Compile Include="Models\KnowledgeSession\CommentViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\Enums\VoteResultTypes.cs" />
+    <Compile Include="Models\KnowledgeSession\Enums\LevelVoteType.cs" />
     <Compile Include="Models\KnowledgeSession\NodeHistoryViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\NodeSuggestionViewModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -97,6 +102,7 @@
     <Compile Include="Models\KnowledgeSession\VoteViewModel.cs" />
     <Compile Include="Models\MessageViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\NodeViewModel.cs" />
+    <Compile Include="Models\NodeIdentifyModel.cs" />
     <Compile Include="Models\PlaylistViewModel.cs" />
     <Compile Include="Models\SongRecognitionModel.cs" />
     <Compile Include="Models\SongViewModel.cs" />
@@ -109,15 +115,19 @@
     <Compile Include="Helpers\FilePathContainer.cs" />
     <Compile Include="Interfaces\ISessionSuggestionService.cs" />
     <Compile Include="Services\HistoryService.cs" />
+    <Compile Include="Services\KnowledgeSessionMemberService.cs" />
     <Compile Include="Services\KnowledgeSessionService.cs" />
     <Compile Include="Services\MusicService.cs" />
+    <Compile Include="Services\NodeService.cs" />
     <Compile Include="Services\PlaylistService.cs" />
     <Compile Include="Services\SessionSuggestionService.cs" />
-    <Compile Include="Services\SessionVoteService.cs" />
+    <Compile Include="Services\SuggestionVoteService.cs" />
+    <Compile Include="Services\LevelVoteService.cs" />
     <Compile Include="Services\SongPictureGetter.cs" />
     <Compile Include="Services\StatisticsService.cs" />
     <Compile Include="Services\UploadService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="Helpers\VoteFinishHelper.cs" />
     <Compile Include="Services\WallService.cs" />
   </ItemGroup>
   <ItemGroup>

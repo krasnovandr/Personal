@@ -17,7 +17,7 @@
         nodes: nodes,
         sessionId: currentSessiosId
       };
-      return $http({ method: 'POST', url: 'KnowledgeSession/SaveSuggestedNodes', data: dataToTransfer });
+      return $http({ method: 'POST', url: 'Node/SaveSuggestedNodes', data: dataToTransfer });
     },
 
     makeSuggestion: function (suggestion) {
@@ -47,19 +47,20 @@
       return $http({ method: 'POST', url: 'Suggestion/AddComment', data: dataToTransfer });
     },
 
-    checkUserLevelVote: function (session, level, userId) {
+    checkUserLevelVote: function (session, userId, parentId, levelVoteType) {
       return $http({
         url: 'SessionVote/CheckUserLevelVote',
         method: "GET",
-        params: { session: session, level: level, userId: userId }
+
+          params: { SessionId: session, userId: userId, parentId: parentId, levelVoteType: levelVoteType }
       });
     },
 
-    checkVoteFinished: function (session, level) {
+    checkVoteFinished: function (session, parentId,levelVoteType) {
       return $http({
         url: 'SessionVote/CheckVoteFinished',
         method: "GET",
-        params: { session: session, level: level }
+        params: { sessionId: session, parentId:parentId,levelVoteType: levelVoteType }
       });
     },
     getVoteResults: function (session, level) {
@@ -70,27 +71,27 @@
       });
     },
 
-    getMembers: function (sessionId) {
+    getMembers: function (sessionId, parentId) {
       return $http({
         url: 'KnowledgeSession/GetMembers',
         method: "GET",
-        params: { sessionId: sessionId }
+        params: { sessionId: sessionId, parentId: parentId }
       });
     },
 
-    getOrderedMembers: function (sessionId) {
+    getOrderedMembers: function (sessionId, parentId) {
       return $http({
         url: 'KnowledgeSession/GetOrderedMembers',
         method: "GET",
-        params: { sessionId: sessionId }
+        params: { sessionId: sessionId, parentId: parentId }
       });
     },
 
-    getWinner: function (sessionId) {
+    getWinner: function (sessionId,parentId) {
       return $http({
         url: 'KnowledgeSession/GetWinner',
         method: "GET",
-        params: { sessionId: sessionId }
+        params: { sessionId: sessionId, parentId: parentId }
       });
     },
 
@@ -104,7 +105,7 @@
 
     getLevelNodes: function (sessionId, level) {
       return $http({
-        url: 'KnowledgeSession/GetSessionNodeByLevel',
+        url: 'Node/GetSessionNodeByLevel',
         method: "GET",
         params: { sessionId: sessionId, level: level }
       });
@@ -118,17 +119,27 @@
       });
     },
 
-    checkUserSuggestion: function (sessionId) {
-      return $http({
+    checkUserSuggestion: function (sessionId,parentId) {
+       return $http({
         url: 'KnowledgeSession/CheckUserSuggestion',
         method: "GET",
-        params: { sessionId: sessionId }
+        params: { sessionId: sessionId, parentId: parentId }
       });
+
+      //return $http({ method: 'POST', url: 'SessionVote/SuggestionVote', data: dataToTransfer });
     },
     
     getHitory: function (sessionId,nodeId) {
       return $http({
         url: 'NodeHistory/GetHistory',
+        method: "GET",
+        params: { sessionId: sessionId, nodeId: nodeId }
+      });
+    },
+
+    getNode: function (sessionId, nodeId) {
+      return $http({
+        url: 'Node/GetNode',
         method: "GET",
         params: { sessionId: sessionId, nodeId: nodeId }
       });

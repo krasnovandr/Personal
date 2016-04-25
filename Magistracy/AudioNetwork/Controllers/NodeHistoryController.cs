@@ -24,7 +24,6 @@ namespace AudioNetwork.Web.Controllers
 
         public JsonResult GetHistory(int sessionId, int nodeId)
         {
-
             return Json(_historyService.Get(sessionId, nodeId), JsonRequestBehavior.AllowGet);
         }
     }

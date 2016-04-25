@@ -12,6 +12,7 @@ namespace ServiceLayer.Models.KnowledgeSession
         public int SessionId { get; set; }
         public int Level { get; set; }
         public int? NodeId { get; set; }
+        public int ParentId { get; set; }
         //public virtual ICollection<SessionNodeSuggestions> Nodes { get; set; }
         //public virtual ICollection<Comment> Comments { get; set; }
         //public virtual ICollection<Vote> Votes { get; set; }
