@@ -23,9 +23,9 @@ function(folderName,directoryPath) {
   
   dtm <- DocumentTermMatrix(docs)
 
-  # scriptPath <- file.path(directoryPath,"WordCloud.R")
-  # cloud <- dget(scriptPath)
-  # cloud(dtm,folderName)
+  scriptPath <- file.path(directoryPath,"WordCloud.R")
+  cloud <- dget(scriptPath)
+  cloud(dtm,folderName)
   # 
   # 
   # scriptPath <- file.path(directoryPath,"PlaneClustering.R")

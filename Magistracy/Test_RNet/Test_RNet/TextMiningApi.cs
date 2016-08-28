@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using RDotNet;
 
 namespace Test_RNet
@@ -34,18 +35,40 @@ namespace Test_RNet
 
             var groupped = result.GroupBy(m => m.ClusterNumber);
             var items = new List<string>();
+            var hierarchical = GetScriptPath("HierarchicalClustering.R");
+            int number = 0;
+            var fullDirectoryPath = Path.GetFullPath(directory);
             foreach (var group in groupped)
             {
+
                 foreach (var item in group)
                 {
-                    items.Add(item.TextName);
+                    number = item.ClusterNumber;
+                    var cluetrDirectory = Path.Combine(fullDirectoryPath, item.ClusterNumber.ToString());
+                    if (!Directory.Exists(cluetrDirectory))
+                    {
+                        Directory.CreateDirectory(cluetrDirectory);
+                    }
+                    File.Move(Path.Combine(fullDirectoryPath, item.TextName), Path.Combine(cluetrDirectory, item.TextName));
 
+                    items.Add(item.TextName);
                 }
 
                 var group1 = engine.CreateCharacterVector(items);
+
+
+                engine.Evaluate("hierarchicalMining <- dget(" + MakeParam(hierarchical.AbsolutePath) + ")");
+                var path =directory + Path.AltDirectorySeparatorChar +  number.ToString();
+                engine.Evaluate("hierarchicalMining(" +
+                   MakeParam(path) +")");
+
+                Thread.Sleep(5000);
+                items.Clear();
+
+
             }
 
-           
+
         }
 
         private static List<MyClass> MapPlaneClusteringResult(DataFrame testResult)
