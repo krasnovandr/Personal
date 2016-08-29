@@ -4,14 +4,14 @@ function(folderName,directoryPath) {
   library(cluster)
   # library(hclust)
   
-   cname <- file.path("E:/Users/Andrei/Desktop/R_Test", "", "")
+   # cname <- file.path("E:/Users/Andrei/Desktop/R_Test", "", "")
 
-  # cname <- file.path(folderName, "", "")
-  fil<-c("1.txt", "2.txt", "3.txt") 
+  cname <- file.path(folderName, "", "")
+  # fil<-c("1.txt", "2.txt", "3.txt") 
   docs <- Corpus(DirSource(cname))
   meta(docs[[1]])
-  filtered<-tm_filter(docs[1:8], FUN = function(x) meta(x)[["id"]] == fil)
-  filtered
+  # filtered<-tm_filter(docs[1:8], FUN = function(x) meta(x)[["id"]] == fil)
+  # filtered
   docs
   docs <- tm_map(docs, content_transformer(tolower))
   docs <- tm_map(docs, removeNumbers)
@@ -23,48 +23,16 @@ function(folderName,directoryPath) {
   
   dtm <- DocumentTermMatrix(docs)
 
-  scriptPath <- file.path(directoryPath,"WordCloud.R")
-  cloud <- dget(scriptPath)
-  cloud(dtm,folderName)
-  # 
-  # 
-  # scriptPath <- file.path(directoryPath,"PlaneClustering.R")
-  # clustering <- dget(scriptPath)
-  # cloud(dtm,folderName)
+   scriptPath <- file.path(directoryPath,"WordCloud.R")
+   cloud <- dget(scriptPath)
+   cloud(dtm,folderName)
   
-
-  m <- as.matrix(dtm)
   
-  ### don't forget to normalize the vectors so Euclidean makes sense
-  norm_eucl <- function(m) m/apply(m, MARGIN=1, FUN=function(x) sum(x^2)^.5)
-  m_norm <- norm_eucl(m)
-  d <- data.frame( m_norm )
-  asw <- numeric(20)
-  documentCount <-nrow(d) - 1
-  for (k in 2:documentCount)
-    asw[[k]] <- pam(d, k) $ silinfo $ avg.width
-  k.best <- which.max(asw)
-
-  
-  cat("silhouette-optimal number of clusters:", k.best, "\n")
- 
-  plot(1:20, asw, type= "h", main = "pam() clustering assessment",
-       xlab= "k  (# clusters)", ylab = "average silhouette width")
-  axis(1, k.best, paste("best",k.best,sep="\n"), col = "red", col.axis = "red")
-
-  
-  cl <- kmeans(m_norm, k.best,nstart = 20)
-
-  table(cl$cluster)
-  plot(prcomp(m_norm)$x, col=cl$cl)
-
-  typeof(cl$cluster)
-  typeof(cl$cluster[1])
-  
+   scriptPath <- file.path(directoryPath,"PlaneClustering.R")
+   clustering <- dget(scriptPath)
+   clustering(dtm,folderName)
 
 
-  frame <- as.data.frame(cl[1])
-  frame
   # docs <- Corpus(DirSource(cname))
   # 
   # 

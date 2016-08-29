@@ -13,6 +13,14 @@ namespace Test_RNet
         public int ClusterNumber { get; set; }
     }
 
+    public class MergeClass
+    {
+        public string FirstTextName { get; set; }
+        public string SecondTextName { get; set; }
+        public int PrevoiusFirst { get; set; }
+        public int PrevoiusSecond { get; set; }
+    }
+
     public class TextMiningApi
     {
         private const string R_Scripts = @"..\..\R_Scripts\";
@@ -56,11 +64,16 @@ namespace Test_RNet
 
                 var group1 = engine.CreateCharacterVector(items);
 
+                if (items.Count() > 2)
+                {
+                    engine.Evaluate("hierarchicalMining <- dget(" + MakeParam(hierarchical.AbsolutePath) + ")");
+                    var path = directory + Path.AltDirectorySeparatorChar + number.ToString();
+                    var resultMerge = engine.Evaluate("hierarchicalMining(" +
+                        MakeParam(path) + ")").AsDataFrame(); ;
 
-                engine.Evaluate("hierarchicalMining <- dget(" + MakeParam(hierarchical.AbsolutePath) + ")");
-                var path =directory + Path.AltDirectorySeparatorChar +  number.ToString();
-                engine.Evaluate("hierarchicalMining(" +
-                   MakeParam(path) +")");
+                    var check = MapMergeResult(resultMerge, items);
+                }
+
 
                 Thread.Sleep(5000);
                 items.Clear();
@@ -69,6 +82,41 @@ namespace Test_RNet
             }
 
 
+        }
+
+        private static List<MergeClass> MapMergeResult(DataFrame resultMerge, List<string> items)
+        {
+            var result = new List<MergeClass>();
+
+            for (int i = 0; i < resultMerge.RowCount; ++i)
+            {
+                var firstIndex = (int)resultMerge[i, 0];
+                var mergeResult = new MergeClass();
+                if (firstIndex < 0)
+                {
+                    firstIndex *= -1;
+                    mergeResult.FirstTextName = items.ElementAt(firstIndex -1);
+                }
+                else
+                {
+                    mergeResult.PrevoiusFirst = firstIndex;
+                }
+
+                var secondIndex = (int)resultMerge[i, 1];
+                if (secondIndex < 0)
+                {
+                    secondIndex *= -1;
+                    mergeResult.SecondTextName = items.ElementAt(secondIndex - 1);
+                }
+                else
+                {
+                    mergeResult.PrevoiusSecond = secondIndex;
+                }
+
+                result.Add(mergeResult);
+            }
+
+            return result;
         }
 
         private static List<MyClass> MapPlaneClusteringResult(DataFrame testResult)
