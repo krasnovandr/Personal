@@ -196,3 +196,6 @@ FakesAssemblies/
 *.opt
 *.mp3
 *.wav
+
+*.mdf
+*.ldf
