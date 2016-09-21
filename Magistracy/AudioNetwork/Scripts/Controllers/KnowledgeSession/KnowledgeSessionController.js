@@ -37,30 +37,31 @@
       };
       $scope.startFirstRound = function () {
         knowledgeSessionService.addMembers($scope.members, $scope.sessionId).success(function (userFriends) {
-          urlMakerService.viewRound($scope.session.Id, 1, $scope.session.NodesSuggestions[0].Id);
+          //urlMakerService.viewRound($scope.session.Id, 1, $scope.session.NodesSuggestions[0].Id);
 
         });
       };
 
-      $rootScope.myHub = $.connection.knowledgeSessionHub;
-      $rootScope.myHub.client.updateClient = function (message) {
-        alert('Вы были добавлены в новую сессию обмена ресурсами');
-      };
+      //$rootScope.myHub = $.connection.knowledgeSessionHub;
+      //$rootScope.myHub.client.updateClient = function (message) {
+      //  alert('Вы были добавлены в новую сессию обмена ресурсами');
+      //};
 
-      $.connection.hub.start().done(function () {
+      //$.connection.hub.start().done(function () {
 
 
-      });
+      //});
 
       $scope.viewSession = function (currentSession) {
-        if (currentSession.SessionState == 0) {
-          //$location.path('/KnowledgeSession/Round/' + currentSession.Id).search({ level: '1' });
-          urlMakerService.viewRound(currentSession.Id, 1, 111);
-        }
-        if (currentSession.SessionState == 1) {
-          //$location.path('/KnowledgeSession/RoundLevelVote/' + currentSession.Id).search({ level: '1' });
-          urlMakerService.viewRoundLevelVote(currentSession.Id, 1, 111);
-        }
+          urlMakerService.viewSession(currentSession.Id);
+        //if (currentSession.SessionState == 0) {
+        //  //$location.path('/KnowledgeSession/Round/' + currentSession.Id).search({ level: '1' });
+        //  urlMakerService.viewRound(currentSession.Id, 1, 111);
+        //}
+        //if (currentSession.SessionState == 1) {
+        //  //$location.path('/KnowledgeSession/RoundLevelVote/' + currentSession.Id).search({ level: '1' });
+        //  urlMakerService.viewRoundLevelVote(currentSession.Id, 1, 111);
+        //}
       };
 
       $scope.addUserToSession = function (friendIndex, user) {

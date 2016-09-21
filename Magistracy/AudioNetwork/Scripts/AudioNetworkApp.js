@@ -1,6 +1,74 @@
 ﻿var angularApp = angular.module('AudioNetworkApp', ['ngRoute', 'angularFileUpload', 'dndLists', 'ui.bootstrap', 'infScroll', 'sf.virtualScroll', 'ngSanitize', 'n3-line-chart']);
 
 
+
+var config = function ($routeProvider) {
+    $routeProvider.
+      when('/Login', {
+          templateUrl: 'Account/Login',
+          controller: 'LoginController'
+      }).when('/Register', {
+          templateUrl: 'Account/Register',
+          controller: 'RegisterController'
+      }).when('/Home', {
+          templateUrl: 'Users/Index',
+      }).when('/Upload', {
+          templateUrl: 'Upload/Upload',
+      }).when('/Player', {
+          templateUrl: 'Music/Player',
+          //controller: 'DownloadController'
+      }).when('/Users', {
+          templateUrl: 'Users/ViewUsers',
+      }).when('/Friends', {
+          templateUrl: 'Users/ViewFriends',
+      }).when('/Users/:id', {
+          templateUrl: function (params) { return 'Users/ViewUser?id=' + params.id; },
+          controller: 'UsersController'
+      }).when('/Songs/:id', {
+          templateUrl: function (params) { return 'Music/ViewSong?id=' + params.id; },
+          controller: 'PlayerController'
+      }).when('/Register/:id:email', {
+          templateUrl: 'Account/Register',
+          controller: 'RegisterController'
+      }).when('/Conversations/:id', {
+          templateUrl: 'Conversation/ViewConversation',
+      }).when('/Conversations', {
+          templateUrl: 'Conversation/ViewConversations',
+      }).when('/EditConversations', {
+          templateUrl: 'Conversation/ViewEditConversations',
+      }).when('/Playlists', {
+          templateUrl: 'Playlist/Playlists',
+      }).when('/Music', {
+          templateUrl: 'Music',
+      }).when('/Statistics', {
+          templateUrl: 'Statistics/ViewStatistics',
+      }).when('/News', {
+          templateUrl: 'Wall/ViewNews',
+      }).when('/Recognition', {
+          templateUrl: 'Recognition/ViewRecognition',
+      }).when('/KnowledgeSession', {
+          templateUrl: 'KnowledgeSession/Index',
+      }).when('/KnowledgeSession/:id', {
+          templateUrl: 'KnowledgeSession/SessionView',
+      }).when('/KnowledgeSession/Round/:id', {
+          templateUrl: 'KnowledgeSession/Round',
+      }).when('/KnowledgeSession/RoundLevelVote/:id', {
+          templateUrl: 'KnowledgeSession/RoundLevelVote',
+      }).when('/KnowledgeSession/RoundWinnerVote/:id', {
+          templateUrl: 'KnowledgeSession/RoundWinnerVote',
+      }).when('/NodeHistory', {
+          templateUrl: 'NodeHistory/Index',
+      }).
+
+       otherwise({
+           redirectTo: '/Home'
+       });
+};
+
+config.$inject = ['$routeProvider'];
+
+angularApp.config(config);
+
 angularApp.controller('AppLoadController', function ($scope, FileUploader) {
 
   var uploader = $scope.uploader = new FileUploader({
@@ -207,70 +275,7 @@ angularApp.directive('myScroll', function ($timeout) {
   };
 });
 
-var config = function ($routeProvider) {
-  $routeProvider.
-    when('/Login', {
-      templateUrl: 'Account/Login',
-      controller: 'LoginController'
-    }).when('/Register', {
-      templateUrl: 'Account/Register',
-      controller: 'RegisterController'
-    }).when('/Home', {
-      templateUrl: 'Users/Index',
-    }).when('/Upload', {
-      templateUrl: 'Upload/Upload',
-    }).when('/Player', {
-      templateUrl: 'Music/Player',
-      //controller: 'DownloadController'
-    }).when('/Users', {
-      templateUrl: 'Users/ViewUsers',
-    }).when('/Friends', {
-      templateUrl: 'Users/ViewFriends',
-    }).when('/Users/:id', {
-      templateUrl: function (params) { return 'Users/ViewUser?id=' + params.id; },
-      controller: 'UsersController'
-    }).when('/Songs/:id', {
-      templateUrl: function (params) { return 'Music/ViewSong?id=' + params.id; },
-      controller: 'PlayerController'
-    }).when('/Register/:id:email', {
-      templateUrl: 'Account/Register',
-      controller: 'RegisterController'
-    }).when('/Conversations/:id', {
-      templateUrl: 'Conversation/ViewConversation',
-    }).when('/Conversations', {
-      templateUrl: 'Conversation/ViewConversations',
-    }).when('/EditConversations', {
-      templateUrl: 'Conversation/ViewEditConversations',
-    }).when('/Playlists', {
-      templateUrl: 'Playlist/Playlists',
-    }).when('/Music', {
-      templateUrl: 'Music',
-    }).when('/Statistics', {
-      templateUrl: 'Statistics/ViewStatistics',
-    }).when('/News', {
-      templateUrl: 'Wall/ViewNews',
-    }).when('/Recognition', {
-      templateUrl: 'Recognition/ViewRecognition',
-    }).when('/KnowledgeSession', {
-      templateUrl: 'KnowledgeSession/Index',
-    }).when('/KnowledgeSession/Round/:id', {
-      templateUrl: 'KnowledgeSession/Round',
-    }).when('/KnowledgeSession/RoundLevelVote/:id', {
-      templateUrl: 'KnowledgeSession/RoundLevelVote',
-    }).when('/KnowledgeSession/RoundWinnerVote/:id', {
-      templateUrl: 'KnowledgeSession/RoundWinnerVote',
-    }).when('/NodeHistory', {
-      templateUrl: 'NodeHistory/Index',
-    }).
 
-     otherwise({
-       redirectTo: '/Home'
-     });
-};
-
-config.$inject = ['$routeProvider'];
-
-angularApp.config(config);
 
 //angularApp.run(function ($) { // instance-injector
 //    // This is an example of a run block.

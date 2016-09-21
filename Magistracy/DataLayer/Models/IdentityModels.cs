@@ -10,9 +10,13 @@ namespace DataLayer.Models
     {
         public ApplicationUser()
         {
-            KnowledgeSessions =  new HashSet<KnowledgeSession>();
-            KnowledgeSessionRoles = new HashSet<KnowledgeSessionRole>();
-            LevelVotes = new HashSet<LevelVote>();
+            KnowledgeSessions = new HashSet<KnowledgeSession>();
+            SessionNodes = new List<SessionNode>();
+            Comments = new List<Comment>();
+            NodeModifications = new List<NodeModification>();
+            NodeModificationVotes = new List<NodeModificationVote>();
+            NodeStructureVotes = new List<NodeStructureVote>();
+
         }
         public DateTime LastActivity { get; set; }
         public DateTime? BirthDate { get; set; }
@@ -48,7 +52,12 @@ namespace DataLayer.Models
         public string VkPassword { get; set; }
 
         public virtual ICollection<KnowledgeSession> KnowledgeSessions { get; set; }
-        public virtual ICollection<KnowledgeSessionRole> KnowledgeSessionRoles { get; set; }
-        public virtual ICollection<LevelVote> LevelVotes { get; set; }
+        public virtual ICollection<SessionNode> SessionNodes { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<NodeModification> NodeModifications { get; set; }
+        public virtual ICollection<NodeModificationVote> NodeModificationVotes { get; set; }
+        public virtual ICollection<NodeStructureVote> NodeStructureVotes { get; set; }
+        //public virtual ICollection<KnowledgeSessionRole> KnowledgeSessionRoles { get; set; }
+        //public virtual ICollection<NodeStructureVote> LevelVotes { get; set; }
     }
 }

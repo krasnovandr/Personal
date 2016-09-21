@@ -1,7 +1,7 @@
 ﻿angular.module('AudioNetworkApp').factory('knowledgeSessionService', function ($http) {
   return {
     create: function (knowledgeSession) {
-      return $http({ method: 'POST', url: 'KnowledgeSession/Create', data: knowledgeSession });
+        return $http({ method: 'POST', url: 'api/KnowledgeSessionApi/Create', data: knowledgeSession });
     },
 
     addMembers: function (members, currentSessiosId) {
@@ -9,7 +9,7 @@
         members: members,
         sessionId: currentSessiosId
       };
-      return $http({ method: 'POST', url: 'KnowledgeSession/AddMembers', data: dataToTransfer });
+      return $http({ method: 'POST', url: 'api/KnowledgeSessionApi/AddMembers', data: dataToTransfer });
     },
 
     saveSuggestedNodes: function (nodes, currentSessiosId) {
@@ -21,11 +21,11 @@
     },
 
     makeSuggestion: function (suggestion) {
-      return $http({ method: 'POST', url: 'Suggestion/MakeSuggestion', data: suggestion });
+      return $http({ method: 'POST', url: 'NodeModification/MakeSuggestion', data: suggestion });
     },
 
     levelVote: function (dataToTransfer) {
-      return $http({ method: 'POST', url: 'SessionVote/LevelVote', data: dataToTransfer });
+      return $http({ method: 'POST', url: 'SessionVote/NodeStructureVote', data: dataToTransfer });
     },
 
     suggestionVote: function (voteViewModel, sessionId) {
@@ -44,7 +44,7 @@
         sessionId: sessionId,
         nodeId: nodeId
       };
-      return $http({ method: 'POST', url: 'Suggestion/AddComment', data: dataToTransfer });
+      return $http({ method: 'POST', url: 'NodeModification/AddComment', data: dataToTransfer });
     },
 
     checkUserLevelVote: function (session, userId, parentId, levelVoteType) {
@@ -113,7 +113,7 @@
 
     getUserSessions: function (userId) {
       return $http({
-        url: 'KnowledgeSession/GetUserSessions',
+        url: 'api/KnowledgeSessionApi/GetUserSessions',
         method: "GET",
         params: { userId: userId }
       });

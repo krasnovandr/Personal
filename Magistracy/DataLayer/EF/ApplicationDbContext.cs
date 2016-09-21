@@ -25,14 +25,14 @@ namespace DataLayer.EF
         public DbSet<WallItemImages> WallItemImages { get; set; }
         public DbSet<WallItemLikeDislike> WallItemLikeDislike { get; set; }
 
-        public DbSet<KnowledgeSession> KnowledgeSessions { get; set; }
-        public DbSet<KnowledgeSessionRole> KnowledgeSessionRoles { get; set; }
-        public DbSet<Node> Nodes { get; set; }
 
+
+        public DbSet<KnowledgeSession> KnowledgeSessions { get; set; }
+        public DbSet<SessionNode> Nodes { get; set; }
         public DbSet<Comment> Comments { get; set; }
-        public DbSet<Suggestion> Suggestions { get; set; }
-        public DbSet<Vote> Votes { get; set; }
-        public DbSet<LevelVote> LevelVotes { get; set; }
+        public DbSet<NodeModification> NodeModifications { get; set; }
+        public DbSet<NodeModificationVote> NodeModificationVotes { get; set; }
+        public DbSet<NodeStructureVote> NodeStructureVotes { get; set; }
         public DbSet<NodeHistory> NodeHistory { get; set; }
 
 

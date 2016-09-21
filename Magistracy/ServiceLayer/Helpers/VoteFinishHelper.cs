@@ -24,25 +24,25 @@ namespace ServiceLayer.Helpers
 
         }
 
-        public VoteResultTypes CheckSuggestionVoteFinished(int votesUpCount, int votesDownCount, int sessionUsers)
-        {
-            double coefficientUp = (double)votesUpCount / sessionUsers;
+        //public VoteResultTypes CheckSuggestionVoteFinished(int votesUpCount, int votesDownCount, int sessionUsers)
+        //{
+        //    double coefficientUp = (double)votesUpCount / sessionUsers;
             
-            if (coefficientUp * 100 >= levelVoteFinishedValue)
-            {
-                return VoteResultTypes.Up;
-            }
+        //    if (coefficientUp * 100 >= levelVoteFinishedValue)
+        //    {
+        //        return VoteResultTypes.Up;
+        //    }
 
-            double coefficientDown = (double)votesDownCount / sessionUsers;
+        //    double coefficientDown = (double)votesDownCount / sessionUsers;
             
-            if (coefficientDown * 100 >= (100 - levelVoteFinishedValue))
-            {
-                {
-                    return VoteResultTypes.Down;
-                }
-            }
+        //    if (coefficientDown * 100 >= (100 - levelVoteFinishedValue))
+        //    {
+        //        {
+        //            return VoteResultTypes.Down;
+        //        }
+        //    }
 
-            return VoteResultTypes.NotFinished;
-        }
+        //    return VoteResultTypes.NotFinished;
+        //}
     }
 }

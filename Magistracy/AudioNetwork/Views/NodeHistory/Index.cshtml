@@ -19,7 +19,7 @@
       @*<svg><line id="line1" /></svg>*@
       <div class="col-md-8 ">
         <table class="table table-condensed">
-          <tr class="success" ng-repeat="suggestion in historyRecord.Suggestions"
+          <tr class="success" ng-repeat="suggestion in historyRecord.NodeModifications"
               ng-class="{'success':$index === 0,
                            'danger' :$index !== 0}">
             <td><span class="label label-default">{{$index + 1}}</span></td>
@@ -31,7 +31,7 @@
             </td>
             <td>
               <em><span class="text-primary">Предложено:</span></em><br/>
-              <time class="text-muted"><i>{{suggestion.SuggestionDate | ctime | date:'MMM dd yyyy HH:mm:ss'}}</i></time>
+              <time class="text-muted"><i>{{suggestion.NodeModificationDate | ctime | date:'MMM dd yyyy HH:mm:ss'}}</i></time>
             </td>
             <td>
               <span>{{suggestion.Value}}</span>

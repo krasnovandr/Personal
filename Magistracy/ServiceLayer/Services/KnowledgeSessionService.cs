@@ -14,46 +14,39 @@ namespace ServiceLayer.Services
     public class KnowledgeSessionService : IKnowledgeSessionService
     {
         private readonly IUnitOfWork _db;
-        private readonly ILevelVoteService _sessionVoteService;
-        private readonly ISessionSuggestionService _sessionSuggestionService;
 
         public KnowledgeSessionService(
-            IUnitOfWork db,
-            ILevelVoteService sessionVoteService,
-            ISessionSuggestionService sessionSuggestionService)
+            IUnitOfWork db)
         {
             this._db = db;
-            _sessionVoteService = sessionVoteService;
-            _sessionSuggestionService = sessionSuggestionService;
         }
 
         public int CreateSession(KnowledgeSessionViewModel knowledgeSession, string userId)
         {
-            var session = new KnowledgeSession
-            {
-                Theme = knowledgeSession.Theme,
-                CreationDate = DateTime.Now,
-                CreatorId = userId
-            };
             var user = _db.Users.Get(userId);
 
-            if (user != null)
-            {
-                session.Users.Add(user);
-                session.NodesSuggestions.Add(new SessionNodeSuggestions
+            if (user == null) throw new Exception("User Not Found");
+
+            var session = new KnowledgeSession
                 {
-                    SuggestedBy = userId,
-                    DateCreation = DateTime.Now,
-                    Level = 0,
-                    Name = knowledgeSession.Theme,
-                });
-            }
+                    Theme = knowledgeSession.Theme,
+                    Date = DateTime.Now,
+                    CreatorId = user.Id
+                };
+            session.Users.Add(user);
+            session.SessionNodes.Add(new SessionNode
+            {
+                SuggestedBy = user,
+                Date = DateTime.Now,
+                Name = knowledgeSession.Theme,
+                ParentId = null,
+                Type = NodeType.Configurator
+            });
+
             _db.KnowledgeSessions.Create(session);
+            _db.Save();
 
-
-            var result  =  _db.Save();
-
-            return result ? session.Id : default(int);
+            return session.Id;
         }
 
         public KnowledgeSessionViewModel GetSession(int sessionId)
@@ -61,10 +54,10 @@ namespace ServiceLayer.Services
             var session = _db.KnowledgeSessions.Get(sessionId);
 
             var sessionViewModel = Mapper.Map<KnowledgeSession, KnowledgeSessionViewModel>(session);
-            sessionViewModel.Nodes = Mapper.Map<ICollection<Node>, List<NodeViewModel>>(session.Nodes);
+            //sessionViewModel.Nodes = Mapper.Map<ICollection<Node>, List<NodeViewModel>>(session.Nodes);
             sessionViewModel.Users = Mapper.Map<ICollection<ApplicationUser>, List<UserViewModel>>(session.Users);
-            sessionViewModel.NodesSuggestions = Mapper.Map<ICollection<SessionNodeSuggestions>, List<NodeViewModel>>(session.NodesSuggestions);
-            sessionViewModel.Root = GetSessionRoot(sessionId);
+            sessionViewModel.SessionNodes = Mapper.Map<ICollection<SessionNode>, List<NodeViewModel>>(session.SessionNodes);
+            //sessionViewModel.Root = GetSessionRoot(sessionId);
             return sessionViewModel;
         }
 
@@ -72,14 +65,13 @@ namespace ServiceLayer.Services
         {
             var session = _db.KnowledgeSessions.Get(sessionId);
             if (session == null) return null;
-
-            var root = session.Nodes.FirstOrDefault(m => m.ParentId == null);
-            var rootViewModel = Mapper.Map<Node, NodeViewModel>(root);
+            var root = session.SessionNodes.FirstOrDefault(m => m.ParentId.HasValue == false);
+            var rootViewModel = Mapper.Map<SessionNode, NodeViewModel>(root);
 
             return rootViewModel;
         }
 
- 
+
 
         public void Dispose()
         {

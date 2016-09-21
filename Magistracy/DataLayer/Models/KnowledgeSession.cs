@@ -1,28 +1,175 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DataLayer.Models
 {
+    public enum NodeType
+    {
+        Suggested,
+        Configurator
+    }
+
+    public enum NodeStructureVoteTypes
+    {
+        Initialize,
+        DoneLeaf,
+        DoneContinue
+    }
+
+    public enum VoteTypes
+    {
+        Approve,
+        Reject
+    }
+
+    public enum NodeStructureVoteType
+    {
+        Initialize,
+        DoneLeaf,
+        DoneContinue
+    }
+
+    public enum NodeStates
+    {
+        StructureSuggestion,
+        StructureSuggestionVote,
+        UpdatesAndComments,
+        Leaf
+    }
+
+    public enum ModificationType
+    {
+        Add,
+        Edit,
+        Remove
+    }
+
+    public enum VoteResultTypes
+    {
+        Up,
+        Down,
+        NotFinished
+    }
+
+    public enum ModificationStatus
+    {
+        Open,
+        Accepted,
+        Declined
+    }
     public class KnowledgeSession
     {
         public KnowledgeSession()
         {
             Users = new HashSet<ApplicationUser>();
-            Nodes = new HashSet<Node>();
-            NodesSuggestions= new HashSet<SessionNodeSuggestions>();
+            SessionNodes = new List<SessionNode>();
         }
 
+        [Key]
         public int Id { get; set; }
-        public DateTime CreationDate { get; set; }
+        public DateTime Date { get; set; }
         public string Theme { get; set; }
         public string CreatorId { get; set; }
-        public int SessionState { get; set; }
 
         public virtual ICollection<ApplicationUser> Users { get; set; }
-        public virtual ICollection<Node> Nodes { get; set; }
-        public virtual ICollection<SessionNodeSuggestions> NodesSuggestions { get; set; }
+        public virtual ICollection<SessionNode> SessionNodes { get; set; }
+    }
+
+    public class SessionNode
+    {
+        public SessionNode()
+        {
+            StructureVotes = new List<NodeStructureVote>();
+            NodeModifications = new List<NodeModification>();
+            Comments = new List<Comment>();
+        }
+        [Key]
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public virtual ApplicationUser SuggestedBy { get; set; }
+        public virtual KnowledgeSession Session { get; set; }
+        public DateTime Date { get; set; }
+        public int? ParentId { get; set; }
+        public NodeType Type { get; set; }
+        public NodeStates State { get; set; }
+
+        public virtual ICollection<NodeStructureVote> StructureVotes { get; set; }
+        public virtual ICollection<NodeModification> NodeModifications { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
+    }
+
+    public class NodeStructureVote
+    {
+        [Key]
+        public int Id { get; set; }
+        public virtual ApplicationUser VoteBy { get; set; }
+        public virtual SessionNode Node { get; set; }
+        public NodeStructureVoteTypes VoteType { get; set; }
+        public DateTime Date { get; set; }
+    }
+
+    public class NodeModification
+    {
+        public NodeModification()
+        {
+            //Nodes = new HashSet<SessionNode>();
+            //Comments = new HashSet<Comment>();
+            Votes = new List<NodeModificationVote>();
+        }
+
+        [Key]
+        public int Id { get; set; }
+        public virtual ApplicationUser SuggestedBy { get; set; }
+        public virtual SessionNode Node { get; set; }
+        public DateTime Date { get; set; }
+        public string Value { get; set; }
+
+        public ModificationType Type { get; set; }
+        public ModificationStatus Status { get; set; }
+
+        //public virtual ICollection<SessionNode> Nodes { get; set; }
+        //public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<NodeModificationVote> Votes { get; set; }
+    }
+
+    public class NodeModificationVote
+    {
+        [Key]
+        public int Id { get; set; }
+        public VoteTypes Type { get; set; }
+        public virtual ApplicationUser VoteBy { get; set; }
+        public virtual NodeModification NodeModification { get; set; }
+        public DateTime Date { get; set; }
+    }
+
+    public class Comment
+    {
+
+        [Key]
+        public int Id { get; set; }
+        public DateTime Date { get; set; }
+        public string Value { get; set; }
+        public virtual ApplicationUser CommentBy { get; set; }
+        public virtual SessionNode CommentTo { get; set; }
+
+        //public virtual ICollection<NodeModification> Suggestions { get; set; }
+    }
+
+    public class NodeHistory
+    {
+        [Key]
+        public int Id { get; set; }
+        public DateTime Date { get; set; }
+
+        public virtual SessionNode Node { get; set; }
+        //public int SessionNodeSuggestionsId { get; set; }
+        public string Value { get; set; }
+        public virtual ApplicationUser ByUser { get; set; }
+        public int? SuggestionId { get; set; }
     }
 }

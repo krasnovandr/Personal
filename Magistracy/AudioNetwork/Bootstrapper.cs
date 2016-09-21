@@ -1,3 +1,4 @@
+using System.Web.Http;
 using System.Web.Mvc;
 using DataLayer.Interfaces;
 using DataLayer.Models;
@@ -18,6 +19,7 @@ namespace AudioNetwork.Web
             var container = BuildUnityContainer();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
+            GlobalConfiguration.Configuration.DependencyResolver = new Unity.WebApi.UnityDependencyResolver(container);
 
             return container;
         }
@@ -51,12 +53,12 @@ namespace AudioNetwork.Web
             container.RegisterType<IUnitOfWork, EfUnitOfWork>();
             container.RegisterType<IKnowledgeSessionService, KnowledgeSessionService>();
             container.RegisterType<IKnowledgeSessionMemberService, KnowledgeSessionMemberService>();
-            container.RegisterType<ILevelVoteService, LevelVoteService>();
-            container.RegisterType<ISuggestionVoteService, SuggestionVoteService>();
-            container.RegisterType<ISessionSuggestionService, SessionSuggestionService>();
-            container.RegisterType<IHistoryService, HistoryService>();
+            //container.RegisterType<ILevelVoteService, LevelVoteService>();
+            //container.RegisterType<ISuggestionVoteService, SuggestionVoteService>();
+            //container.RegisterType<ISessionSuggestionService, SessionSuggestionService>();
+            //container.RegisterType<IHistoryService, HistoryService>();
             container.RegisterType<IVoteFinishHelper, VoteFinishHelper>();
-            container.RegisterType<INodeService, NodeService>();
+            //container.RegisterType<INodeService, NodeService>();
         }
     }
 }

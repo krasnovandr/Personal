@@ -42,7 +42,7 @@
         $scope.suggestedType = type;
         $scope.nodeForChanges = node;
         var modalInstance = $uibModal.open({
-          templateUrl: 'Suggestion/SuggestionModal',
+          templateUrl: 'NodeModification/SuggestionModal',
           size: 'lg',
           scope: $scope,
           animation: true

@@ -14,21 +14,21 @@ namespace ServiceLayer.Services
     public class KnowledgeSessionMemberService : IKnowledgeSessionMemberService
     {
         private readonly IUnitOfWork _db;
-        private readonly ILevelVoteService _levelVoteService;
-        private readonly ISuggestionVoteService _suggestionVoteService;
-        private readonly ISessionSuggestionService _sessionSuggestionService;
+        //private readonly ILevelVoteService _levelVoteService;
+        //private readonly ISuggestionVoteService _suggestionVoteService;
+        //private readonly ISessionSuggestionService _sessionSuggestionService;
 
         public KnowledgeSessionMemberService(
-            IUnitOfWork db,
-            ILevelVoteService sessionVoteService,
-            ISessionSuggestionService sessionSuggestionService,
-            ILevelVoteService levelVoteService,
-            ISuggestionVoteService suggestionVoteService)
+            IUnitOfWork db)
+        //ILevelVoteService sessionVoteService,
+        //ISessionSuggestionService sessionSuggestionService,
+        //ILevelVoteService levelVoteService,
+        //ISuggestionVoteService suggestionVoteService)
         {
             this._db = db;
-            _sessionSuggestionService = sessionSuggestionService;
-            _levelVoteService = levelVoteService;
-            _suggestionVoteService = suggestionVoteService;
+            //_sessionSuggestionService = sessionSuggestionService;
+            //_levelVoteService = levelVoteService;
+            //_suggestionVoteService = suggestionVoteService;
         }
 
 
@@ -37,13 +37,13 @@ namespace ServiceLayer.Services
         {
             var session = _db.KnowledgeSessions.Get(sessionId);
 
-            if (session != null)
+            if (session == null)
+                throw new Exception("Session was not found");
+            
+            foreach (var member in members)
             {
-                foreach (var member in members)
-                {
-                    var user = _db.Users.Get(member.Id);
-                    session.Users.Add(user);
-                }
+                var user = _db.Users.Get(member.Id);
+                session.Users.Add(user);
             }
 
             _db.KnowledgeSessions.Update(session);
@@ -52,13 +52,17 @@ namespace ServiceLayer.Services
 
         public List<KnowledgeSessionViewModel> GetUserSessions(string userId)
         {
-            var sessions = _db.KnowledgeSessions.GetAll().ToList();
-            var userSessions = sessions.Where(session => session.Users.Any(m => m.Id == userId)).ToList();
+            var user = _db.Users.Get(userId);
 
-            var userSessionsViewModel =
-                Mapper.Map<List<KnowledgeSession>, List<KnowledgeSessionViewModel>>(userSessions);
+            if (user != null)
+            {
+                var userSessionsViewModel =
+                    Mapper.Map<ICollection<KnowledgeSession>, List<KnowledgeSessionViewModel>>(user.KnowledgeSessions);
+                return userSessionsViewModel;
+            }
 
-            return userSessionsViewModel;
+
+            return null;
         }
         //void AddmembersToSession(List<ApplicationUser> members, int sessionId);
         //List<KnowledgeSessionViewModel> GetUserSessions(string userId);
@@ -67,67 +71,67 @@ namespace ServiceLayer.Services
         //bool CheckUserSuggestion(NodeIdentifyModel nodeIdentifyModel, string userid);
         //UserViewModel GetWinner(NodeIdentifyModel nodeIdentifyModel);
 
-        public List<UserViewModel> GetMembers(NodeIdentifyModel nodeIdentifyModel)
-        {
-            var session = _db.KnowledgeSessions.Get(nodeIdentifyModel.SessionId);
-            var members = Mapper.Map<ICollection<ApplicationUser>, List<UserViewModel>>(session.Users);
+        //public List<UserViewModel> GetMembers(NodeIdentifyModel nodeIdentifyModel)
+        //{
+        //    var session = _db.KnowledgeSessions.Get(nodeIdentifyModel.SessionId);
+        //    var members = Mapper.Map<ICollection<ApplicationUser>, List<UserViewModel>>(session.Users);
 
-            foreach (var member in members)
-            {
-                FillMemberViewModel(nodeIdentifyModel, member);
-                member.LevelSuggestion = _levelVoteService.CheckUserForLevelVote(nodeIdentifyModel, member.Id, 0);
-            }
+        //    foreach (var member in members)
+        //    {
+        //        FillMemberViewModel(nodeIdentifyModel, member);
+        //        member.LevelSuggestion = _levelVoteService.CheckUserForLevelVote(nodeIdentifyModel, member.Id, 0);
+        //    }
 
-            return members;
-        }
-        //REFACT
-        private void FillMemberViewModel(NodeIdentifyModel nodeIdentifyModel, UserViewModel member)
-        {
-            var session = _db.KnowledgeSessions.Get(nodeIdentifyModel.SessionId);
-            var suggestions = Mapper.Map<ICollection<SessionNodeSuggestions>, List<NodeViewModel>>(session.NodesSuggestions);
-            member.SessionSuggestion = CheckUserSuggestion(nodeIdentifyModel, member.Id);
-            member.SuggestedNodes = suggestions.Where(m => m.CreatedBy == member.Id && m.ParentId == nodeIdentifyModel.ParentId).ToList(); ;
-            member.VotesResults = _levelVoteService.GetVoteResults(nodeIdentifyModel, member.Id);
-        }
+        //    return members;
+        //}
+        ////REFACT
+        //private void FillMemberViewModel(NodeIdentifyModel nodeIdentifyModel, UserViewModel member)
+        //{
+        //    var session = _db.KnowledgeSessions.Get(nodeIdentifyModel.SessionId);
+        //    var suggestions = Mapper.Map<ICollection<SessionNode>, List<NodeViewModel>>(session.SessionNodes);
+        //    member.SessionSuggestion = CheckUserSuggestion(nodeIdentifyModel, member.Id);
+        //    member.SuggestedNodes = suggestions.Where(m => m.SuggestedBy.Id == member.Id && m.ParentId == nodeIdentifyModel.ParentId).ToList(); ;
+        //    member.VotesResults = _levelVoteService.GetVoteResults(nodeIdentifyModel, member.Id);
+        //}
 
-        public List<UserViewModel> GetOrderedMembers(NodeIdentifyModel nodeIdentifyModel)
-        {
-            var members = this.GetMembers(nodeIdentifyModel);
+        //public List<UserViewModel> GetOrderedMembers(NodeIdentifyModel nodeIdentifyModel)
+        //{
+        //    var members = this.GetMembers(nodeIdentifyModel);
 
-            return members.OrderByDescending(m => m.VotesResults.Count()).ToList();
-        }
+        //    return members.OrderByDescending(m => m.VotesResults.Count()).ToList();
+        //}
 
 
-        public UserViewModel GetWinner(NodeIdentifyModel nodeIdentifyModel)
-        {
-            var winner = this.GetOrderedMembers(nodeIdentifyModel).FirstOrDefault();
+        //public UserViewModel GetWinner(NodeIdentifyModel nodeIdentifyModel)
+        //{
+        //    var winner = this.GetOrderedMembers(nodeIdentifyModel).FirstOrDefault();
 
-            if (winner == null) throw new Exception("No members");
+        //    if (winner == null) throw new Exception("No members");
 
-            foreach (var winnerNode in winner.SuggestedNodes)
-            {
-                _sessionSuggestionService.UpdateNodeWithSuggestions(nodeIdentifyModel.SessionId, nodeIdentifyModel.ParentId, winnerNode);
-                _suggestionVoteService.UpdateSuggestionsWithVotes(nodeIdentifyModel.SessionId, nodeIdentifyModel.ParentId, winnerNode);
-            }
+        //    foreach (var winnerNode in winner.SuggestedNodes)
+        //    {
+        //        _sessionSuggestionService.UpdateNodeWithSuggestions(nodeIdentifyModel.SessionId, nodeIdentifyModel.ParentId, winnerNode);
+        //        _suggestionVoteService.UpdateSuggestionsWithVotes(nodeIdentifyModel.SessionId, nodeIdentifyModel.ParentId, winnerNode);
+        //    }
 
-            return winner;
-        }
+        //    return winner;
+        //}
 
-        public bool CheckUserSuggestion(NodeIdentifyModel nodeIdentifyModel, string userid)
-        {
-            var session = _db.KnowledgeSessions.Get(nodeIdentifyModel.SessionId);
+        //public bool CheckUserSuggestion(NodeIdentifyModel nodeIdentifyModel, string userid)
+        //{
+        //    var session = _db.KnowledgeSessions.Get(nodeIdentifyModel.SessionId);
 
-            foreach (var nodeSuggestion in session.NodesSuggestions)
-            {
-                if (nodeSuggestion.SuggestedBy == userid
-                    && nodeSuggestion.ParentId == nodeIdentifyModel.ParentId)
-                {
-                    return true;
-                }
-            }
+        //    foreach (var nodeSuggestion in session.SessionNodes)
+        //    {
+        //        if (nodeSuggestion.SuggestedBy.Id == userid
+        //            && nodeSuggestion.ParentId == nodeIdentifyModel.ParentId)
+        //        {
+        //            return true;
+        //        }
+        //    }
 
-            return false;
-        }
+        //    return false;
+        //}
 
 
 

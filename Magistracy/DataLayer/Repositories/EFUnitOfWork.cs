@@ -7,19 +7,29 @@ namespace DataLayer.Repositories
 {
     public class EfUnitOfWork : IUnitOfWork
     {
-
-        private readonly ApplicationDbContext db = new ApplicationDbContext();
+        private readonly ApplicationDbContext _db = new ApplicationDbContext();
         private KnowledgeSessionRepository _knowledgeSessionRepository;
+        private NodesRepository _nodesRepository;
         private UserRepository _userRepository;
-        private LevelVoteRepository _levelVoteRepository;
+        private NodeStructureVotesRepository _nodeStructureVotesRepository;
         private NodeHistoryRepository _nodeHistoryRepository;
+        private bool _disposed = false;
+
+        public IRepository<SessionNode> NodesRepository
+        {
+            get
+            {
+                return _nodesRepository ??
+                    (_nodesRepository = new NodesRepository(_db));
+            }
+        }
 
         public IRepository<NodeHistory> NodesHistory
         {
             get
             {
                 return _nodeHistoryRepository ??
-                    (_nodeHistoryRepository = new NodeHistoryRepository(db));
+                    (_nodeHistoryRepository = new NodeHistoryRepository(_db));
             }
         }
 
@@ -28,16 +38,16 @@ namespace DataLayer.Repositories
             get
             {
                 return _knowledgeSessionRepository ??
-                    (_knowledgeSessionRepository = new KnowledgeSessionRepository(db));
+                    (_knowledgeSessionRepository = new KnowledgeSessionRepository(_db));
             }
         }
 
-        public IRepository<LevelVote> LevelVotes
+        public IRepository<NodeStructureVote> LevelVotes
         {
             get
             {
-                return _levelVoteRepository ??
-                    (_levelVoteRepository = new LevelVoteRepository(db));
+                return _nodeStructureVotesRepository ??
+                    (_nodeStructureVotesRepository = new NodeStructureVotesRepository(_db));
             }
         }
 
@@ -47,24 +57,15 @@ namespace DataLayer.Repositories
             get
             {
                 return _userRepository ??
-                       (_userRepository = new UserRepository(db));
+                       (_userRepository = new UserRepository(_db));
             }
         }
 
-        public bool Save()
+        public void Save()
         {
-            try
-            {
-                db.SaveChanges();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            _db.SaveChanges();
         }
 
-        private bool _disposed = false;
 
         public virtual void Dispose(bool disposing)
         {
@@ -72,7 +73,7 @@ namespace DataLayer.Repositories
             {
                 if (disposing)
                 {
-                    db.Dispose();
+                    _db.Dispose();
                 }
                 _disposed = true;
             }
