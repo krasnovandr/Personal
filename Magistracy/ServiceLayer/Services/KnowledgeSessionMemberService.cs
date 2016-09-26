@@ -39,7 +39,7 @@ namespace ServiceLayer.Services
 
             if (session == null)
                 throw new Exception("Session was not found");
-            
+
             foreach (var member in members)
             {
                 var user = _db.Users.Get(member.Id);
@@ -64,6 +64,67 @@ namespace ServiceLayer.Services
 
             return null;
         }
+
+        public List<TreeNodeViewModel> GetTree(int sessionId)
+        {
+            var session = _db.KnowledgeSessions.Get(sessionId);
+            if (session == null)
+                throw new Exception("Session was not found");
+
+            var root = session.SessionNodes.FirstOrDefault(m => m.ParentId.HasValue == false);
+
+            var groups = session.SessionNodes
+                .Where(m => m.Type == NodeType.Configurator)
+                .OrderBy(m => m.ParentId)
+                .GroupBy(m => m.ParentId);
+
+            if (root == null)
+                throw new Exception("Root was not found");
+
+
+            var rootNode = TreeNodeViewModelMapper(root);
+
+            foreach (var group in groups)
+            {
+                if (group.Key == null) continue;
+
+                TreeNodeViewModel node = GetNodeToAdd(rootNode, group.Key);
+                if (node != null)
+                {
+                    node.nodes.AddRange(group.Select(TreeNodeViewModelMapper));
+                }
+            }
+            return new List<TreeNodeViewModel> { rootNode };
+        }
+
+        public TreeNodeViewModel TreeNodeViewModelMapper(SessionNode sessionNode)
+        {
+            return new TreeNodeViewModel
+            {
+                Id = sessionNode.Id,
+                text = sessionNode.Name,
+                nodes = new List<TreeNodeViewModel>(),
+                State = sessionNode.State
+            };
+        }
+
+        private TreeNodeViewModel GetNodeToAdd(TreeNodeViewModel nodeToCheck, int? parentId)
+        {
+            if (nodeToCheck.Id == parentId)
+            {
+                return nodeToCheck;
+            }
+
+            foreach (var node in nodeToCheck.nodes)
+            {
+                var result = GetNodeToAdd(node, parentId);
+                if (result != null)
+                    return result;
+            }
+
+            return null;
+        }
+
         //void AddmembersToSession(List<ApplicationUser> members, int sessionId);
         //List<KnowledgeSessionViewModel> GetUserSessions(string userId);
         //List<UserViewModel> GetMembers(NodeIdentifyModel nodeIdentifyModel);
@@ -142,5 +203,13 @@ namespace ServiceLayer.Services
         }
 
 
+    }
+
+    public class TreeNodeViewModel
+    {
+        public string text { get; set; }
+        public int Id { get; set; }
+        public List<TreeNodeViewModel> nodes { get; set; }
+        public NodeStates State { get; set; }
     }
 }

@@ -306,6 +306,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Controllers\KnowledgeSession\NodeHistoryController.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\Controllers\KnowledgeSession\TreeController.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\Libs\Angular\angular-animate.js" />
@@ -342,7 +343,7 @@
     <Content Include="Scripts\Controllers\ConversationsController.js" />
     <Content Include="Scripts\Controllers\KnowledgeSession\RoundWinnerVoteController.js" />
     <Content Include="Scripts\Controllers\KnowledgeSession\RoundLevelVoteController.js" />
-    <Content Include="Scripts\Controllers\KnowledgeSession\RoundController.js" />
+    <Content Include="Scripts\Controllers\KnowledgeSession\NodeStructureSuggestionController.js" />
     <Content Include="Scripts\Controllers\KnowledgeSession\KnowledgeSessionController.js" />
     <Content Include="Scripts\Controllers\RecognizeController.js" />
     <Content Include="Scripts\Controllers\SongUploadController.js" />
@@ -1218,7 +1219,7 @@
     <Content Include="Views\Wall\UserLike.cshtml" />
     <Content Include="Views\Recognition\ViewRecognition.cshtml" />
     <Content Include="Views\KnowledgeSession\Index.cshtml" />
-    <Content Include="Views\KnowledgeSession\Round.cshtml" />
+    <Content Include="Views\KnowledgeSession\NodeStructureSuggestion.cshtml" />
     <Content Include="Views\KnowledgeSession\RoundLevelVote.cshtml" />
     <Content Include="Views\KnowledgeSession\RoundWinnerVote.cshtml" />
     <Content Include="Scripts\Libs\Angular\version.json" />
@@ -1226,14 +1227,13 @@
     <Content Include="Views\SessionVote\VoteUsersModal.cshtml" />
     <Content Include="Views\KnowledgeSession\CommentsChat.cshtml" />
     <Content Include="Views\NodeHistory\Index.cshtml" />
-    <Content Include="Views\KnowledgeSession\SessionView.cshtml" />
+    <Content Include="Views\KnowledgeSession\SessionTreeView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\SongsAlbumCovers\" />
     <Folder Include="Content\Songs\" />
     <Folder Include="Content\WallItemsImages\" />
-    <Folder Include="Views\Node\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

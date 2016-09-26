@@ -8,8 +8,8 @@
             $location.path('/NodeHistory').search({ sessionId: sessionId, nodeId: nodeId });
         },
 
-        viewRound: function (sessionId, level, parentId) {
-            $location.path('/KnowledgeSession/Round/' + sessionId).search({ level: level, parentId: parentId });
+        viewNodeStructureSuggestion: function (nodeId) {
+            $location.path('/KnowledgeSession/NodeStructureSuggestion/' + nodeId);
         },
 
         viewRoundLevelVote: function (sessionId, level, parentId) {

@@ -18,12 +18,12 @@ namespace AudioNetwork.Web.Controllers
             return View();
         }
 
-        public ActionResult SessionView()
+        public ActionResult SessionTreeView()
         {
             return View();
         }
 
-        public ActionResult Round()
+        public ActionResult NodeStructureSuggestion()
         {
             return View();
         }

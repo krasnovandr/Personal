@@ -119,6 +119,14 @@
       });
     },
 
+    getSessionTree: function (sessionId) {
+        return $http({
+            url: 'api/KnowledgeSessionApi/GetTree',
+            method: "GET",
+            params: { sessionId: sessionId }
+        });
+    },
+
     checkUserSuggestion: function (sessionId,parentId) {
        return $http({
         url: 'KnowledgeSession/CheckUserSuggestion',

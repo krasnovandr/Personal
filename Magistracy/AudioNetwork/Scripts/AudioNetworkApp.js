@@ -49,9 +49,9 @@ var config = function ($routeProvider) {
       }).when('/KnowledgeSession', {
           templateUrl: 'KnowledgeSession/Index',
       }).when('/KnowledgeSession/:id', {
-          templateUrl: 'KnowledgeSession/SessionView',
-      }).when('/KnowledgeSession/Round/:id', {
-          templateUrl: 'KnowledgeSession/Round',
+          templateUrl: 'KnowledgeSession/SessionTreeView',
+      }).when('/KnowledgeSession/NodeStructureSuggestion/:id', {
+          templateUrl: 'KnowledgeSession/NodeStructureSuggestion',
       }).when('/KnowledgeSession/RoundLevelVote/:id', {
           templateUrl: 'KnowledgeSession/RoundLevelVote',
       }).when('/KnowledgeSession/RoundWinnerVote/:id', {

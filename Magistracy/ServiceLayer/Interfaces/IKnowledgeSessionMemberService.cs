@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DataLayer.Models;
 using ServiceLayer.Models;
 using ServiceLayer.Models.KnowledgeSession;
+using ServiceLayer.Services;
 
 namespace ServiceLayer.Interfaces
 {
@@ -15,5 +16,6 @@ namespace ServiceLayer.Interfaces
         //bool CheckUserSuggestion(NodeIdentifyModel nodeIdentifyModel, string userid);
         //UserViewModel GetWinner(NodeIdentifyModel nodeIdentifyModel);
         void Dispose();
+        List<TreeNodeViewModel> GetTree(int sessionId);
     }
 }

@@ -5,6 +5,7 @@ using DataLayer.Models;
 using Microsoft.AspNet.Identity;
 using ServiceLayer.Interfaces;
 using ServiceLayer.Models.KnowledgeSession;
+using ServiceLayer.Services;
 
 namespace AudioNetwork.Web.API
 {
@@ -14,7 +15,7 @@ namespace AudioNetwork.Web.API
         private readonly IKnowledgeSessionMemberService _knowledgeSessionMemberService;
 
         public KnowledgeSessionApiController(
-            IKnowledgeSessionService knowledgeSessionService, 
+            IKnowledgeSessionService knowledgeSessionService,
             IKnowledgeSessionMemberService knowledgeSessionMemberService)
         {
             _knowledgeSessionService = knowledgeSessionService;
@@ -29,12 +30,12 @@ namespace AudioNetwork.Web.API
             return result;
         }
 
-        [HttpGet]
-        public KnowledgeSessionViewModel GetSession(int sessionId)
-        {
-            var result = _knowledgeSessionService.GetSession(sessionId);
-            return result;
-        }
+        //[HttpGet]
+        //public KnowledgeSessionViewModel GetSession(int sessionId)
+        //{
+        //    var result = _knowledgeSessionService.GetSession(sessionId);
+        //    return result;
+        //}
 
         public IEnumerable<KnowledgeSessionViewModel> GetUserSessions(string userId)
         {
@@ -47,6 +48,12 @@ namespace AudioNetwork.Web.API
         {
             _knowledgeSessionMemberService.AddmembersToSession(members, sessionId);
             return Ok();
+        }
+
+        public List<TreeNodeViewModel> GetTree(int sessionId)
+        {
+            var tree = _knowledgeSessionMemberService.GetTree(sessionId);
+            return tree;
         }
 
         //public List<UserViewModel> GetMembers(int sessionId, int parentId)

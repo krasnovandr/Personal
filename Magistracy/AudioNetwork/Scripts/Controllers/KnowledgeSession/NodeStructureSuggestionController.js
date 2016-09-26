@@ -1,5 +1,5 @@
 ﻿angular.module('AudioNetworkApp')
-    .controller('RoundController', function ($, $scope, $http, $location, $rootScope, knowledgeSessionService, userService, $routeParams, $timeout, urlMakerService) {
+    .controller('NodeStructureSuggestionController', function ($, $scope, $rootScope, knowledgeSessionService, userService, $routeParams, $timeout, urlMakerService) {
 
         $scope.session = {};
         $scope.rootNode = {};
