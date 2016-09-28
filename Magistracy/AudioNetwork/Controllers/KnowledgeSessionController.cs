@@ -28,6 +28,11 @@ namespace AudioNetwork.Web.Controllers
             return View();
         }
 
+        public ActionResult NodeStructureSuggestionWait()
+        {
+            return View();
+        }
+
         public ActionResult RoundLevelVote()
         {
             return View();

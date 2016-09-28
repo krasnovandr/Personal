@@ -58,7 +58,7 @@ namespace AudioNetwork.Web
             //container.RegisterType<ISessionSuggestionService, SessionSuggestionService>();
             //container.RegisterType<IHistoryService, HistoryService>();
             container.RegisterType<IVoteFinishHelper, VoteFinishHelper>();
-            //container.RegisterType<INodeService, NodeService>();
+            container.RegisterType<INodeService, NodeService>();
         }
     }
 }

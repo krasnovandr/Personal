@@ -37,6 +37,7 @@ namespace DataLayer.Models
     public enum NodeStates
     {
         StructureSuggestion,
+        StructureSuggestionWait,
         StructureSuggestionVote,
         UpdatesAndComments,
         Leaf

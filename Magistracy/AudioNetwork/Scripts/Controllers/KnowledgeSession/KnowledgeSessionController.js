@@ -20,7 +20,7 @@
         knowledgeSessionService.create(knowledgeSession).success(function (result) {
           if (result != 0) {
             $scope.sessionId = result;
-            knowledgeSessionService.get($scope.sessionId).success(function (currentSession) {
+            knowledgeSessionService.getSession($scope.sessionId).success(function (currentSession) {
               $scope.session = currentSession;
             });
             $scope.friendsPhase = true;

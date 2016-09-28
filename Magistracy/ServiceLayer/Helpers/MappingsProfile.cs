@@ -24,7 +24,12 @@ namespace ServiceLayer.Helpers
         protected override void Configure()
         {
             Mapper.CreateMap<KnowledgeSession, KnowledgeSessionViewModel>();
+            Mapper.CreateMap<ApplicationUser, UserViewModel>();
+            Mapper.CreateMap<UserViewModel, ApplicationUser>();
+
             Mapper.CreateMap<SessionNode, NodeViewModel>();
+            Mapper.CreateMap<NodeViewModel, SessionNode>();
+
                 //.ForMember(dest => dest.SuggestedBy, opt => opt.MapFrom(src => src.SuggestedBy))
                 //.ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date));
 

@@ -11,6 +11,7 @@ namespace DataLayer.Interfaces
     {
         IRepository<KnowledgeSession> KnowledgeSessions { get; }
         IRepository<NodeHistory> NodesHistory { get; }
+        IRepository<SessionNode> Nodes { get; }
         IRepository<NodeStructureVote> LevelVotes { get; }
         ExtendedRepository<ApplicationUser> Users { get; }
         void Save();

@@ -1,13 +1,18 @@
 ﻿angular.module('AudioNetworkApp')
     .controller('TreeController', function ($, $scope, $rootScope, knowledgeSessionService, userService, urlMakerService, $routeParams) {
         $scope.sessionId = $routeParams.id;
-
+//        StructureSuggestion,
+//StructureSuggestionWait,
+//StructureSuggestionVote,
+//UpdatesAndComments,
+//Leaf
 
         $scope.NodeStates = {
             StructureSuggestion: 0,
-            StructureSuggestionVote: 1,
-            UpdatesAndComments: 1,
-            Leaf: 2
+            StructureSuggestionWait: 1,
+            StructureSuggestionVote: 2,
+            UpdatesAndComments: 3,
+            Leaf: 4
         };
 
         knowledgeSessionService.getSessionTree($scope.sessionId).success(
@@ -24,7 +29,12 @@
 
             switch (node.State) {
                 case $scope.NodeStates.StructureSuggestion: {
-                    urlMakerService.viewNodeStructureSuggestion(node.Id);
+                    urlMakerService.viewNodeStructureSuggestion(node.Id, $scope.sessionId);
+                    break;
+                }
+
+                case $scope.NodeStates.StructureSuggestionWait: {
+                    urlMakerService.viewNodeStructureSuggestionWait(node.Id, $scope.sessionId);
                     break;
                 }
                 case $scope.NodeStates.StructureSuggestionVote: {

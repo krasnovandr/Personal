@@ -1,25 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Http;
+using AudioNetwork.Web.Hubs;
 using DataLayer.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.SignalR;
 using ServiceLayer.Interfaces;
+using ServiceLayer.Models;
 using ServiceLayer.Models.KnowledgeSession;
 using ServiceLayer.Services;
 
 namespace AudioNetwork.Web.API
 {
+    //[Authorize]
     public class KnowledgeSessionApiController : ApiController
     {
         private readonly IKnowledgeSessionService _knowledgeSessionService;
         private readonly IKnowledgeSessionMemberService _knowledgeSessionMemberService;
+        private readonly INodeService _nodeService;
 
         public KnowledgeSessionApiController(
             IKnowledgeSessionService knowledgeSessionService,
-            IKnowledgeSessionMemberService knowledgeSessionMemberService)
+            IKnowledgeSessionMemberService knowledgeSessionMemberService,
+            INodeService nodeService)
         {
             _knowledgeSessionService = knowledgeSessionService;
             _knowledgeSessionMemberService = knowledgeSessionMemberService;
+            _nodeService = nodeService;
         }
 
         [HttpPost]
@@ -30,13 +37,28 @@ namespace AudioNetwork.Web.API
             return result;
         }
 
-        //[HttpGet]
-        //public KnowledgeSessionViewModel GetSession(int sessionId)
-        //{
-        //    var result = _knowledgeSessionService.GetSession(sessionId);
-        //    return result;
-        //}
+        [HttpGet]
+        public KnowledgeSessionViewModel GetSession(int sessionId)
+        {
+            var result = _knowledgeSessionService.GetSession(sessionId);
+            return result;
+        }
 
+        [HttpGet]
+        public NodeViewModel GetSessionRoot(int sessionId)
+        {
+            var result = _knowledgeSessionService.GetSessionRoot(sessionId);
+            return result;
+        }
+
+        [HttpGet]
+        public NodeViewModel GetNode(int nodeId)
+        {
+            var result = _nodeService.GetNode(nodeId);
+            return result;
+        }
+
+        [HttpGet]
         public IEnumerable<KnowledgeSessionViewModel> GetUserSessions(string userId)
         {
             var result = _knowledgeSessionMemberService.GetUserSessions(userId);
@@ -44,27 +66,40 @@ namespace AudioNetwork.Web.API
         }
 
         [HttpPost]
-        public IHttpActionResult AddMembers(List<ApplicationUser> members, int sessionId)
+        public IHttpActionResult AddMembers(AddMembersViewModel addMembersViewModel)
         {
-            _knowledgeSessionMemberService.AddmembersToSession(members, sessionId);
+            _knowledgeSessionMemberService.AddMembersToSession(addMembersViewModel);
             return Ok();
         }
 
+        [HttpGet]
         public List<TreeNodeViewModel> GetTree(int sessionId)
         {
-            var tree = _knowledgeSessionMemberService.GetTree(sessionId);
+            var tree = _knowledgeSessionMemberService.GetTree(sessionId, User.Identity.GetUserId());
             return tree;
         }
 
-        //public List<UserViewModel> GetMembers(int sessionId, int parentId)
-        //{
-        //    var result = _knowledgeSessionMemberService.GetMembers(new NodeIdentifyModel
-        //    {
-        //        SessionId = sessionId,
-        //        ParentId = parentId
-        //    });
-        //    return result;
-        //}
+        [HttpPost]
+        public void SaveSuggestedNodes(SuggestedNodesViewModel suggestedNodesViewModel)
+        {
+            _nodeService.SaveSuggestedNodes(suggestedNodesViewModel, User.Identity.GetUserId());
+
+            //var context = GlobalHost.ConnectionManager.GetHubContext<KnowledgeSessionHub>();
+            //context.Clients.All.userAddSuggestion(User.Identity.GetUserId());
+        }
+
+
+        public List<UserViewModel> GetMembersNodeStrucutreSuggestion(int sessionId, int nodeId)
+        {
+            var result = _knowledgeSessionMemberService.GetMembersNodeStrucutreSuggestion(sessionId, nodeId);
+            return result;
+        }
+
+        public List<UserViewModel> GetMembers(int sessionId)
+        {
+            var result = _knowledgeSessionMemberService.GetMembers(sessionId);
+            return result;
+        }
 
         //public List<UserViewModel> GetOrderedMembers(int sessionId, int parentId)
         //{

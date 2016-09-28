@@ -306,6 +306,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Controllers\KnowledgeSession\NodeHistoryController.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\Controllers\KnowledgeSession\NodeStructureSuggestionWaitController.js" />
     <Content Include="Scripts\Controllers\KnowledgeSession\TreeController.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -1228,6 +1229,7 @@
     <Content Include="Views\KnowledgeSession\CommentsChat.cshtml" />
     <Content Include="Views\NodeHistory\Index.cshtml" />
     <Content Include="Views\KnowledgeSession\SessionTreeView.cshtml" />
+    <Content Include="Views\KnowledgeSession\NodeStructureSuggestionWait.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

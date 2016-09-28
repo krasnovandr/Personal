@@ -52,19 +52,20 @@ namespace ServiceLayer.Services
         public KnowledgeSessionViewModel GetSession(int sessionId)
         {
             var session = _db.KnowledgeSessions.Get(sessionId);
-
+            if (session == null)
+                throw new Exception("session not found");
             var sessionViewModel = Mapper.Map<KnowledgeSession, KnowledgeSessionViewModel>(session);
-            //sessionViewModel.Nodes = Mapper.Map<ICollection<Node>, List<NodeViewModel>>(session.Nodes);
             sessionViewModel.Users = Mapper.Map<ICollection<ApplicationUser>, List<UserViewModel>>(session.Users);
             sessionViewModel.SessionNodes = Mapper.Map<ICollection<SessionNode>, List<NodeViewModel>>(session.SessionNodes);
-            //sessionViewModel.Root = GetSessionRoot(sessionId);
             return sessionViewModel;
         }
 
         public NodeViewModel GetSessionRoot(int sessionId)
         {
             var session = _db.KnowledgeSessions.Get(sessionId);
-            if (session == null) return null;
+            if (session == null)
+                throw new Exception("session not found");
+
             var root = session.SessionNodes.FirstOrDefault(m => m.ParentId.HasValue == false);
             var rootViewModel = Mapper.Map<SessionNode, NodeViewModel>(root);
 

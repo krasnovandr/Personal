@@ -84,6 +84,7 @@
     <Compile Include="Interfaces\IUploadService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Interfaces\IWallService.cs" />
+    <Compile Include="Models\AddMembersViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\CommentViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\Enums\VoteResultTypes.cs" />
     <Compile Include="Models\KnowledgeSession\Enums\LevelVoteType.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Models\KnowledgeSession\Enums\SuggestionTypes.cs" />
     <Compile Include="Models\KnowledgeSession\Enums\SessionState.cs" />
     <Compile Include="Models\KnowledgeSession\KnowledgeSessionViewModel.cs" />
+    <Compile Include="Models\KnowledgeSession\SuggestedNodesViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\SuggestionViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\VoteViewModel.cs" />
     <Compile Include="Models\MessageViewModel.cs" />

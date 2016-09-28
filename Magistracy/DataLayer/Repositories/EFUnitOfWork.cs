@@ -15,7 +15,7 @@ namespace DataLayer.Repositories
         private NodeHistoryRepository _nodeHistoryRepository;
         private bool _disposed = false;
 
-        public IRepository<SessionNode> NodesRepository
+        public IRepository<SessionNode> Nodes
         {
             get
             {

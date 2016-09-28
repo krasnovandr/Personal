@@ -52,6 +52,8 @@ var config = function ($routeProvider) {
           templateUrl: 'KnowledgeSession/SessionTreeView',
       }).when('/KnowledgeSession/NodeStructureSuggestion/:id', {
           templateUrl: 'KnowledgeSession/NodeStructureSuggestion',
+      }).when('/KnowledgeSession/NodeStructureSuggestionWait/:id', {
+          templateUrl: 'KnowledgeSession/NodeStructureSuggestionWait',
       }).when('/KnowledgeSession/RoundLevelVote/:id', {
           templateUrl: 'KnowledgeSession/RoundLevelVote',
       }).when('/KnowledgeSession/RoundWinnerVote/:id', {

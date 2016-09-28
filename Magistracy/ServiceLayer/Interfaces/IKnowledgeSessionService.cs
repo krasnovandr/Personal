@@ -10,6 +10,7 @@ namespace ServiceLayer.Interfaces
     {
         int CreateSession(KnowledgeSessionViewModel knowledgeSession, string userId);
         KnowledgeSessionViewModel GetSession(int sessionId);
+        NodeViewModel GetSessionRoot(int sessionId);
         void Dispose();
 
     }

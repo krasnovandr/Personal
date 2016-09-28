@@ -8,8 +8,12 @@
             $location.path('/NodeHistory').search({ sessionId: sessionId, nodeId: nodeId });
         },
 
-        viewNodeStructureSuggestion: function (nodeId) {
-            $location.path('/KnowledgeSession/NodeStructureSuggestion/' + nodeId);
+        viewNodeStructureSuggestion: function (nodeId,sessionId) {
+            $location.path('/KnowledgeSession/NodeStructureSuggestion/' + nodeId).search({ sessionId: sessionId });
+        },
+
+        viewNodeStructureSuggestionWait: function (nodeId,sessionId) {
+            $location.path('/KnowledgeSession/NodeStructureSuggestionWait/' + nodeId).search({ sessionId: sessionId });
         },
 
         viewRoundLevelVote: function (sessionId, level, parentId) {

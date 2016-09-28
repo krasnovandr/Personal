@@ -1,0 +1,32 @@
+﻿<div ng-controller="NodeStructureSuggestionWaitController" class="container">
+  <div class="row" ng-show="firstRoundMainBoard">
+    <h4>Все участники внесли свои предложения</h4>
+
+    <button class="btn btn-success pull-right" ng-click="viewRoundLevelVote()">
+      <span class="glyphicon glyphicon-remove">Перейти к просмотрy</span>
+    </button>
+  </div>
+  <div class="row">
+    <h4>Ожидание внесения предложений участниками</h4>
+    <div ng-repeat="member in members" class="panel-group ">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span>{{member.FirstName}}</span>
+          <span>{{member.LastName}}</span>
+        </div>
+        <div class="panel-body">
+          <img ng-src="{{member.AvatarFilePath}}" width="80" height="80" />
+
+          <div class="pull-right">
+            <span ng-show="member.NodeStructureSuggestion" class="glyphicon glyphicon-ok"></span>
+            <span ng-hide="member.NodeStructureSuggestion" class="glyphicon glyphicon-minus"></span>
+          </div>
+
+          @*<button class="btn btn-default pull-right" ng-click="updateUserSuggestion()">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>*@
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

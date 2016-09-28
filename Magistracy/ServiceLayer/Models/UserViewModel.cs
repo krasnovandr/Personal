@@ -76,7 +76,7 @@ namespace ServiceLayer.Models
         public SongViewModel CurrentSong { get; set; }
         public bool LoggedIn { get; set; }
 
-        public bool SessionSuggestion { get; set; }
+        public bool NodeStructureSuggestion { get; set; }
 
         public List<NodeViewModel> SuggestedNodes { get; set; }
         public LevelVoteViewModel LevelSuggestion { get; set; }

@@ -1,105 +1,149 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-//using AutoMapper;
-//using DataLayer.Interfaces;
-//using DataLayer.Models;
-//using ServiceLayer.Interfaces;
-//using ServiceLayer.Models.KnowledgeSession;
-//using ServiceLayer.Models.KnowledgeSession.Enums;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using AutoMapper;
+using DataLayer.Interfaces;
+using DataLayer.Models;
+using ServiceLayer.Interfaces;
+using ServiceLayer.Models.KnowledgeSession;
+using ServiceLayer.Models.KnowledgeSession.Enums;
 
-//namespace ServiceLayer.Services
-//{
-//    public class NodeService : INodeService
-//    {
-//        private readonly IUnitOfWork _db;
+namespace ServiceLayer.Services
+{
+    public class NodeService : INodeService
+    {
+        private readonly IUnitOfWork _db;
 
-//        public NodeService(IUnitOfWork db)
-//        {
-//            this._db = db;
-//        }
+        public NodeService(IUnitOfWork db)
+        {
+            this._db = db;
+        }
 
-//        public int AddNodeToSession(NodeViewModel node, int sessionId, string userId)
-//        {
-//            var session = _db.KnowledgeSessions.Get(sessionId);
-//            throw new NotImplementedException();
-//            //var newNode = new Node
-//            //{
-//            //    CreatedBy = userId,
-//            //    DateCreation = DateTime.Now,
-//            //    Level = node.Level,
-//            //    Name = node.Name,
-//            //    ParentId = node.ParentId
-//            //};
+        //public int AddNodeToSession(NodeViewModel node, int sessionId, string userId)
+        //{
+        //    var session = _db.KnowledgeSessions.Get(sessionId);
+        //    throw new NotImplementedException();
+        //    //var newNode = new Node
+        //    //{
+        //    //    CreatedBy = userId,
+        //    //    DateCreation = DateTime.Now,
+        //    //    Level = node.Level,
+        //    //    Name = node.Name,
+        //    //    ParentId = node.ParentId
+        //    //};
 
-//            //if (session != null)
-//            //{
-//            //    session.Nodes.Add(newNode);
-//            //    _db.KnowledgeSessions.Update(session);
-//            //    _db.Save();
-//            //}
+        //    //if (session != null)
+        //    //{
+        //    //    session.Nodes.Add(newNode);
+        //    //    _db.KnowledgeSessions.Update(session);
+        //    //    _db.Save();
+        //    //}
 
-//            //return newNode.Id;
-//        }
+        //    //return newNode.Id;
+        //}
 
 
-//        public List<NodeViewModel> GetSessionNodeByLevel(int sessionId, int level)
-//        {
-//            var session = _db.KnowledgeSessions.Get(sessionId);
-//            if (session == null) return null;
-//                   throw new NotImplementedException();
-//        //    var levelNodes = session.Nodes.Where(m => m.Level == level);
-//        //    var levelNodesViewModel = Mapper.Map<IEnumerable<Node>, List<NodeViewModel>>(levelNodes);
+        //public List<NodeViewModel> GetSessionNodeByLevel(int sessionId, int level)
+        //{
+        //    var session = _db.KnowledgeSessions.Get(sessionId);
+        //    if (session == null) return null;
+        //    throw new NotImplementedException();
+        //    //    var levelNodes = session.Nodes.Where(m => m.Level == level);
+        //    //    var levelNodesViewModel = Mapper.Map<IEnumerable<Node>, List<NodeViewModel>>(levelNodes);
 
-//        //    return levelNodesViewModel;
-//        }
+        //    //    return levelNodesViewModel;
+        //}
 
-//        public NodeViewModel GetNode(int sessionId, int nodeId)
-//        {
-//            var session = _db.KnowledgeSessions.Get(sessionId);
+        public NodeViewModel GetNode(int nodeId)
+        {
+            var node = _db.Nodes.Get(nodeId);
+            if (node == null)
+                throw new Exception("node was not found");
 
-//            var node = session.NodesSuggestions.FirstOrDefault(m => m.Id == nodeId);
+            return Mapper.Map<SessionNode, NodeViewModel>(node);
+        }
 
-//            return  node != null ? Mapper.Map<SessionNodes, NodeViewModel>(node) : null;
-//        }
+        //public int Id { get; set; }
+        //public string Name { get; set; }
+        //public virtual ApplicationUser SuggestedBy { get; set; }
+        //public virtual KnowledgeSession Session { get; set; }
+        //public DateTime Date { get; set; }
+        //public int? ParentId { get; set; }
+        //public NodeType Type { get; set; }
+        //public NodeStates State { get; set; }
 
-//        public bool SaveSuggestedNodes(List<NodeViewModel> nodes, string userId, int sessionId)
-//        {
-//            var session = _db.KnowledgeSessions.Get(sessionId);
+        //public virtual ICollection<NodeStructureVote> StructureVotes { get; set; }
+        //public virtual ICollection<NodeModification> NodeModifications { get; set; }
+        //public virtual ICollection<Comment> Comments { get; set; }
 
-//            var nodesList = Mapper.Map<List<NodeViewModel>, List<SessionNodes>>(nodes);
-//            foreach (var node in nodesList)
-//            {
-//                node.DateCreation = DateTime.Now;
-//                node.SuggestedBy = userId;
-//                session.NodesSuggestions.Add(node);
+        public void SaveSuggestedNodes(SuggestedNodesViewModel model, string userId)
+        {
+            var session = _db.KnowledgeSessions.Get(model.SessionId);
+            var user = _db.Users.Get(userId);
 
-//            }
-//            var firstNode = nodes.FirstOrDefault();
+            var nodesList = Mapper.Map<List<NodeViewModel>, ICollection<SessionNode>>(model.Nodes);
 
-//            if (firstNode != null)
-//            {
-//                var result = CheckSessionSuggestions(sessionId, firstNode.Level);
-//                if (result)
-//                {
-//                    session.SessionState = (int)SessionState.FirstRoundMainBoard;
-//                }
-//            }
-        
-//            return _db.Save();
-//        }
+            //Mapper.Map<ICollection<SessionNode>, List<NodeViewModel>>(session.SessionNodes);
+            foreach (var node in nodesList)
+            {
+                node.Date = DateTime.Now;
+                node.SuggestedBy = user;
+                node.Session = session;
+                node.ParentId = model.ParentId;
+                node.State = NodeStates.StructureSuggestion;
+                node.Type = NodeType.Suggested;
 
-//        public bool CheckSessionSuggestions(int sessionId, int? level)
-//        {
-//            var session = _db.KnowledgeSessions.Get(sessionId);
-//            level = level ?? 1;
+                session.SessionNodes.Add(node);
+            }
 
-//            var usersWithSuggestions = session.NodesSuggestions.Where(m => m.Level == level).Select(m => m.SuggestedBy).Distinct();
-//            var sessionUsers = session.Users.Select(m => m.Id).Distinct();
 
-//            return usersWithSuggestions.Count() == sessionUsers.Count();
-//        }
-//    }
-//}
+            //var firstNode = nodes.FirstOrDefault();
+
+            //if (firstNode != null)
+            //{
+            //    var result = CheckSessionSuggestions(sessionId, firstNode.Level);
+            //    if (result)
+            //    {
+            //        session.SessionState = (int)SessionState.FirstRoundMainBoard;
+            //    }
+            //}
+
+            _db.Save();
+        }
+
+        public NodeStates GetNodeState(string userId, int nodeId)
+        {
+            var user = _db.Users.Get(userId);
+            var nodes = _db.Nodes.GetAll();
+            var node = _db.Nodes.Get(nodeId);
+
+            var haveSuggestedNotes = nodes.Any(m => m.ParentId == nodeId && m.SuggestedBy == user);
+            if (haveSuggestedNotes)
+            {
+                if (node.State == NodeStates.StructureSuggestionVote)
+                {
+                    return NodeStates.StructureSuggestionVote;
+                }
+
+                return NodeStates.StructureSuggestionWait;
+
+            }
+
+
+            return NodeStates.StructureSuggestion;
+        }
+
+        //public bool CheckSessionSuggestions(int sessionId, int? level)
+        //{
+        //    var session = _db.KnowledgeSessions.Get(sessionId);
+        //    level = level ?? 1;
+
+        //    var usersWithSuggestions = session.NodesSuggestions.Where(m => m.Level == level).Select(m => m.SuggestedBy).Distinct();
+        //    var sessionUsers = session.Users.Select(m => m.Id).Distinct();
+
+        //    return usersWithSuggestions.Count() == sessionUsers.Count();
+        //}
+    }
+}
