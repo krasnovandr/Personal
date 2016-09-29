@@ -9,7 +9,7 @@
         //$scope.curentNodeIndex = 0;
         $scope.members = {};
 
-        knowledgeSessionService.getMembersNodeStrucutreSuggestion($scope.sessionId, $scope.nodeId)
+        knowledgeSessionService.GetMembersExtended($scope.sessionId, $scope.nodeId)
             .success(function (members) {
             $scope.members = members;
         });

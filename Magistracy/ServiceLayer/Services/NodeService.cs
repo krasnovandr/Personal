@@ -74,7 +74,7 @@ namespace ServiceLayer.Services
         //public NodeType Type { get; set; }
         //public NodeStates State { get; set; }
 
-        //public virtual ICollection<NodeStructureVote> StructureVotes { get; set; }
+        //public virtual ICollection<NodeStructureSuggestionVote> StructureVotes { get; set; }
         //public virtual ICollection<NodeModification> NodeModifications { get; set; }
         //public virtual ICollection<Comment> Comments { get; set; }
 
@@ -96,14 +96,23 @@ namespace ServiceLayer.Services
                 node.Type = NodeType.Suggested;
 
                 session.SessionNodes.Add(node);
+                user.SessionNodes.Add(node);
             }
 
+            var parentNode = _db.Nodes.Get(model.ParentId);
+
+            var suggestionComplete =ParentNodeSuggestionsComplete(model.SessionId, model.ParentId);
+
+            if (suggestionComplete)
+            {
+                parentNode.State = NodeStates.StructureSuggestionVote;
+            }
 
             //var firstNode = nodes.FirstOrDefault();
 
             //if (firstNode != null)
             //{
-            //    var result = CheckSessionSuggestions(sessionId, firstNode.Level);
+            //    var result = ParentNodeSuggestionsComplete(sessionId, firstNode.Level);
             //    if (result)
             //    {
             //        session.SessionState = (int)SessionState.FirstRoundMainBoard;
@@ -135,15 +144,15 @@ namespace ServiceLayer.Services
             return NodeStates.StructureSuggestion;
         }
 
-        //public bool CheckSessionSuggestions(int sessionId, int? level)
-        //{
-        //    var session = _db.KnowledgeSessions.Get(sessionId);
-        //    level = level ?? 1;
+        public bool ParentNodeSuggestionsComplete(int sessionId, int nodeId)
+        {
+            var session = _db.KnowledgeSessions.Get(sessionId);
 
-        //    var usersWithSuggestions = session.NodesSuggestions.Where(m => m.Level == level).Select(m => m.SuggestedBy).Distinct();
-        //    var sessionUsers = session.Users.Select(m => m.Id).Distinct();
+            var usersWithSuggestions = session.SessionNodes.Where(m => m.ParentId == nodeId)
+                .Select(m => m.SuggestedBy).Distinct();
+            var sessionUsers = session.Users.Select(m => m.Id);
 
-        //    return usersWithSuggestions.Count() == sessionUsers.Count();
-        //}
+            return usersWithSuggestions.Count() == sessionUsers.Count();
+        }
     }
 }

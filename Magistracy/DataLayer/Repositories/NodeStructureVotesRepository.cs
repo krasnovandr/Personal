@@ -6,7 +6,7 @@ using DataLayer.Models;
 
 namespace DataLayer.Repositories
 {
-    public class NodeStructureVotesRepository : IRepository<NodeStructureVote>
+    public class NodeStructureVotesRepository : IRepository<NodeStructureSuggestionVote>
     {
         private readonly ApplicationDbContext _db;
 
@@ -15,31 +15,31 @@ namespace DataLayer.Repositories
             _db = context;
         }
 
-        public IEnumerable<NodeStructureVote> GetAll()
+        public IEnumerable<NodeStructureSuggestionVote> GetAll()
         {
             return _db.NodeStructureVotes;
         }
 
-        public NodeStructureVote Get(int id)
+        public NodeStructureSuggestionVote Get(int id)
         {
             return _db.NodeStructureVotes.Find(id);
         }
 
-        public void Create(NodeStructureVote item)
+        public void Create(NodeStructureSuggestionVote item)
         {
             _db.NodeStructureVotes.Add(item);
         }
 
-        public void Update(NodeStructureVote item)
+        public void Update(NodeStructureSuggestionVote item)
         {
             _db.Entry(item).State = EntityState.Modified;
         }
 
         public void Delete(int id)
         {
-            NodeStructureVote nodeStructureVote = _db.NodeStructureVotes.Find(id);
-            if (nodeStructureVote != null)
-                _db.NodeStructureVotes.Remove(nodeStructureVote);
+            NodeStructureSuggestionVote nodeStructureSuggestionVote = _db.NodeStructureVotes.Find(id);
+            if (nodeStructureSuggestionVote != null)
+                _db.NodeStructureVotes.Remove(nodeStructureSuggestionVote);
         }
     }
 }

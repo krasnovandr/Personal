@@ -89,13 +89,13 @@ namespace AudioNetwork.Web.API
         }
 
 
-        public List<UserViewModel> GetMembersNodeStrucutreSuggestion(int sessionId, int nodeId)
+        public List<SessionUserViewModel> GetMembersExtended(int sessionId, int nodeId)
         {
-            var result = _knowledgeSessionMemberService.GetMembersNodeStrucutreSuggestion(sessionId, nodeId);
+            var result = _knowledgeSessionMemberService.GetMembersExtended(sessionId, nodeId);
             return result;
         }
 
-        public List<UserViewModel> GetMembers(int sessionId)
+        public List<SessionUserViewModel> GetMembers(int sessionId)
         {
             var result = _knowledgeSessionMemberService.GetMembers(sessionId);
             return result;

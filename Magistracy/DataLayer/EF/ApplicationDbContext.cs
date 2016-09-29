@@ -32,7 +32,8 @@ namespace DataLayer.EF
         public DbSet<Comment> Comments { get; set; }
         public DbSet<NodeModification> NodeModifications { get; set; }
         public DbSet<NodeModificationVote> NodeModificationVotes { get; set; }
-        public DbSet<NodeStructureVote> NodeStructureVotes { get; set; }
+        public DbSet<NodeStructureSuggestionVote> NodeStructureVotes { get; set; }
+        public DbSet<NodeStructureSuggestion> NodeStructureSuggestion { get; set; }
         public DbSet<NodeHistory> NodeHistory { get; set; }
 
 

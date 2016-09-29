@@ -8,16 +8,16 @@
             $location.path('/NodeHistory').search({ sessionId: sessionId, nodeId: nodeId });
         },
 
-        viewNodeStructureSuggestion: function (nodeId,sessionId) {
+        viewNodeStructureSuggestion: function (nodeId, sessionId) {
             $location.path('/KnowledgeSession/NodeStructureSuggestion/' + nodeId).search({ sessionId: sessionId });
         },
 
-        viewNodeStructureSuggestionWait: function (nodeId,sessionId) {
+        viewNodeStructureSuggestionWait: function (nodeId, sessionId) {
             $location.path('/KnowledgeSession/NodeStructureSuggestionWait/' + nodeId).search({ sessionId: sessionId });
         },
 
-        viewRoundLevelVote: function (sessionId, level, parentId) {
-            $location.path('/KnowledgeSession/RoundLevelVote/' + sessionId).search({ level: level, parentId: parentId });
+        viewNodeStructureSuggestionVote: function (nodeId,sessionId) {
+            $location.path('/KnowledgeSession/NodeStructureSuggestionVote/' + nodeId).search({ sessionId: sessionId });
         },
 
         viewSession: function (sessionId) {

@@ -19,7 +19,8 @@
             function (tree) {
                 $('#tree').treeview(
                     {
-                        data: tree
+                        data: tree,
+                        backColor: 'green'
                     });
                 $('#tree').treeview('expandAll');
             });
@@ -38,7 +39,7 @@
                     break;
                 }
                 case $scope.NodeStates.StructureSuggestionVote: {
-                    alert("Case StructureSuggestionVote");
+                    urlMakerService.viewNodeStructureSuggestionVote(node.Id, $scope.sessionId);
                     break;
                 }
                 case $scope.NodeStates.UpdatesAndComments: {

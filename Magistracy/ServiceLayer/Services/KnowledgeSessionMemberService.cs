@@ -100,14 +100,42 @@ namespace ServiceLayer.Services
 
         public TreeNodeViewModel TreeNodeViewModelMapper(SessionNode sessionNode, string userId)
         {
-            return new TreeNodeViewModel
+            var treeNode = new TreeNodeViewModel
             {
                 Id = sessionNode.Id,
                 text = sessionNode.Name,
                 nodes = new List<TreeNodeViewModel>(),
                 State = _nodeService.GetNodeState(userId, sessionNode.Id)
             };
+
+            DetermineNodeColor(treeNode);
+            return treeNode;
         }
+
+        private void DetermineNodeColor(TreeNodeViewModel node)
+        {
+            switch (node.State)
+            {
+                case NodeStates.StructureSuggestion:
+                    node.color = "#FFFFFF";
+                    node.backColor = "#000000";
+                    //backColor: "#FFFFFF""; 
+                    break;
+                case NodeStates.StructureSuggestionWait:
+                    //node.color = "#FFD700";
+                    node.backColor = "#FFD700";
+                    break;
+                case NodeStates.StructureSuggestionVote:
+                    //node.color = "#006400";
+                    node.backColor = "#006400";
+                    break;
+                case NodeStates.UpdatesAndComments: break;
+                case NodeStates.Leaf: break;
+            }
+        }
+
+        //       color: "#000000",
+        //backColor: "#FFFFFF",
 
         private TreeNodeViewModel GetNodeToAdd(TreeNodeViewModel nodeToCheck, int? parentId)
         {
@@ -134,24 +162,31 @@ namespace ServiceLayer.Services
         //UserViewModel GetWinner(NodeIdentifyModel nodeIdentifyModel);
 
 
-        public List<UserViewModel> GetMembersNodeStrucutreSuggestion(int sessionId, int nodeId)
+        public List<SessionUserViewModel> GetMembersExtended(int sessionId, int nodeId)
         {
-            var members = GetMembers(sessionId);
+            var session = _db.KnowledgeSessions.Get(sessionId);
+            var members = Mapper.Map<ICollection<ApplicationUser>, List<SessionUserViewModel>>(session.Users);
+          
             foreach (var member in members)
             {
                 //    FillMemberViewModel(sessionId, member);
                 member.NodeStructureSuggestion = _db.Nodes.GetAll()
                     .Any(m => m.ParentId == nodeId && m.SuggestedBy.Id == member.Id);
+               var suggestedToNode = member.SessionNodes.Where(m => (m.ParentId ?? 0) == nodeId);
+               member.SessionNodes = new List<NodeViewModel>(suggestedToNode);
+                //    ValueResolver 
                 //_levelVoteService.CheckUserForLevelVote(sessionId, member.Id, 0);
+
+                //member.SuggestedNodes = 
             }
 
             return members;
         }
 
-        public List<UserViewModel> GetMembers(int sessionId)
+        public List<SessionUserViewModel> GetMembers(int sessionId)
         {
             var session = _db.KnowledgeSessions.Get(sessionId);
-            var members = Mapper.Map<ICollection<ApplicationUser>, List<UserViewModel>>(session.Users);
+            var members = Mapper.Map<ICollection<ApplicationUser>, List<SessionUserViewModel>>(session.Users);
 
             //foreach (var member in members)
             //{
@@ -223,6 +258,8 @@ namespace ServiceLayer.Services
 
     public class TreeNodeViewModel
     {
+        public string backColor;
+        public string color;
         public string text { get; set; }
         public int Id { get; set; }
         public List<TreeNodeViewModel> nodes { get; set; }

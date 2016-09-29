@@ -42,7 +42,7 @@ namespace DataLayer.Repositories
             }
         }
 
-        public IRepository<NodeStructureVote> LevelVotes
+        public IRepository<NodeStructureSuggestionVote> LevelVotes
         {
             get
             {

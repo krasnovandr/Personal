@@ -1,17 +1,17 @@
 ﻿angular.module('AudioNetworkApp')
-    .controller('RoundLevelVoteController', function ($, $scope, $http, $location, $rootScope, knowledgeSessionService, userService, $routeParams, urlMakerService) {
+    .controller('NodeStructureSuggestionVoteController', function ($, $scope, $http, $location, $rootScope, knowledgeSessionService, userService, $routeParams, urlMakerService) {
 
         $scope.session = {};
-        $scope.sessionId = $routeParams.id;
-        $scope.parentId = $routeParams.parentId;
+        $scope.sessionId = $routeParams.sessionId;
+        $scope.nodeId = $routeParams.id;
         $scope.curentNodeIndex = 0;
         $scope.members = {};
         $scope.level = $routeParams.level;
         $scope.levelVoted = {};
 
-        $scope.voteFinished = false;
+        //$scope.voteFinished = true;
 
-        knowledgeSessionService.get($scope.sessionId).success(function (result) {
+        knowledgeSessionService.getSession($scope.sessionId).success(function (result) {
             $scope.session = result;
         });
 
@@ -21,7 +21,7 @@
         };
 
         $scope.initializeMembers = function () {
-          knowledgeSessionService.getMembers($scope.sessionId, $scope.parentId).success(function (members) {
+            knowledgeSessionService.GetMembersExtended($scope.sessionId, $scope.nodeId).success(function (members) {
                 $scope.members = members;
                 knowledgeSessionService.checkUserLevelVote($scope.sessionId, $rootScope.logState.Id, $scope.parentId, $scope.levelVoteType.levelStarted).success(function (resultVoted) {
                     $scope.levelVoted = resultVoted;
@@ -40,7 +40,7 @@
         });
 
 
-        $scope.sessionHub = $.connection.knowledgeSessionHub;
+        //$scope.sessionHub = $.connection.knowledgeSessionHub;
         //$rootScope.myHub.client.userAddSuggestion = function (userId) {
         //    $scope.$apply(function () {
         //        $scope.updateUserSuggestion(userId);
@@ -62,8 +62,8 @@
             });
         };
 
-        $.connection.hub.start().done(function () {
-        });
+        //$.connection.hub.start().done(function () {
+        //});
 
         $scope.goToRoundWinnerVote = function () {
           urlMakerService.roundWinnerVoteUrl($scope.sessionId, $scope.parentId, $scope.level);

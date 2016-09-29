@@ -85,7 +85,7 @@ namespace DataLayer.Models
     {
         public SessionNode()
         {
-            StructureVotes = new List<NodeStructureVote>();
+            StructureVotes = new List<NodeStructureSuggestionVote>();
             NodeModifications = new List<NodeModification>();
             Comments = new List<Comment>();
         }
@@ -94,22 +94,23 @@ namespace DataLayer.Models
         public string Name { get; set; }
         public virtual ApplicationUser SuggestedBy { get; set; }
         public virtual KnowledgeSession Session { get; set; }
+        public virtual NodeStructureSuggestion NodeStructureSuggestion { get; set; }
         public DateTime Date { get; set; }
         public int? ParentId { get; set; }
         public NodeType Type { get; set; }
         public NodeStates State { get; set; }
 
-        public virtual ICollection<NodeStructureVote> StructureVotes { get; set; }
+        public virtual ICollection<NodeStructureSuggestionVote> StructureVotes { get; set; }
         public virtual ICollection<NodeModification> NodeModifications { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
     }
 
-    public class NodeStructureVote
+    public class NodeStructureSuggestionVote
     {
         [Key]
         public int Id { get; set; }
         public virtual ApplicationUser VoteBy { get; set; }
-        public virtual SessionNode Node { get; set; }
+        public virtual NodeStructureSuggestion Suggestion { get; set; }
         public NodeStructureVoteTypes VoteType { get; set; }
         public DateTime Date { get; set; }
     }
@@ -172,5 +173,14 @@ namespace DataLayer.Models
         public string Value { get; set; }
         public virtual ApplicationUser ByUser { get; set; }
         public int? SuggestionId { get; set; }
+    }
+
+    public class NodeStructureSuggestion
+    {
+        [Key]
+        public int Id { get; set; }
+        public DateTime Date { get; set; }
+        public virtual ICollection<SessionNode> Nodes { get; set; }
+        public virtual ApplicationUser SuggestedBy { get; set; }
     }
 }

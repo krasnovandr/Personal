@@ -19,7 +19,7 @@
         },
 
         levelVote: function (dataToTransfer) {
-            return $http({ method: 'POST', url: 'SessionVote/NodeStructureVote', data: dataToTransfer });
+            return $http({ method: 'POST', url: 'SessionVote/NodeStructureSuggestionVote', data: dataToTransfer });
         },
 
         suggestionVote: function (voteViewModel, sessionId) {
@@ -100,9 +100,9 @@
             });
         },
 
-        getMembersNodeStrucutreSuggestion: function (sessionId, nodeId) {
+        GetMembersExtended: function (sessionId, nodeId) {
             return $http({
-                url: 'api/KnowledgeSessionApi/GetMembersNodeStrucutreSuggestion',
+                url: 'api/KnowledgeSessionApi/GetMembersExtended',
                 method: "GET",
                 params: { sessionId: sessionId, nodeId: nodeId }
             });

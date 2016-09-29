@@ -92,7 +92,7 @@
 
 //                    historyModel.Suggestions = new List<SuggestionViewModel>();
 //                    historyModel.Suggestions.AddRange(
-//                        Mapper.Map<List<Suggestion>, List<SuggestionViewModel>>(suggestions.OrderByDescending(m=>m.SuggestionDate).ToList()));
+//                        Mapper.Map<List<NodeStructureSuggestion>, List<SuggestionViewModel>>(suggestions.OrderByDescending(m=>m.SuggestionDate).ToList()));
 
 
 //                }

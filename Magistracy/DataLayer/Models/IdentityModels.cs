@@ -15,7 +15,7 @@ namespace DataLayer.Models
             Comments = new List<Comment>();
             NodeModifications = new List<NodeModification>();
             NodeModificationVotes = new List<NodeModificationVote>();
-            NodeStructureVotes = new List<NodeStructureVote>();
+            NodeStructureVotes = new List<NodeStructureSuggestionVote>();
 
         }
         public DateTime LastActivity { get; set; }
@@ -56,8 +56,8 @@ namespace DataLayer.Models
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<NodeModification> NodeModifications { get; set; }
         public virtual ICollection<NodeModificationVote> NodeModificationVotes { get; set; }
-        public virtual ICollection<NodeStructureVote> NodeStructureVotes { get; set; }
+        public virtual ICollection<NodeStructureSuggestionVote> NodeStructureVotes { get; set; }
         //public virtual ICollection<KnowledgeSessionRole> KnowledgeSessionRoles { get; set; }
-        //public virtual ICollection<NodeStructureVote> LevelVotes { get; set; }
+        //public virtual ICollection<NodeStructureSuggestionVote> LevelVotes { get; set; }
     }
 }

@@ -75,6 +75,10 @@
     <Compile Include="Migrations\201609212204348_Update_KnowledgeSession_Tables.Designer.cs">
       <DependentUpon>201609212204348_Update_KnowledgeSession_Tables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609292233272_Add_SuggestionTable.cs" />
+    <Compile Include="Migrations\201609292233272_Add_SuggestionTable.Designer.cs">
+      <DependentUpon>201609292233272_Add_SuggestionTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\NodesRepository.cs" />
     <Compile Include="Repositories\KnowledgeSessionRepository.cs" />
@@ -118,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609212204348_Update_KnowledgeSession_Tables.resx">
       <DependentUpon>201609212204348_Update_KnowledgeSession_Tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609292233272_Add_SuggestionTable.resx">
+      <DependentUpon>201609292233272_Add_SuggestionTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

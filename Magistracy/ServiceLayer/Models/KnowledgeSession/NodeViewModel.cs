@@ -9,13 +9,13 @@ namespace ServiceLayer.Models.KnowledgeSession
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime Date { get; set; }
-        public UserViewModel SuggestedBy { get; set; }
+        public SessionUserViewModel SuggestedBy { get; set; }
         public int? ParentId { get; set; }
         public NodeType Type { get; set; }
         public NodeStates State { get; set; }
 
 
-        public List<NodeStructureVote> StructureVotes { get; set; }
+        public List<NodeStructureSuggestionVote> StructureVotes { get; set; }
         public List<NodeModification> NodeModifications { get; set; }
         public List<Comment> Comments { get; set; }
     }
@@ -32,7 +32,7 @@ namespace ServiceLayer.Models.KnowledgeSession
       //  public NodeType Type { get; set; }
       //  public NodeStates State { get; set; }
 
-      //  public virtual ICollection<NodeStructureVote> StructureVotes { get; set; }
+      //  public virtual ICollection<NodeStructureSuggestionVote> StructureVotes { get; set; }
       //  public virtual ICollection<NodeModification> NodeModifications { get; set; }
       //  public virtual ICollection<Comment> Comments { get; set; }
 }

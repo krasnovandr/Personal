@@ -343,7 +343,7 @@
     <Content Include="Scripts\Controllers\HomeController.js" />
     <Content Include="Scripts\Controllers\ConversationsController.js" />
     <Content Include="Scripts\Controllers\KnowledgeSession\RoundWinnerVoteController.js" />
-    <Content Include="Scripts\Controllers\KnowledgeSession\RoundLevelVoteController.js" />
+    <Content Include="Scripts\Controllers\KnowledgeSession\NodeStructureSuggestionVoteController.js" />
     <Content Include="Scripts\Controllers\KnowledgeSession\NodeStructureSuggestionController.js" />
     <Content Include="Scripts\Controllers\KnowledgeSession\KnowledgeSessionController.js" />
     <Content Include="Scripts\Controllers\RecognizeController.js" />
@@ -1221,7 +1221,7 @@
     <Content Include="Views\Recognition\ViewRecognition.cshtml" />
     <Content Include="Views\KnowledgeSession\Index.cshtml" />
     <Content Include="Views\KnowledgeSession\NodeStructureSuggestion.cshtml" />
-    <Content Include="Views\KnowledgeSession\RoundLevelVote.cshtml" />
+    <Content Include="Views\KnowledgeSession\NodeStructureSuggestionVote.cshtml" />
     <Content Include="Views\KnowledgeSession\RoundWinnerVote.cshtml" />
     <Content Include="Scripts\Libs\Angular\version.json" />
     <Content Include="Views\Suggestion\SuggestionModal.cshtml" />

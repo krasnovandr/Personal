@@ -10,13 +10,13 @@ namespace ServiceLayer.Interfaces
     public interface IKnowledgeSessionMemberService
     {
         List<KnowledgeSessionViewModel> GetUserSessions(string userId);
-        List<UserViewModel> GetMembers(int sessionId);
+        List<SessionUserViewModel> GetMembers(int sessionId);
         //List<UserViewModel> GetOrderedMembers(NodeIdentifyModel nodeIdentifyModel);
         //bool CheckUserSuggestion(NodeIdentifyModel nodeIdentifyModel, string userid);
         //UserViewModel GetWinner(NodeIdentifyModel nodeIdentifyModel);
         void Dispose();
         List<TreeNodeViewModel> GetTree(int sessionId, string userId);
         void AddMembersToSession(AddMembersViewModel addMembersViewModel);
-        List<UserViewModel> GetMembersNodeStrucutreSuggestion(int sessionId, int nodeId);
+        List<SessionUserViewModel> GetMembersExtended(int sessionId, int nodeId);
     }
 }

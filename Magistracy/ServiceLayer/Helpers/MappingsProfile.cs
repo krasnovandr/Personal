@@ -24,10 +24,11 @@ namespace ServiceLayer.Helpers
         protected override void Configure()
         {
             Mapper.CreateMap<KnowledgeSession, KnowledgeSessionViewModel>();
-            Mapper.CreateMap<ApplicationUser, UserViewModel>();
-            Mapper.CreateMap<UserViewModel, ApplicationUser>();
+            Mapper.CreateMap<ApplicationUser, SessionUserViewModel>();
+            Mapper.CreateMap<SessionUserViewModel, ApplicationUser>();
 
-            Mapper.CreateMap<SessionNode, NodeViewModel>();
+            Mapper.CreateMap<SessionNode, NodeViewModel>()
+                   .ForMember(dest => dest.SuggestedBy, opt => opt.MapFrom(src => src.SuggestedBy));
             Mapper.CreateMap<NodeViewModel, SessionNode>();
 
                 //.ForMember(dest => dest.SuggestedBy, opt => opt.MapFrom(src => src.SuggestedBy))
