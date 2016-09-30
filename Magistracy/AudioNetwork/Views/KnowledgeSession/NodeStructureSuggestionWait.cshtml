@@ -18,8 +18,8 @@
           <img ng-src="{{member.AvatarFilePath}}" width="80" height="80" />
 
           <div class="pull-right">
-            <span ng-show="member.NodeStructureSuggestion" class="glyphicon glyphicon-ok"></span>
-            <span ng-hide="member.NodeStructureSuggestion" class="glyphicon glyphicon-minus"></span>
+            <span ng-show="member.NodeStructureSuggestionDone" class="glyphicon glyphicon-ok"></span>
+            <span ng-hide="member.NodeStructureSuggestionDone" class="glyphicon glyphicon-minus"></span>
           </div>
 
           @*<button class="btn btn-default pull-right" ng-click="updateUserSuggestion()">
@@ -28,5 +28,8 @@
         </div>
       </div>
     </div>
+    <button class="btn btn-success pull-right" ng-click="goToVote()" ng-disabled="!suggestionsComplete" tooltip-placement="left" uib-tooltip="Далее">
+      <span class="glyphicon glyphicon-arrow-right"></span>
+    </button>
   </div>
 </div>

@@ -11,33 +11,29 @@ namespace AudioNetwork.Web.Controllers
 {
     public class SuggestionController : Controller
     {
-        private readonly ISessionSuggestionService _sessionSuggestionService;
+        private readonly ISuggestionService _suggestionService;
 
-        public SuggestionController(ISessionSuggestionService sessionSuggestionService)
+        public SuggestionController(ISuggestionService suggestionService)
         {
-            _sessionSuggestionService = sessionSuggestionService;
+            _suggestionService = suggestionService;
         }
 
-        public ActionResult SuggestionModal()
-        {
-            return View();
-        }
 
-        public ActionResult MakeSuggestion(NodeSuggestionViewModel nodeSuggestionViewModel)
-        {
-            return Json(_sessionSuggestionService.MakeNodeSuggestion(nodeSuggestionViewModel),
-                JsonRequestBehavior.AllowGet);
-        }
+        //public ActionResult MakeSuggestion(NodeSuggestionViewModel nodeSuggestionViewModel)
+        //{
+        //    return Json(_suggestionService.MakeNodeSuggestion(nodeSuggestionViewModel),
+        //        JsonRequestBehavior.AllowGet);
+        //}
 
-        public ActionResult AddComment(int sessionId,string comment,int nodeId)
-        {
-            var result = _sessionSuggestionService.AddComment(sessionId, comment, nodeId, User.Identity.GetUserId());
-            if (result)
-            {
-                return Json(_sessionSuggestionService.GetComments(sessionId, nodeId), JsonRequestBehavior.AllowGet);
-            }
-            return Json(false,JsonRequestBehavior.AllowGet);
-        }
+        //public ActionResult AddComment(int sessionId,string comment,int nodeId)
+        //{
+        //    var result = _suggestionService.AddComment(sessionId, comment, nodeId, User.Identity.GetUserId());
+        //    if (result)
+        //    {
+        //        return Json(_suggestionService.GetComments(sessionId, nodeId), JsonRequestBehavior.AllowGet);
+        //    }
+        //    return Json(false,JsonRequestBehavior.AllowGet);
+        //}
 
     }
 }

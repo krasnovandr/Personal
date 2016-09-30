@@ -13,6 +13,7 @@ namespace DataLayer.Repositories
         private UserRepository _userRepository;
         private NodeStructureVotesRepository _nodeStructureVotesRepository;
         private NodeHistoryRepository _nodeHistoryRepository;
+        private NodeStructureSuggestionRepository _nodeStructureSuggestion;
         private bool _disposed = false;
 
         public IRepository<SessionNode> Nodes
@@ -22,6 +23,15 @@ namespace DataLayer.Repositories
                 return _nodesRepository ??
                     (_nodesRepository = new NodesRepository(_db));
             }
+        }
+
+        public IRepository<NodeStructureSuggestion> NodeStructureSuggestions
+        {
+            get
+            {
+                return _nodeStructureSuggestion ??
+                    (_nodeStructureSuggestion = new NodeStructureSuggestionRepository(_db));
+            } 
         }
 
         public IRepository<NodeHistory> NodesHistory

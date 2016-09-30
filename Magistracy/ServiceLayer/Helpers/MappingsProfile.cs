@@ -27,12 +27,21 @@ namespace ServiceLayer.Helpers
             Mapper.CreateMap<ApplicationUser, SessionUserViewModel>();
             Mapper.CreateMap<SessionUserViewModel, ApplicationUser>();
 
+            Mapper.CreateMap<NodeStructureSuggestion, NodeStructureSuggestionViewModel>();
+            Mapper.CreateMap<NodeStructureSuggestionViewModel, NodeStructureSuggestion>();
+
+
             Mapper.CreateMap<SessionNode, NodeViewModel>()
                    .ForMember(dest => dest.SuggestedBy, opt => opt.MapFrom(src => src.SuggestedBy));
-            Mapper.CreateMap<NodeViewModel, SessionNode>();
+            Mapper.CreateMap<NodeViewModel, SessionNode>()
+                       .ForMember(dest => dest.SuggestedBy, opt => opt.MapFrom(src => src.SuggestedBy));
 
-                //.ForMember(dest => dest.SuggestedBy, opt => opt.MapFrom(src => src.SuggestedBy))
-                //.ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date));
+            Mapper.CreateMap<SessionNode, SuggestionNodeViewModel>()
+              .ForMember(dest => dest.SuggestedBy, opt => opt.MapFrom(src => src.SuggestedBy.Id));
+
+            Mapper.CreateMap<NodeStructureSuggestionVote, NodeStructureSuggestionVoteViewModel>();
+            //.ForMember(dest => dest.SuggestedBy, opt => opt.MapFrom(src => src.SuggestedBy))
+            //.ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date));
 
             //Mapper.CreateMap<NodeViewModel, SessionNodes>()
             //    .ForMember(dest => dest.DateCreation, opt => opt.MapFrom(src => src.CreationDate))
@@ -59,8 +68,8 @@ namespace ServiceLayer.Helpers
             //    .ForMember(dest => dest.VoteBy, opt => opt.MapFrom(src => src.VoteBy.Id))
             //    .ForMember(dest => dest.VoteByUser, opt => opt.MapFrom(src => src.VoteBy));
 
-            Mapper.CreateMap<Comment, CommentViewModel>()
-                .ForMember(dest => dest.CommentBy, opt => opt.MapFrom(src => src.CommentBy));
+            //Mapper.CreateMap<Comment, CommentViewModel>()
+            //    .ForMember(dest => dest.CommentBy, opt => opt.MapFrom(src => src.CommentBy));
 
         }
     }

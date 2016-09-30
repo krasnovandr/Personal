@@ -60,12 +60,11 @@
 
         $scope.saveNodes = function () {
             knowledgeSessionService.saveSuggestedNodes($scope.nodes, $scope.sessionId, $scope.parentNode.Id).success(function (result) {
-                if (result) {
-                    $scope.usersMode = true;
-                    knowledgeSessionService.getMembers($scope.sessionId).success(function (members) {
-                        $scope.members = members;
-                    });
-                }
+                urlMakerService.viewNodeStructureSuggestionWait($scope.nodeId, $scope.sessionId);
+                //$scope.usersMode = true;
+                //knowledgeSessionService.getMembers($scope.sessionId).success(function (members) {
+                //    $scope.members = members;
+                //});
             });
         };
 

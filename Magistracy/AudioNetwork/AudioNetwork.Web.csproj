@@ -1224,7 +1224,7 @@
     <Content Include="Views\KnowledgeSession\NodeStructureSuggestionVote.cshtml" />
     <Content Include="Views\KnowledgeSession\RoundWinnerVote.cshtml" />
     <Content Include="Scripts\Libs\Angular\version.json" />
-    <Content Include="Views\Suggestion\SuggestionModal.cshtml" />
+    <Content Include="Views\KnowledgeSession\SuggestionModal.cshtml" />
     <Content Include="Views\SessionVote\VoteUsersModal.cshtml" />
     <Content Include="Views\KnowledgeSession\CommentsChat.cshtml" />
     <Content Include="Views\NodeHistory\Index.cshtml" />

@@ -108,6 +108,14 @@
             });
         },
 
+        getSuggestions: function (sessionId, nodeId) {
+            return $http({
+                url: 'api/KnowledgeSessionApi/GetSuggestions',
+                method: "GET",
+                params: { sessionId: sessionId, nodeId: nodeId }
+            });
+        },
+
         getSession: function (sessionId) {
             return $http({
                 url: 'api/KnowledgeSessionApi/GetSession',

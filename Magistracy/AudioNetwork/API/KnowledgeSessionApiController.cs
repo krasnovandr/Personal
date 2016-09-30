@@ -18,15 +18,24 @@ namespace AudioNetwork.Web.API
         private readonly IKnowledgeSessionService _knowledgeSessionService;
         private readonly IKnowledgeSessionMemberService _knowledgeSessionMemberService;
         private readonly INodeService _nodeService;
+        private readonly ISuggestionService _suggestionService;
 
         public KnowledgeSessionApiController(
             IKnowledgeSessionService knowledgeSessionService,
             IKnowledgeSessionMemberService knowledgeSessionMemberService,
-            INodeService nodeService)
+            INodeService nodeService,
+            ISuggestionService suggestionService)
         {
             _knowledgeSessionService = knowledgeSessionService;
             _knowledgeSessionMemberService = knowledgeSessionMemberService;
             _nodeService = nodeService;
+            _suggestionService = suggestionService;
+        }
+
+        [HttpGet]
+        public IEnumerable<SuggestionSessionUserViewModel> GetSuggestions(int sessionId, int nodeId)
+        {
+            return _suggestionService.GetSuggestions(sessionId, nodeId);
         }
 
         [HttpPost]

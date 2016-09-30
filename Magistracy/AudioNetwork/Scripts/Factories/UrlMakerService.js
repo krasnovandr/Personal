@@ -23,5 +23,6 @@
         viewSession: function (sessionId) {
             $location.path('/KnowledgeSession/' + sessionId);
         },
+
     };
 });

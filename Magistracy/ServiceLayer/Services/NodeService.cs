@@ -15,10 +15,14 @@ namespace ServiceLayer.Services
     public class NodeService : INodeService
     {
         private readonly IUnitOfWork _db;
+        private readonly ISuggestionService _suggestionService;
 
-        public NodeService(IUnitOfWork db)
+        public NodeService(
+            IUnitOfWork db,
+            ISuggestionService suggestionService)
         {
             this._db = db;
+            _suggestionService = suggestionService;
         }
 
         //public int AddNodeToSession(NodeViewModel node, int sessionId, string userId)
@@ -85,7 +89,7 @@ namespace ServiceLayer.Services
 
             var nodesList = Mapper.Map<List<NodeViewModel>, ICollection<SessionNode>>(model.Nodes);
 
-            //Mapper.Map<ICollection<SessionNode>, List<NodeViewModel>>(session.SessionNodes);
+            var suggestionId = _suggestionService.CreateSuggestion(userId, model.ParentId);
             foreach (var node in nodesList)
             {
                 node.Date = DateTime.Now;
@@ -94,14 +98,14 @@ namespace ServiceLayer.Services
                 node.ParentId = model.ParentId;
                 node.State = NodeStates.StructureSuggestion;
                 node.Type = NodeType.Suggested;
-
+                node.NodeStructureSuggestion = _db.NodeStructureSuggestions.Get(suggestionId);
                 session.SessionNodes.Add(node);
                 user.SessionNodes.Add(node);
             }
 
             var parentNode = _db.Nodes.Get(model.ParentId);
-
-            var suggestionComplete =ParentNodeSuggestionsComplete(model.SessionId, model.ParentId);
+     
+            var suggestionComplete = ParentNodeSuggestionsComplete(model.SessionId, model.ParentId);
 
             if (suggestionComplete)
             {

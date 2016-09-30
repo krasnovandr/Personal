@@ -181,6 +181,8 @@ namespace DataLayer.Models
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public virtual ICollection<SessionNode> Nodes { get; set; }
+        public virtual ICollection<NodeStructureSuggestionVote> Votes { get; set; }
         public virtual ApplicationUser SuggestedBy { get; set; }
+        public int? ParentId { get; set; }
     }
 }

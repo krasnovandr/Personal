@@ -10,6 +10,6 @@ namespace ServiceLayer.Models.KnowledgeSession
         public string Value { get; set; }
         public NodeViewModel Node { get; set; }
         public UserViewModel ByUser { get; set; }
-        public List<SuggestionViewModel> Suggestions { get; set; }
+        public List<SuggestionSessionUserViewModel> Suggestions { get; set; }
     }
 }

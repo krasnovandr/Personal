@@ -37,7 +37,7 @@
       };
       $scope.startFirstRound = function () {
         knowledgeSessionService.addMembers($scope.members, $scope.sessionId).success(function (userFriends) {
-          //urlMakerService.viewRound($scope.session.Id, 1, $scope.session.NodesSuggestions[0].Id);
+            urlMakerService.viewSession($scope.sessionId);
 
         });
       };

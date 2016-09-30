@@ -17,18 +17,18 @@ namespace ServiceLayer.Services
         private readonly INodeService _nodeService;
         //private readonly ILevelVoteService _levelVoteService;
         //private readonly ISuggestionVoteService _suggestionVoteService;
-        //private readonly ISessionSuggestionService _sessionSuggestionService;
+        //private readonly ISuggestionService _suggestionService;
 
         public KnowledgeSessionMemberService(
             IUnitOfWork db, INodeService nodeService)
         //ILevelVoteService sessionVoteService,
-        //ISessionSuggestionService sessionSuggestionService,
+        //ISuggestionService SuggestionService,
         //ILevelVoteService levelVoteService,
         //ISuggestionVoteService suggestionVoteService)
         {
             this._db = db;
             _nodeService = nodeService;
-            //_sessionSuggestionService = sessionSuggestionService;
+            //_suggestionService = SuggestionService;
             //_levelVoteService = levelVoteService;
             //_suggestionVoteService = suggestionVoteService;
         }
@@ -170,7 +170,7 @@ namespace ServiceLayer.Services
             foreach (var member in members)
             {
                 //    FillMemberViewModel(sessionId, member);
-                member.NodeStructureSuggestion = _db.Nodes.GetAll()
+                member.NodeStructureSuggestionDone = _db.Nodes.GetAll()
                     .Any(m => m.ParentId == nodeId && m.SuggestedBy.Id == member.Id);
                var suggestedToNode = member.SessionNodes.Where(m => (m.ParentId ?? 0) == nodeId);
                member.SessionNodes = new List<NodeViewModel>(suggestedToNode);
@@ -201,7 +201,7 @@ namespace ServiceLayer.Services
         //{
         //    var session = _db.KnowledgeSessions.Get(nodeIdentifyModel.SessionId);
         //    var suggestions = Mapper.Map<ICollection<SessionNode>, List<NodeViewModel>>(session.SessionNodes);
-        //    member.NodeStructureSuggestion = CheckUserSuggestion(nodeIdentifyModel, member.Id);
+        //    member.NodeStructureSuggestionDone = CheckUserSuggestion(nodeIdentifyModel, member.Id);
         //    member.SuggestedNodes = suggestions.Where(m => m.SuggestedBy.Id == member.Id && m.ParentId == nodeIdentifyModel.ParentId).ToList(); ;
         //    member.VotesResults = _levelVoteService.GetVoteResults(nodeIdentifyModel, member.Id);
         //}
@@ -222,7 +222,7 @@ namespace ServiceLayer.Services
 
         //    foreach (var winnerNode in winner.SuggestedNodes)
         //    {
-        //        _sessionSuggestionService.UpdateNodeWithSuggestions(nodeIdentifyModel.SessionId, nodeIdentifyModel.ParentId, winnerNode);
+        //        _suggestionService.UpdateNodeWithSuggestions(nodeIdentifyModel.SessionId, nodeIdentifyModel.ParentId, winnerNode);
         //        _suggestionVoteService.UpdateSuggestionsWithVotes(nodeIdentifyModel.SessionId, nodeIdentifyModel.ParentId, winnerNode);
         //    }
 

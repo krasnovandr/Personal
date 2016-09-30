@@ -11,8 +11,26 @@
 
         knowledgeSessionService.GetMembersExtended($scope.sessionId, $scope.nodeId)
             .success(function (members) {
-            $scope.members = members;
-        });
+                $scope.members = members;
+                $scope.suggestionsComplete = checkSuggestions();
+            });
+
+
+        function checkSuggestions() {
+            var suggestionsDone = true;
+            angular.forEach($scope.members, function (value, key) {
+                if (value.NodeStructureSuggestionDone == false) {
+                    suggestionsDone = false;
+                }
+            });
+
+            return suggestionsDone;
+        };
+
+        $scope.goToVote = function () {
+            urlMakerService.viewNodeStructureSuggestionVote($scope.nodeId, $scope.sessionId);
+        };
+
         //knowledgeSessionService.getSession($scope.sessionId).success(function (result) {
         //    $scope.session = result;
         //});

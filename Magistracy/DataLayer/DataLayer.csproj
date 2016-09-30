@@ -79,7 +79,12 @@
     <Compile Include="Migrations\201609292233272_Add_SuggestionTable.Designer.cs">
       <DependentUpon>201609292233272_Add_SuggestionTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609301946334_AddParentIdToSuggestionTable.cs" />
+    <Compile Include="Migrations\201609301946334_AddParentIdToSuggestionTable.Designer.cs">
+      <DependentUpon>201609301946334_AddParentIdToSuggestionTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Repositories\NodeStructureSuggestionRepository.cs" />
     <Compile Include="Repositories\NodesRepository.cs" />
     <Compile Include="Repositories\KnowledgeSessionRepository.cs" />
     <Compile Include="EF\ApplicationDbContext.cs" />
@@ -125,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609292233272_Add_SuggestionTable.resx">
       <DependentUpon>201609292233272_Add_SuggestionTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609301946334_AddParentIdToSuggestionTable.resx">
+      <DependentUpon>201609301946334_AddParentIdToSuggestionTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

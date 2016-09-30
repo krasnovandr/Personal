@@ -12,10 +12,10 @@ namespace ServiceLayer.Interfaces
 {
     public interface ILevelVoteService:IDisposable
     {
-        int AddLevelVote(LevelVoteViewModel levelVote);
-        string CheckLevelVoteFinished(NodeIdentifyModel nodeIdentifyModeltify, LevelVoteType levelVoteType);
-        //LevelVoteViewModel CheckUserForLevelVote(int session, int level, string id, LevelVoteType levelVoteType);
-        List<LevelVoteViewModel> GetVoteResults(NodeIdentifyModel nodeIdentifyModeltify, string userId);
-        LevelVoteViewModel CheckUserForLevelVote(NodeIdentifyModel nodeIdentifyModeltify, string userId, LevelVoteType levelVoteType);
+        //int AddLevelVote(LevelVoteViewModel levelVote);
+        //string CheckLevelVoteFinished(NodeIdentifyModel nodeIdentifyModeltify, LevelVoteType levelVoteType);
+        ////LevelVoteViewModel CheckUserForLevelVote(int session, int level, string id, LevelVoteType levelVoteType);
+        //List<LevelVoteViewModel> GetVoteResults(NodeIdentifyModel nodeIdentifyModeltify, string userId);
+        //LevelVoteViewModel CheckUserForLevelVote(NodeIdentifyModel nodeIdentifyModeltify, string userId, LevelVoteType levelVoteType);
     }
 }

@@ -27,7 +27,10 @@
 
         $scope.navigateToNode = function () {
             var node = $('#tree').treeview('getSelected')[0];
-
+            if (!node) {
+                alert("Необходимо выбрать узел для перехода");
+                return;
+            }
             switch (node.State) {
                 case $scope.NodeStates.StructureSuggestion: {
                     urlMakerService.viewNodeStructureSuggestion(node.Id, $scope.sessionId);

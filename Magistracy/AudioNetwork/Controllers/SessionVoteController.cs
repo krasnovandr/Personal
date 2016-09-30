@@ -32,41 +32,41 @@ namespace AudioNetwork.Web.Controllers
             return View();
         }
 
-        public JsonResult LevelVote(LevelVoteViewModel levelVoteModel)
-        {
-            var result = _levelVoteService.AddLevelVote(levelVoteModel);
-            var identifyModel = new NodeIdentifyModel
-            {
-                ParentId = levelVoteModel.ParentId,
-                SessionId = levelVoteModel.SessionId
-            };
-            var winner = _levelVoteService.CheckLevelVoteFinished(identifyModel, levelVoteModel.Type);
+        //public JsonResult LevelVote(LevelVoteViewModel levelVoteModel)
+        //{
+        //    var result = _levelVoteService.AddLevelVote(levelVoteModel);
+        //    var identifyModel = new NodeIdentifyModel
+        //    {
+        //        ParentId = levelVoteModel.ParentId,
+        //        SessionId = levelVoteModel.SessionId
+        //    };
+        //    var winner = _levelVoteService.CheckLevelVoteFinished(identifyModel, levelVoteModel.Type);
 
-            if (string.IsNullOrEmpty(winner) == false)
-            {
-                _historyService.UpdateHistoryWithWinner(levelVoteModel.SessionId, levelVoteModel.Level, winner);
-                _hubContext.Clients.All.levelVoteFinished(levelVoteModel.SessionId, levelVoteModel.Level);
-            }
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
+        //    if (string.IsNullOrEmpty(winner) == false)
+        //    {
+        //        _historyService.UpdateHistoryWithWinner(levelVoteModel.SessionId, levelVoteModel.Level, winner);
+        //        _hubContext.Clients.All.levelVoteFinished(levelVoteModel.SessionId, levelVoteModel.Level);
+        //    }
+        //    return Json(result, JsonRequestBehavior.AllowGet);
+        //}
 
-        public JsonResult CheckVoteFinished(NodeIdentifyModel nodeIdentifyModeltify, LevelVoteType levelVoteType)
-        {
-            var result = _levelVoteService.CheckLevelVoteFinished(nodeIdentifyModeltify, levelVoteType);
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
+        //public JsonResult CheckVoteFinished(NodeIdentifyModel nodeIdentifyModeltify, LevelVoteType levelVoteType)
+        //{
+        //    var result = _levelVoteService.CheckLevelVoteFinished(nodeIdentifyModeltify, levelVoteType);
+        //    return Json(result, JsonRequestBehavior.AllowGet);
+        //}
 
-        public JsonResult CheckUserLevelVote(NodeIdentifyModel nodeIdentifyModeltify, string userId, LevelVoteType levelVoteType)
-        {
-            var result = _levelVoteService.CheckUserForLevelVote(nodeIdentifyModeltify, userId, levelVoteType);
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
+        //public JsonResult CheckUserLevelVote(NodeIdentifyModel nodeIdentifyModeltify, string userId, LevelVoteType levelVoteType)
+        //{
+        //    var result = _levelVoteService.CheckUserForLevelVote(nodeIdentifyModeltify, userId, levelVoteType);
+        //    return Json(result, JsonRequestBehavior.AllowGet);
+        //}
 
-        public JsonResult SuggestionVote(int sessionId, VoteViewModel voteViewModel)
-        {
-            var result = _suggestionVoteService.AddSuggestionVote(voteViewModel, sessionId);
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
+        //public JsonResult SuggestionVote(int sessionId, VoteViewModel voteViewModel)
+        //{
+        //    var result = _suggestionVoteService.AddSuggestionVote(voteViewModel, sessionId);
+        //    return Json(result, JsonRequestBehavior.AllowGet);
+        //}
 
         protected override void Dispose(bool disposing)
         {

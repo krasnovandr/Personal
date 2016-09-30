@@ -44,5 +44,11 @@ namespace AudioNetwork.Web.Controllers
         }
 
 
+        public ActionResult SuggestionModal()
+        {
+            return View();
+        }
+
+
     }
 }

@@ -21,11 +21,11 @@
         };
 
         $scope.initializeMembers = function () {
-            knowledgeSessionService.GetMembersExtended($scope.sessionId, $scope.nodeId).success(function (members) {
+            knowledgeSessionService.getSuggestions($scope.sessionId, $scope.nodeId).success(function (members) {
                 $scope.members = members;
-                knowledgeSessionService.checkUserLevelVote($scope.sessionId, $rootScope.logState.Id, $scope.parentId, $scope.levelVoteType.levelStarted).success(function (resultVoted) {
-                    $scope.levelVoted = resultVoted;
-                });
+                //knowledgeSessionService.checkUserLevelVote($scope.sessionId, $rootScope.logState.Id, $scope.parentId, $scope.levelVoteType.levelStarted).success(function (resultVoted) {
+                //    $scope.levelVoted = resultVoted;
+                //});
             });
         };
         $scope.initializeMembers();

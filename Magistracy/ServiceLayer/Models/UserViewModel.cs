@@ -16,6 +16,18 @@ namespace ServiceLayer.Models
         public DateTime? BirthDate { get; set; }
     }
 
+    public class SuggestionSessionUserViewModel
+    {
+        public string UserName { get; set; }
+        public string Id { get; set; }
+        public DateTime LastActivity { get; set; }
+        public string AvatarFilePath { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
+        public NodeStructureSuggestionViewModel NodeStructureSuggestion { get; set; }
+    }
+
     public class SessionUserViewModel
     {
         public string UserName { get; set; }
@@ -25,11 +37,12 @@ namespace ServiceLayer.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public bool NodeStructureSuggestion { get; set; }
+        public bool NodeStructureSuggestionDone { get; set; }
 
         public List<NodeViewModel> SessionNodes { get; set; }
-        public LevelVoteViewModel LevelSuggestion { get; set; }
-        public List<LevelVoteViewModel> VotesResults { get; set; }
+        public NodeStructureSuggestionViewModel NodeStructureSuggestion { get; set; }
+        //public LevelVoteViewModel LevelSuggestion { get; set; }
+        //public List<LevelVoteViewModel> VotesResults { get; set; }
     }
 
     public class UserViewModel

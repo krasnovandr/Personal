@@ -113,7 +113,7 @@
 //            return result;
 //        }
 
-//        private NodeStructureSuggestion GetCurrentSuggestion(int nodeId, int sessionId)
+//        private NodeStructureSuggestionDone GetCurrentSuggestion(int nodeId, int sessionId)
 //        {
 //            var session = _db.KnowledgeSessions.Get(sessionId);
 

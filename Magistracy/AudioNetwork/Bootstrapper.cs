@@ -55,7 +55,7 @@ namespace AudioNetwork.Web
             container.RegisterType<IKnowledgeSessionMemberService, KnowledgeSessionMemberService>();
             //container.RegisterType<ILevelVoteService, LevelVoteService>();
             //container.RegisterType<ISuggestionVoteService, SuggestionVoteService>();
-            //container.RegisterType<ISessionSuggestionService, SessionSuggestionService>();
+            container.RegisterType<ISuggestionService, SuggestionService>();
             //container.RegisterType<IHistoryService, HistoryService>();
             container.RegisterType<IVoteFinishHelper, VoteFinishHelper>();
             container.RegisterType<INodeService, NodeService>();

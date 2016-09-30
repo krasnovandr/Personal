@@ -53,6 +53,10 @@ namespace DataLayer.Models
 
         public virtual ICollection<KnowledgeSession> KnowledgeSessions { get; set; }
         public virtual ICollection<SessionNode> SessionNodes { get; set; }
+        public virtual ICollection<NodeStructureSuggestion> SessionSuggestions { get; set; }
+
+
+
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<NodeModification> NodeModifications { get; set; }
         public virtual ICollection<NodeModificationVote> NodeModificationVotes { get; set; }
