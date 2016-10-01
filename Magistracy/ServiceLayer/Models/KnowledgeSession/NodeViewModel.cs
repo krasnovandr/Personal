@@ -30,20 +30,20 @@ namespace ServiceLayer.Models.KnowledgeSession
         public NodeStates State { get; set; }
     }
 
-    public class NodeStructureSuggestionViewModel
-    {
-        public int Id { get; set; }
-        public DateTime Date { get; set; }
-        public List<SuggestionNodeViewModel> Nodes { get; set; }
-        public List<NodeStructureSuggestionVoteViewModel> Votes { get; set; }
-        //public SessionUserViewModel SuggestedBy { get; set; }
-    }
+    //public class NodeStructureSuggestionViewModel
+    //{
+    //    public int Id { get; set; }
+    //    public DateTime Date { get; set; }
+    //    public List<SuggestionNodeViewModel> Nodes { get; set; }
+    //    public List<NodeStructureSuggestionVoteViewModel> Votes { get; set; }
+    //    //public SessionUserViewModel SuggestedBy { get; set; }
+    //}
 
-    public class NodeStructureSuggestionVoteViewModel
-    {
-        public int Id { get; set; }
-        public SuggestionNodeViewModel VoteBy { get; set; }
-        public NodeStructureVoteTypes VoteType { get; set; }
-        public DateTime Date { get; set; }
-    }
+    //public class NodeStructureSuggestionVoteViewModel
+    //{
+    //    public int Id { get; set; }
+    //    public SuggestionNodeViewModel VoteBy { get; set; }
+    //    public NodeStructureVoteTypes VoteType { get; set; }
+    //    public DateTime Date { get; set; }
+    //}
 }

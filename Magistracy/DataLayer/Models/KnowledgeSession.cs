@@ -39,7 +39,7 @@ namespace DataLayer.Models
         StructureSuggestion,
         StructureSuggestionWait,
         StructureSuggestionVote,
-        UpdatesAndComments,
+        StructureSuggestionWinner,
         Leaf
     }
 
@@ -111,6 +111,7 @@ namespace DataLayer.Models
         public int Id { get; set; }
         public virtual ApplicationUser VoteBy { get; set; }
         public virtual NodeStructureSuggestion Suggestion { get; set; }
+        public virtual SessionNode SessionNode { get; set; }
         public NodeStructureVoteTypes VoteType { get; set; }
         public DateTime Date { get; set; }
     }

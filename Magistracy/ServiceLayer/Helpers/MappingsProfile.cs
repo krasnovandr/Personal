@@ -40,6 +40,10 @@ namespace ServiceLayer.Helpers
               .ForMember(dest => dest.SuggestedBy, opt => opt.MapFrom(src => src.SuggestedBy.Id));
 
             Mapper.CreateMap<NodeStructureSuggestionVote, NodeStructureSuggestionVoteViewModel>();
+            Mapper.CreateMap<NodeStructureSuggestionVoteViewModel, NodeStructureSuggestionVote>();
+            //.ForMember(dest => dest.VoteBy, opt => opt.MapFrom(src => src.VoteBy));
+
+
             //.ForMember(dest => dest.SuggestedBy, opt => opt.MapFrom(src => src.SuggestedBy))
             //.ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date));
 
@@ -64,7 +68,7 @@ namespace ServiceLayer.Helpers
             //    .ForMember(dest => dest.VotesUp, opt => opt.MapFrom(src => src.Votes.Where(m => m.Type == (int)VoteTypes.Up)))
             //    .ForMember(dest => dest.VotesDown, opt => opt.MapFrom(src => src.Votes.Where(m => m.Type == (int)VoteTypes.Down)));
 
-            //Mapper.CreateMap<Vote, VoteViewModel>()
+            //Mapper.CreateMap<Vote, SuggestionVoteViewModel>()
             //    .ForMember(dest => dest.VoteBy, opt => opt.MapFrom(src => src.VoteBy.Id))
             //    .ForMember(dest => dest.VoteByUser, opt => opt.MapFrom(src => src.VoteBy));
 

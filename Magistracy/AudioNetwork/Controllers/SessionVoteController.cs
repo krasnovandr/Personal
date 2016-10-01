@@ -62,7 +62,7 @@ namespace AudioNetwork.Web.Controllers
         //    return Json(result, JsonRequestBehavior.AllowGet);
         //}
 
-        //public JsonResult SuggestionVote(int sessionId, VoteViewModel voteViewModel)
+        //public JsonResult SuggestionVote(int sessionId, SuggestionVoteViewModel voteViewModel)
         //{
         //    var result = _suggestionVoteService.AddSuggestionVote(voteViewModel, sessionId);
         //    return Json(result, JsonRequestBehavior.AllowGet);

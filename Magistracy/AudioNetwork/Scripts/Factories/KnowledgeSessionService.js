@@ -116,6 +116,26 @@
             });
         },
 
+
+        voteNodeStructureSuggestion: function (data) {
+            return $http({ method: 'POST', url: 'api/KnowledgeSessionApi/VoteNodeStructureSuggestion', data: data });
+        },
+
+        checkStructureSuggestionVoteDone: function (sessionId, nodeId) {
+            return $http({
+                url: 'api/KnowledgeSessionApi/CheckStructureSuggestionVoteDone',
+                method: "GET",
+                params: { sessionId: sessionId, nodeId: nodeId }
+            });
+        },
+        checkUserStructureSuggestionVote: function (userId, nodeId) {
+            return $http({
+                url: 'api/KnowledgeSessionApi/CheckUserStructureSuggestionVote',
+                method: "GET",
+                params: { userId: userId, nodeId: nodeId }
+            });
+        },
+
         getSession: function (sessionId) {
             return $http({
                 url: 'api/KnowledgeSessionApi/GetSession',

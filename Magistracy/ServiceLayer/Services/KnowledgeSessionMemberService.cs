@@ -126,10 +126,13 @@ namespace ServiceLayer.Services
                     node.backColor = "#FFD700";
                     break;
                 case NodeStates.StructureSuggestionVote:
-                    //node.color = "#006400";
+                    node.color = "#FFFFFF";
                     node.backColor = "#006400";
                     break;
-                case NodeStates.UpdatesAndComments: break;
+                case NodeStates.StructureSuggestionWinner:
+                    node.color = "#FFFFFF";
+                    node.backColor = "#0000FF";
+                    break;
                 case NodeStates.Leaf: break;
             }
         }
@@ -166,14 +169,14 @@ namespace ServiceLayer.Services
         {
             var session = _db.KnowledgeSessions.Get(sessionId);
             var members = Mapper.Map<ICollection<ApplicationUser>, List<SessionUserViewModel>>(session.Users);
-          
+
             foreach (var member in members)
             {
                 //    FillMemberViewModel(sessionId, member);
                 member.NodeStructureSuggestionDone = _db.Nodes.GetAll()
                     .Any(m => m.ParentId == nodeId && m.SuggestedBy.Id == member.Id);
-               var suggestedToNode = member.SessionNodes.Where(m => (m.ParentId ?? 0) == nodeId);
-               member.SessionNodes = new List<NodeViewModel>(suggestedToNode);
+                var suggestedToNode = member.SessionNodes.Where(m => (m.ParentId ?? 0) == nodeId);
+                member.SessionNodes = new List<NodeViewModel>(suggestedToNode);
                 //    ValueResolver 
                 //_levelVoteService.CheckUserForLevelVote(sessionId, member.Id, 0);
 

@@ -39,6 +39,25 @@ namespace AudioNetwork.Web.API
         }
 
         [HttpPost]
+        public IEnumerable<SuggestionSessionUserViewModel> VoteNodeStructureSuggestion(NodeStructureSuggestionVoteViewModel suggestion)
+        {
+            _suggestionService.VoteNodeStructureSuggestion(suggestion);
+            return _suggestionService.GetSuggestions(suggestion.SessionId, suggestion.NodeId);
+        }
+
+        [HttpGet]
+        public bool CheckStructureSuggestionVoteDone(int sessionId, int nodeId)
+        {
+            return _suggestionService.CheckStructureSuggestionVoteDone(sessionId, nodeId);
+        }
+
+        [HttpGet]
+        public int? CheckUserStructureSuggestionVote(string userId, int nodeId)
+        {
+            return _suggestionService.CheckUserStructureSuggestionVote(userId, nodeId);
+        }
+
+        [HttpPost]
         public int Create(KnowledgeSessionViewModel knowledgeSessionViewModel)
         {
             var result = _knowledgeSessionService.CreateSession(knowledgeSessionViewModel, User.Identity.GetUserId());
@@ -96,6 +115,8 @@ namespace AudioNetwork.Web.API
             //var context = GlobalHost.ConnectionManager.GetHubContext<KnowledgeSessionHub>();
             //context.Clients.All.userAddSuggestion(User.Identity.GetUserId());
         }
+
+
 
 
         public List<SessionUserViewModel> GetMembersExtended(int sessionId, int nodeId)

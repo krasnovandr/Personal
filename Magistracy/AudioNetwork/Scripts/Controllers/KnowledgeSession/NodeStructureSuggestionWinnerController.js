@@ -1,5 +1,5 @@
 ﻿angular.module('AudioNetworkApp')
-    .controller('RoundWinnerVoteController', function ($, $scope, $http, $location, $rootScope, knowledgeSessionService, userService, $routeParams, $uibModal, urlMakerService) {
+    .controller('NodeStructureSuggestionWinner', function ($, $scope, $http, $location, $rootScope, knowledgeSessionService, userService, $routeParams, $uibModal, urlMakerService) {
 
       $scope.sessionId = $routeParams.id;
       $scope.members = [];

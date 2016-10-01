@@ -24,5 +24,10 @@
             $location.path('/KnowledgeSession/' + sessionId);
         },
 
+        viewNodeStructureSuggestionWinner: function (nodeId, sessionId) {
+            $location.path('/KnowledgeSession/NodeStructureSuggestionWinner/' + nodeId).search({ sessionId: sessionId });
+        },
+
+
     };
 });

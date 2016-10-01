@@ -56,6 +56,8 @@ var config = function ($routeProvider) {
           templateUrl: 'KnowledgeSession/NodeStructureSuggestionWait',
       }).when('/KnowledgeSession/NodeStructureSuggestionVote/:id', {
           templateUrl: 'KnowledgeSession/NodeStructureSuggestionVote',
+      }).when('/KnowledgeSession/NodeStructureSuggestionWinner/:id', {
+          templateUrl: 'KnowledgeSession/NodeStructureSuggestionWinner',
       }).when('/NodeHistory', {
           templateUrl: 'NodeHistory/Index',
       }).

@@ -26,7 +26,7 @@
 //            _voteFinishHelper = voteFinishHelper;
 //        }
 
-//        public bool AddSuggestionVote(VoteViewModel voteViewModel, int sessionId)
+//        public bool AddSuggestionVote(SuggestionVoteViewModel voteViewModel, int sessionId)
 //        {
 //            var vote = new Vote
 //            {
@@ -136,8 +136,8 @@
 
 //            var upVotes = suggestion.Votes.Where(m => m.Type == (int)VoteTypes.Up);
 //            var downVotes = suggestion.Votes.Where(m => m.Type == (int)VoteTypes.Down);
-//            winnerNode.CurrentSuggestion.VotesDown = Mapper.Map<IEnumerable<Vote>, List<VoteViewModel>>(downVotes);
-//            winnerNode.CurrentSuggestion.VotesUp = Mapper.Map<IEnumerable<Vote>, List<VoteViewModel>>(upVotes);
+//            winnerNode.CurrentSuggestion.VotesDown = Mapper.Map<IEnumerable<Vote>, List<SuggestionVoteViewModel>>(downVotes);
+//            winnerNode.CurrentSuggestion.VotesUp = Mapper.Map<IEnumerable<Vote>, List<SuggestionVoteViewModel>>(upVotes);
 
 //            return true;
 //        }

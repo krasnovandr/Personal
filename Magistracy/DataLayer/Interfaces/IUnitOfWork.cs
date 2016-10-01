@@ -13,7 +13,7 @@ namespace DataLayer.Interfaces
         IRepository<NodeStructureSuggestion> NodeStructureSuggestions { get; }
         IRepository<NodeHistory> NodesHistory { get; }
         IRepository<SessionNode> Nodes { get; }
-        IRepository<NodeStructureSuggestionVote> LevelVotes { get; }
+        IRepository<NodeStructureSuggestionVote> NodeStructureSuggestionsVotes { get; }
         ExtendedRepository<ApplicationUser> Users { get; }
         void Save();
     }

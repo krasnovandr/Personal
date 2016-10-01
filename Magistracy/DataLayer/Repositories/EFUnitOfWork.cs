@@ -25,6 +25,7 @@ namespace DataLayer.Repositories
             }
         }
 
+
         public IRepository<NodeStructureSuggestion> NodeStructureSuggestions
         {
             get
@@ -52,7 +53,7 @@ namespace DataLayer.Repositories
             }
         }
 
-        public IRepository<NodeStructureSuggestionVote> LevelVotes
+        public IRepository<NodeStructureSuggestionVote> NodeStructureSuggestionsVotes
         {
             get
             {

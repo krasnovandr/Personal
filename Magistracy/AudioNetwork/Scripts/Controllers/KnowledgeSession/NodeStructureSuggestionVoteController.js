@@ -4,25 +4,35 @@
         $scope.session = {};
         $scope.sessionId = $routeParams.sessionId;
         $scope.nodeId = $routeParams.id;
-        $scope.curentNodeIndex = 0;
         $scope.members = {};
-        $scope.level = $routeParams.level;
-        $scope.levelVoted = {};
+        $scope.voteDone = false;
+        $scope.userVote = false;
 
-        //$scope.voteFinished = true;
+        knowledgeSessionService.checkStructureSuggestionVoteDone($scope.sessionId, $scope.nodeId).success(function (result) {
+            $scope.voteDone = result;
+        });
 
         knowledgeSessionService.getSession($scope.sessionId).success(function (result) {
             $scope.session = result;
         });
 
+        knowledgeSessionService.checkUserStructureSuggestionVote($rootScope.logState.Id, $scope.nodeId).success(function (result) {
+            $scope.userVote = result;
+        });
+
         $scope.levelVoteType = {
-          levelStarted:0,
-          levelFinished:1
+            levelStarted: 0,
+            levelFinished: 1
         };
 
         $scope.initializeMembers = function () {
             knowledgeSessionService.getSuggestions($scope.sessionId, $scope.nodeId).success(function (members) {
                 $scope.members = members;
+
+                $scope.dataArray = Object.keys($scope.members)
+                  .map(function (key) {
+                      return $scope.members[key];
+                  });
                 //knowledgeSessionService.checkUserLevelVote($scope.sessionId, $rootScope.logState.Id, $scope.parentId, $scope.levelVoteType.levelStarted).success(function (resultVoted) {
                 //    $scope.levelVoted = resultVoted;
                 //});
@@ -30,14 +40,14 @@
         };
         $scope.initializeMembers();
 
-        knowledgeSessionService.checkVoteFinished($scope.sessionId,$scope.parentId,$scope.levelVoteType.levelStarted).success(function (result) {
-            $scope.voteFinished = result;
-            if (result) {
-                knowledgeSessionService.getOrderedMembers($scope.sessionId).success(function (orderedMembers) {
-                    $scope.members = orderedMembers;
-                });
-            }
-        });
+        //knowledgeSessionService.checkVoteFinished($scope.sessionId,$scope.parentId,$scope.levelVoteType.levelStarted).success(function (result) {
+        //    $scope.voteFinished = result;
+        //    if (result) {
+        //        knowledgeSessionService.getOrderedMembers($scope.sessionId).success(function (orderedMembers) {
+        //            $scope.members = orderedMembers;
+        //        });
+        //    }
+        //});
 
 
         //$scope.sessionHub = $.connection.knowledgeSessionHub;
@@ -46,19 +56,24 @@
         //        $scope.updateUserSuggestion(userId);
         //    });
         //};
-        $scope.levelVote = function (member) {
-            var levelVoteData = {
-                SuggetedBy: member.Id,
-                SessionId: $scope.sessionId,
-                Level: $scope.level,
+
+        $scope.NodeStructureVoteTypes = {
+            Initialize: 0,
+            DoneLeaf: 1,
+            DoneContinue: 2,
+        };
+
+        $scope.voteSuggestion = function (member) {
+            var suggestionData = {
                 VoteBy: $rootScope.logState.Id,
-                ParentId: $scope.parentId
+                SessionId: $scope.sessionId,
+                NodeId: $scope.nodeId,
+                VoteType: $scope.NodeStructureVoteTypes.Initialize,
+                SuggestionId: member.NodeStructureSuggestion.Id
             };
 
-            knowledgeSessionService.levelVote(levelVoteData).success(function (result) {
-                if (result) {
-                    $scope.initializeMembers();
-                }
+            knowledgeSessionService.voteNodeStructureSuggestion(suggestionData).success(function (result) {
+                $scope.members = result;
             });
         };
 
@@ -66,6 +81,6 @@
         //});
 
         $scope.goToRoundWinnerVote = function () {
-          urlMakerService.roundWinnerVoteUrl($scope.sessionId, $scope.parentId, $scope.level);
+            urlMakerService.viewNodeStructureSuggestionWinner($scope.nodeId, $scope.sessionId);
         };
     });

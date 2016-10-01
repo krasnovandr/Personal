@@ -38,7 +38,7 @@ namespace AudioNetwork.Web.Controllers
             return View();
         }
 
-        public ActionResult RoundWinnerVote()
+        public ActionResult NodeStructureSuggestionWinner()
         {
             return View();
         }

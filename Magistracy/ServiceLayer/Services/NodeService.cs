@@ -104,12 +104,12 @@ namespace ServiceLayer.Services
             }
 
             var parentNode = _db.Nodes.Get(model.ParentId);
-     
+
             var suggestionComplete = ParentNodeSuggestionsComplete(model.SessionId, model.ParentId);
 
             if (suggestionComplete)
             {
-                parentNode.State = NodeStates.StructureSuggestionVote;
+                parentNode.State = NodeStates.StructureSuggestionWinner;
             }
 
             //var firstNode = nodes.FirstOrDefault();
@@ -132,16 +132,20 @@ namespace ServiceLayer.Services
             var nodes = _db.Nodes.GetAll();
             var node = _db.Nodes.Get(nodeId);
 
+            if (node.State == NodeStates.StructureSuggestionVote)
+            {
+                return NodeStates.StructureSuggestionVote;
+            }
+
+            if (node.State == NodeStates.StructureSuggestionWinner)
+            {
+                return NodeStates.StructureSuggestionWinner;
+            }
+
             var haveSuggestedNotes = nodes.Any(m => m.ParentId == nodeId && m.SuggestedBy == user);
             if (haveSuggestedNotes)
             {
-                if (node.State == NodeStates.StructureSuggestionVote)
-                {
-                    return NodeStates.StructureSuggestionVote;
-                }
-
                 return NodeStates.StructureSuggestionWait;
-
             }
 
 

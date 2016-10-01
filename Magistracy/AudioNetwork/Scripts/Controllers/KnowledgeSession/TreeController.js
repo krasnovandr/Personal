@@ -11,7 +11,7 @@
             StructureSuggestion: 0,
             StructureSuggestionWait: 1,
             StructureSuggestionVote: 2,
-            UpdatesAndComments: 3,
+            StructureSuggestionWinner: 3,
             Leaf: 4
         };
 
@@ -45,8 +45,8 @@
                     urlMakerService.viewNodeStructureSuggestionVote(node.Id, $scope.sessionId);
                     break;
                 }
-                case $scope.NodeStates.UpdatesAndComments: {
-                    alert("Case UpdatesAndComments");
+                case $scope.NodeStates.StructureSuggestionWinner: {
+                    urlMakerService.viewNodeStructureSuggestionWinner(node.Id, $scope.sessionId);
                     break;
                 }
                 case $scope.NodeStates.Leaf: {

@@ -24,8 +24,8 @@ namespace ServiceLayer.Models
         public string AvatarFilePath { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-
         public NodeStructureSuggestionViewModel NodeStructureSuggestion { get; set; }
+
     }
 
     public class SessionUserViewModel

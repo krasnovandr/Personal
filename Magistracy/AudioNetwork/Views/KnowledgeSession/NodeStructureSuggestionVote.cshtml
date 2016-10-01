@@ -7,8 +7,8 @@
             <th >Предложения</th>
             <th>Голосовать</th>
         </tr>*@
-      <tbody ui:sortable ng:model="members">
-        <tr ng-repeat="member in members" ng-class="{success:$index == 0 && voteFinished, warning:$index != 0 && voteFinished}">
+      <tbody>
+        <tr ng-repeat="member in dataArray | orderBy:'-NodeStructureSuggestion.Votes.length'" ng-class="{success:$index == 0 && voteDone, warning:$index != 0 && voteDone}">
           <td>
             <div class="panel panel-default">
               <div class="panel-heading">
@@ -32,8 +32,8 @@
                   <div class="panel-body">
                     <textarea readonly cols="30" rows="5">{{node.Name}}</textarea>
                     @*<button class="btn btn-default pull-right" ng-click="removeNode($index,node)">
-                <span class="glyphicon glyphicon-remove"></span>
-            </button>*@
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>*@
                   </div>
                 </div>
               </div>
@@ -42,28 +42,26 @@
           <td>
           <td class="col-md-1">
             @*todo update with ng-show="member.Id !== logState.Id"*@
-            <div ng-hide="voteFinished">
-              <div ng-if="levelVoted != ''">
-                <button class="btn btn-success pull-right" ng-if="levelVoted.SuggetedBy === member.Id" ng-disabled="true">
-                  <span class="glyphicon glyphicon-ok"></span>
-                </button>
-              </div>
-              <div ng-if="levelVoted == ''">
-                <button class="btn btn-success pull-right" ng-click="levelVote(member)">
-                  <span class="glyphicon glyphicon-ok">Голосовать</span>
-                </button>
-              </div>
+            <div ng-hide="voteDone">
+              <button class="btn btn-success pull-right" ng-show="userVote === member.NodeStructureSuggestion.Id">
+                <span class="glyphicon glyphicon-ok"></span>
+              </button>
+              <button class="btn btn-success pull-right"
+                      ng-click="voteSuggestion(member)"
+                      ng-hide="userVote !== null"
+                      @*ng-disabled="member.Id === logState.Id"*@>
+                <span class="glyphicon glyphicon-ok">Голосовать</span>
+              </button>
             </div>
-            <div ng-show="voteFinished">
-              <h4 class="glyphicon glyphicon-check">Результат:{{member.VotesResults.length}}</h4>
+            <div ng-show="voteDone">
+              <h4 class="glyphicon glyphicon-check">Результат:{{member.NodeStructureSuggestion.Votes.length}}</h4>
             </div>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
-
-  <div class="row" ng-show="voteFinished">
+  <div class="row" ng-show="voteDone">
     <button class="btn btn-success pull-right" ng-click="goToRoundWinnerVote()" tooltip-placement="left" uib-tooltip="Перейти к обсуждению победителя">
       <span class="glyphicon glyphicon-arrow-right"></span>
     </button>

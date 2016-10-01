@@ -14,10 +14,14 @@ namespace ServiceLayer.Services
     public class SuggestionService : ISuggestionService
     {
         private readonly IUnitOfWork _db;
+        private readonly IVoteFinishHelper _voteFinishHelper;
 
-        public SuggestionService(IUnitOfWork db)
+        public SuggestionService(
+            IUnitOfWork db,
+            IVoteFinishHelper voteFinishHelper)
         {
             _db = db;
+            _voteFinishHelper = voteFinishHelper;
         }
 
 
@@ -35,6 +39,50 @@ namespace ServiceLayer.Services
 
             return nodeStructureSuggestion.Id;
         }
+
+        public int? CheckUserStructureSuggestionVote(string userId, int nodeId)
+        {
+            var suggestionVotes = _db.NodeStructureSuggestionsVotes.GetAll();
+
+            var vote = suggestionVotes.FirstOrDefault(m => m.VoteBy.Id == userId && m.SessionNode.Id == nodeId);
+
+            return vote != null ? vote.Suggestion.Id : (int?)null;
+        }
+
+        public bool CheckStructureSuggestionVoteDone(int sessionId, int nodeId)
+        {
+            var suggestion = _db.NodeStructureSuggestionsVotes.GetAll().Where(m => m.SessionNode.Id == nodeId);
+            var session = _db.KnowledgeSessions.Get(sessionId);
+
+            return suggestion.Count() == session.Users.Count;
+        }
+
+        public void VoteNodeStructureSuggestion(NodeStructureSuggestionVoteViewModel suggestionViewModel)
+        {
+            var suggestion = _db.NodeStructureSuggestions.Get(suggestionViewModel.SuggestionId);
+            var suggestionVote = new NodeStructureSuggestionVote
+            {
+                Date = DateTime.Now,
+                Suggestion = suggestion,
+                VoteBy = _db.Users.Get(suggestionViewModel.VoteBy),
+                VoteType = suggestionViewModel.VoteType,
+                SessionNode = _db.Nodes.Get(suggestion.ParentId ?? 0)
+            };
+
+
+            _db.NodeStructureSuggestionsVotes.Create(suggestionVote);
+
+            var isDone = CheckStructureSuggestionVoteDone(suggestionViewModel.SessionId, suggestionViewModel.NodeId);
+
+            if (isDone)
+            {
+                var node = _db.Nodes.Get(suggestionViewModel.NodeId);
+                node.State = NodeStates.StructureSuggestionWinner;
+            }
+
+            _db.Save();
+        }
+
         //user-> suggestion-> nodes
 
 
@@ -65,7 +113,7 @@ namespace ServiceLayer.Services
                     LastName = member.LastName,
                     NodeStructureSuggestion = suggestion != null ?
                     Mapper.Map<NodeStructureSuggestion, NodeStructureSuggestionViewModel>(suggestion) : null,
-                    UserName = member.UserName
+                    UserName = member.UserName,
                 });
 
             }
