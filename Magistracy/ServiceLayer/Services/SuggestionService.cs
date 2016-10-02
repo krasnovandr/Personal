@@ -121,6 +121,20 @@ namespace ServiceLayer.Services
             return result;
         }
 
+        public SuggestionSessionUserViewModel GetNodeStructureSuggestionWinner(int nodeId)
+        {
+            var suggestions = _db.NodeStructureSuggestions.GetAll();
+
+            var winneredSuggestion = suggestions.OrderByDescending(m => m.Votes.Count).FirstOrDefault();
+
+            if (winneredSuggestion == null)
+            {
+                return null;
+            }
+            var winner = Mapper.Map<ApplicationUser, SuggestionSessionUserViewModel>(winneredSuggestion.SuggestedBy);
+            winner.NodeStructureSuggestion = Mapper.Map<NodeStructureSuggestion, NodeStructureSuggestionViewModel>(winneredSuggestion);
+            return winner;
+        }
 
 
         //public bool MakeNodeSuggestion(NodeSuggestionViewModel nodeSuggestionViewModel)

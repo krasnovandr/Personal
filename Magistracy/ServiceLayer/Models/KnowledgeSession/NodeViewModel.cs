@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using DataLayer.Models;
+using Newtonsoft.Json;
 
 namespace ServiceLayer.Models.KnowledgeSession
 {
@@ -28,6 +30,17 @@ namespace ServiceLayer.Models.KnowledgeSession
         public int? ParentId { get; set; }
         public NodeType Type { get; set; }
         public NodeStates State { get; set; }
+
+        [JsonIgnore]
+        public List<NodeModificationViewModel> NodeModifications { get; set; }
+
+        public NodeModificationViewModel CurrentSuggestion
+        {
+            get
+            {
+                return NodeModifications.FirstOrDefault(m => m.Status == ModificationStatus.Open);
+            }
+        }
     }
 
     //public class NodeStructureSuggestionViewModel

@@ -45,6 +45,7 @@
     <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.1.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -75,11 +76,10 @@
     <Compile Include="Interfaces\IKnowledgeSessionMemberService.cs" />
     <Compile Include="Interfaces\IKnowledgeSessionService.cs" />
     <Compile Include="Interfaces\IMusicService.cs" />
+    <Compile Include="Interfaces\INodeModificationService.cs" />
     <Compile Include="Interfaces\INodeService.cs" />
     <Compile Include="Interfaces\IPlaylistService.cs" />
     <Compile Include="Interfaces\IVoteFinishHelper.cs" />
-    <Compile Include="Interfaces\ISuggestionVoteService.cs" />
-    <Compile Include="Interfaces\ILevelVoteService.cs" />
     <Compile Include="Interfaces\IStatisticsService.cs" />
     <Compile Include="Interfaces\IUploadService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
@@ -88,6 +88,7 @@
     <Compile Include="Models\KnowledgeSession\Enums\VoteResultTypes.cs" />
     <Compile Include="Models\KnowledgeSession\Enums\LevelVoteType.cs" />
     <Compile Include="Models\KnowledgeSession\NodeHistoryViewModel.cs" />
+    <Compile Include="Models\KnowledgeSession\NodeModificationViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\NodeStructureSuggestionViewModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ConversationViewModel.cs" />
@@ -98,11 +99,11 @@
     <Compile Include="Models\KnowledgeSession\Enums\SessionState.cs" />
     <Compile Include="Models\KnowledgeSession\KnowledgeSessionViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\SuggestedNodesViewModel.cs" />
-    <Compile Include="Models\KnowledgeSession\VoteViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\NodeStructureSuggestionVoteViewModel.cs" />
     <Compile Include="Models\MessageViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\NodeViewModel.cs" />
     <Compile Include="Models\NodeIdentifyModel.cs" />
+    <Compile Include="Models\KnowledgeSession\NodeModificationVoteViewModel.cs" />
     <Compile Include="Models\PlaylistViewModel.cs" />
     <Compile Include="Models\SongRecognitionModel.cs" />
     <Compile Include="Models\SongViewModel.cs" />
@@ -118,11 +119,10 @@
     <Compile Include="Services\KnowledgeSessionMemberService.cs" />
     <Compile Include="Services\KnowledgeSessionService.cs" />
     <Compile Include="Services\MusicService.cs" />
+    <Compile Include="Services\NodeModificationService.cs" />
     <Compile Include="Services\NodeService.cs" />
     <Compile Include="Services\PlaylistService.cs" />
     <Compile Include="Services\SuggestionService.cs" />
-    <Compile Include="Services\SuggestionVoteService.cs" />
-    <Compile Include="Services\LevelVoteService.cs" />
     <Compile Include="Services\SongPictureGetter.cs" />
     <Compile Include="Services\StatisticsService.cs" />
     <Compile Include="Services\UploadService.cs" />

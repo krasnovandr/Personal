@@ -22,13 +22,13 @@ namespace ServiceLayer.Services
         public KnowledgeSessionMemberService(
             IUnitOfWork db, INodeService nodeService)
         //ILevelVoteService sessionVoteService,
-        //ISuggestionService SuggestionService,
+        //ISuggestionService suggestionService,
         //ILevelVoteService levelVoteService,
         //ISuggestionVoteService suggestionVoteService)
         {
             this._db = db;
             _nodeService = nodeService;
-            //_suggestionService = SuggestionService;
+            //_suggestionService = suggestionService;
             //_levelVoteService = levelVoteService;
             //_suggestionVoteService = suggestionVoteService;
         }

@@ -27,10 +27,7 @@ namespace AudioNetwork.Web.Controllers
             _hubContext = GlobalHost.ConnectionManager.GetHubContext<KnowledgeSessionHub>();
         }
 
-        public ActionResult VoteUsersModal()
-        {
-            return View();
-        }
+
 
         //public JsonResult LevelVote(LevelVoteViewModel levelVoteModel)
         //{

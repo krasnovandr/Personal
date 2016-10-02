@@ -252,12 +252,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KnowledgeSessionController.cs" />
     <Compile Include="Controllers\MusicController.cs" />
-    <Compile Include="Controllers\NodeController.cs" />
-    <Compile Include="Controllers\NodeHistoryController.cs" />
     <Compile Include="Controllers\PlayListController.cs" />
     <Compile Include="Controllers\RecognitionController.cs" />
-    <Compile Include="Controllers\SessionVoteController.cs" />
-    <Compile Include="Controllers\SuggestionController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\UsersController.cs">
       <SubType>Code</SubType>
@@ -1225,9 +1221,9 @@
     <Content Include="Views\KnowledgeSession\NodeStructureSuggestionWinner.cshtml" />
     <Content Include="Scripts\Libs\Angular\version.json" />
     <Content Include="Views\KnowledgeSession\SuggestionModal.cshtml" />
-    <Content Include="Views\SessionVote\VoteUsersModal.cshtml" />
+    <Content Include="Views\KnowledgeSession\VoteUsersModal.cshtml" />
     <Content Include="Views\KnowledgeSession\CommentsChat.cshtml" />
-    <Content Include="Views\NodeHistory\Index.cshtml" />
+    <Content Include="Views\KnowledgeSession\NodeHitsory.cshtml" />
     <Content Include="Views\KnowledgeSession\SessionTreeView.cshtml" />
     <Content Include="Views\KnowledgeSession\NodeStructureSuggestionWait.cshtml" />
   </ItemGroup>

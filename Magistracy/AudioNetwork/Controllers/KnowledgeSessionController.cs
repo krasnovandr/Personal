@@ -49,6 +49,14 @@ namespace AudioNetwork.Web.Controllers
             return View();
         }
 
+        public ActionResult NodeHitsory()
+        {
+            return View();
+        }
 
+        public ActionResult VoteUsersModal()
+        {
+            return View();
+        }
     }
 }

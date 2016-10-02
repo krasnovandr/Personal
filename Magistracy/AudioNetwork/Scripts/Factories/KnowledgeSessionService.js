@@ -14,22 +14,15 @@
 
 
 
-        makeSuggestion: function (suggestion) {
-            return $http({ method: 'POST', url: 'NodeModification/MakeSuggestion', data: suggestion });
+        createNodeModificationSuggestion: function (suggestion) {
+            return $http({ method: 'POST', url: 'api/KnowledgeSessionApi/CreateNodeModificationSuggestion', data: suggestion });
         },
 
         levelVote: function (dataToTransfer) {
             return $http({ method: 'POST', url: 'SessionVote/NodeStructureSuggestionVote', data: dataToTransfer });
         },
 
-        suggestionVote: function (voteViewModel, sessionId) {
-            var dataToTransfer =
-            {
-                voteViewModel: voteViewModel,
-                sessionId: sessionId
-            };
-            return $http({ method: 'POST', url: 'SessionVote/SuggestionVote', data: dataToTransfer });
-        },
+
 
         addComment: function (comment, sessionId, nodeId) {
             var dataToTransfer =
@@ -75,13 +68,6 @@
             });
         },
 
-        getWinner: function (sessionId, parentId) {
-            return $http({
-                url: 'KnowledgeSession/GetWinner',
-                method: "GET",
-                params: { sessionId: sessionId, parentId: parentId }
-            });
-        },
 
 
         getLevelNodes: function (sessionId, level) {
@@ -91,6 +77,25 @@
                 params: { sessionId: sessionId, level: level }
             });
         },
+
+
+        voteNodeModificationSuggestion: function (data) {
+            return $http(
+                {
+                    method: 'POST',
+                    url: 'api/KnowledgeSessionApi/VoteNodeModificationSuggestion',
+                    data: data
+                });
+        },
+
+        getNodeStructureSuggestionWinner: function (nodeId) {
+            return $http({
+                url: 'api/KnowledgeSessionApi/GetNodeStructureSuggestionWinner',
+                method: "GET",
+                params: { nodeId: nodeId }
+            });
+        },
+
 
         getMembers: function (sessionId) {
             return $http({

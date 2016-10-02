@@ -83,7 +83,13 @@
     <Compile Include="Migrations\201609301946334_AddParentIdToSuggestionTable.Designer.cs">
       <DependentUpon>201609301946334_AddParentIdToSuggestionTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610022040138_NodeModification_AddCommentField.cs" />
+    <Compile Include="Migrations\201610022040138_NodeModification_AddCommentField.Designer.cs">
+      <DependentUpon>201610022040138_NodeModification_AddCommentField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Repositories\NodeModificationsRepository.cs" />
+    <Compile Include="Repositories\NodeModificationVotesRepository.cs" />
     <Compile Include="Repositories\NodeStructureSuggestionRepository.cs" />
     <Compile Include="Repositories\NodesRepository.cs" />
     <Compile Include="Repositories\KnowledgeSessionRepository.cs" />
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609301946334_AddParentIdToSuggestionTable.resx">
       <DependentUpon>201609301946334_AddParentIdToSuggestionTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610022040138_NodeModification_AddCommentField.resx">
+      <DependentUpon>201610022040138_NodeModification_AddCommentField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -14,7 +14,28 @@ namespace DataLayer.Repositories
         private NodeStructureVotesRepository _nodeStructureVotesRepository;
         private NodeHistoryRepository _nodeHistoryRepository;
         private NodeStructureSuggestionRepository _nodeStructureSuggestion;
+        private NodeModificationsRepository _nodeModificationsRepository;
+        private NodeModificationVotesRepository _nodeModificationVotesRepository;
         private bool _disposed = false;
+
+
+        public IRepository<NodeModification> NodeModifications
+        {
+            get
+            {
+                return _nodeModificationsRepository ??
+                     (_nodeModificationsRepository = new NodeModificationsRepository(_db));
+            }
+        }
+
+        public IRepository<NodeModificationVote> NodeModificationVotes
+        {
+            get
+            {
+                return _nodeModificationVotesRepository ??
+                                     (_nodeModificationVotesRepository = new NodeModificationVotesRepository(_db));
+            }
+        }
 
         public IRepository<SessionNode> Nodes
         {
@@ -32,8 +53,10 @@ namespace DataLayer.Repositories
             {
                 return _nodeStructureSuggestion ??
                     (_nodeStructureSuggestion = new NodeStructureSuggestionRepository(_db));
-            } 
+            }
         }
+
+
 
         public IRepository<NodeHistory> NodesHistory
         {

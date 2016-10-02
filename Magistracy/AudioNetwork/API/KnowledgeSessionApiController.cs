@@ -19,23 +19,44 @@ namespace AudioNetwork.Web.API
         private readonly IKnowledgeSessionMemberService _knowledgeSessionMemberService;
         private readonly INodeService _nodeService;
         private readonly ISuggestionService _suggestionService;
+        private readonly INodeModificationService _nodeModificationService;
 
         public KnowledgeSessionApiController(
             IKnowledgeSessionService knowledgeSessionService,
             IKnowledgeSessionMemberService knowledgeSessionMemberService,
             INodeService nodeService,
-            ISuggestionService suggestionService)
+            ISuggestionService suggestionService,
+            INodeModificationService nodeModificationService)
         {
             _knowledgeSessionService = knowledgeSessionService;
             _knowledgeSessionMemberService = knowledgeSessionMemberService;
             _nodeService = nodeService;
             _suggestionService = suggestionService;
+            _nodeModificationService = nodeModificationService;
+        }
+
+
+        [HttpPost]
+        public void CreateNodeModificationSuggestion(NodeModificationViewModel nodeModificationViewModel)
+        {
+            _nodeModificationService.CreateNodeModificationSuggestion(nodeModificationViewModel);
+        }
+
+        [HttpPost]
+        public void VoteNodeModificationSuggestion(NodeModificationVoteViewModel nodeModificationVoteViewModel)
+        {
+            _nodeModificationService.VoteNodeModificationSuggestion(nodeModificationVoteViewModel);
         }
 
         [HttpGet]
         public IEnumerable<SuggestionSessionUserViewModel> GetSuggestions(int sessionId, int nodeId)
         {
             return _suggestionService.GetSuggestions(sessionId, nodeId);
+        }
+        [HttpGet]
+        public SuggestionSessionUserViewModel GetNodeStructureSuggestionWinner(int nodeId)
+        {
+            return _suggestionService.GetNodeStructureSuggestionWinner(nodeId);
         }
 
         [HttpPost]

@@ -12,12 +12,12 @@
       <div ng-repeat="vote in votesBy" class="panel-group ">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <span>{{vote.VoteByUser.FirstName}}</span>
-            <span>{{vote.VoteByUser.LastName}}</span>
+            <span>{{vote.FirstName}}</span>
+            <span>{{vote.LastName}}</span>
           </div>
             <div class="panel-body">
                 <div class="col-md-3">
-                  <img ng-src="{{vote.VoteByUser.AvatarFilePath}}" width="80" height="80" />
+                  <img ng-src="{{vote.AvatarFilePath}}" width="80" height="80" />
                     
                 </div>
                 @*<button class="btn btn-default pull-right" ng-click="removeUserFromSession($index,member)">

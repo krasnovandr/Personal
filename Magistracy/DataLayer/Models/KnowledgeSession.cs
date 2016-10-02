@@ -131,11 +131,11 @@ namespace DataLayer.Models
         public virtual SessionNode Node { get; set; }
         public DateTime Date { get; set; }
         public string Value { get; set; }
+        public string Comment { get; set; }
 
         public ModificationType Type { get; set; }
         public ModificationStatus Status { get; set; }
 
-        //public virtual ICollection<SessionNode> Nodes { get; set; }
         //public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<NodeModificationVote> Votes { get; set; }
     }

@@ -39,8 +39,35 @@ namespace ServiceLayer.Helpers
             Mapper.CreateMap<SessionNode, SuggestionNodeViewModel>()
               .ForMember(dest => dest.SuggestedBy, opt => opt.MapFrom(src => src.SuggestedBy.Id));
 
-            Mapper.CreateMap<NodeStructureSuggestionVote, NodeStructureSuggestionVoteViewModel>();
+            Mapper.CreateMap<NodeStructureSuggestionVote, NodeStructureSuggestionVoteViewModel>()
+                            .ForMember(dest => dest.VoteBy, opt => opt.MapFrom(src => src.VoteBy.Id));
             Mapper.CreateMap<NodeStructureSuggestionVoteViewModel, NodeStructureSuggestionVote>();
+
+            Mapper.CreateMap<ApplicationUser, SuggestionSessionUserViewModel>()
+                .ForMember(dest => dest.NodeStructureSuggestion, opt => opt.Ignore());
+
+            Mapper.CreateMap<NodeModification, NodeModificationViewModel>()
+                .ForMember(dest => dest.SuggestedBy, opt => opt.MapFrom(src => src.SuggestedBy.Id))
+                .ForMember(dest => dest.SuggestedBy, opt => opt.MapFrom(src => src.SuggestedBy.Id));
+
+            Mapper.CreateMap<NodeModificationVoteViewModel, NodeModificationVote>()
+             .ForMember(dest => dest.VoteBy, opt => opt.Ignore())
+             .ForMember(dest => dest.NodeModification, opt => opt.Ignore());
+
+            Mapper.CreateMap<NodeModificationVote, NodeModificationVoteViewModel>()
+                .ForMember(dest => dest.VoteBy, opt => opt.MapFrom(src => src.VoteBy.Id))
+                .ForMember(dest => dest.AvatarFilePath, opt => opt.MapFrom(src => src.VoteBy.AvatarFilePath))
+                .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.VoteBy.FirstName))
+                .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.VoteBy.LastName));
+
+
+            Mapper.CreateMap<NodeModificationViewModel, NodeModification>()
+                         .ForMember(dest => dest.SuggestedBy, opt => opt.Ignore())
+                         .ForMember(dest => dest.Node, opt => opt.Ignore());
+
+
+
+
             //.ForMember(dest => dest.VoteBy, opt => opt.MapFrom(src => src.VoteBy));
 
 

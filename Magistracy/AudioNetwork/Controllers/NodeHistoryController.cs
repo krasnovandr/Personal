@@ -17,10 +17,7 @@ namespace AudioNetwork.Web.Controllers
             _historyService = historyService;
         }
 
-        public ActionResult Index()
-        {
-            return View();
-        }
+  
 
         public JsonResult GetHistory(int sessionId, int nodeId)
         {
