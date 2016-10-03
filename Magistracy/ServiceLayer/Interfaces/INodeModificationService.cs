@@ -10,6 +10,6 @@ namespace ServiceLayer.Interfaces
     public interface INodeModificationService
     {
         void CreateNodeModificationSuggestion(NodeModificationViewModel nodeModificationViewModel);
-        void VoteNodeModificationSuggestion(NodeModificationVoteViewModel nodeModificationVoteViewModel);
+        void VoteNodeModificationSuggestion(NodeModificationVoteViewModel voteViewModel);
     }
 }

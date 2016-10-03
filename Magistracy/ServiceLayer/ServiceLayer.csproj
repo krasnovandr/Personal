@@ -85,7 +85,6 @@
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Interfaces\IWallService.cs" />
     <Compile Include="Models\AddMembersViewModel.cs" />
-    <Compile Include="Models\KnowledgeSession\Enums\VoteResultTypes.cs" />
     <Compile Include="Models\KnowledgeSession\Enums\LevelVoteType.cs" />
     <Compile Include="Models\KnowledgeSession\NodeHistoryViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\NodeModificationViewModel.cs" />

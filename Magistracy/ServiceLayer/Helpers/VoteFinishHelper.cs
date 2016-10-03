@@ -1,4 +1,5 @@
 ﻿using System;
+using DataLayer.Models;
 using ServiceLayer.Interfaces;
 using ServiceLayer.Models.KnowledgeSession.Enums;
 
@@ -24,25 +25,40 @@ namespace ServiceLayer.Helpers
 
         }
 
-        //public VoteResultTypes CheckSuggestionVoteFinished(int votesUpCount, int votesDownCount, int sessionUsers)
+        //public bool CheckModificationVoteFinished(int votesUp, int votesDown, int usersCount)
         //{
-        //    double coefficientUp = (double)votesUpCount / sessionUsers;
-            
-        //    if (coefficientUp * 100 >= levelVoteFinishedValue)
+        //    var maximumVotes = votesUp > votesDown ? votesUp : votesDown;
+
+        //    double coefficient = (double)maximumVotes / usersCount;
+        //    bool result = coefficient * 100 >= levelVoteFinishedValue;
+
+        //    if (result)
         //    {
-        //        return VoteResultTypes.Up;
+        //        return true;
         //    }
 
-        //    double coefficientDown = (double)votesDownCount / sessionUsers;
-            
-        //    if (coefficientDown * 100 >= (100 - levelVoteFinishedValue))
-        //    {
-        //        {
-        //            return VoteResultTypes.Down;
-        //        }
-        //    }
-
-        //    return VoteResultTypes.NotFinished;
+        //    return false;
         //}
+
+        public VoteResultTypes CheckModificationVoteFinished(int votesUpCount, int votesDownCount, int sessionUsers)
+        {
+            double coefficientUp = (double)votesUpCount / sessionUsers;
+
+            if (coefficientUp * 100 >= levelVoteFinishedValue)
+            {
+                return VoteResultTypes.Up;
+            }
+
+            double coefficientDown = (double)votesDownCount / sessionUsers;
+
+            if (coefficientDown * 100 >= (100 - levelVoteFinishedValue))
+            {
+                {
+                    return VoteResultTypes.Down;
+                }
+            }
+
+            return VoteResultTypes.NotFinished;
+        }
     }
 }
