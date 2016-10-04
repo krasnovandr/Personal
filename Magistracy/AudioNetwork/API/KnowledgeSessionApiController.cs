@@ -67,9 +67,9 @@ namespace AudioNetwork.Web.API
         }
 
         [HttpGet]
-        public bool CheckStructureSuggestionVoteDone(int sessionId, int nodeId)
+        public bool CheckStructureSuggestionVoteDone(int sessionId, int nodeId,NodeStructureVoteTypes voteType)
         {
-            return _suggestionService.CheckStructureSuggestionVoteDone(sessionId, nodeId);
+            return _suggestionService.CheckStructureSuggestionVoteDone(sessionId, nodeId,voteType);
         }
 
         [HttpGet]

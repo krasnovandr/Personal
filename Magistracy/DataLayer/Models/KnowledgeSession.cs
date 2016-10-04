@@ -40,6 +40,7 @@ namespace DataLayer.Models
         StructureSuggestionWait,
         StructureSuggestionVote,
         StructureSuggestionWinner,
+        WinAndNotLeaf,
         Leaf
     }
 

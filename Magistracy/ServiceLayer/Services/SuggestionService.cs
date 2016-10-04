@@ -49,9 +49,9 @@ namespace ServiceLayer.Services
             return vote != null ? vote.Suggestion.Id : (int?)null;
         }
 
-        public bool CheckStructureSuggestionVoteDone(int sessionId, int nodeId)
+        public bool CheckStructureSuggestionVoteDone(int sessionId, int nodeId, NodeStructureVoteTypes voteType)
         {
-            var suggestion = _db.NodeStructureSuggestionsVotes.GetAll().Where(m => m.SessionNode.Id == nodeId);
+            var suggestion = _db.NodeStructureSuggestionsVotes.GetAll().Where(m => m.SessionNode.Id == nodeId && m.VoteType == voteType);
             var session = _db.KnowledgeSessions.Get(sessionId);
 
             return suggestion.Count() == session.Users.Count;
@@ -72,12 +72,38 @@ namespace ServiceLayer.Services
 
             _db.NodeStructureSuggestionsVotes.Create(suggestionVote);
 
-            var isDone = CheckStructureSuggestionVoteDone(suggestionViewModel.SessionId, suggestionViewModel.NodeId);
+            var isDone = CheckStructureSuggestionVoteDone(suggestionViewModel.SessionId, suggestionViewModel.NodeId, suggestionViewModel.VoteType);
 
             if (isDone)
             {
-                var node = _db.Nodes.Get(suggestionViewModel.NodeId);
-                node.State = NodeStates.StructureSuggestionWinner;
+                var parentNode = _db.Nodes.Get(suggestionViewModel.NodeId);
+                switch (suggestionViewModel.VoteType)
+                {
+                    case NodeStructureVoteTypes.Initialize:
+                        parentNode.State = NodeStates.StructureSuggestionWinner;
+                        break;
+                    case NodeStructureVoteTypes.DoneLeaf:
+                        parentNode.State = NodeStates.WinAndNotLeaf;
+
+                        foreach (var nodeInSuggestion in suggestion.Nodes)
+                        {
+                            nodeInSuggestion.State = NodeStates.Leaf;
+                            nodeInSuggestion.Type = NodeType.Configurator;
+                        }
+
+                        break;
+
+                    case NodeStructureVoteTypes.DoneContinue:
+                        parentNode.State = NodeStates.WinAndNotLeaf;
+
+                        foreach (var nodeInSuggestion in suggestion.Nodes)
+                        {
+                            nodeInSuggestion.State = NodeStates.StructureSuggestion;
+                            nodeInSuggestion.Type = NodeType.Configurator;
+                        }
+
+                        break;
+                }
             }
 
             _db.Save();

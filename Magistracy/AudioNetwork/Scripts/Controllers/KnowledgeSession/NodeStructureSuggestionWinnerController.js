@@ -150,4 +150,19 @@
         $scope.viewHistory = function (node) {
             urlMakerService.viewNodeHistory($scope.sessionId, node.Id);
         };
+        $scope.voteForFinish = function (voteType) {
+            var suggestionData = {
+                VoteBy: $rootScope.logState.Id,
+                SessionId: $scope.sessionId,
+                NodeId: $scope.nodeId,
+                VoteType: voteType,
+                SuggestionId: $scope.winner.NodeStructureSuggestion.Id
+            };
+
+            knowledgeSessionService.voteNodeStructureSuggestion(suggestionData).success(function (result) {
+                if (result) {
+                    urlMakerService.viewSession($scope.sessionId);
+                }
+            });
+        };
     });

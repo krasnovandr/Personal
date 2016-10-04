@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using DataLayer.Models;
 using ServiceLayer.Models.KnowledgeSession;
 using TagLib.Riff;
 
@@ -24,7 +26,24 @@ namespace ServiceLayer.Models
         public string AvatarFilePath { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public int DoneLeafCount
+        {
+            get
+            {
+                return NodeStructureSuggestion.Votes.Count(m => m.VoteType == NodeStructureVoteTypes.DoneLeaf);
+            }
+        }
+
+        public int DoneContinueCount
+        {
+            get
+            {
+                return NodeStructureSuggestion.Votes.Count(m => m.VoteType == NodeStructureVoteTypes.DoneContinue);
+            }
+        }
         public NodeStructureSuggestionViewModel NodeStructureSuggestion { get; set; }
+
+ 
 
     }
 
@@ -105,6 +124,6 @@ namespace ServiceLayer.Models
         public SongViewModel CurrentSong { get; set; }
         public bool LoggedIn { get; set; }
 
-  
+
     }
 }

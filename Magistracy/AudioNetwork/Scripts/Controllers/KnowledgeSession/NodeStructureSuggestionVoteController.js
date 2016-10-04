@@ -8,9 +8,16 @@
         $scope.voteDone = false;
         $scope.userVote = false;
 
-        knowledgeSessionService.checkStructureSuggestionVoteDone($scope.sessionId, $scope.nodeId).success(function (result) {
-            $scope.voteDone = result;
-        });
+        $scope.NodeStructureVoteTypes = {
+            Initialize: 0,
+            DoneLeaf: 1,
+            DoneContinue: 2,
+        };
+
+        knowledgeSessionService.checkStructureSuggestionVoteDone($scope.sessionId, $scope.nodeId, $scope.NodeStructureVoteTypes.Initialize)
+            .success(function (result) {
+                $scope.voteDone = result;
+            });
 
         knowledgeSessionService.getSession($scope.sessionId).success(function (result) {
             $scope.session = result;

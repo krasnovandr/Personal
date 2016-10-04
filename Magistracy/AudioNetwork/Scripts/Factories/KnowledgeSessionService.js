@@ -126,11 +126,11 @@
             return $http({ method: 'POST', url: 'api/KnowledgeSessionApi/VoteNodeStructureSuggestion', data: data });
         },
 
-        checkStructureSuggestionVoteDone: function (sessionId, nodeId) {
+        checkStructureSuggestionVoteDone: function (sessionId, nodeId, voteType) {
             return $http({
                 url: 'api/KnowledgeSessionApi/CheckStructureSuggestionVoteDone',
                 method: "GET",
-                params: { sessionId: sessionId, nodeId: nodeId }
+                params: { sessionId: sessionId, nodeId: nodeId, voteType: voteType }
             });
         },
         checkUserStructureSuggestionVote: function (userId, nodeId) {
