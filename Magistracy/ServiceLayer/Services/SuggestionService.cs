@@ -71,6 +71,7 @@ namespace ServiceLayer.Services
 
 
             _db.NodeStructureSuggestionsVotes.Create(suggestionVote);
+            _db.Save();
 
             var isDone = CheckStructureSuggestionVoteDone(suggestionViewModel.SessionId, suggestionViewModel.NodeId, suggestionViewModel.VoteType);
 
@@ -149,9 +150,12 @@ namespace ServiceLayer.Services
 
         public SuggestionSessionUserViewModel GetNodeStructureSuggestionWinner(int nodeId)
         {
-            var suggestions = _db.NodeStructureSuggestions.GetAll();
+            var node = _db.Nodes.Get(nodeId);
+            //node.NodeStructureSuggestion
+            var suggestions = _db.NodeStructureSuggestions.GetAll().Where(m => m.ParentId == nodeId);
+            var winneredSuggestion = suggestions.OrderByDescending(m => m.Votes.Count(v => v.VoteType == NodeStructureVoteTypes.Initialize)).FirstOrDefault();
+            //var winneredSuggestion = suggestions.OrderByDescending(m => m.Votes.Count ).FirstOrDefault();
 
-            var winneredSuggestion = suggestions.OrderByDescending(m => m.Votes.Count).FirstOrDefault();
 
             if (winneredSuggestion == null)
             {

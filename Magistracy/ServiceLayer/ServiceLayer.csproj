@@ -71,6 +71,7 @@
     <Compile Include="Helpers\ModelConverters.cs" />
     <Compile Include="Helpers\SharpZipLibHelper .cs" />
     <Compile Include="Helpers\StringHelper.cs" />
+    <Compile Include="Interfaces\ICommentsService.cs" />
     <Compile Include="Interfaces\IConversationService.cs" />
     <Compile Include="Interfaces\IHistoryService.cs" />
     <Compile Include="Interfaces\IKnowledgeSessionMemberService.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Interfaces\IWallService.cs" />
     <Compile Include="Models\AddMembersViewModel.cs" />
+    <Compile Include="Models\KnowledgeSession\CommentViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\Enums\LevelVoteType.cs" />
     <Compile Include="Models\KnowledgeSession\NodeHistoryViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\NodeModificationViewModel.cs" />
@@ -111,6 +113,7 @@
     <Compile Include="Models\WallItemLikeDislikeViewModel.cs" />
     <Compile Include="Models\WallItemViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CommentsService.cs" />
     <Compile Include="Services\ConversationService.cs" />
     <Compile Include="Helpers\FilePathContainer.cs" />
     <Compile Include="Interfaces\ISuggestionService.cs" />

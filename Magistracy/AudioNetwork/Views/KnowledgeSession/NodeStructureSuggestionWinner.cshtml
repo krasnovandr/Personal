@@ -18,13 +18,13 @@
         <span class="	glyphicon glyphicon-share"></span>
       </button>
       <button class="btn" ng-click="openVoteUsersModal(node.CurrentSuggestion.VotesUp)">
-        <span class="text-danger">{{winner.DoneContinueCount}}</span>
+        <span class="text-danger">{{winner.NodeStructureSuggestion.DoneContinueCount}}</span>
       </button>
       <button class="btn btn-warning " ng-click="voteForFinish(1)" tooltip-placement="left" uib-tooltip="Зафиксировать и начать заполнение узлов">
         <span class="	glyphicon glyphicon-check"></span>
       </button>
       <button class="btn" ng-click="openVoteUsersModal(node.CurrentSuggestion.VotesUp)" >
-        <span class="text-danger">{{winner.DoneLeafCount}}</span>
+        <span class="text-danger">{{winner.NodeStructureSuggestion.DoneLeafCount}}</span>
       </button>
     </div>
 

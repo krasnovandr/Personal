@@ -16,6 +16,7 @@ namespace DataLayer.Repositories
         private NodeStructureSuggestionRepository _nodeStructureSuggestion;
         private NodeModificationsRepository _nodeModificationsRepository;
         private NodeModificationVotesRepository _nodeModificationVotesRepository;
+        private CommentsRepository _commentsRepository;
         private bool _disposed = false;
 
 
@@ -34,6 +35,15 @@ namespace DataLayer.Repositories
             {
                 return _nodeModificationVotesRepository ??
                                      (_nodeModificationVotesRepository = new NodeModificationVotesRepository(_db));
+            }
+        }
+
+        public IRepository<Comment> Comments
+        {
+            get
+            {
+                return _commentsRepository ??
+                                    (_commentsRepository = new CommentsRepository(_db));
             }
         }
 

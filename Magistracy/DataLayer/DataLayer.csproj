@@ -88,6 +88,7 @@
       <DependentUpon>201610022040138_NodeModification_AddCommentField.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Repositories\CommentsRepository.cs" />
     <Compile Include="Repositories\NodeModificationsRepository.cs" />
     <Compile Include="Repositories\NodeModificationVotesRepository.cs" />
     <Compile Include="Repositories\NodeStructureSuggestionRepository.cs" />

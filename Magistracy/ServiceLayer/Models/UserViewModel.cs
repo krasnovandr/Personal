@@ -26,21 +26,7 @@ namespace ServiceLayer.Models
         public string AvatarFilePath { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int DoneLeafCount
-        {
-            get
-            {
-                return NodeStructureSuggestion.Votes.Count(m => m.VoteType == NodeStructureVoteTypes.DoneLeaf);
-            }
-        }
 
-        public int DoneContinueCount
-        {
-            get
-            {
-                return NodeStructureSuggestion.Votes.Count(m => m.VoteType == NodeStructureVoteTypes.DoneContinue);
-            }
-        }
         public NodeStructureSuggestionViewModel NodeStructureSuggestion { get; set; }
 
  

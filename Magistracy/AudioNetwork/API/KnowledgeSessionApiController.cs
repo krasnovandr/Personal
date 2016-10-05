@@ -20,21 +20,36 @@ namespace AudioNetwork.Web.API
         private readonly INodeService _nodeService;
         private readonly ISuggestionService _suggestionService;
         private readonly INodeModificationService _nodeModificationService;
+        private readonly ICommentsService _commentsService;
 
         public KnowledgeSessionApiController(
             IKnowledgeSessionService knowledgeSessionService,
             IKnowledgeSessionMemberService knowledgeSessionMemberService,
             INodeService nodeService,
             ISuggestionService suggestionService,
-            INodeModificationService nodeModificationService)
+            INodeModificationService nodeModificationService,
+            ICommentsService commentsService)
         {
             _knowledgeSessionService = knowledgeSessionService;
             _knowledgeSessionMemberService = knowledgeSessionMemberService;
             _nodeService = nodeService;
             _suggestionService = suggestionService;
             _nodeModificationService = nodeModificationService;
+            _commentsService = commentsService;
         }
 
+
+        [HttpPost]
+        public List<CommentViewModel> CreateCommentToNode(CommentViewModel commentView)
+        {
+            _commentsService.Create(commentView);
+            return _commentsService.Get(commentView.CommentTo);
+        }
+        [HttpGet]
+        public List<CommentViewModel> GetNodeComments(int nodeid)
+        {
+            return _commentsService.Get(nodeid);
+        }
 
         [HttpPost]
         public void CreateNodeModificationSuggestion(NodeModificationViewModel nodeModificationViewModel)
@@ -67,9 +82,9 @@ namespace AudioNetwork.Web.API
         }
 
         [HttpGet]
-        public bool CheckStructureSuggestionVoteDone(int sessionId, int nodeId,NodeStructureVoteTypes voteType)
+        public bool CheckStructureSuggestionVoteDone(int sessionId, int nodeId, NodeStructureVoteTypes voteType)
         {
-            return _suggestionService.CheckStructureSuggestionVoteDone(sessionId, nodeId,voteType);
+            return _suggestionService.CheckStructureSuggestionVoteDone(sessionId, nodeId, voteType);
         }
 
         [HttpGet]

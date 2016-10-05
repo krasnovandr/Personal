@@ -1,11 +1,57 @@
 ﻿angular.module('AudioNetworkApp')
     .controller('TreeController', function ($, $scope, $rootScope, knowledgeSessionService, userService, urlMakerService, $routeParams) {
         $scope.sessionId = $routeParams.id;
-//        StructureSuggestion,
-//StructureSuggestionWait,
-//StructureSuggestionVote,
-//UpdatesAndComments,
-//Leaf
+        //                case NodeStates.StructureSuggestion:
+        //node.color = "#FFFFFF";
+        //node.backColor = "#000000";
+        //break;
+        //                case NodeStates.StructureSuggestionWait:
+        ////node.color = "#FFD700";
+        //node.backColor = "#FFD700";
+        //break;
+        //                case NodeStates.StructureSuggestionVote:
+        //node.color = "#FFFFFF";
+        //node.backColor = "#006400";
+        //break;
+        //                case NodeStates.StructureSuggestionWinner:
+        //node.color = "#FFFFFF";
+        //node.backColor = "#0000FF";
+        //break;
+        //                case NodeStates.WinAndNotLeaf:
+        //node.color = "#FFFFFF";
+        //node.backColor = "#808080";
+        //break;
+        //                case NodeStates.Leaf:
+        //node.color = "#FFFFFF";
+        //node.backColor = "#808080";
+        //break;
+        $scope.style = { "color": "green" };
+        $scope.legendNodes = [
+            {
+                status: "StructureSuggestion",
+                color: { "background-color": "#FFFFFF", "color": "#000000" }
+            },
+            {
+                status: "StructureSuggestionWait",
+                color: { "background-color": "#FFD700", "color" :"#FFFFFF"}
+            },
+            {
+                status: "StructureSuggestionVote",
+                color: { "background-color": "#006400", "color": "#FFFFFF" }
+            },
+            {
+                status: "StructureSuggestionWinner",
+                color: { "background-color": "#0000FF", "color": "#FFFFFF" }
+            },
+            {
+                status: "WinAndNotLeaf",
+                color: { "background-color": "#808080", "color": "#FFFFFF" }
+            },
+            {
+                status: "Leaf",
+                color: { "background-color": "red", "color": "#FFFFFF" }
+            }
+        ];
 
         $scope.NodeStates = {
             StructureSuggestion: 0,

@@ -3,11 +3,20 @@
     <div class="col-md-5">
       <div id="tree"></div>
     </div>
-    <div class="col-md-5">
-      <button class="btn btn-success " ng-click="navigateToNode()">
-        <span class="glyphicon glyphicon-expand">Перейти к узлу</span>
-      </button>
+      <div class="col-md-2">
+          <button class="btn btn-success " ng-click="navigateToNode()">
+              <span class="glyphicon glyphicon-expand">Перейти к узлу</span>
+          </button>
+      </div>
+    @*<p ng-style="style">I should be either green or blue!</p>*@
+    <div class="col-md-3">
+      <div ng-repeat="node in legendNodes">
+        <button class="thumbnail" ng-style="node.color">
+          <h4>{{node.status}}</h4>
+        </button>
+      </div>
     </div>
+
   </div>
 
 </div>

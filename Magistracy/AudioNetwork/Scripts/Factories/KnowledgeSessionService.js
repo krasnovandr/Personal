@@ -24,14 +24,12 @@
 
 
 
-        addComment: function (comment, sessionId, nodeId) {
-            var dataToTransfer =
-            {
-                comment: comment,
-                sessionId: sessionId,
-                nodeId: nodeId
-            };
-            return $http({ method: 'POST', url: 'NodeModification/AddComment', data: dataToTransfer });
+        createCommentToNode: function (data) {
+            return $http({
+                method: 'POST',
+                url: 'api/KnowledgeSessionApi/CreateCommentToNode',
+                data: data
+            });
         },
 
         checkUserLevelVote: function (session, userId, parentId, levelVoteType) {

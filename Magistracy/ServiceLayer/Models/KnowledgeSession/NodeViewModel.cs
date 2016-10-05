@@ -41,6 +41,8 @@ namespace ServiceLayer.Models.KnowledgeSession
                 return NodeModifications.FirstOrDefault(m => m.Status == ModificationStatus.Open);
             }
         }
+
+        public List<CommentViewModel> Comments { get; set; }
     }
 
     //public class NodeStructureSuggestionViewModel

@@ -60,6 +60,7 @@ namespace AudioNetwork.Web
             container.RegisterType<IVoteFinishHelper, VoteFinishHelper>();
             container.RegisterType<INodeModificationService, NodeModificationService>();
             container.RegisterType<INodeService, NodeService>();
+            container.RegisterType<ICommentsService, CommentsService>();
         }
     }
 }

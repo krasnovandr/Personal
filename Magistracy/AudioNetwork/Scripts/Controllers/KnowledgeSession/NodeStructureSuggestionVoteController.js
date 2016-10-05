@@ -81,6 +81,10 @@
 
             knowledgeSessionService.voteNodeStructureSuggestion(suggestionData).success(function (result) {
                 $scope.members = result;
+
+                knowledgeSessionService.checkUserStructureSuggestionVote($rootScope.logState.Id, $scope.nodeId).success(function (result) {
+                    $scope.userVote = result;
+                });
             });
         };
 

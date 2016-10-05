@@ -65,8 +65,14 @@ namespace ServiceLayer.Helpers
                          .ForMember(dest => dest.SuggestedBy, opt => opt.Ignore())
                          .ForMember(dest => dest.Node, opt => opt.Ignore());
 
+            Mapper.CreateMap<CommentViewModel, Comment>()
+                  .ForMember(dest => dest.CommentBy, opt => opt.Ignore())
+                                    .ForMember(dest => dest.CommentTo, opt => opt.Ignore());
 
-
+            Mapper.CreateMap<Comment, CommentViewModel>()
+                .ForMember(dest => dest.CommentBy, opt => opt.MapFrom(src => src.CommentBy.Id))
+                .ForMember(dest => dest.AvatarFilePath, opt => opt.MapFrom(src => src.CommentBy.AvatarFilePath))
+                .ForMember(dest => dest.CommentTo, opt => opt.MapFrom(src => src.CommentTo.Id));
 
             //.ForMember(dest => dest.VoteBy, opt => opt.MapFrom(src => src.VoteBy));
 

@@ -8,7 +8,7 @@
             <th>Голосовать</th>
         </tr>*@
       <tbody>
-        <tr ng-repeat="member in dataArray | orderBy:'-NodeStructureSuggestion.Votes.length'" ng-class="{success:$index == 0 && voteDone, warning:$index != 0 && voteDone}">
+        <tr ng-repeat="member in dataArray | orderBy:'-NodeStructureSuggestion.TotalInitial'" ng-class="{success:$index == 0 && voteDone, warning:$index != 0 && voteDone}">
           <td>
             <div class="panel panel-default">
               <div class="panel-heading">
@@ -54,7 +54,7 @@
               </button>
             </div>
             <div ng-show="voteDone">
-              <h4 class="glyphicon glyphicon-check">Результат:{{member.NodeStructureSuggestion.Votes.length}}</h4>
+              <h4 class="glyphicon glyphicon-check">Результат:{{member.NodeStructureSuggestion.TotalInitial}}</h4>
             </div>
           </td>
         </tr>

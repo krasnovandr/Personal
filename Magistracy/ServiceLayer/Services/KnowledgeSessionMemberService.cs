@@ -117,12 +117,11 @@ namespace ServiceLayer.Services
             switch (node.State)
             {
                 case NodeStates.StructureSuggestion:
-                    node.color = "#FFFFFF";
-                    node.backColor = "#000000";
-                    //backColor: "#FFFFFF""; 
+                    node.color = "#000000";
+                    node.backColor = "#FFFFFF";
                     break;
                 case NodeStates.StructureSuggestionWait:
-                    //node.color = "#FFD700";
+                    node.color = "#FFFFFF";
                     node.backColor = "#FFD700";
                     break;
                 case NodeStates.StructureSuggestionVote:
@@ -133,7 +132,14 @@ namespace ServiceLayer.Services
                     node.color = "#FFFFFF";
                     node.backColor = "#0000FF";
                     break;
-                case NodeStates.Leaf: break;
+                case NodeStates.WinAndNotLeaf:
+                    node.color = "#FFFFFF";
+                    node.backColor = "#808080";
+                    break;
+                case NodeStates.Leaf:
+                    node.color = "#FFFFFF";
+                    node.backColor = "red";
+                    break;
             }
         }
 

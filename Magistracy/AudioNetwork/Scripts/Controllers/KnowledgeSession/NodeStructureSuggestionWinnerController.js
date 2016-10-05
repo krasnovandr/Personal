@@ -123,7 +123,7 @@
             $scope.showComments = true;
             $scope.nodeName = node.Name;
             $scope.commentsToNode = node;
-            $scope.comments = node.CurrentSuggestion.Comments;
+            $scope.comments = node.Comments;
             var panelList = $('#draggablePanelList');
             panelList.draggable({
                 containment: "window"
@@ -136,14 +136,24 @@
             $scope.commentsToNode = {};
         };
 
+        //public string AvatarFilePath { get; set; }
+        //public int Id { get; set; }
+        //public DateTime Date { get; set;}
+        //public string Value { get; set; }
+        //public int CommentTo { get; set; }
+        //public string CommentBy { get; set; }
+
         $scope.addComment = function (newValue) {
-            knowledgeSessionService.addComment(newValue, $scope.sessionId, $scope.commentsToNode.Id)
+            var commentModel = {
+                CommentBy: $rootScope.logState.Id,
+                CommentTo: $scope.commentsToNode.Id,
+                Value: newValue
+            };
+            knowledgeSessionService.createCommentToNode(commentModel)
               .success(function (result) {
-                  if (result) {
-                      $scope.comments = result;
-                      //$scope.newComment = '';
-                      $scope.newComment.Value = '';
-                  }
+                  $scope.comments = result;
+                  //$scope.newComment = '';
+                  $scope.newComment.Value = '';
               });
         };
 

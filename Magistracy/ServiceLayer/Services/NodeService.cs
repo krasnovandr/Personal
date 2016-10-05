@@ -109,7 +109,7 @@ namespace ServiceLayer.Services
 
             if (suggestionComplete)
             {
-                parentNode.State = NodeStates.StructureSuggestionWinner;
+                parentNode.State = NodeStates.StructureSuggestionVote;
             }
 
             //var firstNode = nodes.FirstOrDefault();
@@ -140,6 +140,11 @@ namespace ServiceLayer.Services
             if (node.State == NodeStates.StructureSuggestionWinner)
             {
                 return NodeStates.StructureSuggestionWinner;
+            }
+
+            if (node.State == NodeStates.WinAndNotLeaf)
+            {
+                return NodeStates.WinAndNotLeaf;
             }
 
             var haveSuggestedNotes = nodes.Any(m => m.ParentId == nodeId && m.SuggestedBy == user);

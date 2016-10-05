@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataLayer.Models;
+using DataLayer.Repositories;
 
 namespace DataLayer.Interfaces
 {
@@ -13,6 +14,7 @@ namespace DataLayer.Interfaces
         IRepository<NodeStructureSuggestion> NodeStructureSuggestions { get; }
         IRepository<NodeModification> NodeModifications { get; }
         IRepository<NodeModificationVote> NodeModificationVotes { get; }
+        IRepository<Comment> Comments { get; }
         IRepository<NodeHistory> NodesHistory { get; }
         IRepository<SessionNode> Nodes { get; }
         IRepository<NodeStructureSuggestionVote> NodeStructureSuggestionsVotes { get; }
