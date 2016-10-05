@@ -15,7 +15,7 @@
           <div ng-repeat="comment in comments">
 
 
-            <div class="row msg_container base_sent" ng-if="comment.CommentBy.Id == logState.Id">
+            <div class="row msg_container base_sent" ng-if="comment.CommentBy == logState.Id">
               <div class="col-md-10 col-xs-10">
                 <div class="messages msg_sent">
                   <p>
@@ -25,13 +25,13 @@
                 </div>
               </div>
               <div class="col-md-2 col-xs-2 avatar">
-                <img ng-src="{{comment.CommentBy.AvatarFilePath}}" class=" img-responsive ">
+                <img ng-src="{{comment.AvatarFilePath}}" class=" img-responsive ">
               </div>
             </div>
 
-            <div class="row msg_container base_receive" ng-if="comment.CommentBy.Id != logState.Id">
+            <div class="row msg_container base_receive" ng-if="comment.CommentBy != logState.Id">
               <div class="col-md-2 col-xs-2 avatar">
-                <img ng-src="{{comment.CommentBy.AvatarFilePath}}" class=" img-responsive ">
+                <img ng-src="{{comment.AvatarFilePath}}" class=" img-responsive ">
               </div>
               <div class="col-md-10 col-xs-10">
                 <div class="messages msg_receive">
