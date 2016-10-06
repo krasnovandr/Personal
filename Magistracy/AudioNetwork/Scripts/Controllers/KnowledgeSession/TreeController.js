@@ -58,7 +58,8 @@
             StructureSuggestionWait: 1,
             StructureSuggestionVote: 2,
             StructureSuggestionWinner: 3,
-            Leaf: 4
+            WinAndNotLeaf:4,
+            Leaf: 5
         };
 
         knowledgeSessionService.getSessionTree($scope.sessionId).success(
@@ -96,7 +97,7 @@
                     break;
                 }
                 case $scope.NodeStates.Leaf: {
-                    alert("Case Leaf");
+                    urlMakerService.viewConentFilling(node.Id, $scope.sessionId);
                     break;
                 }
                 default: {

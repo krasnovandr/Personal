@@ -58,10 +58,11 @@ var config = function ($routeProvider) {
           templateUrl: 'KnowledgeSession/NodeStructureSuggestionVote',
       }).when('/KnowledgeSession/NodeStructureSuggestionWinner/:id', {
           templateUrl: 'KnowledgeSession/NodeStructureSuggestionWinner',
+      }).when('/KnowledgeSession/ContentFilling/:id', {
+          templateUrl: 'KnowledgeSession/ContentFilling',
       }).when('/NodeHistory', {
           templateUrl: 'NodeHistory/Index',
       }).
-
        otherwise({
            redirectTo: '/Home'
        });

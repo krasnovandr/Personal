@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -64,6 +65,7 @@ namespace DataLayer.Models
         Accepted,
         Declined
     }
+
     public class KnowledgeSession
     {
         public KnowledgeSession()
@@ -74,6 +76,7 @@ namespace DataLayer.Models
 
         [Key]
         public int Id { get; set; }
+
         public DateTime Date { get; set; }
         public string Theme { get; set; }
         public string CreatorId { get; set; }
@@ -90,8 +93,10 @@ namespace DataLayer.Models
             NodeModifications = new List<NodeModification>();
             Comments = new List<Comment>();
         }
+
         [Key]
         public int Id { get; set; }
+
         public string Name { get; set; }
         public virtual ApplicationUser SuggestedBy { get; set; }
         public virtual KnowledgeSession Session { get; set; }
@@ -110,6 +115,7 @@ namespace DataLayer.Models
     {
         [Key]
         public int Id { get; set; }
+
         public virtual ApplicationUser VoteBy { get; set; }
         public virtual NodeStructureSuggestion Suggestion { get; set; }
         public virtual SessionNode SessionNode { get; set; }
@@ -128,6 +134,7 @@ namespace DataLayer.Models
 
         [Key]
         public int Id { get; set; }
+
         public virtual ApplicationUser SuggestedBy { get; set; }
         public virtual SessionNode Node { get; set; }
         public DateTime Date { get; set; }
@@ -145,6 +152,7 @@ namespace DataLayer.Models
     {
         [Key]
         public int Id { get; set; }
+
         public VoteTypes Type { get; set; }
         public virtual ApplicationUser VoteBy { get; set; }
         public virtual NodeModification NodeModification { get; set; }
@@ -156,6 +164,7 @@ namespace DataLayer.Models
 
         [Key]
         public int Id { get; set; }
+
         public DateTime Date { get; set; }
         public string Value { get; set; }
         public virtual ApplicationUser CommentBy { get; set; }
@@ -168,6 +177,7 @@ namespace DataLayer.Models
     {
         [Key]
         public int Id { get; set; }
+
         public DateTime Date { get; set; }
 
         public virtual SessionNode Node { get; set; }
@@ -181,10 +191,30 @@ namespace DataLayer.Models
     {
         [Key]
         public int Id { get; set; }
+
         public DateTime Date { get; set; }
         public virtual ICollection<SessionNode> Nodes { get; set; }
         public virtual ICollection<NodeStructureSuggestionVote> Votes { get; set; }
         public virtual ApplicationUser SuggestedBy { get; set; }
         public int? ParentId { get; set; }
+    }
+
+    public enum ContentType
+    {
+        Text,
+        Image,
+        Audio
+    }
+
+    public class NodeResources
+    {
+        [Key]
+        public int Id { get; set; }
+        public DateTime Date { get; set; }
+        public virtual SessionNode Node { get; set; }
+        public virtual ApplicationUser AddBy { get; set; }
+        public ContentType Type { get; set; }
+        public string Resource { get; set; }
+
     }
 }

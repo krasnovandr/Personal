@@ -28,6 +28,8 @@
             $location.path('/KnowledgeSession/NodeStructureSuggestionWinner/' + nodeId).search({ sessionId: sessionId });
         },
 
-
+        viewConentFilling: function (nodeId, sessionId) {
+            $location.path('/KnowledgeSession/ContentFilling/' + nodeId).search({ sessionId: sessionId });
+        },
     };
 });

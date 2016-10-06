@@ -132,20 +132,34 @@ namespace ServiceLayer.Services
             var nodes = _db.Nodes.GetAll();
             var node = _db.Nodes.Get(nodeId);
 
-            if (node.State == NodeStates.StructureSuggestionVote)
+            switch (node.State)
             {
-                return NodeStates.StructureSuggestionVote;
+                case NodeStates.StructureSuggestionVote:
+                case NodeStates.StructureSuggestionWinner:
+                case NodeStates.WinAndNotLeaf:
+                case NodeStates.Leaf:
+                    return node.State;
             }
 
-            if (node.State == NodeStates.StructureSuggestionWinner)
-            {
-                return NodeStates.StructureSuggestionWinner;
-            }
+            //if (node.State == NodeStates.StructureSuggestionVote)
+            //{
+            //    return NodeStates.StructureSuggestionVote;
+            //}
 
-            if (node.State == NodeStates.WinAndNotLeaf)
-            {
-                return NodeStates.WinAndNotLeaf;
-            }
+            //if (node.State == NodeStates.StructureSuggestionWinner)
+            //{
+            //    return NodeStates.StructureSuggestionWinner;
+            //}
+
+            //if (node.State == NodeStates.WinAndNotLeaf)
+            //{
+            //    return NodeStates.WinAndNotLeaf;
+            //}
+
+            //if (node.State == NodeStates.WinAndNotLeaf)
+            //{
+            //    return NodeStates.WinAndNotLeaf;
+            //}
 
             var haveSuggestedNotes = nodes.Any(m => m.ParentId == nodeId && m.SuggestedBy == user);
             if (haveSuggestedNotes)
