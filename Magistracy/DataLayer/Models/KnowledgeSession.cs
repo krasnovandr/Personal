@@ -109,6 +109,7 @@ namespace DataLayer.Models
         public virtual ICollection<NodeStructureSuggestionVote> StructureVotes { get; set; }
         public virtual ICollection<NodeModification> NodeModifications { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<NodeResource> NodeResources { get; set; }
     }
 
     public class NodeStructureSuggestionVote
@@ -206,15 +207,15 @@ namespace DataLayer.Models
         Audio
     }
 
-    public class NodeResources
+    public class NodeResource
     {
         [Key]
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public virtual SessionNode Node { get; set; }
         public virtual ApplicationUser AddBy { get; set; }
-        public ContentType Type { get; set; }
+        //public ContentType Type { get; set; }
+        public string ResourceRaw { get; set; }
         public string Resource { get; set; }
-
     }
 }

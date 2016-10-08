@@ -18,6 +18,8 @@ namespace DataLayer.Interfaces
         IRepository<NodeHistory> NodesHistory { get; }
         IRepository<SessionNode> Nodes { get; }
         IRepository<NodeStructureSuggestionVote> NodeStructureSuggestionsVotes { get; }
+        IRepository<NodeResource> NodeResources { get; }
+
         ExtendedRepository<ApplicationUser> Users { get; }
         void Save();
     }

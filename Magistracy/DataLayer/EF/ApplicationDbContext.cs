@@ -35,6 +35,7 @@ namespace DataLayer.EF
         public DbSet<NodeStructureSuggestionVote> NodeStructureVotes { get; set; }
         public DbSet<NodeStructureSuggestion> NodeStructureSuggestion { get; set; }
         public DbSet<NodeHistory> NodeHistory { get; set; }
+        public DbSet<NodeResource> NodeResources { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

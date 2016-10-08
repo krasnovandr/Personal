@@ -290,6 +290,7 @@
     <Content Include="Content\SimpleChat.css" />
     <Content Include="Content\template.html" />
     <Content Include="Content\Templates\CommentsChat.html" />
+    <Content Include="Content\textAngular.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -1166,6 +1167,10 @@
     <Content Include="Scripts\Libs\Other\respond.js" />
     <Content Include="Scripts\Libs\Other\respond.min.js" />
     <Content Include="Scripts\Libs\Other\scroll.js" />
+    <Content Include="Scripts\Libs\textAngular\textAngular-rangy.min.js" />
+    <Content Include="Scripts\Libs\textAngular\textAngular-sanitize.js" />
+    <Content Include="Scripts\Libs\textAngular\textAngular.js" />
+    <Content Include="Scripts\Libs\textAngular\textAngularSetup.js" />
     <Content Include="Scripts\Libs\VirtualScroller\module.js" />
     <Content Include="Scripts\Libs\VirtualScroller\scroller.js" />
     <Content Include="Scripts\Libs\VirtualScroller\sublist.js" />

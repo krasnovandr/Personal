@@ -22,13 +22,27 @@
             return $http({ method: 'POST', url: 'SessionVote/NodeStructureSuggestionVote', data: dataToTransfer });
         },
 
-
-
         createCommentToNode: function (data) {
             return $http({
                 method: 'POST',
                 url: 'api/KnowledgeSessionApi/CreateCommentToNode',
                 data: data
+            });
+        },
+
+        addResourceToNode: function (data) {
+            return $http({
+                method: 'POST',
+                url: 'api/KnowledgeSessionApi/AddResourceToNode',
+                data: data
+            });
+        },
+
+        getNodeResources: function (nodeId) {
+            return $http({
+                url: 'api/KnowledgeSessionApi/GetNodeResources',
+                method: "GET",
+                params: { nodeId: nodeId }
             });
         },
 

@@ -17,7 +17,18 @@ namespace DataLayer.Repositories
         private NodeModificationsRepository _nodeModificationsRepository;
         private NodeModificationVotesRepository _nodeModificationVotesRepository;
         private CommentsRepository _commentsRepository;
+        private NodeResourceRepository _nodeResourceRepository;
         private bool _disposed = false;
+
+
+        public IRepository<NodeResource> NodeResources
+        {
+            get
+            {
+                return _nodeResourceRepository ??
+                     (_nodeResourceRepository = new NodeResourceRepository(_db));
+            }
+        }
 
 
         public IRepository<NodeModification> NodeModifications
@@ -94,6 +105,7 @@ namespace DataLayer.Repositories
                     (_nodeStructureVotesRepository = new NodeStructureVotesRepository(_db));
             }
         }
+
 
 
         public ExtendedRepository<ApplicationUser> Users

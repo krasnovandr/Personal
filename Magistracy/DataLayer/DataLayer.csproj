@@ -87,7 +87,12 @@
     <Compile Include="Migrations\201610022040138_NodeModification_AddCommentField.Designer.cs">
       <DependentUpon>201610022040138_NodeModification_AddCommentField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610072043237_Add_NodeResourceTable.cs" />
+    <Compile Include="Migrations\201610072043237_Add_NodeResourceTable.Designer.cs">
+      <DependentUpon>201610072043237_Add_NodeResourceTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Repositories\NodeResourceRepository.cs" />
     <Compile Include="Repositories\CommentsRepository.cs" />
     <Compile Include="Repositories\NodeModificationsRepository.cs" />
     <Compile Include="Repositories\NodeModificationVotesRepository.cs" />
@@ -143,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610022040138_NodeModification_AddCommentField.resx">
       <DependentUpon>201610022040138_NodeModification_AddCommentField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610072043237_Add_NodeResourceTable.resx">
+      <DependentUpon>201610072043237_Add_NodeResourceTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

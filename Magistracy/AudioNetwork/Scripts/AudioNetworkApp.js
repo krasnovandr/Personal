@@ -1,4 +1,4 @@
-﻿var angularApp = angular.module('AudioNetworkApp', ['ngRoute', 'angularFileUpload', 'dndLists', 'ui.bootstrap', 'infScroll', 'sf.virtualScroll', 'ngSanitize', 'n3-line-chart']);
+﻿var angularApp = angular.module('AudioNetworkApp', ['ngRoute', 'angularFileUpload', 'dndLists', 'ui.bootstrap', 'infScroll', 'sf.virtualScroll', 'ngSanitize', 'n3-line-chart', 'textAngular']);
 
 
 

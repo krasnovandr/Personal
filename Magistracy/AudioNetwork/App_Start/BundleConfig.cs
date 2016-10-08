@@ -7,6 +7,7 @@ namespace AudioNetwork.Web
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+      
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -33,7 +34,8 @@ namespace AudioNetwork.Web
                       "~/Content/bootstrap-fileinput/css/fileinput.css",
                       "~/Content/jquery-ui.css",
                       "~/Content/site.css",
-                      "~/Content/SimpleChat.css"));
+                      "~/Content/SimpleChat.css",
+                      "~/Content/textAngular.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/AngularControllers")
                 .IncludeDirectory("~/Scripts/Controllers", "*.js")
@@ -53,6 +55,12 @@ namespace AudioNetwork.Web
             bundles.Add(new ScriptBundle("~/bundles/Angular")
                 .IncludeDirectory("~/Scripts/Libs/Angular", "*.js")
                 .IncludeDirectory("~/Scripts/Libs/angular-ui", "*.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/textAngular")
+                .Include("~/Scripts/Libs/textAngular/textAngular-rangy.min.js",
+                    "~/Scripts/Libs/textAngular/textAngular-sanitize.js",
+                    "~/Scripts/Libs/textAngular/textAngular.js",
+                    "~/Scripts/Libs/textAngular/textAngularSetup.js"));
 
             bundles.Add(new ScriptBundle("~/Scripts/Controller/*.js"));
         }

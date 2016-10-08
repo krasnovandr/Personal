@@ -74,6 +74,16 @@ namespace ServiceLayer.Helpers
                 .ForMember(dest => dest.AvatarFilePath, opt => opt.MapFrom(src => src.CommentBy.AvatarFilePath))
                 .ForMember(dest => dest.CommentTo, opt => opt.MapFrom(src => src.CommentTo.Id));
 
+            Mapper.CreateMap<NodeResourceViewModel, NodeResource>()
+                .ForMember(dest => dest.AddBy, opt => opt.Ignore())
+                .ForMember(dest => dest.Node, opt => opt.Ignore());
+    
+            Mapper.CreateMap<NodeResource, NodeResourceViewModel>()
+                .ForMember(dest => dest.AddBy, opt => opt.MapFrom(src => src.AddBy.Id))
+                .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.AddBy.FirstName))
+                .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.AddBy.LastName))
+                .ForMember(dest => dest.AvatarFilePath, opt => opt.MapFrom(src => src.AddBy.AvatarFilePath));
+
             //.ForMember(dest => dest.VoteBy, opt => opt.MapFrom(src => src.VoteBy));
 
 

@@ -21,6 +21,7 @@ namespace AudioNetwork.Web.API
         private readonly ISuggestionService _suggestionService;
         private readonly INodeModificationService _nodeModificationService;
         private readonly ICommentsService _commentsService;
+        private readonly INodeResourceService _nodeResourceService;
 
         public KnowledgeSessionApiController(
             IKnowledgeSessionService knowledgeSessionService,
@@ -28,7 +29,8 @@ namespace AudioNetwork.Web.API
             INodeService nodeService,
             ISuggestionService suggestionService,
             INodeModificationService nodeModificationService,
-            ICommentsService commentsService)
+            ICommentsService commentsService,
+            INodeResourceService nodeResourceService)
         {
             _knowledgeSessionService = knowledgeSessionService;
             _knowledgeSessionMemberService = knowledgeSessionMemberService;
@@ -36,8 +38,21 @@ namespace AudioNetwork.Web.API
             _suggestionService = suggestionService;
             _nodeModificationService = nodeModificationService;
             _commentsService = commentsService;
+            _nodeResourceService = nodeResourceService;
         }
 
+
+        [HttpGet]
+        public List<NodeResourceViewModel> GetNodeResources(int nodeId)
+        {
+            return _nodeResourceService.GetNodeResources(nodeId);
+        }
+
+        [HttpPost]
+        public void AddResourceToNode(NodeResourceViewModel resourceViewModel)
+        {
+            _nodeResourceService.AddResourceToNode(resourceViewModel);
+        }
 
         [HttpPost]
         public List<CommentViewModel> CreateCommentToNode(CommentViewModel commentView)

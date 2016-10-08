@@ -1,3 +1,68 @@
-﻿<div ng-controller="ContentFillingController" class="container">
-  <h2>ContentFilling</h2>
+﻿@*<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">*@
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+@*<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,300">*@
+
+<div ng-controller="ContentFillingController" class="container">
+  <div class="row">
+    <div class="col-md-5 col-md-offset-5">
+      <h4><i>{{parentNode.Name }}</i></h4>
+    </div>
+
+  </div>
+  <div class="row">
+    <div text-angular
+         ng-model="htmlContent"
+         name="demo-editor"
+         ta-html-editor-class="border-around"></div>
+    <br />
+    <input type="button" class="btn btn-info pull-right" ng-click="addResource()" value="Отправить">
+
+    <br />
+    <br />
+    <div class="row">
+
+
+
+      <div ng-repeat="resource in resources">
+        <hr />
+        <div class="row">
+          <div class="col-md-3">
+            <div>
+              <a href="/#/Users/{{resource.AddBy}} ">
+                <img ng-src="{{resource.AvatarFilePath}}" width="80" height="80">
+              </a>
+            </div>
+
+            <br />
+            <hr />
+            <a href="/#/Users/{{resource.AddBy}} ">{{resource.FirstName}} {{resource.LastName}}</a>
+            <span>{{resource.Date}}</span>
+            @*<div class="panel panel-default">
+                <div class="panel-heading">
+                  <span>{{resource.FirstName}}</span>
+                  <span>{{resource.LastName}}</span>
+                </div>
+                <div class="panel-body">
+                  <div class="col-md-3">
+                    <img ng-src="{{resource.AvatarFilePath}}" width="80" height="80" />
+                  </div>
+                </div>
+              </div>*@
+          </div>
+          <div class="col-md-9">
+            <div ng-bind-html="resource.ResourceRaw"></div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  @*<div1 class="container text-center lighter border-around">
+      <div class="lighter roboto">
+        <p ng-bind="htmlContent" class="text-left text-med text-gray"></p>
+      </div>
+    </div>*@
 </div>
+

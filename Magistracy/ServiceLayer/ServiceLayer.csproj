@@ -78,6 +78,7 @@
     <Compile Include="Interfaces\IKnowledgeSessionService.cs" />
     <Compile Include="Interfaces\IMusicService.cs" />
     <Compile Include="Interfaces\INodeModificationService.cs" />
+    <Compile Include="Interfaces\INodeResourceService.cs" />
     <Compile Include="Interfaces\INodeService.cs" />
     <Compile Include="Interfaces\IPlaylistService.cs" />
     <Compile Include="Interfaces\IVoteFinishHelper.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Models\KnowledgeSession\Enums\LevelVoteType.cs" />
     <Compile Include="Models\KnowledgeSession\NodeHistoryViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\NodeModificationViewModel.cs" />
+    <Compile Include="Models\KnowledgeSession\NodeResourceViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\NodeStructureSuggestionViewModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ConversationViewModel.cs" />
@@ -122,6 +124,7 @@
     <Compile Include="Services\KnowledgeSessionService.cs" />
     <Compile Include="Services\MusicService.cs" />
     <Compile Include="Services\NodeModificationService.cs" />
+    <Compile Include="Services\NodeResourceService.cs" />
     <Compile Include="Services\NodeService.cs" />
     <Compile Include="Services\PlaylistService.cs" />
     <Compile Include="Services\SuggestionService.cs" />
