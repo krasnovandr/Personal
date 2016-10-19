@@ -1,4 +1,4 @@
-function(folderName,directoryPath) {
+function(resutDirectory,scriptsDirectory) {
   
   library(tm) # Framework for text mining.
   library(cluster)
@@ -6,7 +6,8 @@ function(folderName,directoryPath) {
   
    # cname <- file.path("E:/Users/Andrei/Desktop/R_Test", "", "")
 
-  #cname <- file.path(folderName, "", "")
+  cname <- file.path(resutDirectory, "", "")
+  cat(cname)
   # fil<-c("1.txt", "2.txt", "3.txt") 
   docs <- Corpus(DirSource(cname))
   meta(docs[[1]])
@@ -23,14 +24,14 @@ function(folderName,directoryPath) {
   
   dtm <- DocumentTermMatrix(docs)
 
-   scriptPath <- file.path(directoryPath,"WordCloud.R")
+   scriptPath <- file.path(scriptsDirectory,"WordCloud.R")
    cloud <- dget(scriptPath)
-   cloud(dtm,folderName)
+   cloud(dtm,resutDirectory)
   
   
-   scriptPath <- file.path(directoryPath,"PlaneClustering.R")
+  scriptPath <- file.path(scriptsDirectory,"PlaneClustering.R")
    clustering <- dget(scriptPath)
-   clustering(dtm,folderName)
+   clustering(dtm,resutDirectory)
 
 
   # docs <- Corpus(DirSource(cname))

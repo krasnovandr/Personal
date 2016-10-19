@@ -8,6 +8,7 @@ using DataLayer.Models;
 using ServiceLayer.Models;
 using ServiceLayer.Models.KnowledgeSession;
 using ServiceLayer.Models.KnowledgeSession.Enums;
+using Shared;
 
 namespace ServiceLayer.Helpers
 {
@@ -82,6 +83,7 @@ namespace ServiceLayer.Helpers
                 .ForMember(dest => dest.AddBy, opt => opt.MapFrom(src => src.AddBy.Id))
                 .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.AddBy.FirstName))
                 .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.AddBy.LastName))
+                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.AddBy.UserName))
                 .ForMember(dest => dest.AvatarFilePath, opt => opt.MapFrom(src => src.AddBy.AvatarFilePath));
 
             //.ForMember(dest => dest.VoteBy, opt => opt.MapFrom(src => src.VoteBy));

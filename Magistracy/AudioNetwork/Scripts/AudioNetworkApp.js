@@ -60,6 +60,8 @@ var config = function ($routeProvider) {
           templateUrl: 'KnowledgeSession/NodeStructureSuggestionWinner',
       }).when('/KnowledgeSession/ContentFilling/:id', {
           templateUrl: 'KnowledgeSession/ContentFilling',
+      }).when('/KnowledgeSession/TextMiningResults/:id', {
+          templateUrl: 'KnowledgeSession/TextMiningResults',
       }).when('/NodeHistory', {
           templateUrl: 'NodeHistory/Index',
       }).

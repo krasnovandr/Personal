@@ -63,5 +63,10 @@ namespace AudioNetwork.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult TextMiningResults()
+        {
+            return View();
+        }
     }
 }

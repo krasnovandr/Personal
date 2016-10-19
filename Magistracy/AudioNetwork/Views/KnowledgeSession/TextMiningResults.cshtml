@@ -1,0 +1,38 @@
+﻿<div ng-controller="TextMiningResultsController" class="container">
+  <img ng-src="{{cluster.WordCloudRelativePath}}">
+  <img ng-src="{{cluster.PlaneClusteringRelativePath}}">
+  <h3>Clusters</h3>
+  <div ng-repeat="item in cluster.ClusterItems">
+    <hr />
+    <div class="row">
+      <div ng-repeat="clust in item.Clusters">
+        <div class="col-md-3">
+          <div>
+            <a href="/#/Users/{{resource.AddBy}} ">
+              <img ng-src="{{resource.AvatarFilePath}}" width="80" height="80">
+            </a>
+          </div>
+
+          <br />
+          <hr />
+          <a href="/#/Users/{{resource.AddBy}} ">{{resource.FirstName}} {{resource.LastName}}</a>
+          <span>{{resource.Date}}</span>
+          @*<div class="panel panel-default">
+              <div class="panel-heading">
+                <span>{{resource.FirstName}}</span>
+                <span>{{resource.LastName}}</span>
+              </div>
+              <div class="panel-body">
+                <div class="col-md-3">
+                  <img ng-src="{{resource.AvatarFilePath}}" width="80" height="80" />
+                </div>
+              </div>
+            </div>*@
+        </div>
+        <div class="col-md-9">
+          <div ng-bind-html="resource.ResourceRaw"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

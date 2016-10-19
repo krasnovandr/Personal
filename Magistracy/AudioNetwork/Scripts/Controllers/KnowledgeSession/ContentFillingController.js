@@ -21,8 +21,17 @@
             };
             $scope.htmlContent = "";
             knowledgeSessionService.addResourceToNode(data).success(function (result) {
+                knowledgeSessionService.getNodeResources($scope.nodeId).success(function (result) {
+                    $scope.resources = result;
+                });
             });
 
+        };
+
+        $scope.doClusteing = function () {
+            //knowledgeSessionService.doClusteing($scope.nodeId).success(function (result) {
+            urlMakerService.viewTextMiningResults($scope.nodeId);
+            //});
         };
 
     });

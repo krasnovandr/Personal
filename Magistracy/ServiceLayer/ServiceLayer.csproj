@@ -91,7 +91,6 @@
     <Compile Include="Models\KnowledgeSession\Enums\LevelVoteType.cs" />
     <Compile Include="Models\KnowledgeSession\NodeHistoryViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\NodeModificationViewModel.cs" />
-    <Compile Include="Models\KnowledgeSession\NodeResourceViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\NodeStructureSuggestionViewModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ConversationViewModel.cs" />
@@ -143,6 +142,10 @@
     <ProjectReference Include="..\LastFmServices\LastFmServices.csproj">
       <Project>{50cdbcc0-297d-411f-8f5f-c0b194c06134}</Project>
       <Name>LastFmServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared\Shared.csproj">
+      <Project>{f9655281-511e-4f99-9a25-9f23d709cd37}</Project>
+      <Name>Shared</Name>
     </ProjectReference>
     <ProjectReference Include="..\VkService\VkService.csproj">
       <Project>{c5efd174-9912-4ce0-80b7-56eedc2ce589}</Project>

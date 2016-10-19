@@ -31,5 +31,9 @@
         viewConentFilling: function (nodeId, sessionId) {
             $location.path('/KnowledgeSession/ContentFilling/' + nodeId).search({ sessionId: sessionId });
         },
+
+        viewTextMiningResults: function (nodeId) {
+            $location.path('/KnowledgeSession/TextMiningResults/' + nodeId);
+        },
     };
 });

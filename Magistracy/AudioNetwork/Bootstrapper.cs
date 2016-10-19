@@ -8,6 +8,7 @@ using Microsoft.Practices.Unity;
 using ServiceLayer.Helpers;
 using ServiceLayer.Interfaces;
 using ServiceLayer.Services;
+using TextMining;
 using Unity.Mvc4;
 
 namespace AudioNetwork.Web
@@ -62,6 +63,7 @@ namespace AudioNetwork.Web
             container.RegisterType<INodeService, NodeService>();
             container.RegisterType<ICommentsService, CommentsService>();
             container.RegisterType<INodeResourceService, NodeResourceService>();
+            container.RegisterType<ITextMiningApi, TextMiningApi>();
         }
     }
 }

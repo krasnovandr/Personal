@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ServiceLayer.Models.KnowledgeSession
+namespace Shared
 {
     public class NodeResourceViewModel
     {
@@ -18,11 +14,6 @@ namespace ServiceLayer.Models.KnowledgeSession
         public string AvatarFilePath { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string UserName { get; set; }
     }
-
-    //public class NodeResource
-    //{
-    //    [Key]
-
-    //}
 }

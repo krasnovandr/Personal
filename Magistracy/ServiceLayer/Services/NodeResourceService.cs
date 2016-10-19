@@ -7,6 +7,7 @@ using DataLayer.Interfaces;
 using DataLayer.Models;
 using ServiceLayer.Interfaces;
 using ServiceLayer.Models.KnowledgeSession;
+using Shared;
 
 namespace ServiceLayer.Services
 {

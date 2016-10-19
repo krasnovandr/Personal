@@ -220,6 +220,13 @@
             });
         },
 
+        doClusteing: function (nodeId) {
+            return $http({
+                method: 'GET',
+                url: 'api/TextMiningApi/DoClustering',
+                params: { nodeId: nodeId }
+            });
+        },
 
 
     };

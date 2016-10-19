@@ -9,6 +9,7 @@ using ServiceLayer.Interfaces;
 using ServiceLayer.Models;
 using ServiceLayer.Models.KnowledgeSession;
 using ServiceLayer.Services;
+using Shared;
 
 namespace AudioNetwork.Web.API
 {

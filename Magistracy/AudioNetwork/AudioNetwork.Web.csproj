@@ -241,6 +241,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\KnowledgeSessionApiController.cs" />
+    <Compile Include="API\TextMiningApiController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -275,7 +276,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\libacrcloud_extr_tool.dll" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap-treeview.css" />
@@ -301,6 +301,7 @@
     <Content Include="Scripts\bootstrap-treeview.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Controllers\KnowledgeSession\TextMiningResultsController.js" />
     <Content Include="Scripts\Controllers\KnowledgeSession\NodeHistoryController.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\Controllers\KnowledgeSession\NodeStructureSuggestionWaitController.js" />
@@ -1233,11 +1234,13 @@
     <Content Include="Views\KnowledgeSession\SessionTreeView.cshtml" />
     <Content Include="Views\KnowledgeSession\NodeStructureSuggestionWait.cshtml" />
     <Content Include="Views\KnowledgeSession\ContentFilling.cshtml" />
+    <Content Include="Views\KnowledgeSession\TextMiningResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\SongsAlbumCovers\" />
     <Folder Include="Content\Songs\" />
+    <Folder Include="Content\TextMining\" />
     <Folder Include="Content\WallItemsImages\" />
   </ItemGroup>
   <ItemGroup>
@@ -1263,10 +1266,21 @@
       <Project>{092dfd02-b766-416b-bfa6-47f7dbe7c702}</Project>
       <Name>ServiceLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Shared\Shared.csproj">
+      <Project>{F9655281-511E-4F99-9A25-9F23D709CD37}</Project>
+      <Name>Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TextMining\TextMining.csproj">
+      <Project>{958de674-974f-407b-93af-d1b7e27f2520}</Project>
+      <Name>TextMining</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VkService\VkService.csproj">
       <Project>{c5efd174-9912-4ce0-80b7-56eedc2ce589}</Project>
       <Name>VkService</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
