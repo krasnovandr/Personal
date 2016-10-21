@@ -64,6 +64,7 @@ namespace AudioNetwork.Web
             container.RegisterType<ICommentsService, CommentsService>();
             container.RegisterType<INodeResourceService, NodeResourceService>();
             container.RegisterType<ITextMiningApi, TextMiningApi>();
+            container.RegisterType<ITextMiningService, TextMiningService>();
         }
     }
 }

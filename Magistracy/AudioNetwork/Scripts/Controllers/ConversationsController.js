@@ -306,7 +306,7 @@ function ($, $scope, $routeParams, $location, $interval, messagesService, userSe
             $scope.newMessage = "";
             $scope.messageSongs = [];
             $scope.getCurrentConversationMessages();
-            $rootScope.chat.server.sendedMessage();
+            //$rootScope.chat.server.sendedMessage();
             $scope.userWritiingMessage = "";
         });
     };

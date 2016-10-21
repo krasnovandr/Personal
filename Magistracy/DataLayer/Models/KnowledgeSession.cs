@@ -217,5 +217,6 @@ namespace DataLayer.Models
         //public ContentType Type { get; set; }
         public string ResourceRaw { get; set; }
         public string Resource { get; set; }
+        //public int ClusterNumber { get; set; }
     }
 }

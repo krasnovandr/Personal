@@ -13,17 +13,26 @@ namespace TextMining
 {
     public class ClusterModel
     {
-        //public string Resource { get; set; }
+        public string ResourceRaw { get; set; }
         public string ByUser { get; set; }
-        public string HierarchicalClusteringPath { get; set; }
+        //public string HierarchicalClusteringPath { get; set; }
         public string TextName { get; set; }
         public int ResourceId { get; set; }
+        public string AvatarFilePath { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int ClusterNumber { get; set; }
     }
 
     public class ClusterItem
     {
-        public List<ClusterModel> Clusters { get; set; }
+
+        public int ClusterNumber { get; set; }
+        public string HierarchicalClusteringPath { get; set; }
+
+        public List<ClusterModel> ClusterItems { get; set; }
         public List<MergeModel> MergeResults { get; set; }
+
     }
 
     public class ClusterAnalysModel
@@ -31,7 +40,7 @@ namespace TextMining
         public int NodeId { get; set; }
         public string WordCloudRelativePath { get; set; }
         public string PlaneClusteringRelativePath { get; set; }
-        public List<ClusterItem> ClusterItems { get; set; }
+        public List<ClusterItem> Clusters { get; set; }
     }
 
     public class TextMiningApi : ITextMiningApi
@@ -67,13 +76,13 @@ namespace TextMining
             {
                 var resutDirectory = PrepareDirectory(nodeResources);
                 var nodeId = nodeResources.First().NodeId;
-               var nodeContentDirectory = Path.Combine(ContentDirectory, nodeId.ToString());
+                var nodeContentDirectory = Path.Combine(ContentDirectory, nodeId.ToString());
                 var clusterAnalys = new ClusterAnalysModel
                 {
                     NodeId = nodeId,
                     PlaneClusteringRelativePath = Path.Combine(nodeContentDirectory, PlaneClusteringImageName),
                     WordCloudRelativePath = Path.Combine(nodeContentDirectory, WordCloudImageName),
-                    ClusterItems = new List<ClusterItem>()
+                    Clusters = new List<ClusterItem>()
                 };
 
                 var starterScript = GetScriptPath("Starter.R");
@@ -109,7 +118,7 @@ namespace TextMining
             {
                 var clusterItem = new ClusterItem
                 {
-                    Clusters = new List<ClusterModel>()
+                    ClusterItems = new List<ClusterModel>(),
                 };
 
                 foreach (var item in @group)
@@ -123,19 +132,21 @@ namespace TextMining
                     File.Move(Path.Combine(resutDirectory, item.TextName), Path.Combine(cluetrDirectory, item.TextName));
 
                     items.Add(item.TextName);
-
-
-
-                    clusterItem.Clusters.Add(new ClusterModel
+                    clusterItem.ClusterNumber = number;
+                
+                    clusterItem.ClusterItems.Add(new ClusterModel
                     {
                         TextName = item.TextName,
+                        ClusterNumber = item.ClusterNumber,
                         ByUser = _userTextMapping[item.TextName].AddBy,
+                        AvatarFilePath = _userTextMapping[item.TextName].AvatarFilePath,
+                        FirstName = _userTextMapping[item.TextName].FirstName,
+                        LastName = _userTextMapping[item.TextName].LastName,
                         ResourceId = _userTextMapping[item.TextName].Id,
-                        //Resource = File.ReadAllText(Path.Combine(cluetrDirectory, item.TextName)),
-                        HierarchicalClusteringPath = Path.Combine(Path.Combine(nodeContentDirectory, item.ClusterNumber.ToString()), HierarchicalClusteringImageName)
+                        ResourceRaw = _userTextMapping[item.TextName].ResourceRaw,
                     });
                 }
-               
+
                 //var group1 = _engine.CreateCharacterVector(items);
 
                 if (items.Count() > 2)
@@ -145,10 +156,15 @@ namespace TextMining
                     var resultMerge = _engine.Evaluate("hierarchicalMining(" +
                                                       MakeParam(path) + ")").AsDataFrame();
 
+                    var hierarchicalClusteringImageName =
+                        Path.Combine(Path.Combine(nodeContentDirectory, group.First().ClusterNumber.ToString()),
+                     HierarchicalClusteringImageName);
+
+                    clusterItem.HierarchicalClusteringPath = hierarchicalClusteringImageName;
                     clusterItem.MergeResults = MapMergeResult(resultMerge, items);
                 }
 
-                clusterAnalys.ClusterItems.Add(clusterItem);
+                clusterAnalys.Clusters.Add(clusterItem);
 
                 //Thread.Sleep(5000);
                 items.Clear();
@@ -276,7 +292,7 @@ namespace TextMining
                 return new string[]
                 {
                     "This calls the function pam or clara to perform a partitioning around medoids clustering with the number of clusters estimated by optimum average silhouette width (see pam.object) or Calinski-Harabasz index (calinhara). The Duda-Hart test (dudahart2) is applied to decide whether there should be more than one cluster (unless 1 is excluded as number of clusters or data are dissimilarities).",
-                    "The pvclust( ) function in the pvclust package provides p-values for hierarchical clustering based on multiscale bootstrap resampling. Clusters that are highly supported by the data will have large p values. Interpretation details are provided Suzuki. Be aware that pvclust clusters columns, not rows. Transpose your data before using.",
+                    "The pvclust( ) function in the pvclust package provides p-values for hierarchical clustering based on multiscale bootstrap resampling. ClusterItems that are highly supported by the data will have large p values. Interpretation details are provided Suzuki. Be aware that pvclust clusters columns, not rows. Transpose your data before using.",
                     "integer vector. Numbers of clusters which are to be compared by the average silhouette width criterion. Note: average silhouette width and Calinski-Harabasz can't estimate number of clusters nc=1. If 1 is included, a Duda-Hart test is applied and 1 is estimated if this is not significant.",
                     "No sooner had he fallen to the turf, the wrath of public opinion poured forth.Social media was buzzing -- some laughed, some offered comfort ... some just rolled their eyes.Whatever he does, wherever he goes, few footballers split opinion like Cristiano Ronaldo.",
                     "His petulance -- criticizing Iceland for being 'small-minded' after Portugal failed to beat the football minnow at Euro 2016, then days later throwing a reporter's microphone into a lake -- does not help his cause, either.",

@@ -13,21 +13,17 @@ namespace AudioNetwork.Web.API
 {
     public class TextMiningApiController : ApiController
     {
-        private readonly ITextMiningApi _textMiningApi;
-        private readonly INodeResourceService _nodeResourceService;
+        private readonly ITextMiningService _textMiningService;
         public TextMiningApiController(
-            ITextMiningApi textMiningApi,
-            INodeResourceService nodeResourceService)
+             ITextMiningService textMiningService)
         {
-            _textMiningApi = textMiningApi;
-            _nodeResourceService = nodeResourceService;
+            _textMiningService = textMiningService;
         }
 
         [HttpGet]
         public ClusterAnalysModel DoClustering(int nodeId)
         {
-            var resources = _nodeResourceService.GetNodeResources(nodeId);
-           return _textMiningApi.DoClustering(resources);
+            return _textMiningService.DoClustering(nodeId);
         }
     }
 }

@@ -81,6 +81,7 @@
     <Compile Include="Interfaces\INodeResourceService.cs" />
     <Compile Include="Interfaces\INodeService.cs" />
     <Compile Include="Interfaces\IPlaylistService.cs" />
+    <Compile Include="Interfaces\ITextMiningService.cs" />
     <Compile Include="Interfaces\IVoteFinishHelper.cs" />
     <Compile Include="Interfaces\IStatisticsService.cs" />
     <Compile Include="Interfaces\IUploadService.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="Services\SuggestionService.cs" />
     <Compile Include="Services\SongPictureGetter.cs" />
     <Compile Include="Services\StatisticsService.cs" />
+    <Compile Include="Services\TextMiningService.cs" />
     <Compile Include="Services\UploadService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Helpers\VoteFinishHelper.cs" />
@@ -146,6 +148,10 @@
     <ProjectReference Include="..\Shared\Shared.csproj">
       <Project>{f9655281-511e-4f99-9a25-9f23d709cd37}</Project>
       <Name>Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TextMining\TextMining.csproj">
+      <Project>{958DE674-974F-407B-93AF-D1B7E27F2520}</Project>
+      <Name>TextMining</Name>
     </ProjectReference>
     <ProjectReference Include="..\VkService\VkService.csproj">
       <Project>{c5efd174-9912-4ce0-80b7-56eedc2ce589}</Project>

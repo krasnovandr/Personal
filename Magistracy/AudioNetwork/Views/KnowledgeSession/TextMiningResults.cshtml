@@ -1,38 +1,67 @@
-﻿<div ng-controller="TextMiningResultsController" class="container">
-  <img ng-src="{{cluster.WordCloudRelativePath}}">
-  <img ng-src="{{cluster.PlaneClusteringRelativePath}}">
-  <h3>Clusters</h3>
-  <div ng-repeat="item in cluster.ClusterItems">
-    <hr />
-    <div class="row">
-      <div ng-repeat="clust in item.Clusters">
-        <div class="col-md-3">
-          <div>
-            <a href="/#/Users/{{resource.AddBy}} ">
-              <img ng-src="{{resource.AvatarFilePath}}" width="80" height="80">
-            </a>
-          </div>
+﻿<style>
+  .clickable {
+    cursor: pointer;
+  }
+</style>
+<script>
+  
+</script>
+<div ng-controller="TextMiningResultsController" class="container">
+  <img ng-src="{{miningResult.WordCloudRelativePath}}">
+  <img ng-src="{{miningResult.PlaneClusteringRelativePath}}">
+    <h3>Результат обработки</h3>
+  <div ng-repeat="cluster in miningResult.Clusters">
+    <uib-accordion close-others="oneAtATime">
+      <div uib-accordion-group class="panel-default" is-open="status.open">
+        <uib-accordion-heading>
+          <span>Кластер {{cluster.ClusterNumber}}</span>
+          <i class="pull-right glyphicon"
+             ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}">
+          </i>
+        </uib-accordion-heading>
 
-          <br />
-          <hr />
-          <a href="/#/Users/{{resource.AddBy}} ">{{resource.FirstName}} {{resource.LastName}}</a>
-          <span>{{resource.Date}}</span>
-          @*<div class="panel panel-default">
-              <div class="panel-heading">
-                <span>{{resource.FirstName}}</span>
-                <span>{{resource.LastName}}</span>
-              </div>
-              <div class="panel-body">
-                <div class="col-md-3">
-                  <img ng-src="{{resource.AvatarFilePath}}" width="80" height="80" />
-                </div>
-              </div>
-            </div>*@
+        @*<hr />*@
+        <div class="row">
+          <div class="col-md-offset-5">
+            <img ng-if="cluster.HierarchicalClusteringPath !== ''" ng-src="{{cluster.HierarchicalClusteringPath}}">
+          </div>
         </div>
-        <div class="col-md-9">
-          <div ng-bind-html="resource.ResourceRaw"></div>
+        <div ng-repeat="item in cluster.ClusterItems">
+          <div class="row">
+            <div class="col-md-2">
+              <div>
+                <a href="/#/Users/{{item.AddBy}} ">
+                  <img ng-src="{{item.AvatarFilePath}}" width="80" height="80">
+                </a>
+              </div>
+              <a href="/#/Users/{{item.ByUser}} ">{{item.FirstName}} {{item.LastName}}</a>
+
+            </div>
+            <div class="col-md-2">
+              <h4>{{item.TextName}}</h4>
+            </div>
+            <div class="col-md-8">
+
+              <div ng-bind-html="item.ResourceRaw"></div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </uib-accordion>
   </div>
+  @*<button data-toggle="collapse" data-target="#{{cluster.ClusterNumber}}">
+      <span>Кластер {{cluster.ClusterNumber}}</span>
+    </button>
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title"><span>Кластер {{cluster.ClusterNumber}}</span></h3>
+        <span class="pull-right">
+          <i class="glyphicon glyphicon-chevron-up clickable"></i>
+        </span>
+      </div>
+
+    </div>*@
 </div>
+
+

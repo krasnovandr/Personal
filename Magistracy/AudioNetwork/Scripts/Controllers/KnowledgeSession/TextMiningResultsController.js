@@ -5,7 +5,7 @@
 
 
         knowledgeSessionService.doClusteing($scope.nodeId).success(function (result) {
-            $scope.cluster = result;
+            $scope.miningResult = result;
         });
 
 
