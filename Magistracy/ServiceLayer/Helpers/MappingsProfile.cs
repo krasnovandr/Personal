@@ -86,6 +86,9 @@ namespace ServiceLayer.Helpers
                 .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.AddBy.UserName))
                 .ForMember(dest => dest.AvatarFilePath, opt => opt.MapFrom(src => src.AddBy.AvatarFilePath));
 
+            Mapper.CreateMap<ResourceCluster, ResourceClusterViewModel>();
+            Mapper.CreateMap<ClusterMergeResults, ClusterMergeResultsViewModel>();
+
             //.ForMember(dest => dest.VoteBy, opt => opt.MapFrom(src => src.VoteBy));
 
 

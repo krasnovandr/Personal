@@ -1,67 +1,62 @@
-﻿<style>
-  .clickable {
-    cursor: pointer;
-  }
-</style>
-<script>
-  
-</script>
-<div ng-controller="TextMiningResultsController" class="container">
-  <img ng-src="{{miningResult.WordCloudRelativePath}}">
-  <img ng-src="{{miningResult.PlaneClusteringRelativePath}}">
+﻿<div ng-controller="TextMiningResultsController" class="container">
+  <img ng-src="{{miningResult.WordCloudImagePath}}">
+  <img ng-src="{{miningResult.ClusterImagePath}}">
+  <hr>
     <h3>Результат обработки</h3>
-  <div ng-repeat="cluster in miningResult.Clusters">
-    <uib-accordion close-others="oneAtATime">
-      <div uib-accordion-group class="panel-default" is-open="status.open">
-        <uib-accordion-heading>
-          <span>Кластер {{cluster.ClusterNumber}}</span>
-          <i class="pull-right glyphicon"
-             ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}">
-          </i>
-        </uib-accordion-heading>
-
-        @*<hr />*@
-        <div class="row">
-          <div class="col-md-offset-5">
-            <img ng-if="cluster.HierarchicalClusteringPath !== ''" ng-src="{{cluster.HierarchicalClusteringPath}}">
-          </div>
-        </div>
-        <div ng-repeat="item in cluster.ClusterItems">
+    <div ng-repeat="cluster in miningResult.Clusters">
+      <uib-accordion close-others="oneAtATime">
+        <div uib-accordion-group class="panel-default" is-open="status.open">
+          <uib-accordion-heading>
+            <span>Кластер {{cluster.ClusterNumber}}</span>
+            <i class="pull-right glyphicon"
+               ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}">
+            </i>
+          </uib-accordion-heading>
+          <button class="btn btn-success pull-right" ng-click="doMerge(cluster.ClusterNumber)" tooltip-placement="left" uib-tooltip="Перейти к объединению">
+            <span class="glyphicon glyphicon-arrow-right">Перейти к объединению</span>
+          </button>
+          @*<hr />*@
           <div class="row">
-            <div class="col-md-2">
-              <div>
-                <a href="/#/Users/{{item.AddBy}} ">
-                  <img ng-src="{{item.AvatarFilePath}}" width="80" height="80">
-                </a>
+            <div class="col-md-offset-5">
+              <img ng-if="cluster.HierarchicalClusteringPath !== ''" ng-src="{{cluster.HierarchicalClusteringPath}}">
+            </div>
+          </div>
+          <div ng-repeat="item in cluster.Resources">
+            <div class="row">
+              <div class="col-md-2">
+                <div>
+                  <a href="/#/Users/{{item.AddBy}} ">
+                    <img ng-src="{{item.AvatarFilePath}}" width="80" height="80">
+                  </a>
+                </div>
+                <a href="/#/Users/{{item.ByUser}} ">{{item.FirstName}} {{item.LastName}}</a>
+
               </div>
-              <a href="/#/Users/{{item.ByUser}} ">{{item.FirstName}} {{item.LastName}}</a>
+              <div class="col-md-2">
+                <h4>{{item.TextName}}</h4>
+              </div>
+              <div class="col-md-8">
 
-            </div>
-            <div class="col-md-2">
-              <h4>{{item.TextName}}</h4>
-            </div>
-            <div class="col-md-8">
-
-              <div ng-bind-html="item.ResourceRaw"></div>
+                <div ng-bind-html="item.ResourceRaw"></div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </uib-accordion>
-  </div>
-  @*<button data-toggle="collapse" data-target="#{{cluster.ClusterNumber}}">
-      <span>Кластер {{cluster.ClusterNumber}}</span>
-    </button>
+      </uib-accordion>
+    </div>
+    @*<button data-toggle="collapse" data-target="#{{cluster.ClusterNumber}}">
+        <span>Кластер {{cluster.ClusterNumber}}</span>
+      </button>
 
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title"><span>Кластер {{cluster.ClusterNumber}}</span></h3>
-        <span class="pull-right">
-          <i class="glyphicon glyphicon-chevron-up clickable"></i>
-        </span>
-      </div>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title"><span>Кластер {{cluster.ClusterNumber}}</span></h3>
+          <span class="pull-right">
+            <i class="glyphicon glyphicon-chevron-up clickable"></i>
+          </span>
+        </div>
 
-    </div>*@
+      </div>*@
 </div>
 
 

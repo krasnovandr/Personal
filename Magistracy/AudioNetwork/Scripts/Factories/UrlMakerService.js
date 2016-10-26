@@ -35,5 +35,9 @@
         viewTextMiningResults: function (nodeId) {
             $location.path('/KnowledgeSession/TextMiningResults/' + nodeId);
         },
+
+        viewMergeTool: function (nodeId, cluster) {
+            $location.path('/KnowledgeSession/MergeTool/' + nodeId).search({ cluster: cluster });
+        },
     };
 });

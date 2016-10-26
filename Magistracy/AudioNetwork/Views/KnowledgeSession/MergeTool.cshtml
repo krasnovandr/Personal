@@ -1,0 +1,56 @@
+﻿<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<div ng-controller="MergeController" class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <text-angular ng-model="richText1"
+                    ta-toolbar="[[],[]]"></text-angular>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Свой вариант</div>
+        <div class="panel-body">
+          <text-angular ng-model="richText2"></text-angular>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Отличия</div>
+      <div class="panel-body">
+        <rich-text-diff left="richText1" right="richText2"></rich-text-diff>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <div class="row">
+    <div class="col-md-offset-5">
+      <img ng-if="dataToMerge.HierarchicalClusteringPath !== ''" ng-src="{{dataToMerge.HierarchicalClusteringPath}}">
+    </div>
+  </div>
+  <div ng-repeat="item in dataToMerge.Resources">
+    <hr />
+    <div class="row">
+      <div class="col-md-2">
+        <div>
+          <a href="/#/Users/{{item.AddBy}} ">
+            <img ng-src="{{item.AvatarFilePath}}" width="80" height="80">
+          </a>
+        </div>
+        <a href="/#/Users/{{item.ByUser}} ">{{item.FirstName}} {{item.LastName}}</a>
+
+      </div>
+      <div class="col-md-2">
+        <h4>{{item.TextName}}</h4>
+      </div>
+      <div class="col-md-8">
+        <div ng-bind-html="item.ResourceRaw"></div>
+      </div>
+    </div>
+  </div>
+</div>

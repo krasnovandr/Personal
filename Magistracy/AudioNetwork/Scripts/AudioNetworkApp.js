@@ -1,7 +1,11 @@
-﻿var angularApp = angular.module('AudioNetworkApp', ['ngRoute', 'angularFileUpload', 'dndLists', 'ui.bootstrap', 'infScroll', 'sf.virtualScroll', 'ngSanitize', 'n3-line-chart', 'textAngular']);
+﻿var angularApp = angular.module('AudioNetworkApp', ['ngRoute', 'angularFileUpload', 'dndLists', 'ui.bootstrap', 'infScroll', 'sf.virtualScroll', 'ngSanitize', 'n3-line-chart', 'textAngular', 'blockUI', 'angular-rich-text-diff']);
 
 
+angular.module('AudioNetworkApp').config(function (blockUIConfig) {
 
+    // Change the default overlay message
+    blockUIConfig.message = 'Загрузка';
+});
 var config = function ($routeProvider) {
     $routeProvider.
       when('/Login', {
@@ -62,6 +66,8 @@ var config = function ($routeProvider) {
           templateUrl: 'KnowledgeSession/ContentFilling',
       }).when('/KnowledgeSession/TextMiningResults/:id', {
           templateUrl: 'KnowledgeSession/TextMiningResults',
+      }).when('/KnowledgeSession/MergeTool/:id', {
+          templateUrl: 'KnowledgeSession/MergeTool',
       }).when('/NodeHistory', {
           templateUrl: 'NodeHistory/Index',
       }).

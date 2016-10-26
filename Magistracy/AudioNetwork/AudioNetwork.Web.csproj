@@ -276,6 +276,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\angular-block-ui.css" />
+    <Content Include="Content\angular-block-ui.min.css" />
+    <Content Include="Content\angular-rich-text-diff.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap-treeview.css" />
@@ -297,16 +300,23 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Icon.png" />
+    <Content Include="Scripts\angular-block-ui.js" />
+    <Content Include="Scripts\angular-block-ui.min.js" />
     <Content Include="Scripts\bootstrap-treeview.js" />
     <Content Include="Scripts\bootstrap-treeview.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Controllers\KnowledgeSession\MergeController.js" />
     <Content Include="Scripts\Controllers\KnowledgeSession\TextMiningResultsController.js" />
     <Content Include="Scripts\Controllers\KnowledgeSession\NodeHistoryController.js" />
+    <Content Include="Scripts\angular-block-ui.min.js.map" />
+    <Content Include="Scripts\angular-block-ui.js.map" />
+    <Content Include="Content\angular-block-ui.css.map" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\Controllers\KnowledgeSession\NodeStructureSuggestionWaitController.js" />
     <Content Include="Scripts\Controllers\KnowledgeSession\ContentFillingController.js" />
     <Content Include="Scripts\Controllers\KnowledgeSession\TreeController.js" />
+    <Content Include="Scripts\Libs\textAngular\google-diff-match-patch.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\Libs\Angular\angular-animate.js" />
@@ -1168,6 +1178,7 @@
     <Content Include="Scripts\Libs\Other\respond.js" />
     <Content Include="Scripts\Libs\Other\respond.min.js" />
     <Content Include="Scripts\Libs\Other\scroll.js" />
+    <Content Include="Scripts\Libs\textAngular\angular-rich-text-diff.js" />
     <Content Include="Scripts\Libs\textAngular\textAngular-rangy.min.js" />
     <Content Include="Scripts\Libs\textAngular\textAngular-sanitize.js" />
     <Content Include="Scripts\Libs\textAngular\textAngular.js" />
@@ -1235,6 +1246,7 @@
     <Content Include="Views\KnowledgeSession\NodeStructureSuggestionWait.cshtml" />
     <Content Include="Views\KnowledgeSession\ContentFilling.cshtml" />
     <Content Include="Views\KnowledgeSession\TextMiningResults.cshtml" />
+    <Content Include="Views\KnowledgeSession\MergeTool.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1281,6 +1293,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\Libs\textAngular\google-diff-match-patch.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

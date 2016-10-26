@@ -91,6 +91,14 @@
     <Compile Include="Migrations\201610072043237_Add_NodeResourceTable.Designer.cs">
       <DependentUpon>201610072043237_Add_NodeResourceTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610261911031_AddClusterAndMergeTables.cs" />
+    <Compile Include="Migrations\201610261911031_AddClusterAndMergeTables.Designer.cs">
+      <DependentUpon>201610261911031_AddClusterAndMergeTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610261925225_AddtextNameToResource.cs" />
+    <Compile Include="Migrations\201610261925225_AddtextNameToResource.Designer.cs">
+      <DependentUpon>201610261925225_AddtextNameToResource.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\NodeResourceRepository.cs" />
     <Compile Include="Repositories\CommentsRepository.cs" />
@@ -151,6 +159,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610072043237_Add_NodeResourceTable.resx">
       <DependentUpon>201610072043237_Add_NodeResourceTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610261911031_AddClusterAndMergeTables.resx">
+      <DependentUpon>201610261911031_AddClusterAndMergeTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610261925225_AddtextNameToResource.resx">
+      <DependentUpon>201610261925225_AddtextNameToResource.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

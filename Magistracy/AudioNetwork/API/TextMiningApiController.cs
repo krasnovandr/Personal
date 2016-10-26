@@ -21,9 +21,23 @@ namespace AudioNetwork.Web.API
         }
 
         [HttpGet]
-        public ClusterAnalysModel DoClustering(int nodeId)
+        public NodeClusterViewModel DoClustering(int nodeId)
         {
             return _textMiningService.DoClustering(nodeId);
+        }
+
+
+        [HttpGet]
+        public ResourceClusterViewModel GetMergeData(int nodeId, int cluster)
+        {
+            return _textMiningService.GetMergeData(nodeId, cluster);
+        }
+
+
+        [HttpGet]
+        public NodeClusterViewModel GetNodeClusters(int nodeId)
+        {
+            return _textMiningService.GetNodeClusters(nodeId);
         }
     }
 }

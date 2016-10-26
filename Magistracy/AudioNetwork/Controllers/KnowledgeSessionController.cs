@@ -68,5 +68,10 @@ namespace AudioNetwork.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult MergeTool()
+        {
+            return View();
+        }
     }
 }

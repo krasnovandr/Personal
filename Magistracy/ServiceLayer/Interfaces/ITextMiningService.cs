@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ServiceLayer.Models.KnowledgeSession;
 using TextMining;
 
 namespace ServiceLayer.Interfaces
 {
-   public interface ITextMiningService
+    public interface ITextMiningService
     {
-        ClusterAnalysModel DoClustering(int nodeId);
+        NodeClusterViewModel DoClustering(int nodeId);
+        NodeClusterViewModel GetNodeClusters(int nodeId);
+        ResourceClusterViewModel GetMergeData(int nodeId, int cluster);
     }
 }

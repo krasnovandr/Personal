@@ -109,6 +109,31 @@ namespace TextMining
             }
         }
 
+        //public ClusterAnalysModel GetClusteringResult(int nodeId)
+        //{
+        //    var nodeContentDirectory = Path.Combine(ContentDirectory, nodeId.ToString());
+        //    var clusterAnalys = new ClusterAnalysModel
+        //    {
+        //        NodeId = nodeId,
+        //        PlaneClusteringRelativePath = Path.Combine(nodeContentDirectory, PlaneClusteringImageName),
+        //        WordCloudRelativePath = Path.Combine(nodeContentDirectory, WordCloudImageName),
+        //        Clusters = new List<ClusterItem>()
+        //    };
+
+        //    var clusters = Directory.EnumerateDirectories(nodeContentDirectory);
+        //    clusterAnalys
+        //    foreach (var cluster in clusters)
+        //    {
+                
+        //        JsonSerializer.ReadFromJsonFile< List<MergeModel>>
+        //            (Path.Combine(nodeContentDirectory, cluster), clusterItem.MergeResults);
+            
+        //    }
+
+
+        //    return clusterAnalys;
+        //}
+
         private void DoHierarchicalClustering(IEnumerable<IGrouping<int, TextClusterModel>> groupped, string resutDirectory, Uri resultDirectoryUnixPath, ClusterAnalysModel clusterAnalys, string nodeContentDirectory)
         {
             var hierarchicalScript = GetScriptPath("HierarchicalClustering.R");
@@ -162,6 +187,7 @@ namespace TextMining
 
                     clusterItem.HierarchicalClusteringPath = hierarchicalClusteringImageName;
                     clusterItem.MergeResults = MapMergeResult(resultMerge, items);
+                    //JsonSerializer.WriteToJsonFile(Path.Combine(nodeContentDirectory, group.First().ClusterNumber.ToString()), clusterItem.MergeResults);
                 }
 
                 clusterAnalys.Clusters.Add(clusterItem);
@@ -182,7 +208,7 @@ namespace TextMining
                 if (firstIndex < 0)
                 {
                     firstIndex *= -1;
-                    mergeResult.FirstTextName = items.ElementAt(firstIndex - 1);
+                    mergeResult.FirstResourceId = _userTextMapping[items.ElementAt(firstIndex - 1)].Id;
                 }
                 else
                 {
@@ -193,7 +219,7 @@ namespace TextMining
                 if (secondIndex < 0)
                 {
                     secondIndex *= -1;
-                    mergeResult.SecondTextName = items.ElementAt(secondIndex - 1);
+                    mergeResult.SecondResourceId = _userTextMapping[items.ElementAt(secondIndex - 1)].Id;
                 }
                 else
                 {

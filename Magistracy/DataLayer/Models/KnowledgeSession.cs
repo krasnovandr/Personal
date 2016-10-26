@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -42,7 +43,8 @@ namespace DataLayer.Models
         StructureSuggestionVote,
         StructureSuggestionWinner,
         WinAndNotLeaf,
-        Leaf
+        Leaf,
+        LeafClusteringDone
     }
 
     public enum ModificationType
@@ -106,10 +108,14 @@ namespace DataLayer.Models
         public NodeType Type { get; set; }
         public NodeStates State { get; set; }
 
+        public string ClusterImagePath { get; set; }
+        public string WordCloudImagePath { get; set; }
+
         public virtual ICollection<NodeStructureSuggestionVote> StructureVotes { get; set; }
         public virtual ICollection<NodeModification> NodeModifications { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<NodeResource> NodeResources { get; set; }
+        public virtual ICollection<ResourceCluster> Clusters { get; set; }
     }
 
     public class NodeStructureSuggestionVote
@@ -217,6 +223,45 @@ namespace DataLayer.Models
         //public ContentType Type { get; set; }
         public string ResourceRaw { get; set; }
         public string Resource { get; set; }
-        //public int ClusterNumber { get; set; }
+        public virtual ResourceCluster Cluster { get; set; }
+        public string TextName { get; set; }
     }
+
+
+    public class ResourceCluster
+    {
+        public ResourceCluster()
+        {
+            Resources = new Collection<NodeResource>();
+            MergeResults = new Collection<ClusterMergeResults>();
+        }
+        [Key]
+        public int Id { get; set; }
+        public DateTime Date { get; set; }
+        public virtual SessionNode Node{ get; set; }
+        public int ClusterNumber { get; set; }
+        public string HierarchicalClusteringPath { get; set; }
+
+        public virtual ICollection<NodeResource> Resources { get; set; }
+        public virtual ICollection<ClusterMergeResults> MergeResults { get; set; }
+    }
+
+    //public class ResourceClusterItem
+    //{
+    //    [Key]
+    //    public int Id { get; set; }
+    //    public virtual ResourceCluster Cluster { get; set; }
+    //    public virtual NodeResource Resource { get; set; }
+    //}
+
+    public class ClusterMergeResults
+    {
+        [Key]
+        public int Id { get; set; }
+        public virtual ResourceCluster Cluster { get; set; }
+        public int? FirstResourceId { get; set; }
+        public int? SecondResourceId { get; set; }
+    }
+
+
 }

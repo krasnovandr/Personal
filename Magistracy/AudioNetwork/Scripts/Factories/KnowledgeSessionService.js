@@ -227,7 +227,22 @@
                 params: { nodeId: nodeId }
             });
         },
-
+        
+        getNodeClusters: function (nodeId) {
+            return $http({
+                method: 'GET',
+                url: 'api/TextMiningApi/GetNodeClusters',
+                params: { nodeId: nodeId }
+            });
+        },
+        
+        getMergeData: function (nodeId, cluster) {
+            return $http({
+                method: 'GET',
+                url: 'api/TextMiningApi/GetMergeData',
+                params: { nodeId: nodeId ,cluster:cluster}
+            });
+        },
 
     };
 

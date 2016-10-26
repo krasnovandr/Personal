@@ -9,6 +9,7 @@ namespace Shared
         public int NodeId { get; set; }
         public string ResourceRaw { get; set; }
         public string Resource { get; set; }
+        public string TextName { get; set; }
 
         public string AddBy { get; set; }
         public string AvatarFilePath { get; set; }

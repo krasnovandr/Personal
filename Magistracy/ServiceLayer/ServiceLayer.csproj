@@ -88,8 +88,10 @@
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Interfaces\IWallService.cs" />
     <Compile Include="Models\AddMembersViewModel.cs" />
+    <Compile Include="Models\KnowledgeSession\ClusterMergeResultsViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\CommentViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\Enums\LevelVoteType.cs" />
+    <Compile Include="Models\KnowledgeSession\NodeClusterViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\NodeHistoryViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\NodeModificationViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\NodeStructureSuggestionViewModel.cs" />
@@ -108,6 +110,7 @@
     <Compile Include="Models\NodeIdentifyModel.cs" />
     <Compile Include="Models\KnowledgeSession\NodeModificationVoteViewModel.cs" />
     <Compile Include="Models\PlaylistViewModel.cs" />
+    <Compile Include="Models\KnowledgeSession\ResourceClusterViewModel.cs" />
     <Compile Include="Models\SongRecognitionModel.cs" />
     <Compile Include="Models\SongViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />

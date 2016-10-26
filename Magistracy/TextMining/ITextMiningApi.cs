@@ -6,5 +6,6 @@ namespace TextMining
     public interface ITextMiningApi
     {
         ClusterAnalysModel DoClustering(List<NodeResourceViewModel> nodeResources);
+        //ClusterAnalysModel GetClusteringResult(int nodeId);
     }
 }

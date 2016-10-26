@@ -15,8 +15,10 @@ namespace ServiceLayer.Models.KnowledgeSession
         public int? ParentId { get; set; }
         public NodeType Type { get; set; }
         public NodeStates State { get; set; }
+        public string ClusterImagePath { get; set; }
+        public string WordCloudImagePath { get; set; }
 
-        //public List<NodeStructureSuggestionVote> StructureVotes { get; set; }
+        //public List<ResourceClusterViewModel> Clusters { get; set; }
         //public List<NodeModification> NodeModifications { get; set; }
         //public List<Comment> Comments { get; set; }
     }
