@@ -28,9 +28,9 @@ namespace AudioNetwork.Web.API
 
 
         [HttpGet]
-        public ResourceClusterViewModel GetMergeData(int nodeId, int cluster)
+        public ResourceClusterViewModel GetMergeData(int nodeId, int clusterId)
         {
-            return _textMiningService.GetMergeData(nodeId, cluster);
+            return _textMiningService.GetMergeData(nodeId, clusterId);
         }
 
 

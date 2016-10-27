@@ -12,6 +12,6 @@ namespace ServiceLayer.Interfaces
     {
         NodeClusterViewModel DoClustering(int nodeId);
         NodeClusterViewModel GetNodeClusters(int nodeId);
-        ResourceClusterViewModel GetMergeData(int nodeId, int cluster);
+        ResourceClusterViewModel GetMergeData(int nodeId, int clusterId);
     }
 }

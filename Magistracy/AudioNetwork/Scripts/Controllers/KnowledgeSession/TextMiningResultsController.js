@@ -7,7 +7,7 @@
             $scope.miningResult = result;
         });
 
-        $scope.doMerge = function (cluster) {
-            urlMakerService.viewMergeTool($scope.nodeId, cluster);
+        $scope.doMerge = function (clusterId) {
+            urlMakerService.viewMergeTool($scope.nodeId, clusterId);
         };
     });

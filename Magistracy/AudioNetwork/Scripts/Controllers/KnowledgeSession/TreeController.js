@@ -59,7 +59,8 @@
             StructureSuggestionVote: 2,
             StructureSuggestionWinner: 3,
             WinAndNotLeaf:4,
-            Leaf: 5
+            Leaf: 5,
+            LeafClusteringDone:6
         };
 
         knowledgeSessionService.getSessionTree($scope.sessionId).success(
@@ -98,6 +99,11 @@
                 }
                 case $scope.NodeStates.Leaf: {
                     urlMakerService.viewConentFilling(node.Id, $scope.sessionId);
+                    break;
+                }
+
+                case $scope.NodeStates.LeafClusteringDone: {
+                    urlMakerService.viewTextMiningResults(node.Id);
                     break;
                 }
                 default: {

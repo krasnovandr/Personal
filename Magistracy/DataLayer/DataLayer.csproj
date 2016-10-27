@@ -99,9 +99,15 @@
     <Compile Include="Migrations\201610261925225_AddtextNameToResource.Designer.cs">
       <DependentUpon>201610261925225_AddtextNameToResource.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610272127031_AddTextMergeSuggestionAndVoteTables.cs" />
+    <Compile Include="Migrations\201610272127031_AddTextMergeSuggestionAndVoteTables.Designer.cs">
+      <DependentUpon>201610272127031_AddTextMergeSuggestionAndVoteTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Repositories\NodeResourceRepository.cs" />
     <Compile Include="Repositories\CommentsRepository.cs" />
+    <Compile Include="Repositories\NodeResourceRepository.cs" />
+    <Compile Include="Repositories\TextMergeSuggestionRepository - Copy.cs" />
+    <Compile Include="Repositories\TextMergeSuggestionRepository.cs" />
     <Compile Include="Repositories\NodeModificationsRepository.cs" />
     <Compile Include="Repositories\NodeModificationVotesRepository.cs" />
     <Compile Include="Repositories\NodeStructureSuggestionRepository.cs" />
@@ -165,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610261925225_AddtextNameToResource.resx">
       <DependentUpon>201610261925225_AddtextNameToResource.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610272127031_AddTextMergeSuggestionAndVoteTables.resx">
+      <DependentUpon>201610272127031_AddTextMergeSuggestionAndVoteTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

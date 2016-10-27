@@ -138,6 +138,7 @@ namespace ServiceLayer.Services
                 case NodeStates.StructureSuggestionWinner:
                 case NodeStates.WinAndNotLeaf:
                 case NodeStates.Leaf:
+                case NodeStates.LeafClusteringDone:
                     return node.State;
             }
 

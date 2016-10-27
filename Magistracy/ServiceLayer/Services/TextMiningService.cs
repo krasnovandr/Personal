@@ -9,6 +9,7 @@ using DataLayer.Interfaces;
 using DataLayer.Models;
 using ServiceLayer.Interfaces;
 using ServiceLayer.Models.KnowledgeSession;
+using Shared;
 using TextMining;
 
 namespace ServiceLayer.Services
@@ -52,7 +53,7 @@ namespace ServiceLayer.Services
 
             var node = _db.Nodes.Get(nodeId);
 
-            //node.State = NodeStates.LeafClusteringDone;
+            node.State = NodeStates.LeafClusteringDone;
             node.ClusterImagePath = result.PlaneClusteringRelativePath;
             node.WordCloudImagePath = result.WordCloudRelativePath;
 
@@ -115,10 +116,24 @@ namespace ServiceLayer.Services
         {
             var node = _db.Nodes.Get(nodeId);
 
-            var cluster = node.Clusters.FirstOrDefault(m => m.ClusterNumber == clusterId);
+            var cluster = node.Clusters.FirstOrDefault(m => m.Id == clusterId);
 
             var result = Mapper.Map<ResourceCluster, ResourceClusterViewModel>(cluster);
 
+            foreach (var mergeResult in result.MergeResults)
+            {
+                if (mergeResult.FirstResourceId.HasValue)
+                {
+                    mergeResult.FirstResource =Mapper.Map<NodeResource,NodeResourceViewModel>(
+                        _db.NodeResources.Get(mergeResult.FirstResourceId.Value));
+                }
+
+                if (mergeResult.SecondResourceId.HasValue)
+                {
+                    mergeResult.SecondResource = Mapper.Map<NodeResource,NodeResourceViewModel>(
+                        _db.NodeResources.Get(mergeResult.SecondResourceId.Value));
+                }
+            }
             return result;
         }
     }

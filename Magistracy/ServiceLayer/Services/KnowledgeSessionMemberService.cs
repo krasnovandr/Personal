@@ -137,6 +137,7 @@ namespace ServiceLayer.Services
                     node.backColor = "#808080";
                     break;
                 case NodeStates.Leaf:
+                case NodeStates.LeafClusteringDone:
                     node.color = "#FFFFFF";
                     node.backColor = "red";
                     break;

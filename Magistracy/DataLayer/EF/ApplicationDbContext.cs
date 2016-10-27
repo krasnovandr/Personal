@@ -36,7 +36,9 @@ namespace DataLayer.EF
         public DbSet<NodeStructureSuggestion> NodeStructureSuggestion { get; set; }
         public DbSet<NodeHistory> NodeHistory { get; set; }
         public DbSet<NodeResource> NodeResources { get; set; }
-
+        public DbSet<TextMergeSuggestion> TextMergeSuggestions { get; set; }
+        public DbSet<TextMergeSuggestionVote> TextMergeSuggestionVotes { get; set; }
+        
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

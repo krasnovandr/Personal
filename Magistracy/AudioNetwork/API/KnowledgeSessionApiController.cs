@@ -43,6 +43,8 @@ namespace AudioNetwork.Web.API
         }
 
 
+        
+
         [HttpGet]
         public List<NodeResourceViewModel> GetNodeResources(int nodeId)
         {

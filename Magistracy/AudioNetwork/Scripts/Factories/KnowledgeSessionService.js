@@ -236,11 +236,11 @@
             });
         },
         
-        getMergeData: function (nodeId, cluster) {
+        getMergeData: function (nodeId, clusterId) {
             return $http({
                 method: 'GET',
                 url: 'api/TextMiningApi/GetMergeData',
-                params: { nodeId: nodeId ,cluster:cluster}
+                params: { nodeId: nodeId, clusterId: clusterId }
             });
         },
 

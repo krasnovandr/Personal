@@ -17,8 +17,28 @@ namespace DataLayer.Repositories
         private NodeModificationsRepository _nodeModificationsRepository;
         private NodeModificationVotesRepository _nodeModificationVotesRepository;
         private CommentsRepository _commentsRepository;
+        private TextMergeSuggestionRepository _textMergeSuggestionRepository;
+        private TextMergeSuggestionVoteRepository _textMergeSuggestionVoteRepository;
         private NodeResourceRepository _nodeResourceRepository;
         private bool _disposed = false;
+
+        public IRepository<TextMergeSuggestion> TextMergeSuggestions
+        {
+            get
+            {
+                return _textMergeSuggestionRepository ??
+                     (_textMergeSuggestionRepository = new TextMergeSuggestionRepository(_db));
+            }
+        }
+
+        public IRepository<TextMergeSuggestionVote> TextMergeSuggestionVotes
+        {
+            get
+            {
+                return _textMergeSuggestionVoteRepository ??
+                     (_textMergeSuggestionVoteRepository = new TextMergeSuggestionVoteRepository(_db));
+            }
+        }
 
 
         public IRepository<NodeResource> NodeResources

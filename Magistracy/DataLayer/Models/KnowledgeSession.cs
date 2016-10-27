@@ -238,7 +238,7 @@ namespace DataLayer.Models
         [Key]
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        public virtual SessionNode Node{ get; set; }
+        public virtual SessionNode Node { get; set; }
         public int ClusterNumber { get; set; }
         public string HierarchicalClusteringPath { get; set; }
 
@@ -261,6 +261,32 @@ namespace DataLayer.Models
         public virtual ResourceCluster Cluster { get; set; }
         public int? FirstResourceId { get; set; }
         public int? SecondResourceId { get; set; }
+    }
+
+
+
+
+    public class TextMergeSuggestion
+    {
+        [Key]
+        public int Id { get; set; }
+        public string Value { get; set; }
+        public DateTime Date { get; set; }
+        public virtual ApplicationUser SuggestedBy { get; set; }
+        public int FirstResourceId { get; set; }
+        public int SecondResourceId { get; set; }
+        public virtual ResourceCluster Cluster { get; set; }
+        public virtual ICollection<TextMergeSuggestion> Votes { get; set; }
+    }
+
+    public class TextMergeSuggestionVote
+    {
+        [Key]
+        public int Id { get; set; }
+        public VoteTypes Type { get; set; }
+        public virtual ApplicationUser VoteBy { get; set; }
+        public virtual TextMergeSuggestion TextMergeSuggestion { get; set; }
+        public DateTime Date { get; set; }
     }
 
 

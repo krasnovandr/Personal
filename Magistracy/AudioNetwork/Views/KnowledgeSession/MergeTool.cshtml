@@ -1,9 +1,35 @@
 ﻿<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 <div ng-controller="MergeController" class="container">
+
+  @*<div text-angular
+     ng-model="richText1"
+     name="demo-editor"
+    ></div>*@
   <div class="row">
-    <div class="col-md-6">
-      <text-angular ng-model="richText1"
-                    ta-toolbar="[[],[]]"></text-angular>
+    <div class="col-md-offset-4">
+      <img ng-if="dataToMerge.HierarchicalClusteringPath !== ''" ng-src="{{dataToMerge.HierarchicalClusteringPath}}">
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-md-offset-5">
+      <button class="btn btn-success" ng-click="suggestMergeResult(cluster.Id)"
+              tooltip-placement="left"
+              uib-tooltip="Предложить результат объединения текстов {{name}}">
+        <span class="glyphicon glyphicon-arrow-right">Предложить</span>
+      </button>
+    </div>
+  </div>
+  <hr />
+
+  <div class="row">
+    <div class="col-md-6 ">
+      <div class="panel panel-primary">
+        <div class="panel-heading">{{name}}</div>
+        <div class="panel-body">
+          <text-angular ta-disabled="true" ta-toolbar="[[],[]]" ng-model="richText1"></text-angular>
+        </div>
+      </div>
     </div>
     <div class="col-md-6">
       <div class="panel panel-primary">
@@ -15,10 +41,14 @@
     </div>
   </div>
   <div class="row">
-    <div class="panel panel-primary">
-      <div class="panel-heading">Отличия</div>
-      <div class="panel-body">
-        <rich-text-diff left="richText1" right="richText2"></rich-text-diff>
+    <div class="col-md-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Отличия</div>
+        <div class="panel-body">
+          <rich-text-diff left="richText1" right="richText2"></rich-text-diff>
+
+
+        </div>
       </div>
     </div>
   </div>
@@ -28,11 +58,7 @@
 
 
 
-  <div class="row">
-    <div class="col-md-offset-5">
-      <img ng-if="dataToMerge.HierarchicalClusteringPath !== ''" ng-src="{{dataToMerge.HierarchicalClusteringPath}}">
-    </div>
-  </div>
+
   <div ng-repeat="item in dataToMerge.Resources">
     <hr />
     <div class="row">
@@ -42,7 +68,7 @@
             <img ng-src="{{item.AvatarFilePath}}" width="80" height="80">
           </a>
         </div>
-        <a href="/#/Users/{{item.ByUser}} ">{{item.FirstName}} {{item.LastName}}</a>
+        <a href="/#/Users/{{item.AddBy}} ">{{item.FirstName}} {{item.LastName}}</a>
 
       </div>
       <div class="col-md-2">

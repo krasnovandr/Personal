@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Shared;
 
 namespace ServiceLayer.Models.KnowledgeSession
 {
@@ -12,5 +13,7 @@ namespace ServiceLayer.Models.KnowledgeSession
         //public ResourceClusterViewModel Cluster { get; set; }
         public int? FirstResourceId { get; set; }
         public int? SecondResourceId { get; set; }
+        public NodeResourceViewModel FirstResource { get; set; }
+        public NodeResourceViewModel SecondResource { get; set; }
     }
 }
