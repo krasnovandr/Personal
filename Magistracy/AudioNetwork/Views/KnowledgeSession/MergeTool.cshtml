@@ -1,28 +1,64 @@
 ﻿<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 <div ng-controller="MergeController" class="container">
 
-  @*<div text-angular
-     ng-model="richText1"
-     name="demo-editor"
-    ></div>*@
+
   <div class="row">
     <div class="col-md-offset-4">
       <img ng-if="dataToMerge.HierarchicalClusteringPath !== ''" ng-src="{{dataToMerge.HierarchicalClusteringPath}}">
     </div>
   </div>
   <hr />
-  <div class="row">
-    <div class="col-md-offset-5">
-      <button class="btn btn-success" ng-click="suggestMergeResult(cluster.Id)"
-              tooltip-placement="left"
-              uib-tooltip="Предложить результат объединения текстов {{name}}">
-        <span class="glyphicon glyphicon-arrow-right">Предложить</span>
-      </button>
+  <div ng-hide="showsuggestions">
+    <div class="row">
+      <div class="col-md-offset-5">
+        <button class="btn btn-success" ng-show="$scope.suggestionToUpdate === null" ng-click="suggestMergeResult(richText2)"
+                tooltip-placement="left"
+                uib-tooltip="Предложить результат объединения текстов {{name}}">
+          <span class="glyphicon glyphicon-arrow-right">Предложить</span>
+        </button>
+        <button class="btn btn-success" ng-click="updateMergeSuggastion(richText2)"
+                tooltip-placement="left"
+                uib-tooltip="Обновить результат объединения текстов {{name}}">
+          <span class="glyphicon glyphicon-arrow-right">Изменить</span>
+        </button>
+      </div>
+    </div>
+    <hr />
+
+    <div class="row">
+      <div class="col-md-6 ">
+        <div class="panel panel-primary">
+          <div class="panel-heading">{{name}}</div>
+          <div class="panel-body">
+            <text-angular ta-disabled="true" ta-toolbar="[[],[]]" ng-model="richText1"></text-angular>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-primary">
+          <div class="panel-heading">Свой вариант</div>
+          <div class="panel-body">
+            <text-angular ng-model="richText2"></text-angular>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-primary">
+          <div class="panel-heading">Отличия</div>
+          <div class="panel-body">
+            <rich-text-diff left="richText1" right="richText2"></rich-text-diff>
+
+
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <hr />
 
-  <div class="row">
+
+  <div class="row" ng-show="showsuggestions && suggestionToUpdate === null">
     <div class="col-md-6 ">
       <div class="panel panel-primary">
         <div class="panel-heading">{{name}}</div>
@@ -31,52 +67,56 @@
         </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="panel panel-primary">
-        <div class="panel-heading">Свой вариант</div>
-        <div class="panel-body">
-          <text-angular ng-model="richText2"></text-angular>
-        </div>
-      </div>
-    </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="panel panel-primary">
-        <div class="panel-heading">Отличия</div>
-        <div class="panel-body">
-          <rich-text-diff left="richText1" right="richText2"></rich-text-diff>
+  <hr />
+  <div class="row" ng-show="showsuggestions">
+    <div ng-repeat="suggestion in suggestions">
 
+      <div class="row">
+        <div class="col-md-3">
+          <div>
+            <a href="/#/Users/{{suggestion.SuggestedBy.Id}} ">
+              <img ng-src="{{suggestion.SuggestedBy.AvatarFilePath}}" width="80" height="80">
+            </a>
+          </div>
+          <br />
+          @*<hr />*@
+          <a href="/#/Users/{{suggestion.SuggestedBy.Id}}">{{suggestion.SuggestedBy.FirstName}} {{suggestion.SuggestedBy.LastName}}</a>
+          <span>{{suggestion.Date | date:'short'}}</span>
 
         </div>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-
-
-  <div ng-repeat="item in dataToMerge.Resources">
-    <hr />
-    <div class="row">
-      <div class="col-md-2">
-        <div>
-          <a href="/#/Users/{{item.AddBy}} ">
-            <img ng-src="{{item.AvatarFilePath}}" width="80" height="80">
-          </a>
+        <div class="col-md-8">
+          <div ng-bind-html="suggestion.Value"></div>
+          <div class="panel panel-primary">
+            <div class="panel-heading">Отличия</div>
+            <div class="panel-body">
+              <rich-text-diff left="richText1" right="suggestion.Value"></rich-text-diff>
+            </div>
+          </div>
         </div>
-        <a href="/#/Users/{{item.AddBy}} ">{{item.FirstName}} {{item.LastName}}</a>
-
+        <div class="col-md-1">
+          <button class="btn btn-success"
+                  ng-show="logState.Id === suggestion.SuggestedBy.Id"
+                  ng-click="editSuggestion(suggestion)">
+            <span class="glyphicon glyphicon-edit">Редактировать</span>
+          </button>
+          <div ng-hide="voteDone">
+            <button class="btn btn-success pull-right" ng-show="userVote === suggestion.Id">
+              <span class="glyphicon glyphicon-ok"></span>
+            </button>
+            <button class="btn btn-success"
+                    ng-click="voteSuggestion(suggestion)"
+                    ng-hide="userVote !== null"
+                    @*ng-disabled="member.Id === logState.Id"*@>
+              <span class="glyphicon glyphicon-ok">Голосовать</span>
+            </button>
+          </div>
+          <div ng-show="voteDone">
+            <h4 class="glyphicon glyphicon-check">Результат:{{member.NodeStructureSuggestion.TotalInitial}}</h4>
+          </div>
+        </div>
       </div>
-      <div class="col-md-2">
-        <h4>{{item.TextName}}</h4>
-      </div>
-      <div class="col-md-8">
-        <div ng-bind-html="item.ResourceRaw"></div>
-      </div>
+      <hr />
     </div>
   </div>
 </div>

@@ -227,7 +227,7 @@
                 params: { nodeId: nodeId }
             });
         },
-        
+
         getNodeClusters: function (nodeId) {
             return $http({
                 method: 'GET',
@@ -235,7 +235,7 @@
                 params: { nodeId: nodeId }
             });
         },
-        
+
         getMergeData: function (nodeId, clusterId) {
             return $http({
                 method: 'GET',
@@ -244,6 +244,45 @@
             });
         },
 
+
+        getTextMergeSuggestions: function (nodeId, clusterId) {
+            return $http({
+                method: 'GET',
+                url: 'api/KnowledgeSessionApi/GetTextMergeSuggestions',
+                params: { nodeId: nodeId, clusterId: clusterId }
+            });
+        },
+        makeTextMergeSuggestion: function (data) {
+            return $http({
+                method: 'POST',
+                url: 'api/KnowledgeSessionApi/MakeTextMergeSuggestion',
+                data: data
+            });
+        },
+
+        checkUserTextMergeSuggestion: function (nodeId, clusterId, userId) {
+            return $http({
+                method: 'GET',
+                url: 'api/KnowledgeSessionApi/CheckUserTextMergeSuggestion',
+                params: { nodeId: nodeId, clusterId: clusterId, userId: userId }
+            });
+        },
+
+        editTextMergeSuggestion: function (data) {
+            return $http({
+                method: 'POST',
+                url: 'api/KnowledgeSessionApi/EditTextMergeSuggestion',
+                data: data
+            });
+        },
+
+        voteTextMergeSuggestion: function (data) {
+            return $http({
+                method: 'POST',
+                url: 'api/KnowledgeSessionApi/VoteTextMergeSuggestion',
+                data: data
+            });
+        }
     };
 
 });

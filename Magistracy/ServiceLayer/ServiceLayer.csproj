@@ -87,7 +87,10 @@
     <Compile Include="Interfaces\IUploadService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Interfaces\IWallService.cs" />
+    <Compile Include="Interfaces\ITextMergeSuggestionService.cs" />
     <Compile Include="Models\AddMembersViewModel.cs" />
+    <Compile Include="Models\KnowledgeSession\SessionUserCompactModel.cs" />
+    <Compile Include="Models\KnowledgeSession\TextMergeSuggestionViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\ClusterMergeResultsViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\CommentViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\Enums\LevelVoteType.cs" />
@@ -133,6 +136,7 @@
     <Compile Include="Services\SuggestionService.cs" />
     <Compile Include="Services\SongPictureGetter.cs" />
     <Compile Include="Services\StatisticsService.cs" />
+    <Compile Include="Services\TextMergeSuggestionService.cs" />
     <Compile Include="Services\TextMiningService.cs" />
     <Compile Include="Services\UploadService.cs" />
     <Compile Include="Services\UserService.cs" />

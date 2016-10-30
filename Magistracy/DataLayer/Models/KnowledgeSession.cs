@@ -244,6 +244,7 @@ namespace DataLayer.Models
 
         public virtual ICollection<NodeResource> Resources { get; set; }
         public virtual ICollection<ClusterMergeResults> MergeResults { get; set; }
+        public virtual ICollection<TextMergeSuggestion> Suggestions { get; set; }
     }
 
     //public class ResourceClusterItem
@@ -268,6 +269,10 @@ namespace DataLayer.Models
 
     public class TextMergeSuggestion
     {
+        public TextMergeSuggestion()
+        {
+            Votes = new Collection<TextMergeSuggestionVote>();
+        }
         [Key]
         public int Id { get; set; }
         public string Value { get; set; }
@@ -276,14 +281,14 @@ namespace DataLayer.Models
         public int FirstResourceId { get; set; }
         public int SecondResourceId { get; set; }
         public virtual ResourceCluster Cluster { get; set; }
-        public virtual ICollection<TextMergeSuggestion> Votes { get; set; }
+        public virtual ICollection<TextMergeSuggestionVote> Votes { get; set; }
     }
 
     public class TextMergeSuggestionVote
     {
         [Key]
         public int Id { get; set; }
-        public VoteTypes Type { get; set; }
+        //public VoteTypes Type { get; set; }
         public virtual ApplicationUser VoteBy { get; set; }
         public virtual TextMergeSuggestion TextMergeSuggestion { get; set; }
         public DateTime Date { get; set; }

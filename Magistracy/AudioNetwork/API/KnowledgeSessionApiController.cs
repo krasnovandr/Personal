@@ -23,6 +23,7 @@ namespace AudioNetwork.Web.API
         private readonly INodeModificationService _nodeModificationService;
         private readonly ICommentsService _commentsService;
         private readonly INodeResourceService _nodeResourceService;
+        private readonly ITextMergeSuggestionService _textMergeSuggestionService;
 
         public KnowledgeSessionApiController(
             IKnowledgeSessionService knowledgeSessionService,
@@ -31,7 +32,8 @@ namespace AudioNetwork.Web.API
             ISuggestionService suggestionService,
             INodeModificationService nodeModificationService,
             ICommentsService commentsService,
-            INodeResourceService nodeResourceService)
+            INodeResourceService nodeResourceService,
+            ITextMergeSuggestionService textMergeSuggestionService)
         {
             _knowledgeSessionService = knowledgeSessionService;
             _knowledgeSessionMemberService = knowledgeSessionMemberService;
@@ -40,10 +42,37 @@ namespace AudioNetwork.Web.API
             _nodeModificationService = nodeModificationService;
             _commentsService = commentsService;
             _nodeResourceService = nodeResourceService;
+            _textMergeSuggestionService = textMergeSuggestionService;
         }
 
+        [HttpPost]
+        public void MakeTextMergeSuggestion(TextMergeSuggestionAddViewModel suggestionAddViewModel)
+        {
+            _textMergeSuggestionService.MakeSuggestion(suggestionAddViewModel);
+        }
 
-        
+        [HttpGet]
+        public int? CheckUserTextMergeSuggestion(int nodeId, int clusterId, string userId)
+        {
+            return _textMergeSuggestionService.CheckUserSuggestion(nodeId, clusterId, userId);
+        }
+
+        [HttpGet]
+        public List<TextMergeSuggestionViewModel> GetTextMergeSuggestions(int nodeId, int clusterId)
+        {
+            return _textMergeSuggestionService.GetSuggestions(nodeId, clusterId);
+        }
+
+        [HttpPost]
+        public void EditTextMergeSuggestion(TextMergeSuggestionEditViewModel suggestionEditViewModel)
+        {
+            _textMergeSuggestionService.EditSuggestion(suggestionEditViewModel);
+        }
+        [HttpPost]
+        public bool VoteTextMergeSuggestion(TextMergeSuggestionVoteViewModel voteViewModel)
+        {
+            return _textMergeSuggestionService.VoteSuggestion(voteViewModel);
+        }
 
         [HttpGet]
         public List<NodeResourceViewModel> GetNodeResources(int nodeId)

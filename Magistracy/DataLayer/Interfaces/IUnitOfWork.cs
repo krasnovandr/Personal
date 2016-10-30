@@ -19,6 +19,9 @@ namespace DataLayer.Interfaces
         IRepository<SessionNode> Nodes { get; }
         IRepository<NodeStructureSuggestionVote> NodeStructureSuggestionsVotes { get; }
         IRepository<NodeResource> NodeResources { get; }
+        IRepository<TextMergeSuggestion> TextMergeSuggestions { get; }
+        IRepository<TextMergeSuggestionVote> TextMergeSuggestionVotes { get; }
+
 
         ExtendedRepository<ApplicationUser> Users { get; }
         void Save();

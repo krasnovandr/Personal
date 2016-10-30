@@ -65,6 +65,7 @@ namespace AudioNetwork.Web
             container.RegisterType<INodeResourceService, NodeResourceService>();
             container.RegisterType<ITextMiningApi, TextMiningApi>();
             container.RegisterType<ITextMiningService, TextMiningService>();
+            container.RegisterType<ITextMergeSuggestionService, TextMergeSuggestionService>();
         }
     }
 }

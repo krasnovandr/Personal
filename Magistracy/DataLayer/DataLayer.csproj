@@ -103,6 +103,10 @@
     <Compile Include="Migrations\201610272127031_AddTextMergeSuggestionAndVoteTables.Designer.cs">
       <DependentUpon>201610272127031_AddTextMergeSuggestionAndVoteTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610301939516_RemoveVoteTypeField.cs" />
+    <Compile Include="Migrations\201610301939516_RemoveVoteTypeField.Designer.cs">
+      <DependentUpon>201610301939516_RemoveVoteTypeField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\CommentsRepository.cs" />
     <Compile Include="Repositories\NodeResourceRepository.cs" />
@@ -174,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610272127031_AddTextMergeSuggestionAndVoteTables.resx">
       <DependentUpon>201610272127031_AddTextMergeSuggestionAndVoteTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610301939516_RemoveVoteTypeField.resx">
+      <DependentUpon>201610301939516_RemoveVoteTypeField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

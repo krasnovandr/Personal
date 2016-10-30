@@ -88,6 +88,8 @@ namespace ServiceLayer.Helpers
 
             Mapper.CreateMap<ResourceCluster, ResourceClusterViewModel>();
             Mapper.CreateMap<ClusterMergeResults, ClusterMergeResultsViewModel>();
+            Mapper.CreateMap<ApplicationUser, SessionUserCompactModel>();
+            Mapper.CreateMap<TextMergeSuggestionVoteViewModel, TextMergeSuggestionVote>();
 
             //.ForMember(dest => dest.VoteBy, opt => opt.MapFrom(src => src.VoteBy));
 

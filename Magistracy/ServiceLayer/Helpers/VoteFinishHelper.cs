@@ -60,5 +60,18 @@ namespace ServiceLayer.Helpers
 
             return VoteResultTypes.NotFinished;
         }
+
+        public bool CheckTextSuggestionVoteComplete(int totalUsers, int maximumVotes)
+        {
+            double coefficient = (double)maximumVotes / totalUsers;
+            bool result = coefficient * 100 >= levelVoteFinishedValue;
+
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }
