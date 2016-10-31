@@ -20,7 +20,17 @@ namespace DataLayer.Repositories
         private TextMergeSuggestionRepository _textMergeSuggestionRepository;
         private TextMergeSuggestionVoteRepository _textMergeSuggestionVoteRepository;
         private NodeResourceRepository _nodeResourceRepository;
+        private ResourceClusterRepository _resourceClusterRepository;
         private bool _disposed = false;
+
+        public IRepository<ResourceCluster> ResourceClusters
+        {
+            get
+            {
+                return _resourceClusterRepository ??
+                     (_resourceClusterRepository = new ResourceClusterRepository(_db));
+            }
+        }
 
         public IRepository<TextMergeSuggestion> TextMergeSuggestions
         {
@@ -39,6 +49,8 @@ namespace DataLayer.Repositories
                      (_textMergeSuggestionVoteRepository = new TextMergeSuggestionVoteRepository(_db));
             }
         }
+
+
 
 
         public IRepository<NodeResource> NodeResources

@@ -107,10 +107,19 @@
     <Compile Include="Migrations\201610301939516_RemoveVoteTypeField.Designer.cs">
       <DependentUpon>201610301939516_RemoveVoteTypeField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610312255506_AddDeleteFiledsToResource.cs" />
+    <Compile Include="Migrations\201610312255506_AddDeleteFiledsToResource.Designer.cs">
+      <DependentUpon>201610312255506_AddDeleteFiledsToResource.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610312317300_AddStatusToTextSuggestion.cs" />
+    <Compile Include="Migrations\201610312317300_AddStatusToTextSuggestion.Designer.cs">
+      <DependentUpon>201610312317300_AddStatusToTextSuggestion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\CommentsRepository.cs" />
     <Compile Include="Repositories\NodeResourceRepository.cs" />
-    <Compile Include="Repositories\TextMergeSuggestionRepository - Copy.cs" />
+    <Compile Include="Repositories\TextMergeSuggestionVoteRepository - Copy.cs" />
+    <Compile Include="Repositories\TextMergeSuggestionVoteRepository.cs" />
     <Compile Include="Repositories\TextMergeSuggestionRepository.cs" />
     <Compile Include="Repositories\NodeModificationsRepository.cs" />
     <Compile Include="Repositories\NodeModificationVotesRepository.cs" />
@@ -181,6 +190,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610301939516_RemoveVoteTypeField.resx">
       <DependentUpon>201610301939516_RemoveVoteTypeField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610312255506_AddDeleteFiledsToResource.resx">
+      <DependentUpon>201610312255506_AddDeleteFiledsToResource.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610312317300_AddStatusToTextSuggestion.resx">
+      <DependentUpon>201610312317300_AddStatusToTextSuggestion.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

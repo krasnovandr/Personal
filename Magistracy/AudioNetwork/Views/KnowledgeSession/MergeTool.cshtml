@@ -11,12 +11,12 @@
   <div ng-hide="showsuggestions">
     <div class="row">
       <div class="col-md-offset-5">
-        <button class="btn btn-success" ng-show="$scope.suggestionToUpdate === null" ng-click="suggestMergeResult(richText2)"
+        <button class="btn btn-success" ng-hide="$scope.suggestionToUpdate !== null"  ng-click="suggestMergeResult(richText2)"
                 tooltip-placement="left"
                 uib-tooltip="Предложить результат объединения текстов {{name}}">
           <span class="glyphicon glyphicon-arrow-right">Предложить</span>
         </button>
-        <button class="btn btn-success" ng-click="updateMergeSuggastion(richText2)"
+        <button class="btn btn-success" ng-show="$scope.suggestionToUpdate !== null" ng-click="updateMergeSuggastion(richText2)"
                 tooltip-placement="left"
                 uib-tooltip="Обновить результат объединения текстов {{name}}">
           <span class="glyphicon glyphicon-arrow-right">Изменить</span>
@@ -70,7 +70,7 @@
   </div>
   <hr />
   <div class="row" ng-show="showsuggestions">
-    <div ng-repeat="suggestion in suggestions">
+    <div ng-repeat="suggestion in suggestionsArray | orderBy:'-Votes.length'" ng-class="{success:$index == 0 && voteDone, warning:$index != 0 && voteDone}">
 
       <div class="row">
         <div class="col-md-3">
@@ -101,19 +101,17 @@
             <span class="glyphicon glyphicon-edit">Редактировать</span>
           </button>
           <div ng-hide="voteDone">
-            <button class="btn btn-success pull-right" ng-show="userVote === suggestion.Id">
+            <button class="btn btn-success" ng-show="suggestion.UserVote === suggestion.Id">
               <span class="glyphicon glyphicon-ok"></span>
             </button>
             <button class="btn btn-success"
                     ng-click="voteSuggestion(suggestion)"
-                    ng-hide="userVote !== null"
+                    ng-hide="suggestion.UserVote === suggestion.Id"
                     @*ng-disabled="member.Id === logState.Id"*@>
               <span class="glyphicon glyphicon-ok">Голосовать</span>
             </button>
           </div>
-          <div ng-show="voteDone">
-            <h4 class="glyphicon glyphicon-check">Результат:{{member.NodeStructureSuggestion.TotalInitial}}</h4>
-          </div>
+          <h4 class="glyphicon glyphicon-check">Результат:{{suggestion.Votes.length}}</h4>
         </div>
       </div>
       <hr />

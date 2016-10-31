@@ -21,8 +21,7 @@ namespace DataLayer.Interfaces
         IRepository<NodeResource> NodeResources { get; }
         IRepository<TextMergeSuggestion> TextMergeSuggestions { get; }
         IRepository<TextMergeSuggestionVote> TextMergeSuggestionVotes { get; }
-
-
+        IRepository<ResourceCluster> ResourceClusters { get; }
         ExtendedRepository<ApplicationUser> Users { get; }
         void Save();
     }

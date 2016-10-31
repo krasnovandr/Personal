@@ -245,11 +245,11 @@
         },
 
 
-        getTextMergeSuggestions: function (nodeId, clusterId) {
+        getTextMergeSuggestions: function (nodeId, clusterId,userId) {
             return $http({
                 method: 'GET',
                 url: 'api/KnowledgeSessionApi/GetTextMergeSuggestions',
-                params: { nodeId: nodeId, clusterId: clusterId }
+                params: { nodeId: nodeId, clusterId: clusterId, userId: userId }
             });
         },
         makeTextMergeSuggestion: function (data) {
@@ -259,12 +259,11 @@
                 data: data
             });
         },
-
-        checkUserTextMergeSuggestion: function (nodeId, clusterId, userId) {
+    checkUserTextMergeSuggestion: function (clusterId, userId,firstResource,secondResource) {
             return $http({
                 method: 'GET',
                 url: 'api/KnowledgeSessionApi/CheckUserTextMergeSuggestion',
-                params: { nodeId: nodeId, clusterId: clusterId, userId: userId }
+                params: { clusterId: clusterId, userId: userId, firstResource: firstResource, secondResource: secondResource }
             });
         },
 

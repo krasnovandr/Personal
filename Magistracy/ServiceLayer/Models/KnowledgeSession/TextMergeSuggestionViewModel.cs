@@ -31,7 +31,10 @@ namespace ServiceLayer.Models.KnowledgeSession
         public NodeResourceViewModel FirstResource { get; set; }
         public NodeResourceViewModel SecondResource { get; set; }
         //public virtual ResourceCluster Cluster { get; set; }
-        public virtual List<TextMergeSuggestionVoteViewModel> Votes { get; set; }
+        public List<TextMergeSuggestionVoteViewModel> Votes { get; set; }
+        public int? UserVote { get; set; }
+        public TextSuggestionStatus Status { get; set; }
+
     }
 
     public class TextMergeSuggestionVoteViewModel
@@ -42,6 +45,9 @@ namespace ServiceLayer.Models.KnowledgeSession
         public int NodeId { get; set; }
         public string VoteBy{ get; set; }
         public DateTime Date { get; set; }
+        public string LastName { get; set; }
+        public string FirstName { get; set; }
+        public string AvatarFilePath { get; set; }
     }
 
 

@@ -50,17 +50,17 @@ namespace AudioNetwork.Web.API
         {
             _textMergeSuggestionService.MakeSuggestion(suggestionAddViewModel);
         }
-
+     
         [HttpGet]
-        public int? CheckUserTextMergeSuggestion(int nodeId, int clusterId, string userId)
+        public int? CheckUserTextMergeSuggestion(int clusterId, string userId, int firstResource, int secondResource)
         {
-            return _textMergeSuggestionService.CheckUserSuggestion(nodeId, clusterId, userId);
+            return _textMergeSuggestionService.CheckUserSuggestion(clusterId, userId, firstResource,secondResource);
         }
 
         [HttpGet]
-        public List<TextMergeSuggestionViewModel> GetTextMergeSuggestions(int nodeId, int clusterId)
+        public List<TextMergeSuggestionViewModel> GetTextMergeSuggestions(int nodeId, int clusterId,string userId)
         {
-            return _textMergeSuggestionService.GetSuggestions(nodeId, clusterId);
+            return _textMergeSuggestionService.GetSuggestions(nodeId, clusterId, userId);
         }
 
         [HttpPost]

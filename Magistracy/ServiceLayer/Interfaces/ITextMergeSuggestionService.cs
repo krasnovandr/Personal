@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using ServiceLayer.Models.KnowledgeSession;
 
 namespace ServiceLayer.Interfaces
@@ -11,8 +7,9 @@ namespace ServiceLayer.Interfaces
     {
         void MakeSuggestion(TextMergeSuggestionAddViewModel suggestionAddViewModel);
         void EditSuggestion(TextMergeSuggestionEditViewModel suggestionEditViewModel);
-        List<TextMergeSuggestionViewModel> GetSuggestions(int nodeId, int clusterId);
-        int? CheckUserSuggestion(int nodeId, int clusterId, string userId);
+        List<TextMergeSuggestionViewModel> GetSuggestions(int nodeId, int clusterId, string userId);
+        int? CheckUserSuggestion(int clusterId, string userId, int firstResource, int secondResource);
         bool VoteSuggestion(TextMergeSuggestionVoteViewModel voteViewModel);
+        bool CheckVoteIsDone(int nodeId, int clusterId);
     }
 }

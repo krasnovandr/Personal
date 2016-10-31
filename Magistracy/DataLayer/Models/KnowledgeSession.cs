@@ -213,6 +213,11 @@ namespace DataLayer.Models
         Audio
     }
 
+    public enum NodeResourceStatus
+    {
+        
+    }
+
     public class NodeResource
     {
         [Key]
@@ -220,11 +225,12 @@ namespace DataLayer.Models
         public DateTime Date { get; set; }
         public virtual SessionNode Node { get; set; }
         public virtual ApplicationUser AddBy { get; set; }
-        //public ContentType Type { get; set; }
+        //public bool IsDeleted{ get; set; }
         public string ResourceRaw { get; set; }
         public string Resource { get; set; }
         public virtual ResourceCluster Cluster { get; set; }
         public string TextName { get; set; }
+        public bool IsDeleted { get; set; }
     }
 
 
@@ -265,7 +271,12 @@ namespace DataLayer.Models
     }
 
 
-
+    public enum TextSuggestionStatus
+    {
+        Rejected,
+        Approved,
+        New
+    }
 
     public class TextMergeSuggestion
     {
@@ -282,6 +293,7 @@ namespace DataLayer.Models
         public int SecondResourceId { get; set; }
         public virtual ResourceCluster Cluster { get; set; }
         public virtual ICollection<TextMergeSuggestionVote> Votes { get; set; }
+        public TextSuggestionStatus Status { get; set; }
     }
 
     public class TextMergeSuggestionVote

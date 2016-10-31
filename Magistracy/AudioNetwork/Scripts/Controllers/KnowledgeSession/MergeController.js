@@ -17,23 +17,33 @@
             $scope.name = result.MergeResults[0].FirstResource.TextName + '-' + result.MergeResults[0].SecondResource.TextName;
             $scope.firstText = result.MergeResults[0].FirstResource.ResourceRaw;
             $scope.secondText = result.MergeResults[0].SecondResource.ResourceRaw;
-
+            $scope.firstResourceId =  result.MergeResults[0].FirstResource.Id;
+            $scope.secondResourceId =   result.MergeResults[0].SecondResource.Id;
             $scope.richText1 = $scope.firstText + $scope.secondText;
+
+
+            knowledgeSessionService.checkUserTextMergeSuggestion(
+                   $scope.clusterId, $rootScope.logState.Id, $scope.firstResourceId, $scope.secondResourceId)
+                   .success(function (userSuggestion) {
+                       $scope.userSuggested = userSuggestion;
+                       $scope.showsuggestions = userSuggestion !== null;
+                       if ($scope.showsuggestions)
+                             $scope.refreshSuggestionsView();
+       });
         });
         $scope.refreshSuggestionsView = function () {
-            knowledgeSessionService.getTextMergeSuggestions($scope.nodeId, $scope.clusterId).success(function (suggestions) {
+            knowledgeSessionService.getTextMergeSuggestions($scope.nodeId, $scope.clusterId, $rootScope.logState.Id).success(function (suggestions) {
                 $scope.suggestions = suggestions;
+
+                $scope.suggestionsArray = Object.keys($scope.suggestions)
+                   .map(function (key) {
+                       return $scope.suggestions[key];
+                   });
             });
         };
 
-
-        knowledgeSessionService.checkUserTextMergeSuggestion($scope.nodeId, $scope.clusterId, $rootScope.logState.Id)
-            .success(function (result) {
-                $scope.userSuggested = result;
-                $scope.showsuggestions = result !== null;
-                if ($scope.showsuggestions)
-                    $scope.refreshSuggestionsView();
-            });
+    
+   
 
         $scope.editSuggestion = function (suggestion) {
             $scope.suggestionToUpdate = suggestion;

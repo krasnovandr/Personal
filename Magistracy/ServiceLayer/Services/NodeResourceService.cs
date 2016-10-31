@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using AutoMapper;
 using DataLayer.Interfaces;
 using DataLayer.Models;
+using ServiceLayer.Helpers;
 using ServiceLayer.Interfaces;
 using ServiceLayer.Models.KnowledgeSession;
 using Shared;
@@ -28,7 +29,7 @@ namespace ServiceLayer.Services
 
             resource.Node = _db.Nodes.Get(resourceViewModel.NodeId);
             resource.AddBy = _db.Users.Get(resourceViewModel.AddBy);
-            resource.Resource = StripHtml(resourceViewModel.ResourceRaw);
+            resource.Resource = resourceViewModel.ResourceRaw.StripHtml();
 
             _db.NodeResources.Create(resource);
             _db.Save();
@@ -43,17 +44,6 @@ namespace ServiceLayer.Services
             return resources;
         }
 
-        private string StripHtml(string source)
-        {
-            string output;
 
-            //get rid of HTML tags
-            output = Regex.Replace(source, "<[^>]*>", string.Empty);
-
-            //get rid of multiple blank lines
-            output = Regex.Replace(output, @"^\s*$\n", string.Empty, RegexOptions.Multiline);
-
-            return output;
-        }
     }
 }
