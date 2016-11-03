@@ -33,6 +33,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -240,6 +241,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\ContentApiController.cs" />
     <Compile Include="API\KnowledgeSessionApiController.cs" />
     <Compile Include="API\TextMiningApiController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -276,6 +278,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Recognise.dll" />
     <Content Include="Content\angular-block-ui.css" />
     <Content Include="Content\angular-block-ui.min.css" />
     <Content Include="Content\angular-rich-text-diff.css" />
@@ -1250,6 +1253,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\ResourceImages\" />
     <Folder Include="Content\SongsAlbumCovers\" />
     <Folder Include="Content\Songs\" />
     <Folder Include="Content\TextMining\" />
@@ -1273,6 +1277,10 @@
     <ProjectReference Include="..\LastFmServices\LastFmServices.csproj">
       <Project>{50cdbcc0-297d-411f-8f5f-c0b194c06134}</Project>
       <Name>LastFmServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OcrApi\OcrApi.csproj">
+      <Project>{b56cbb74-1fdc-4211-be11-943c42a91f4e}</Project>
+      <Name>OcrApi</Name>
     </ProjectReference>
     <ProjectReference Include="..\ServiceLayer\ServiceLayer.csproj">
       <Project>{092dfd02-b766-416b-bfa6-47f7dbe7c702}</Project>

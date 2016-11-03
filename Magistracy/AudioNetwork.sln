@@ -26,6 +26,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextMining", "TextMining\Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{F9655281-511E-4F99-9A25-9F23D709CD37}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcrApi", "OcrApi\OcrApi.csproj", "{B56CBB74-1FDC-4211-BE11-943C42A91F4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcrTool", "OcrTool\OcrTool.csproj", "{8826A4FA-2B45-45A6-85F0-D2BBF8B49AD0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{87889CB2-F5F6-481F-8DE3-75A55E51C828}"
+	ProjectSection(SolutionItems) = preProject
+		OcrTool\bin\Debug\OcrTool.exe = OcrTool\bin\Debug\OcrTool.exe
+		OcrTool\bin\Debug\Recognise.dll = OcrTool\bin\Debug\Recognise.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -136,6 +146,32 @@ Global
 		{F9655281-511E-4F99-9A25-9F23D709CD37}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F9655281-511E-4F99-9A25-9F23D709CD37}.Release|x64.ActiveCfg = Release|Any CPU
 		{F9655281-511E-4F99-9A25-9F23D709CD37}.Release|x86.ActiveCfg = Release|Any CPU
+		{B56CBB74-1FDC-4211-BE11-943C42A91F4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B56CBB74-1FDC-4211-BE11-943C42A91F4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B56CBB74-1FDC-4211-BE11-943C42A91F4E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B56CBB74-1FDC-4211-BE11-943C42A91F4E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B56CBB74-1FDC-4211-BE11-943C42A91F4E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B56CBB74-1FDC-4211-BE11-943C42A91F4E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B56CBB74-1FDC-4211-BE11-943C42A91F4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B56CBB74-1FDC-4211-BE11-943C42A91F4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B56CBB74-1FDC-4211-BE11-943C42A91F4E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B56CBB74-1FDC-4211-BE11-943C42A91F4E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B56CBB74-1FDC-4211-BE11-943C42A91F4E}.Release|x64.ActiveCfg = Release|Any CPU
+		{B56CBB74-1FDC-4211-BE11-943C42A91F4E}.Release|x86.ActiveCfg = Release|Any CPU
+		{8826A4FA-2B45-45A6-85F0-D2BBF8B49AD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8826A4FA-2B45-45A6-85F0-D2BBF8B49AD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8826A4FA-2B45-45A6-85F0-D2BBF8B49AD0}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{8826A4FA-2B45-45A6-85F0-D2BBF8B49AD0}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{8826A4FA-2B45-45A6-85F0-D2BBF8B49AD0}.Debug|x64.ActiveCfg = Debug|x64
+		{8826A4FA-2B45-45A6-85F0-D2BBF8B49AD0}.Debug|x64.Build.0 = Debug|x64
+		{8826A4FA-2B45-45A6-85F0-D2BBF8B49AD0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8826A4FA-2B45-45A6-85F0-D2BBF8B49AD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8826A4FA-2B45-45A6-85F0-D2BBF8B49AD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8826A4FA-2B45-45A6-85F0-D2BBF8B49AD0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{8826A4FA-2B45-45A6-85F0-D2BBF8B49AD0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{8826A4FA-2B45-45A6-85F0-D2BBF8B49AD0}.Release|x64.ActiveCfg = Release|x64
+		{8826A4FA-2B45-45A6-85F0-D2BBF8B49AD0}.Release|x64.Build.0 = Release|x64
+		{8826A4FA-2B45-45A6-85F0-D2BBF8B49AD0}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

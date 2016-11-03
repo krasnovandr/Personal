@@ -11,12 +11,12 @@
   <div ng-hide="showsuggestions">
     <div class="row">
       <div class="col-md-offset-5">
-        <button class="btn btn-success" ng-hide="$scope.suggestionToUpdate !== null"  ng-click="suggestMergeResult(richText2)"
+        <button class="btn btn-success" ng-show="suggestionToUpdate === null"  ng-click="suggestMergeResult(richText2)"
                 tooltip-placement="left"
                 uib-tooltip="Предложить результат объединения текстов {{name}}">
           <span class="glyphicon glyphicon-arrow-right">Предложить</span>
         </button>
-        <button class="btn btn-success" ng-show="$scope.suggestionToUpdate !== null" ng-click="updateMergeSuggastion(richText2)"
+        <button class="btn btn-success" ng-show="suggestionToUpdate !== null" ng-click="updateMergeSuggastion(richText2)"
                 tooltip-placement="left"
                 uib-tooltip="Обновить результат объединения текстов {{name}}">
           <span class="glyphicon glyphicon-arrow-right">Изменить</span>

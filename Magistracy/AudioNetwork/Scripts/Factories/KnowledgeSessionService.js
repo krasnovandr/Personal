@@ -245,7 +245,7 @@
         },
 
 
-        getTextMergeSuggestions: function (nodeId, clusterId,userId) {
+        getTextMergeSuggestions: function (nodeId, clusterId, userId) {
             return $http({
                 method: 'GET',
                 url: 'api/KnowledgeSessionApi/GetTextMergeSuggestions',
@@ -259,7 +259,7 @@
                 data: data
             });
         },
-    checkUserTextMergeSuggestion: function (clusterId, userId,firstResource,secondResource) {
+        checkUserTextMergeSuggestion: function (clusterId, userId, firstResource, secondResource) {
             return $http({
                 method: 'GET',
                 url: 'api/KnowledgeSessionApi/CheckUserTextMergeSuggestion',
@@ -281,7 +281,17 @@
                 url: 'api/KnowledgeSessionApi/VoteTextMergeSuggestion',
                 data: data
             });
+        },
+
+        recogniseText: function (imagePath) {
+            return $http({
+                method: 'GET',
+                url: 'api/ContentApi/Recognisetext',
+                params: { imagePath: imagePath }
+            });
         }
+
+
     };
 
 });
