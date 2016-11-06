@@ -1,10 +1,55 @@
 ﻿angular.module('AudioNetworkApp')
-    .controller('ContentFillingController', function ($, $scope, $rootScope, knowledgeSessionService, userService, urlMakerService, $routeParams, FileUploader) {
+    .controller('ContentFillingController', function ($, $scope, $rootScope, knowledgeSessionService, userService, urlMakerService, $routeParams, FileUploader, musicService, $uibModal) {
         $scope.nodeId = $routeParams.id;
         $scope.sessionId = $routeParams.sessionId;
+        $scope.addImageMode = false;
+        
+        $scope.openAudioAdd = function (size) {
+            musicService.getMySongs().success(function (songs) {
+                $scope.songs = songs;
+            });
+
+            var modalInstance = $uibModal.open({
+                templateUrl: 'Music/ViewSongsModal',
+                size: size,
+                scope: $scope
+            });
+
+            $scope.ok = function () {
+                modalInstance.close($scope.selected.item);
+            };
+
+            $scope.cancel = function () {
+                modalInstance.dismiss('cancel');
+            };
+
+            //$scope.addSong = function (song, index) {
+            //    var songIndex = {
+            //        song: song,
+            //        index: index
+            //    };
+            //    $scope.songIndexes.push(songIndex);
+            //    $scope.songs.splice(index, 1);
+            //    $scope.wallItemSons.push(song);
+            //};
+        };
+
+   
+
+        $scope.addimage = function () {
+            $scope.addImageMode = !$scope.addImageMode;
+        };
         knowledgeSessionService.getNode($scope.nodeId).success(function (result) {
             $scope.parentNode = result;
         });
+
+        $scope.uploadAudio = function () {
+            urlMakerService.viewUploadAudio();
+        };
+
+        $scope.recogniseAudio = function () {
+            urlMakerService.viewRecogniseAudio();
+        };
         //$scope.version = textAngularManager.getVersion();
         //$scope.versionNumber = $scope.version.substring(1);
         $scope.htmlContent = '';

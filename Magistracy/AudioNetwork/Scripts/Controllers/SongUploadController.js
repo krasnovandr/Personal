@@ -1,8 +1,9 @@
 ﻿angular.module('AudioNetworkApp').
-controller('SongUploadController', function ($scope, $rootScope, $http, $location, FileUploader, uploadService) {
-
+controller('SongUploadController', function ($scope, $rootScope, $http, $location, FileUploader, uploadService, $routeParams) {
+    $scope.uploadDirect = $routeParams.uploadDirect;
+    $scope.vkDownload = $scope.uploadDirect == 1 ? false : true;
     $scope.uploader = new FileUploader({ url: 'Upload/UploadSong' });
-
+ 
     //var uploader = $scope.uploader = new FileUploader({
     //    url: 'Upload/UploadImage',
 

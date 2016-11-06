@@ -1,199 +1,198 @@
-﻿<div ng-controller="SongController" class="container-fluid">
-    <div class="row">
-        @*<div class="col-md-2">
+﻿<div ng-controller="SongController" class="container">
+  <div class="row">
+    <div class="col-md-12">
+      @*<div class="col-md-2">
             <input type="button" class="btn btn-primary" ng-click="EditMode=true" value="Редактировать" /><br />
             <input type="button" class="btn btn-primary" ng-click="EditMode=false" value="Просмотр информации" />
         </div>*@
-        <div ng-hide="EditMode" class="col-md-2">
-            <img class="pull-left thumbnail" width="200" height="200" ng-src="{{songInfo.SongAlbumCoverPath}}" />
-        </div>
-        <div ng-hide="EditMode" class="col-md-4">
-            <form>
-                <div class="form-group">
-                    <label>Название:</label>
-                    <label> {{songInfo.Title}}</label>
-                </div>
-                <div class="form-group">
-                    <label>Исполнитель:</label>
-                    <label> {{songInfo.Artist}}</label>
-                </div>
-                <div class="form-group">
-                    <label>Жанр:</label>
-                    <label> {{songInfo.Genre}}</label>
-                </div>
-                <div class="form-group">
-                    <label>Альбом:</label>
-                    <label> {{songInfo.Album}}</label>
-                </div>
-                <div class="form-group">
-                    <label>Год выпуска:</label>
-                    <label> {{songInfo.Year}}</label>
-                </div>
-                <div class="form-group">
-                    <label>Бит Рэйт:</label>
-                    <label> {{songInfo.BitRate}}</label>
-                </div>
-                <div class="form-group">
-                    <label>Продолжительность:</label>
-                    <label> {{songInfo.DurationFormatted}}</label>
-                </div>
-                @*<div class="form-group">
-                    <label>Количество Альбомов:</label>
-                    <label> {{songInfo.DiscCount}}</label>
-                </div>*@
-                <div class="form-group">
-                    <label>Композиторы:</label>
-                    <label> {{songInfo.Composers}}</label>
-                </div>
-                <div class="form-group">
-                    <label>Лирика:</label>
-                    <pre> {{songInfo.Lyrics}}</pre>
-                </div>
-                <div class="form-group">
-                    <label>Диск:</label>
-                    <label> {{songInfo.Disc}}</label>
-                </div>
-                <div class="form-group">
-                    <label>Была добавлена в сеть:</label>
-                    <label> {{songInfo.AddDateFormatted}}</label>
-                </div>
-
-            </form>
-        </div>
-
-        <div class="col-md-4">
-            <linechart data="chartData" options="options" mode="" width="450" height="400"></linechart>
-        </div>
+      <div ng-hide="EditMode" class="col-md-2">
+        <img class="pull-left thumbnail" width="200" height="200" ng-src="{{songInfo.SongAlbumCoverPath}}" />
+      </div>
+      <div ng-hide="EditMode" class="col-md-4">
+        <form>
+          <div class="form-group">
+            <label>Название:</label>
+            <label> {{songInfo.Title}}</label>
+          </div>
+          <div class="form-group">
+            <label>Исполнитель:</label>
+            <label> {{songInfo.Artist}}</label>
+          </div>
+          <div class="form-group">
+            <label>Жанр:</label>
+            <label> {{songInfo.Genre}}</label>
+          </div>
+          <div class="form-group">
+            <label>Альбом:</label>
+            <label> {{songInfo.Album}}</label>
+          </div>
+          <div class="form-group">
+            <label>Год выпуска:</label>
+            <label> {{songInfo.Year}}</label>
+          </div>
+          <div class="form-group">
+            <label>Бит Рэйт:</label>
+            <label> {{songInfo.BitRate}}</label>
+          </div>
+          <div class="form-group">
+            <label>Продолжительность:</label>
+            <label> {{songInfo.DurationFormatted}}</label>
+          </div>
+          @*<div class="form-group">
+                <label>Количество Альбомов:</label>
+                <label> {{songInfo.DiscCount}}</label>
+            </div>*@
+          <div class="form-group">
+            <label>Композиторы:</label>
+            <label> {{songInfo.Composers}}</label>
+          </div>
+          <div class="form-group">
+            <label>Лирика:</label>
+            <pre> {{songInfo.Lyrics}}</pre>
+          </div>
+          <div class="form-group">
+            <label>Диск:</label>
+            <label> {{songInfo.Disc}}</label>
+          </div>
+          <div class="form-group">
+            <label>Была добавлена в сеть:</label>
+            <label> {{songInfo.AddDateFormatted}}</label>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-4">
+        <linechart data="chartData" options="options" mode="" width="450" height="400"></linechart>
+      </div>
     </div>
+  </div>
 </div>
 @*<div ng-show="EditMode" class="col-md-4">
-            <form role="form" ng-submit="updateUser()">
-                <div class="form-group">
-                    <label for="name">Имя:</label>
-                    <input type="text" class="form-control" ng-model="songInfo.FirstName" id="name" />
-                </div>
-                <div class="form-group">
-                    <label for="lastName">Фамилия:</label>
-                    <input type="text" class="form-control" ng-model="songInfo.LastName" id="lastName" />
-                </div>
-                <div class="form-group">
-                    <label for="country">Cтрана:</label>
-                    <input type="text" class="form-control" ng-model="songInfo.Country" id="country" />
-                </div>
-                <div class="form-group">
-                    <label for="city">Город:</label>
-                    <input type="text" class="form-control" ng-model="songInfo.City" id="city" />
-                </div>
-                <div class="form-group">
-                    <label for="BirthDateFormatted">Дата рождения:</label>
-                    <input type="date" class="form-control" ng-model="songInfo.BirthDate" id="BirthDateFormatted" />
-                </div>
-                <div class="form-group">
-                    <label for="email">Почта:</label>
-                    <input type="email" class="form-control" ng-model="songInfo.Email" id="email" />
-                </div>
-                <div class="form-group">
-                    <label for="bestGenre">Любимый жанр(один):</label>
-                    <input type="text" class="form-control" ng-model="songInfo.BestGenre" id="bestGenre" />
-                </div>
-                <div class="form-group">
-                    <label for="worstGenre">Самый не любимый жанр:</label>
-                    <input type="text" class="form-control" ng-model="songInfo.WorstGenre" id="worstGenre" />
-                </div>
-                <div class="form-group">
-                    <label for="lastEntrenchedSong">Последняя песня, засевшая в голову:</label>
-                    <input type="text" class="form-control" ng-model="songInfo.LastEntrenchedSong" id="lastEntrenchedSong" />
-                </div>
-                <div class="form-group">
-                    <label for="bestNativeArtist">Любимая отечественная группа:</label>
-                    <input type="text" class="form-control" ng-model="songInfo.BestNativeArtist" id="bestNativeArtist" />
-                </div>
-                <div class="form-group">
-                    <label for="bestForeignArtist">Любимая зарубежная группа:</label>
-                    <input type="text" class="form-control" ng-model="songInfo.BestForeignArtist" id="bestForeignArtist" />
-                </div>
-                <div class="form-group">
-                    <label for="bestVocalist">Любимый вокалист/вокалистка:</label>
-                    <input type="text" class="form-control" ng-model="songInfo.BestVocalist" id="bestVocalist" />
-                </div>
-                <div class="form-group">
-                    <label for="bestAlarmClock">Лучший будильник:</label>
-                    <input type="text" class="form-control" ng-model="songInfo.BestAlarmClock" id="bestAlarmClock" />
-                </div>
-                <div class="form-group">
-                    <label for="bestSleeping">Лучшая колыбельная:</label>
-                    <input type="text" class="form-control" ng-model="songInfo.BestSleeping" id="bestSleeping" />
-                </div>
-                <div class="form-group">
-                    <label for="bestRelaxSong">Лучшая расслабляющая музыка:</label>
-                    <input type="text" class="form-control" ng-model="songInfo.BestRelaxSong" id="bestRelaxSong" />
-                </div>
-                <button class="btn-success" type="submit">Cохранить</button>
-            </form>
-        </div>
+          <form role="form" ng-submit="updateUser()">
+              <div class="form-group">
+                  <label for="name">Имя:</label>
+                  <input type="text" class="form-control" ng-model="songInfo.FirstName" id="name" />
+              </div>
+              <div class="form-group">
+                  <label for="lastName">Фамилия:</label>
+                  <input type="text" class="form-control" ng-model="songInfo.LastName" id="lastName" />
+              </div>
+              <div class="form-group">
+                  <label for="country">Cтрана:</label>
+                  <input type="text" class="form-control" ng-model="songInfo.Country" id="country" />
+              </div>
+              <div class="form-group">
+                  <label for="city">Город:</label>
+                  <input type="text" class="form-control" ng-model="songInfo.City" id="city" />
+              </div>
+              <div class="form-group">
+                  <label for="BirthDateFormatted">Дата рождения:</label>
+                  <input type="date" class="form-control" ng-model="songInfo.BirthDate" id="BirthDateFormatted" />
+              </div>
+              <div class="form-group">
+                  <label for="email">Почта:</label>
+                  <input type="email" class="form-control" ng-model="songInfo.Email" id="email" />
+              </div>
+              <div class="form-group">
+                  <label for="bestGenre">Любимый жанр(один):</label>
+                  <input type="text" class="form-control" ng-model="songInfo.BestGenre" id="bestGenre" />
+              </div>
+              <div class="form-group">
+                  <label for="worstGenre">Самый не любимый жанр:</label>
+                  <input type="text" class="form-control" ng-model="songInfo.WorstGenre" id="worstGenre" />
+              </div>
+              <div class="form-group">
+                  <label for="lastEntrenchedSong">Последняя песня, засевшая в голову:</label>
+                  <input type="text" class="form-control" ng-model="songInfo.LastEntrenchedSong" id="lastEntrenchedSong" />
+              </div>
+              <div class="form-group">
+                  <label for="bestNativeArtist">Любимая отечественная группа:</label>
+                  <input type="text" class="form-control" ng-model="songInfo.BestNativeArtist" id="bestNativeArtist" />
+              </div>
+              <div class="form-group">
+                  <label for="bestForeignArtist">Любимая зарубежная группа:</label>
+                  <input type="text" class="form-control" ng-model="songInfo.BestForeignArtist" id="bestForeignArtist" />
+              </div>
+              <div class="form-group">
+                  <label for="bestVocalist">Любимый вокалист/вокалистка:</label>
+                  <input type="text" class="form-control" ng-model="songInfo.BestVocalist" id="bestVocalist" />
+              </div>
+              <div class="form-group">
+                  <label for="bestAlarmClock">Лучший будильник:</label>
+                  <input type="text" class="form-control" ng-model="songInfo.BestAlarmClock" id="bestAlarmClock" />
+              </div>
+              <div class="form-group">
+                  <label for="bestSleeping">Лучшая колыбельная:</label>
+                  <input type="text" class="form-control" ng-model="songInfo.BestSleeping" id="bestSleeping" />
+              </div>
+              <div class="form-group">
+                  <label for="bestRelaxSong">Лучшая расслабляющая музыка:</label>
+                  <input type="text" class="form-control" ng-model="songInfo.BestRelaxSong" id="bestRelaxSong" />
+              </div>
+              <button class="btn-success" type="submit">Cохранить</button>
+          </form>
+      </div>
 
-        <div ng-show="EditMode" class="col-md-5">
-            <div ng-show="EditMode">
+      <div ng-show="EditMode" class="col-md-5">
+          <div ng-show="EditMode">
 
-                    Смена аватарки:
-    <input type="file" nv-file-select uploader="uploader" /><br />
-    <div class="well my-drop-zone" nv-file-over="" uploader="uploader" nv-file-drop="" uploader="uploader">Перетащите картинку сюда</div>
-    @*<ul>
-            @*<li ng-repeat="item in uploader.queue">
-                Name: <span ng-bind="item.file.name"></span><br />
-                <button ng-click="item.upload()">upload</button>
-            </li>
-        </ul>
+                  Смена аватарки:
+  <input type="file" nv-file-select uploader="uploader" /><br />
+  <div class="well my-drop-zone" nv-file-over="" uploader="uploader" nv-file-drop="" uploader="uploader">Перетащите картинку сюда</div>
+  @*<ul>
+          @*<li ng-repeat="item in uploader.queue">
+              Name: <span ng-bind="item.file.name"></span><br />
+              <button ng-click="item.upload()">upload</button>
+          </li>
+      </ul>
 
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th width="50%">Название</th>
-                <th ng-show="uploader.isHTML5">Размер</th>
-                <th ng-show="uploader.isHTML5">Прогресс</th>
-                <th>Результат</th>
-                <th>Дейстивя</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="item in uploader.queue">
-                <td>
-                    <strong>{{ item.file.name }}</strong>
-                    <!-- Image preview -->
-                    <!--auto height-->
-                    <!--<div ng-thumb="{ file: item.file, width: 100 }"></div>-->
-                    <!--auto width-->
-                    <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div>
-                    <!--fixed width and height -->
-                    <!--<div ng-thumb="{ file: item.file, width: 100, height: 100 }"></div>-->
-                </td>
-                <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
-                <td ng-show="uploader.isHTML5">
-                    <div class="progress" style="margin-bottom: 0;">
-                        <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
-                    </div>
-                </td>
-                <td class="text-center">
-                    <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
-                    <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
-                    <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
-                </td>
-                <td nowrap>
-                    <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
-                        <span class="glyphicon glyphicon-upload"></span> Загрузить
-                    </button>
-                    <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
-                        <span class="glyphicon glyphicon-ban-circle"></span> Отменить
-                    </button>
-                    <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
-                        <span class="glyphicon glyphicon-trash"></span> Удалить
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-                </div>
-    </div>*@
-
+  <table class="table">
+      <thead>
+          <tr>
+              <th width="50%">Название</th>
+              <th ng-show="uploader.isHTML5">Размер</th>
+              <th ng-show="uploader.isHTML5">Прогресс</th>
+              <th>Результат</th>
+              <th>Дейстивя</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr ng-repeat="item in uploader.queue">
+              <td>
+                  <strong>{{ item.file.name }}</strong>
+                  <!-- Image preview -->
+                  <!--auto height-->
+                  <!--<div ng-thumb="{ file: item.file, width: 100 }"></div>-->
+                  <!--auto width-->
+                  <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div>
+                  <!--fixed width and height -->
+                  <!--<div ng-thumb="{ file: item.file, width: 100, height: 100 }"></div>-->
+              </td>
+              <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+              <td ng-show="uploader.isHTML5">
+                  <div class="progress" style="margin-bottom: 0;">
+                      <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                  </div>
+              </td>
+              <td class="text-center">
+                  <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                  <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                  <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+              </td>
+              <td nowrap>
+                  <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                      <span class="glyphicon glyphicon-upload"></span> Загрузить
+                  </button>
+                  <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                      <span class="glyphicon glyphicon-ban-circle"></span> Отменить
+                  </button>
+                  <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                      <span class="glyphicon glyphicon-trash"></span> Удалить
+                  </button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+              </div>
+  </div>*@
 

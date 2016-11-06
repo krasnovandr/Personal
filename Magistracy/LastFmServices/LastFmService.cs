@@ -152,26 +152,16 @@ namespace LastFmServices
 
             if (xDoc.Root != null)
             {
-                var trackElement = xDoc.Root.Elements("track").ToList();
-                var albumElement = trackElement.Elements("album").ToList();
 
-                var image = trackElement.Elements("image").FirstOrDefault(m => (string)m.Attribute("size") == "large");
-
+                var image = xDoc.Root.Descendants("image")
+                    .FirstOrDefault(m => (string)m.Attribute("size") == "large");
 
                 if (image != null)
                 {
                     albumInfo.PicturePath = image.Value;
                 }
-                else
-                {
-                    image = albumElement.Elements("image").FirstOrDefault(m => (string)m.Attribute("size") == "large");
-                    if (image != null)
-                    {
-                        albumInfo.PicturePath = image.Value;
-                    }
-                }
 
-                var wiki = trackElement.Elements("wiki").FirstOrDefault();
+                var wiki = xDoc.Root.Descendants("wiki").FirstOrDefault();
                 if (wiki != null)
                 {
                     var content = wiki.Elements("content").FirstOrDefault();
@@ -182,8 +172,6 @@ namespace LastFmServices
                         albumInfo.Content = albumInfo.Content.Replace("<![CDATA[", string.Empty).Replace("]]>", string.Empty).Replace("<content>", string.Empty).Replace("</content>", string.Empty);
                     }
                 }
-
-
             }
 
             return albumInfo;

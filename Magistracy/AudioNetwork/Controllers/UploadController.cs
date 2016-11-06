@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using ICSharpCode.SharpZipLib.Zip;
 using Microsoft.AspNet.Identity;
+using MusicRecognition.Interfaces;
 using MusicRecognition.Models;
 using Newtonsoft.Json;
 using ServiceLayer.Helpers;
@@ -20,14 +21,18 @@ namespace AudioNetwork.Web.Controllers
         private readonly IUploadService _uploadService;
         private readonly IPlaylistService _playlistService;
         private readonly IMusicService _musicService;
+        private readonly IRecognitionService _recognitionService;
 
         public UploadController(
             IUploadService uploadService,
-          IPlaylistService playlistService, IMusicService musicService)
+            IPlaylistService playlistService,
+            IMusicService musicService,
+            IRecognitionService recognitionService)
         {
             _uploadService = uploadService;
             _playlistService = playlistService;
             _musicService = musicService;
+            _recognitionService = recognitionService;
         }
 
         public ActionResult Upload()
@@ -67,7 +72,7 @@ namespace AudioNetwork.Web.Controllers
 
         public ActionResult UploadForRecognitionSong(HttpPostedFileBase file)
         {
-            var model = new SongRecognitionModel();
+            var model = new SongRecognitionModelView();
             if (file != null && file.ContentLength > 0)
             {
                 var absoluteSongPath = Server.MapPath(FilePathContainer.SongVirtualPath);
@@ -77,11 +82,8 @@ namespace AudioNetwork.Web.Controllers
 
                 file.SaveAs(pathSong);
 
-                var recognition = new MusicRecognition.Services.RecognitionService();
-                var resultStringFormat = recognition.Recognize(pathSong, 0, 20);
-
-                var resultJson = JsonConvert.DeserializeObject<RecognizeResult>(resultStringFormat);
-                if (resultJson.status.msg == "Success")
+                var resultJson = _recognitionService.Recognise(pathSong, 0, 20);
+                if (resultJson != null)
                 {
                     var songData = resultJson.metadata.music.FirstOrDefault();
                     if (songData != null)
@@ -102,7 +104,6 @@ namespace AudioNetwork.Web.Controllers
                         model.Title = songData.title;
                     }
                 }
-    
             }
 
             return Json(model);

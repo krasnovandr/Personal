@@ -46,7 +46,10 @@
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.1.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -115,7 +118,7 @@
     <Compile Include="Models\KnowledgeSession\NodeModificationVoteViewModel.cs" />
     <Compile Include="Models\PlaylistViewModel.cs" />
     <Compile Include="Models\KnowledgeSession\ResourceClusterViewModel.cs" />
-    <Compile Include="Models\SongRecognitionModel.cs" />
+    <Compile Include="Models\SongRecognitionModelView.cs" />
     <Compile Include="Models\SongViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Models\VkUserModel.cs" />
@@ -145,6 +148,10 @@
     <Compile Include="Services\WallService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ACRCloudRecognitionTest\ACRCloudRecognitionTest\MusicRecognition.csproj">
+      <Project>{760f23a1-26e0-441d-b5cb-d471f0246bef}</Project>
+      <Name>MusicRecognition</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
       <Project>{3231c569-19e8-4c87-a9f9-9f1b18ebfebc}</Project>
       <Name>DataLayer</Name>
@@ -168,7 +175,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

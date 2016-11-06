@@ -5,11 +5,14 @@ using DataLayer.Models;
 using DataLayer.Repositories;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Practices.Unity;
+using MusicRecognition.Interfaces;
+using MusicRecognition.Services;
 using ServiceLayer.Helpers;
 using ServiceLayer.Interfaces;
 using ServiceLayer.Services;
 using TextMining;
 using Unity.Mvc4;
+using VkService;
 
 namespace AudioNetwork.Web
 {
@@ -66,6 +69,8 @@ namespace AudioNetwork.Web
             container.RegisterType<ITextMiningApi, TextMiningApi>();
             container.RegisterType<ITextMiningService, TextMiningService>();
             container.RegisterType<ITextMergeSuggestionService, TextMergeSuggestionService>();
+            container.RegisterType<IRecognitionService, RecognitionService>();
+            container.RegisterType<IVkAudioService, VkAudioService>();
         }
     }
 }

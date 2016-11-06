@@ -8,23 +8,29 @@ using VkService.Models;
 
 namespace VkService
 {
-    public class VkSongInfoGetter
+    public class VkAudioService : IVkAudioService
     {
         private readonly VkApi _vkApi;
 
-        public VkSongInfoGetter(VkApi vkApi)
+        public VkAudioService()
+        {
+            var vkAuthorization = new VkAuthorization();
+            _vkApi = vkAuthorization.Authorize();
+        }
+
+        public VkAudioService(VkApi vkApi)
         {
             this._vkApi = vkApi;
         }
 
-        public VkSongInfoGetter(string login, string password)
+        public VkAudioService(string login, string password)
         {
             var vkAuthorization = new VkAuthorization(login, password);
             _vkApi = vkAuthorization.Authorize();
         }
 
 
-        public string GetSongLyrics(long? lyricsId)
+        private string GetSongLyrics(long? lyricsId)
         {
             if (lyricsId.HasValue == false)
             {
@@ -36,31 +42,42 @@ namespace VkService
             return lyrics != null ? lyrics.Text : string.Empty;
         }
 
-        public SongInfo GetSongInfo(string songTitle)
+        public string GetSongLyrics(string songTitle,string artist)
         {
+            string query = string.Format("{0} {1}", artist, songTitle);
             int totalCount;
-            var audios = _vkApi.Audio.Search(songTitle, out totalCount, true, findLyrics: true);
+            var audios = _vkApi.Audio.Search(query, out totalCount, true, findLyrics: true);
 
+            var lyrics = GetLyricsFromAllAudios(audios);
 
-            var foundAudio = audios.FirstOrDefault();
-            var info = new SongInfo();
-
-            if (foundAudio != null)
-            {
-                info.Artist = foundAudio.Artist;
-                info.Genre = foundAudio.Genre.ToString();
-                info.Lyrics = GetSongLyrics(foundAudio.LyricsId);
-                info.SongPath = foundAudio.Url.AbsoluteUri;
-                info.Title = foundAudio.Title;
-                GetLyricsFromAllAudios(audios, info);
-
-                return info;
-            }
-
-
-
-            return null;
+            return lyrics;
         }
+
+        //public SongInfo GetSongInfo(string songTitle)
+        //{
+        //    int totalCount;
+        //    var audios = _vkApi.Audio.Search(songTitle, out totalCount, true, findLyrics: true);
+
+
+        //    var foundAudio = audios.FirstOrDefault();
+        //    var info = new SongInfo();
+
+        //    if (foundAudio != null)
+        //    {
+        //        info.Artist = foundAudio.Artist;
+        //        info.Genre = foundAudio.Genre.ToString();
+        //        info.Lyrics = GetSongLyrics(foundAudio.LyricsId);
+        //        info.SongPath = foundAudio.Url.AbsoluteUri;
+        //        info.Title = foundAudio.Title;
+        //        GetLyricsFromAllAudios(audios, info);
+
+        //        return info;
+        //    }
+
+
+
+        //    return null;
+        //}
 
         public List<SongInfo> GetSongs(bool findLyrics)
         {
@@ -72,7 +89,7 @@ namespace VkService
 
             var userId = _vkApi.UserId;
 
-            var lyricGetter = new VkSongInfoGetter(_vkApi);
+            var lyricGetter = new VkAudioService(_vkApi);
             if (userId != null)
             {
                 var vkSongs = _vkApi.Audio.Get((long)userId);
@@ -100,7 +117,7 @@ namespace VkService
             return songs;
         }
 
-        private void GetLyricsFromAllAudios(IEnumerable<Audio> audios, SongInfo info)
+        private string GetLyricsFromAllAudios(IEnumerable<Audio> audios)
         {
             foreach (var audio in audios)
             {
@@ -108,8 +125,7 @@ namespace VkService
 
                 if (string.IsNullOrEmpty(lyrics) == false && lyrics.Length > 300)
                 {
-                    info.Lyrics = lyrics;
-                    break;
+                    return lyrics;
                 }
 
 
@@ -128,6 +144,8 @@ namespace VkService
                 //    info.Artist = audio.Artist;
                 //}
             }
+
+            return null;
         }
     }
 }

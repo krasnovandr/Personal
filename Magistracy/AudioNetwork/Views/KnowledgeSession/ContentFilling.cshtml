@@ -3,7 +3,11 @@
 @*<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,300">*@
 
 <div ng-controller="ContentFillingController" class="container">
-  <input type="button" class="btn btn-warning pull-right" ng-click="doClusteing()" value="Кластеризовать">
+  <input type="button" class="btn btn-warning" ng-click="doClusteing()" value="Кластеризовать">
+  <input type="button" class="btn btn-success" ng-click="addimage()" value="Загрузить изображение">
+  <input type="button" class="btn btn-success" ng-click="uploadAudio()" value="Загрузить аудио">
+  <input type="button" class="btn btn-success" ng-click="recogniseAudio()" value="Распознать запись">
+  <input type="button" class="btn btn-success" ng-click="openAudioAdd()" value="Добавить аудио">
   <div class="row">
     <div class="col-md-5 col-md-offset-5">
       <h4><i>{{parentNode.Name }}</i></h4>
@@ -11,7 +15,7 @@
 
   </div>
 
-  <div class="row">
+  <div class="row" ng-show="addImageMode">
     <div class="col-md-12">
       <input type="file" nv-file-select uploader="uploader" /><br />
       <div class="well my-drop-zone" nv-file-over="" nv-file-drop="" uploader="uploader">Перетащите картинку сюда</div>

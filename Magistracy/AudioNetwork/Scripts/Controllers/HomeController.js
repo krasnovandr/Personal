@@ -18,7 +18,7 @@
         };
 
         //$rootScope.chat = $.connection.conversationHub;
-     
+
         //$rootScope.testHub = $.connection.testHub;
 
         $rootScope.$watch('soundVolume.volume', function () {
@@ -26,16 +26,10 @@
         }, true);
 
         $rootScope.audio.addEventListener('ended', function () {
-            var data = {
-                songId: $rootScope.CurrentSong.SongId
-            };
-            musicService.listenedSong(data).success(function () {
-                $scope.next();
-                //$rootScope.$apply(function () {
-                //    progressBar();
 
-                //});
-            });
+            $scope.next();
+
+
 
         });
         $rootScope.audio.addEventListener("timeupdate", function () {
@@ -97,6 +91,7 @@
         };
 
         $rootScope.changeSongAndPlay = function (currentSong, index) {
+
             if (!currentSong) {
                 return;
             }
@@ -104,6 +99,12 @@
             $rootScope.CurrentSong = currentSong;
             $rootScope.audio.src = currentSong.SongPath;
             $rootScope.audio.play();
+
+            var data = {
+                songId: $rootScope.CurrentSong.SongId
+            };
+            musicService.listenedSong(data).success(function () {
+            });
         };
 
 
@@ -158,7 +159,7 @@
             LoggedIn: false,
             UserName: "",
             Id: "",
-         
+
         };
 
         $rootScope.TotalNotReadMessages = function () {

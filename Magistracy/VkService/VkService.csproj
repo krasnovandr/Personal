@@ -52,6 +52,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IVkAudioService.cs" />
     <Compile Include="Models\SongInfo.cs" />
     <Compile Include="VkSongInfoGetter.cs" />
     <Compile Include="VkAuthorization.cs" />

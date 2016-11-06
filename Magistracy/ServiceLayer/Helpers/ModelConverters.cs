@@ -147,31 +147,6 @@ namespace ServiceLayer.Helpers
             return result;
         }
 
-        public static Song ToSongFromTagModel(File audioFile, string songId, string songPath, string songAlbumCoverPath, string albumInfoContent, string lyrics, string fileName, SongInfo songInfoFromVk)
-        {
-            return new Song
-            {
-                Year = audioFile.Tag.Year.ToString(),
-                Artist = string.IsNullOrEmpty(ConvertStringArrayToString(audioFile.Tag.Artists).ToUtf8()) ? songInfoFromVk.Artist : ConvertStringArrayToString(audioFile.Tag.Artists).ToUtf8(),
-                Genre = string.IsNullOrEmpty(ConvertStringArrayToString(audioFile.Tag.Genres).ToUtf8()) ? songInfoFromVk.Genre : ConvertStringArrayToString(audioFile.Tag.Genres).ToUtf8(),
-                Album = audioFile.Tag.Album.ToUtf8(),
-                AddDate = DateTime.Now,
-                SongId = songId,
-                BitRate = audioFile.Properties.AudioBitrate,
-                Duration = audioFile.Properties.Duration,
-                Title = string.IsNullOrEmpty(audioFile.Tag.Title.ToUtf8()) ? songInfoFromVk.Title.ToUtf8() : audioFile.Tag.Title.ToUtf8(),
-                SongPath = songPath,
-                SongAlbumCoverPath = songAlbumCoverPath,
-                AlbumAndTrackInfo = albumInfoContent,
-                Copyright = audioFile.Tag.Copyright,
-                DiscCount = (int)audioFile.Tag.DiscCount,
-                Composers = ConvertStringArrayToString(audioFile.Tag.Composers).ToUtf8(),
-                Lyrics = lyrics.ToUtf8(),
-                Disc = (int)audioFile.Tag.Disc,
-                Performers = ConvertStringArrayToString(audioFile.Tag.Performers).ToUtf8(),
-                FileName = fileName,
 
-            };
-        }
     }
 }

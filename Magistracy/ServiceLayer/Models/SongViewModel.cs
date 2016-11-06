@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Security.Policy;
+using System.Web;
 using ServiceLayer.Helpers;
 
 namespace ServiceLayer.Models
@@ -86,6 +88,18 @@ namespace ServiceLayer.Models
                 }
 
                 return default(long);
+            }
+        }
+
+
+        public string Reference
+        {
+            get
+            {
+                return
+                    HttpContext.Current.Request.Url.GetComponents
+                        (UriComponents.SchemeAndServer, UriFormat.Unescaped) + SongPath;
+
             }
         }
     }

@@ -1,158 +1,144 @@
-﻿<div ng-controller="PlayerController">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-7 col-md-offset-1">
-                <div class="row">
-                    <select class="form-control" ng-model="playListCurrent" ng-change="changePlaylist(playlist)" ng-options="playlist as playlist.PlayListName for playlist in playLists"></select>
-                    <button type="button" class="btn-primary" ng-click="getMusic()">
-                        <span class="glyphicon glyphicon-music"></span> Вся музыка
-                    </button>
-                    <button type="button" class="btn-primary" ng-click="shuffle()">
-                        <span class="glyphicon glyphicon glyphicon-random"></span> перемешать
-                    </button>
+﻿<div ng-controller="PlayerController" class="container">
+  <div class="row">
+    <div class="col-md-7 col-md-offset-1">
+      <div class="row">
+        <select class="form-control" ng-model="playListCurrent" ng-change="changePlaylist(playlist)" ng-options="playlist as playlist.PlayListName for playlist in playLists"></select>
+        <button type="button" class="btn-primary" ng-click="getMusic()">
+          <span class="glyphicon glyphicon-music"></span> Вся музыка
+        </button>
+        <button type="button" class="btn-primary" ng-click="shuffle()">
+          <span class="glyphicon glyphicon glyphicon-random"></span> перемешать
+        </button>
+        @Html.ActionLink("Download Zip", "DownloadZip", "Upload")
+        @*<button  class="btn-warning" ng-click="downloadZip()">
+              Zip<span class="glyphicon glyphicon-download"></span>
+          </button>*@
+      </div>
+      <div class="row">
+        <input ng-show="trackSearchCurrentType.type == 1" class="form-control pull-left" type="search" ng-model="search.$" placeholder="Поиск..." />
+        <input ng-show="trackSearchCurrentType.type == 2" class="form-control pull-left" type="search" ng-model="search.Title" placeholder="Введите название трека" />
+        <input ng-show="trackSearchCurrentType.type == 3" class="form-control pull-left" type="search" ng-model="search.Artist" placeholder="Введите название исполнителя" />
+        <input ng-show="trackSearchCurrentType.type == 4" class="form-control pull-left" type="search" ng-model="search.Album" placeholder="Введите название альбома" />
+        <input ng-show="trackSearchCurrentType.type == 5" class="form-control pull-left" type="search" ng-model="search.Year" placeholder="Введите год" />
+        <select class="form-control pull-right" ng-change="changeSearchType(trackSearchType)" ng-model="trackSearchCurrentType" ng-options="trackSearchType as trackSearchType.Title for trackSearchType in trackSearchTypes"></select>
+      </div>
+      @*<div data-scroll-init>*@
+      <table class="table table-striped" ng-repeat="song in  currentPlaylist | filter:search">
+        <tr ng-class="{ info: CurrentSong.SongId==song.SongId }">
+          <td width="20%">
+            <a href="/#/Songs/{{song.SongId}} ">
+              <img class="pull-left" ng-src="{{song.SongAlbumCoverPath}}" width="50" height="50" />
+            </a>
+          </td>
+          <td width="50%">
+            <a href="/#/Songs/{{song.SongId}} ">
+              <span>{{song.Artist}}</span>-
+              <span>{{song.Title}}</span>
+            </a>
+          </td>
+          <td width="5%">
+            <span class="info">{{song.Year}}</span>
+          </td>
+          <td width="5%">
+            <span>{{song.DurationFormatted}}</span>
+          </td>
+          <td width="20%">
+            <button ng-show="CurrentSong.SongId!=song.SongId" class="btn-default pull-right" id="play" ng-click="changeSongAndPlay(song,$index)">
+              <span class="glyphicon glyphicon-play"></span>
+            </button>
+            <button ng-show="CurrentSong.SongId==song.SongId && audio.paused == false" class="btn-default pull-right" ng-click="pause()">
+              <span class="glyphicon glyphicon-pause"></span>
+            </button>
+            <button ng-show="CurrentSong.SongId==song.SongId && audio.paused == true" class="btn-default pull-right" ng-click="play()">
+              <span class="glyphicon glyphicon-play"></span>
+            </button>
+            <button ng-show="myMusic" class="btn-default pull-right" ng-click="removeSong(song)">
+              <span class="glyphicon glyphicon-remove"></span>
+            </button>
+            <button ng-show="userMusic" class="btn-default pull-right" ng-click="addToMyMusic(song)">
+              <span class="glyphicon glyphicon-plus-sign"></span>
+            </button>
+            <a target="_self" href="{{song.SongPath}}" download="{{song.Artist}}-{{song.Title}}.mp3">
+              <span class="glyphicon glyphicon-download"></span>
+            </a>
+          </td>
 
-                    @Html.ActionLink("Download Zip", "DownloadZip", "Upload")
-                    @*<button  class="btn-warning" ng-click="downloadZip()">
-                        Zip<span class="glyphicon glyphicon-download"></span>
-                    </button>*@
-                </div>
-
-                <div class="row">
-                    <input ng-show="trackSearchCurrentType.type == 1" class="form-control pull-left" type="search" ng-model="search.$" placeholder="Поиск..." />
-                    <input ng-show="trackSearchCurrentType.type == 2" class="form-control pull-left" type="search" ng-model="search.Title" placeholder="Введите название трека" />
-                    <input ng-show="trackSearchCurrentType.type == 3" class="form-control pull-left" type="search" ng-model="search.Artist" placeholder="Введите название исполнителя" />
-                    <input ng-show="trackSearchCurrentType.type == 4" class="form-control pull-left" type="search" ng-model="search.Album" placeholder="Введите название альбома" />
-                    <input ng-show="trackSearchCurrentType.type == 5" class="form-control pull-left" type="search" ng-model="search.Year" placeholder="Введите год" />
-                    <select class="form-control pull-right" ng-change="changeSearchType(trackSearchType)" ng-model="trackSearchCurrentType" ng-options="trackSearchType as trackSearchType.Title for trackSearchType in trackSearchTypes"></select>
-                </div>
-
-                @*<div data-scroll-init>*@
-                <table class="table table-striped" ng-repeat="song in  currentPlaylist | filter:search">
-                    <tr ng-class="{ info: CurrentSong.SongId==song.SongId }">
-                        <td width="20%">
-                            <a href="/#/Songs/{{song.SongId}} ">
-                                <img class="pull-left" ng-src="{{song.SongAlbumCoverPath}}" width="50" height="50" />
-                            </a>
-                        </td>
-                        <td width="50%">
-                            <a href="/#/Songs/{{song.SongId}} ">
-                                <span>{{song.Artist}}</span>-
-                                <span>{{song.Title}}</span>
-                            </a>
-                        </td>
-                        <td width="5%">
-                            <span class="info">{{song.Year}}</span>
-                        </td>
-                        <td width="5%">
-                            <span>{{song.DurationFormatted}}</span>
-                        </td>
-                        <td width="20%">
-                            <button ng-show="CurrentSong.SongId!=song.SongId" class="btn-default pull-right" id="play" ng-click="changeSongAndPlay(song,$index)">
-                                <span class="glyphicon glyphicon-play"></span>
-                            </button>
-                            <button ng-show="CurrentSong.SongId==song.SongId && audio.paused == false" class="btn-default pull-right" ng-click="pause()">
-                                <span class="glyphicon glyphicon-pause"></span>
-                            </button>
-                            <button ng-show="CurrentSong.SongId==song.SongId && audio.paused == true" class="btn-default pull-right" ng-click="play()">
-                                <span class="glyphicon glyphicon-play"></span>
-                            </button>
-
-                            <button ng-show="myMusic" class="btn-default pull-right" ng-click="removeSong(song)">
-                                <span class="glyphicon glyphicon-remove"></span>
-                            </button>
-
-                            <button ng-show="userMusic" class="btn-default pull-right" ng-click="addToMyMusic(song)">
-                                <span class="glyphicon glyphicon-plus-sign"></span>
-                            </button>
-                            <a target="_self" href="{{song.SongPath}}" download="{{song.Artist}}-{{song.Title}}.mp3">
-                                <span class="glyphicon glyphicon-download"></span>
-                            </a>
-                        </td>
-
-
-                    </tr>
-                </table>
-
-            </div>
-
-            @*<div class="col-md-2 ">
-
-                @*<button popover="{{song.Lyrics}}"
-                            popover-trigger="mouseenter"
-                            popover-placement="right"
-                            class="btn btn-default">
-                        <span class="glyphicon glyphicon-info-sign"></span>
-                    </button>*@
-
-            @*<button ng-show="added" class="btn-default pull-right" ng-click="removeSong(song)">
-                    <span class="glyphicon glyphicon-ok"></span>
-                </button>*@
-            @*<div class="btn-group">
-                    <label class="btn btn-success" ng-model="radioModel" btn-radio="'Left'" uncheckable>Моя Музыка</label>
-                    <label class="btn btn-success" ng-model="radioModel" btn-radio="'Middle'" uncheckable>Плейлисты</label>
-                    <label class="btn btn-success" ng-model="radioModel" btn-radio="'Right'" uncheckable>Все плейлисты</label>
-                </div>*@
-            @*<div class="btn-group-vertical" role="group">
-                        <button type="button" class="btn-primary" ng-click="getMyMusic()">
-                            <span class="glyphicon glyphicon-music"></span>  Моя музыка
-                        </button>
-
-                        <button type="button" class="btn-primary" ng-click="getMyPlayLists()">
-                            <span class="glyphicon glyphicon-list"></span> Мои плейлисты
-                        </button>
-                        <button type="button" class="btn-primary" ng-click="getPlayLists()">
-                            <span class="glyphicon glyphicon-list"></span> Все плейлисты
-                        </button>
-                        <button type="button" class="btn-primary" ng-click="getPeople()">
-                            <span class="glyphicon glyphicon-list"></span> Люди
-                        </button>
-
-                    </div>
-                </div>*@
-            @*<div class="btn-group">
-                    <button type="button" ng-click="getMyMusic()" class="btn btn-primary"> Моя музыка</button>
-                    <button type="button" class="btn btn-primary" ng-click="getMyPlaylists()">Мои плейлисты</button>
-                    <button type="button" class="btn btn-primary" ng-click="getPlaylists()">Все плейлисты</button>
-                </div>*@
-            @*<div class="col-md-2 ">
-                    Плейлисты
-                    <div ng-repeat="playlist in playLists">
-                        <a ng-click="previewPlayList(playlist)" class="btn btn-link"> {{playlist.PlayListName}}</a>
-                    </div>
-                </div>*@
-            <div class="col-md-4 ">
-                Музыка друзей
-                <input class="form-control" type="search" ng-model="peopleSearch" placeholder="Введите имя" />
-                <div ng-repeat="user in users">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <img class="thumbnail" ng-src="{{user.AvatarFilePath}}" width="80" height="80" />
-                        </div>
-                        <div class="col-md-2">
-                            <a ng-click="getUserSongs(user)">{{user.UserName}}</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            @*<div ng-show="state==3" class="col-md-2">
-                    <div>
-                        Мои плейлисты
-                        <button ng-hide="isNewPlaylist" ng-click="isNewPlaylist=true"><span class="glyphicon-plus"></span></button>
-                        <button draggable ng-show="isNewPlaylist" ng-click="addPlaylist()">Добавить</button>
-                        <input required type="text" ng-show="isNewPlaylist" class="form-control" ng-model="newPlaylistName">
-                    </div>
-                    <div ng-repeat="playlist in playlists">
-                        <a ng-click="previewPlaylist(playlist)" class="btn-info"> {{playlist.PlayListName}}</a>
-                        <button class="btn-default" ng-click="removePlaylist(playlist)">
-                            <span ng-hide="playlist.DefaultPlaylist==true" class="glyphicon glyphicon-remove"></span>
-                        </button>
-                    </div>
-                </div>*@
-        </div>
+        </tr>
+      </table>
     </div>
+    @*<div class="col-md-2 ">
+
+      @*<button popover="{{song.Lyrics}}"
+                  popover-trigger="mouseenter"
+                  popover-placement="right"
+                  class="btn btn-default">
+              <span class="glyphicon glyphicon-info-sign"></span>
+          </button>*@
+    @*<button ng-show="added" class="btn-default pull-right" ng-click="removeSong(song)">
+          <span class="glyphicon glyphicon-ok"></span>
+      </button>*@
+    @*<div class="btn-group">
+          <label class="btn btn-success" ng-model="radioModel" btn-radio="'Left'" uncheckable>Моя Музыка</label>
+          <label class="btn btn-success" ng-model="radioModel" btn-radio="'Middle'" uncheckable>Плейлисты</label>
+          <label class="btn btn-success" ng-model="radioModel" btn-radio="'Right'" uncheckable>Все плейлисты</label>
+      </div>*@
+    @*<div class="btn-group-vertical" role="group">
+              <button type="button" class="btn-primary" ng-click="getMyMusic()">
+                  <span class="glyphicon glyphicon-music"></span>  Моя музыка
+              </button>
+
+              <button type="button" class="btn-primary" ng-click="getMyPlayLists()">
+                  <span class="glyphicon glyphicon-list"></span> Мои плейлисты
+              </button>
+              <button type="button" class="btn-primary" ng-click="getPlayLists()">
+                  <span class="glyphicon glyphicon-list"></span> Все плейлисты
+              </button>
+              <button type="button" class="btn-primary" ng-click="getPeople()">
+                  <span class="glyphicon glyphicon-list"></span> Люди
+              </button>
+
+          </div>
+      </div>*@
+    @*<div class="btn-group">
+          <button type="button" ng-click="getMyMusic()" class="btn btn-primary"> Моя музыка</button>
+          <button type="button" class="btn btn-primary" ng-click="getMyPlaylists()">Мои плейлисты</button>
+          <button type="button" class="btn btn-primary" ng-click="getPlaylists()">Все плейлисты</button>
+      </div>*@
+    @*<div class="col-md-2 ">
+          Плейлисты
+          <div ng-repeat="playlist in playLists">
+              <a ng-click="previewPlayList(playlist)" class="btn btn-link"> {{playlist.PlayListName}}</a>
+          </div>
+      </div>*@
+    <div class="col-md-4 ">
+      Музыка друзей
+      <input class="form-control" type="search" ng-model="peopleSearch" placeholder="Введите имя" />
+      <div ng-repeat="user in users">
+        <div class="row">
+          <div class="col-md-3">
+            <img class="thumbnail" ng-src="{{user.AvatarFilePath}}" width="80" height="80" />
+          </div>
+          <div class="col-md-2">
+            <a ng-click="getUserSongs(user)">{{user.UserName}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    @*<div ng-show="state==3" class="col-md-2">
+          <div>
+              Мои плейлисты
+              <button ng-hide="isNewPlaylist" ng-click="isNewPlaylist=true"><span class="glyphicon-plus"></span></button>
+              <button draggable ng-show="isNewPlaylist" ng-click="addPlaylist()">Добавить</button>
+              <input required type="text" ng-show="isNewPlaylist" class="form-control" ng-model="newPlaylistName">
+          </div>
+          <div ng-repeat="playlist in playlists">
+              <a ng-click="previewPlaylist(playlist)" class="btn-info"> {{playlist.PlayListName}}</a>
+              <button class="btn-default" ng-click="removePlaylist(playlist)">
+                  <span ng-hide="playlist.DefaultPlaylist==true" class="glyphicon glyphicon-remove"></span>
+              </button>
+          </div>
+      </div>*@
+  </div>
 </div>
-
-
 
 

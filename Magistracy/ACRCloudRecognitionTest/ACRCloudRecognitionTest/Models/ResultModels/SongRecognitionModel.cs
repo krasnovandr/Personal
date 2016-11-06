@@ -1,4 +1,9 @@
-﻿namespace ServiceLayer.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace MusicRecognition.Models.ResultModels
 {
     public class SongRecognitionModel
     {

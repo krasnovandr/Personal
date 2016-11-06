@@ -16,7 +16,7 @@
             $location.path('/KnowledgeSession/NodeStructureSuggestionWait/' + nodeId).search({ sessionId: sessionId });
         },
 
-        viewNodeStructureSuggestionVote: function (nodeId,sessionId) {
+        viewNodeStructureSuggestionVote: function (nodeId, sessionId) {
             $location.path('/KnowledgeSession/NodeStructureSuggestionVote/' + nodeId).search({ sessionId: sessionId });
         },
 
@@ -38,6 +38,12 @@
 
         viewMergeTool: function (nodeId, clusterId) {
             $location.path('/KnowledgeSession/MergeTool/' + nodeId).search({ clusterId: clusterId });
+        },
+        viewUploadAudio: function () {
+            $location.path('/Upload').search({ uploadDirect: 1 });
+        },
+        viewRecogniseAudio: function () {
+            $location.path('/Recognition');
         },
     };
 });
