@@ -77,7 +77,6 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="bin\Debug\1.png" />
-    <Content Include="bin\Debug\Recognise.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

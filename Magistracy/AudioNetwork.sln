@@ -30,12 +30,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcrApi", "OcrApi\OcrApi.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcrTool", "OcrTool\OcrTool.csproj", "{8826A4FA-2B45-45A6-85F0-D2BBF8B49AD0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{87889CB2-F5F6-481F-8DE3-75A55E51C828}"
-	ProjectSection(SolutionItems) = preProject
-		OcrTool\bin\Debug\OcrTool.exe = OcrTool\bin\Debug\OcrTool.exe
-		OcrTool\bin\Debug\Recognise.dll = OcrTool\bin\Debug\Recognise.dll
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
