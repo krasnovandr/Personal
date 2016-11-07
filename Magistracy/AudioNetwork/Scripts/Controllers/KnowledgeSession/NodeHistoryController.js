@@ -2,14 +2,14 @@
     .controller('NodeHistoryController', function ($, $scope, $http, $location, $rootScope, knowledgeSessionService, userService, $routeParams, $uibModal, urlMakerService) {
 
       $scope.sessionId = $routeParams.sessionId;
-      $scope.nodeId = $routeParams.nodeId;
+      $scope.nodeId = $routeParams.id;
       $scope.showComments = false;
  
       $scope.comments = [];
       $scope.nodeName = "";
       $scope.newCommentAvailable = true;
 
-      knowledgeSessionService.getHitory($scope.sessionId, $scope.nodeId).success(function (result) {
+      knowledgeSessionService.getHistory($scope.nodeId).success(function (result) {
         $scope.nodeHistory = result;
       });
 
@@ -35,7 +35,7 @@
         $scope.votesBy = members;
 
         var modalInstance = $uibModal.open({
-          templateUrl: 'SessionVote/VoteUsersModal',
+            templateUrl: 'KnowledgeSession/VoteUsersModal',
           size: 'lg',
           scope: $scope,
           animation: true

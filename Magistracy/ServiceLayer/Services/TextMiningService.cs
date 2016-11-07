@@ -120,20 +120,39 @@ namespace ServiceLayer.Services
 
             var result = Mapper.Map<ResourceCluster, ResourceClusterViewModel>(cluster);
 
-            foreach (var mergeResult in result.MergeResults)
+            if (result.MergeResults.Any() == false)
             {
-                if (mergeResult.FirstResourceId.HasValue)
-                {
-                    mergeResult.FirstResource =Mapper.Map<NodeResource,NodeResourceViewModel>(
-                        _db.NodeResources.Get(mergeResult.FirstResourceId.Value));
-                }
+                var firtsResource = cluster.Resources.First();
+                var secondResource = cluster.Resources.Skip(1).Take(1).First();
 
-                if (mergeResult.SecondResourceId.HasValue)
+                result.MergeResults.Add(new ClusterMergeResultsViewModel
                 {
-                    mergeResult.SecondResource = Mapper.Map<NodeResource,NodeResourceViewModel>(
-                        _db.NodeResources.Get(mergeResult.SecondResourceId.Value));
+                    FirstResource = Mapper.Map<NodeResource, NodeResourceViewModel>(
+                         _db.NodeResources.Get(firtsResource.Id)),
+                    SecondResource = Mapper.Map<NodeResource, NodeResourceViewModel>(
+                         _db.NodeResources.Get(secondResource.Id))
+                });
+            }
+            else
+            {
+                foreach (var mergeResult in result.MergeResults)
+                {
+                    if (mergeResult.FirstResourceId.HasValue)
+                    {
+                        mergeResult.FirstResource = Mapper.Map<NodeResource, NodeResourceViewModel>(
+                            _db.NodeResources.Get(mergeResult.FirstResourceId.Value));
+                    }
+
+                    if (mergeResult.SecondResourceId.HasValue)
+                    {
+                        mergeResult.SecondResource = Mapper.Map<NodeResource, NodeResourceViewModel>(
+                            _db.NodeResources.Get(mergeResult.SecondResourceId.Value));
+                    }
                 }
             }
+
+
+
             return result;
         }
     }

@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Microsoft.AspNet.SignalR;
-using ServiceLayer.Models;
+﻿using Microsoft.AspNet.SignalR;
 
 namespace AudioNetwork.Web.Hubs
 {
     public class KnowledgeSessionHub : Hub
     {
-        private List<UserViewModel> _users;
-
-
-        public void FirstRoundStarted()
+        public void SendMessage(int nodeId)
         {
-            Clients.All.updateClient("lol");
+            Clients.All.newMessage(nodeId);
         }
     }
 }

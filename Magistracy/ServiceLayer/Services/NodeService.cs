@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using AutoMapper;
 using DataLayer.Interfaces;
 using DataLayer.Models;
@@ -16,13 +17,16 @@ namespace ServiceLayer.Services
     {
         private readonly IUnitOfWork _db;
         private readonly ISuggestionService _suggestionService;
+        private readonly ICommentsService _commentsService;
 
         public NodeService(
             IUnitOfWork db,
-            ISuggestionService suggestionService)
+            ISuggestionService suggestionService, 
+            ICommentsService commentsService)
         {
             this._db = db;
             _suggestionService = suggestionService;
+            _commentsService = commentsService;
         }
 
         //public int AddNodeToSession(NodeViewModel node, int sessionId, string userId)
@@ -181,6 +185,18 @@ namespace ServiceLayer.Services
             var sessionUsers = session.Users.Select(m => m.Id);
 
             return usersWithSuggestions.Count() == sessionUsers.Count();
+        }
+
+
+        public NodeViewModel GetNodeHistory(int nodeId)
+        {
+            var node = _db.Nodes.Get(nodeId);
+
+            var nodeViewModel = Mapper.Map<SessionNode, NodeViewModel>(node);
+
+            nodeViewModel.NodeModifications = nodeViewModel.NodeModifications.OrderBy(m => m.Date).ToList();
+            nodeViewModel.Comments = _commentsService.Get(nodeId);
+            return nodeViewModel;
         }
     }
 }

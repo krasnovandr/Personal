@@ -1,10 +1,10 @@
 ﻿angular.module('AudioNetworkApp').factory('knowledgeSessionService', function ($http) {
     return {
-        create: function (knowledgeSession) {
+        create: function(knowledgeSession) {
             return $http({ method: 'POST', url: 'api/KnowledgeSessionApi/Create', data: knowledgeSession });
         },
 
-        addMembers: function (members, currentSessiosId) {
+        addMembers: function(members, currentSessiosId) {
             var dataToTransfer = {
                 Members: members,
                 SessionId: currentSessiosId
@@ -13,16 +13,15 @@
         },
 
 
-
-        createNodeModificationSuggestion: function (suggestion) {
+        createNodeModificationSuggestion: function(suggestion) {
             return $http({ method: 'POST', url: 'api/KnowledgeSessionApi/CreateNodeModificationSuggestion', data: suggestion });
         },
 
-        levelVote: function (dataToTransfer) {
+        levelVote: function(dataToTransfer) {
             return $http({ method: 'POST', url: 'SessionVote/NodeStructureSuggestionVote', data: dataToTransfer });
         },
 
-        createCommentToNode: function (data) {
+        createCommentToNode: function(data) {
             return $http({
                 method: 'POST',
                 url: 'api/KnowledgeSessionApi/CreateCommentToNode',
@@ -30,7 +29,7 @@
             });
         },
 
-        addResourceToNode: function (data) {
+        addResourceToNode: function(data) {
             return $http({
                 method: 'POST',
                 url: 'api/KnowledgeSessionApi/AddResourceToNode',
@@ -38,7 +37,7 @@
             });
         },
 
-        getNodeResources: function (nodeId) {
+        getNodeResources: function(nodeId) {
             return $http({
                 url: 'api/KnowledgeSessionApi/GetNodeResources',
                 method: "GET",
@@ -46,7 +45,7 @@
             });
         },
 
-        checkUserLevelVote: function (session, userId, parentId, levelVoteType) {
+        checkUserLevelVote: function(session, userId, parentId, levelVoteType) {
             return $http({
                 url: 'SessionVote/CheckUserLevelVote',
                 method: "GET",
@@ -55,14 +54,14 @@
             });
         },
 
-        checkVoteFinished: function (session, parentId, levelVoteType) {
+        checkVoteFinished: function(session, parentId, levelVoteType) {
             return $http({
                 url: 'SessionVote/CheckVoteFinished',
                 method: "GET",
                 params: { sessionId: session, parentId: parentId, levelVoteType: levelVoteType }
             });
         },
-        getVoteResults: function (session, level) {
+        getVoteResults: function(session, level) {
             return $http({
                 url: 'SessionVote/GetVoteResults',
                 method: "GET",
@@ -71,8 +70,7 @@
         },
 
 
-
-        getOrderedMembers: function (sessionId, parentId) {
+        getOrderedMembers: function(sessionId, parentId) {
             return $http({
                 url: 'KnowledgeSession/GetOrderedMembers',
                 method: "GET",
@@ -81,8 +79,7 @@
         },
 
 
-
-        getLevelNodes: function (sessionId, level) {
+        getLevelNodes: function(sessionId, level) {
             return $http({
                 url: 'Node/GetSessionNodeByLevel',
                 method: "GET",
@@ -91,16 +88,16 @@
         },
 
 
-        voteNodeModificationSuggestion: function (data) {
+        voteNodeModificationSuggestion: function(data) {
             return $http(
-                {
-                    method: 'POST',
-                    url: 'api/KnowledgeSessionApi/VoteNodeModificationSuggestion',
-                    data: data
-                });
+            {
+                method: 'POST',
+                url: 'api/KnowledgeSessionApi/VoteNodeModificationSuggestion',
+                data: data
+            });
         },
 
-        getNodeStructureSuggestionWinner: function (nodeId) {
+        getNodeStructureSuggestionWinner: function(nodeId) {
             return $http({
                 url: 'api/KnowledgeSessionApi/GetNodeStructureSuggestionWinner',
                 method: "GET",
@@ -109,7 +106,7 @@
         },
 
 
-        getMembers: function (sessionId) {
+        getMembers: function(sessionId) {
             return $http({
                 url: 'api/KnowledgeSessionApi/GetMembers',
                 method: "GET",
@@ -117,7 +114,7 @@
             });
         },
 
-        GetMembersExtended: function (sessionId, nodeId) {
+        GetMembersExtended: function(sessionId, nodeId) {
             return $http({
                 url: 'api/KnowledgeSessionApi/GetMembersExtended',
                 method: "GET",
@@ -125,7 +122,7 @@
             });
         },
 
-        getSuggestions: function (sessionId, nodeId) {
+        getSuggestions: function(sessionId, nodeId) {
             return $http({
                 url: 'api/KnowledgeSessionApi/GetSuggestions',
                 method: "GET",
@@ -134,18 +131,18 @@
         },
 
 
-        voteNodeStructureSuggestion: function (data) {
+        voteNodeStructureSuggestion: function(data) {
             return $http({ method: 'POST', url: 'api/KnowledgeSessionApi/VoteNodeStructureSuggestion', data: data });
         },
 
-        checkStructureSuggestionVoteDone: function (sessionId, nodeId, voteType) {
+        checkStructureSuggestionVoteDone: function(sessionId, nodeId, voteType) {
             return $http({
                 url: 'api/KnowledgeSessionApi/CheckStructureSuggestionVoteDone',
                 method: "GET",
                 params: { sessionId: sessionId, nodeId: nodeId, voteType: voteType }
             });
         },
-        checkUserStructureSuggestionVote: function (userId, nodeId) {
+        checkUserStructureSuggestionVote: function(userId, nodeId) {
             return $http({
                 url: 'api/KnowledgeSessionApi/CheckUserStructureSuggestionVote',
                 method: "GET",
@@ -153,7 +150,7 @@
             });
         },
 
-        getSession: function (sessionId) {
+        getSession: function(sessionId) {
             return $http({
                 url: 'api/KnowledgeSessionApi/GetSession',
                 method: "GET",
@@ -161,7 +158,7 @@
             });
         },
 
-        getUserSessions: function (userId) {
+        getUserSessions: function(userId) {
             return $http({
                 url: 'api/KnowledgeSessionApi/GetUserSessions',
                 method: "GET",
@@ -169,7 +166,7 @@
             });
         },
 
-        getSessionTree: function (sessionId) {
+        getSessionTree: function(sessionId) {
             return $http({
                 url: 'api/KnowledgeSessionApi/GetTree',
                 method: "GET",
@@ -177,7 +174,7 @@
             });
         },
 
-        getNode: function (nodeId) {
+        getNode: function(nodeId) {
             return $http({
                 url: 'api/KnowledgeSessionApi/GetNode',
                 method: "GET",
@@ -185,7 +182,7 @@
             });
         },
 
-        getRoot: function (sessionId) {
+        getRoot: function(sessionId) {
             return $http({
                 url: 'api/KnowledgeSessionApi/GetSessionRoot',
                 method: "GET",
@@ -193,7 +190,7 @@
             });
         },
 
-        saveSuggestedNodes: function (nodes, sessionId, parentId) {
+        saveSuggestedNodes: function(nodes, sessionId, parentId) {
             var dataToTransfer = {
                 Nodes: nodes,
                 SessionId: sessionId,
@@ -202,7 +199,7 @@
             return $http({ method: 'POST', url: 'api/KnowledgeSessionApi/SaveSuggestedNodes', data: dataToTransfer });
         },
 
-        checkUserSuggestion: function (sessionId, parentId) {
+        checkUserSuggestion: function(sessionId, parentId) {
             return $http({
                 url: 'KnowledgeSession/CheckUserSuggestion',
                 method: "GET",
@@ -212,15 +209,9 @@
             //return $http({ method: 'POST', url: 'SessionVote/SuggestionVote', data: dataToTransfer });
         },
 
-        getHitory: function (sessionId, nodeId) {
-            return $http({
-                url: 'NodeHistory/GetHistory',
-                method: "GET",
-                params: { sessionId: sessionId, nodeId: nodeId }
-            });
-        },
+  
 
-        doClusteing: function (nodeId) {
+        doClusteing: function(nodeId) {
             return $http({
                 method: 'GET',
                 url: 'api/TextMiningApi/DoClustering',
@@ -228,7 +219,7 @@
             });
         },
 
-        getNodeClusters: function (nodeId) {
+        getNodeClusters: function(nodeId) {
             return $http({
                 method: 'GET',
                 url: 'api/TextMiningApi/GetNodeClusters',
@@ -236,7 +227,7 @@
             });
         },
 
-        getMergeData: function (nodeId, clusterId) {
+        getMergeData: function(nodeId, clusterId) {
             return $http({
                 method: 'GET',
                 url: 'api/TextMiningApi/GetMergeData',
@@ -245,21 +236,21 @@
         },
 
 
-        getTextMergeSuggestions: function (nodeId, clusterId, userId) {
+        getTextMergeSuggestions: function(nodeId, clusterId, userId) {
             return $http({
                 method: 'GET',
                 url: 'api/KnowledgeSessionApi/GetTextMergeSuggestions',
                 params: { nodeId: nodeId, clusterId: clusterId, userId: userId }
             });
         },
-        makeTextMergeSuggestion: function (data) {
+        makeTextMergeSuggestion: function(data) {
             return $http({
                 method: 'POST',
                 url: 'api/KnowledgeSessionApi/MakeTextMergeSuggestion',
                 data: data
             });
         },
-        checkUserTextMergeSuggestion: function (clusterId, userId, firstResource, secondResource) {
+        checkUserTextMergeSuggestion: function(clusterId, userId, firstResource, secondResource) {
             return $http({
                 method: 'GET',
                 url: 'api/KnowledgeSessionApi/CheckUserTextMergeSuggestion',
@@ -267,7 +258,7 @@
             });
         },
 
-        editTextMergeSuggestion: function (data) {
+        editTextMergeSuggestion: function(data) {
             return $http({
                 method: 'POST',
                 url: 'api/KnowledgeSessionApi/EditTextMergeSuggestion',
@@ -275,7 +266,7 @@
             });
         },
 
-        voteTextMergeSuggestion: function (data) {
+        voteTextMergeSuggestion: function(data) {
             return $http({
                 method: 'POST',
                 url: 'api/KnowledgeSessionApi/VoteTextMergeSuggestion',
@@ -283,15 +274,28 @@
             });
         },
 
-        recogniseText: function (imagePath) {
+        recogniseText: function(imagePath) {
             return $http({
                 method: 'GET',
                 url: 'api/ContentApi/Recognisetext',
                 params: { imagePath: imagePath }
             });
+        },
+
+        getNodeComments: function(nodeId) {
+            return $http({
+                method: 'GET',
+                url: 'api/KnowledgeSessionApi/GetNodeComments',
+                params: { nodeId: nodeId }
+            });
+        },
+
+        getHistory: function (nodeId) {
+            return $http({
+                url: 'api/KnowledgeSessionApi/GetNodeHistory',
+                method: "GET",
+                params: { nodeId: nodeId }
+            });
         }
-
-
     };
-
 });

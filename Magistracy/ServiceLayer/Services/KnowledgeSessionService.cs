@@ -55,7 +55,7 @@ namespace ServiceLayer.Services
             if (session == null)
                 throw new Exception("session not found");
             var sessionViewModel = Mapper.Map<KnowledgeSession, KnowledgeSessionViewModel>(session);
-            sessionViewModel.Users = Mapper.Map<ICollection<ApplicationUser>, List<UserViewModel>>(session.Users);
+            sessionViewModel.Users = Mapper.Map<ICollection<ApplicationUser>, List<SessionUserViewModel>>(session.Users);
             sessionViewModel.SessionNodes = Mapper.Map<ICollection<SessionNode>, List<NodeViewModel>>(session.SessionNodes);
             return sessionViewModel;
         }

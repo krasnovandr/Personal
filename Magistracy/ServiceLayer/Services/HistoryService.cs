@@ -78,7 +78,7 @@
 //                     ByUser = Mapper.Map<ApplicationUser, UserViewModel>(record.ByUser),
 //                     Date = record.Date,
 //                     Value = record.Value,
-//                     Node = Mapper.Map<SessionNodes,NodeViewModel>(node)
+//                     Node = Mapper.Map<SessionNodes, NodeViewModel>(node)
 //                 };
 
 //                if (record.SuggestionId != null)
@@ -92,7 +92,7 @@
 
 //                    historyModel.Suggestions = new List<SuggestionViewModel>();
 //                    historyModel.Suggestions.AddRange(
-//                        Mapper.Map<List<NodeStructureSuggestion>, List<SuggestionViewModel>>(suggestions.OrderByDescending(m=>m.SuggestionDate).ToList()));
+//                        Mapper.Map<List<NodeStructureSuggestion>, List<SuggestionViewModel>>(suggestions.OrderByDescending(m => m.SuggestionDate).ToList()));
 
 
 //                }

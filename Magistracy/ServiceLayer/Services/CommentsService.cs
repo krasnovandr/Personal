@@ -38,7 +38,7 @@ namespace ServiceLayer.Services
 
             var commentsViewModel = Mapper.Map<ICollection<Comment>, List<CommentViewModel>>(comments);
 
-            return commentsViewModel;
+            return commentsViewModel.OrderBy(m=>m.Date).ToList();
         }
     }
 }

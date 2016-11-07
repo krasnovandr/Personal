@@ -4,15 +4,19 @@
         $scope.sessionId = $routeParams.sessionId;
         $scope.addImageMode = false;
         
+
+
+
         $scope.openAudioAdd = function (size) {
             musicService.getMySongs().success(function (songs) {
                 $scope.songs = songs;
             });
 
+            $scope.hideAddButton = true;
             var modalInstance = $uibModal.open({
                 templateUrl: 'Music/ViewSongsModal',
                 size: size,
-                scope: $scope
+                scope: $scope,
             });
 
             $scope.ok = function () {

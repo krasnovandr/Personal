@@ -4,9 +4,6 @@
             $location.path('/KnowledgeSession/RoundWinnerVote/' + sessionId).search({ level: level, parentId: parentId });
         },
 
-        viewNodeHistory: function (sessionId, nodeId) {
-            $location.path('/NodeHistory').search({ sessionId: sessionId, nodeId: nodeId });
-        },
 
         viewNodeStructureSuggestion: function (nodeId, sessionId) {
             $location.path('/KnowledgeSession/NodeStructureSuggestion/' + nodeId).search({ sessionId: sessionId });
@@ -45,5 +42,10 @@
         viewRecogniseAudio: function () {
             $location.path('/Recognition');
         },
+
+        viewNodeHistory: function (nodeId) {
+            $location.path('KnowledgeSession/NodeHistory/' + nodeId);
+        },
+
     };
 });

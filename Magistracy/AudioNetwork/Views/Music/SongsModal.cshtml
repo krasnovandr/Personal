@@ -5,19 +5,29 @@
 <div class="modal-body pre-scrollable container">
 
   <div ng-repeat="song in  songs| filter:musicSearch">
-    <div class="row">
+
+    <div class="row top15">
       <div class="col-md-1">
         <img class="pull-left" ng-src="{{song.SongAlbumCoverPath}}" width="50" height="50" />
       </div>
       <div class="col-md-4">
         <span>{{song.Title}}</span>-
         <span>{{song.Artist}}</span>
-        <input type="text" class="form-control input-lg" ng-model="song.Reference" ngreadonly="true" style="max-width: 790px">
-        <button class="btn-default pull-right" ng-click="addSong(song,$index)">
+        @*<input type="text" class="form-control input-lg" ng-model="song.Reference" ng-show="false" id="copy" style="max-width: 790px">*@
+        <button ng-hide="hideAddButton" class="btn-default pull-right" ng-click="addSong(song,$index)">
           <span class="glyphicon glyphicon-plus"></span>
         </button>
+
       </div>
       <div class="col-md-1">
+        <button class="btn btn-sm btn-warning"
+                ngclipboard
+                data-clipboard-text="{{song.Reference}}"
+                tooltip-placement="left"
+                uib-tooltip="Скопировать сслыку в буфер обмена"
+                ngclipboard-success="cancel()">
+          <span class=" glyphicon glyphicon-copy"></span>
+        </button>
       </div>
     </div>
   </div>

@@ -21,7 +21,20 @@
         $scope.comments = [];
         $scope.nodeName = "";
         $scope.newCommentAvailable = true;
+        $scope.currentNodeChat = null;
+        var chat = $.connection.knowledgeSessionHub;
+        //$.connection.hub.start().done(function() {
 
+
+        //});
+
+        chat.client.newMessage = function (nodeId) {
+            knowledgeSessionService.getNodeComments(nodeId).success(function (result) {
+                $scope.comments = result;
+            });
+        };
+
+        $.connection.hub.start();
         $scope.updateWinner = function () {
             knowledgeSessionService.getNodeStructureSuggestionWinner($scope.nodeId).success(function (winner) {
                 $scope.winner = winner;
@@ -52,16 +65,7 @@
             $scope.cancel = function () {
                 modalInstance.dismiss('cancel');
             };
-
-
-            //public int Id { get; set; }
-            //public virtual SuggestionSessionUserViewModel SuggestedBy { get; set; }
-            //public virtual SuggestionNodeViewModel Node { get; set; }
-            //public DateTime Date { get; set; }
-            //public string Value { get; set; }
-
-            //public ModificationType Type { get; set; }
-            //public ModificationStatus Status { get; set; }
+        
 
             $scope.makeNodeModification = function (suggestion, comment) {
                 var suggestionModel = {
@@ -123,7 +127,10 @@
             $scope.showComments = true;
             $scope.nodeName = node.Name;
             $scope.commentsToNode = node;
-            $scope.comments = node.Comments;
+            knowledgeSessionService.getNodeComments(node.Id).success(function (result) {
+                $scope.comments = result;
+            });
+
             var panelList = $('#draggablePanelList');
             panelList.draggable({
                 containment: "window"
@@ -154,11 +161,14 @@
                   $scope.comments = result;
                   //$scope.newComment = '';
                   $scope.newComment.Value = '';
+                  chat.server.sendMessage($scope.commentsToNode.Id);
+
+
               });
         };
 
         $scope.viewHistory = function (node) {
-            urlMakerService.viewNodeHistory($scope.sessionId, node.Id);
+            urlMakerService.viewNodeHistory(node.Id);
         };
         $scope.voteForFinish = function (voteType) {
             var suggestionData = {

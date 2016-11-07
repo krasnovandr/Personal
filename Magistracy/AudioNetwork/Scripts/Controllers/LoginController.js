@@ -75,7 +75,7 @@
     $scope.externalAuthentification = function (provider) {
         var data = {
             provider: provider.AuthenticationType,
-            returnUrl: 'http://localhost:38114/signin-vkontakte'
+            returnUrl: 'http://localhost:44300/signin-vkontakte'
         };
         authorizationService.externalAuthentification(data).success(function (providers) {
         });

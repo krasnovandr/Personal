@@ -1,4 +1,4 @@
-﻿var angularApp = angular.module('AudioNetworkApp', ['ngRoute', 'angularFileUpload', 'dndLists', 'ui.bootstrap', 'infScroll', 'sf.virtualScroll', 'ngSanitize', 'n3-line-chart', 'textAngular', 'blockUI', 'angular-rich-text-diff']);
+﻿var angularApp = angular.module('AudioNetworkApp', ['ngRoute', 'angularFileUpload', 'dndLists', 'ui.bootstrap', 'infScroll', 'sf.virtualScroll', 'ngSanitize', 'n3-line-chart', 'textAngular', 'blockUI', 'angular-rich-text-diff', 'ngclipboard']);
 
 
 angular.module('AudioNetworkApp').config(function (blockUIConfig) {
@@ -68,8 +68,8 @@ var config = function ($routeProvider) {
           templateUrl: 'KnowledgeSession/TextMiningResults',
       }).when('/KnowledgeSession/MergeTool/:id', {
           templateUrl: 'KnowledgeSession/MergeTool',
-      }).when('/NodeHistory', {
-          templateUrl: 'NodeHistory/Index',
+      }).when('/KnowledgeSession/NodeHistory/:id', {
+          templateUrl: 'KnowledgeSession/NodeHistory',
       }).
        otherwise({
            redirectTo: '/Home'

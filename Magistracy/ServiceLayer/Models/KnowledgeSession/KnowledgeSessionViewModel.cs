@@ -11,7 +11,7 @@ namespace ServiceLayer.Models.KnowledgeSession
         public string Theme { get; set; }
         public string CreatorId { get; set; }
 
-        public virtual List<UserViewModel> Users { get; set; }
+        public virtual List<SessionUserViewModel> Users { get; set; }
         public virtual List<NodeViewModel> SessionNodes { get; set; }
     }
 }

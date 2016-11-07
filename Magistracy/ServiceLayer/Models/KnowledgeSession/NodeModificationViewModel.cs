@@ -12,6 +12,7 @@ namespace ServiceLayer.Models.KnowledgeSession
     {
         public int Id { get; set; }
         public string SuggestedBy { get; set; }
+        //public SessionUserCompactModel  { get; set; }
         public int? NodeId { get; set; }
         public DateTime Date { get; set; }
         public string Value { get; set; }
@@ -27,16 +28,31 @@ namespace ServiceLayer.Models.KnowledgeSession
 
         public IEnumerable<NodeModificationVoteViewModel> VotesUp
         {
-            get { return Votes.Where(m => m.Type == VoteTypes.Approve); }
+            get
+            {
+                if (Votes == null)
+                {
+                    return null;
+                }
+                return Votes.Where(m => m.Type == VoteTypes.Approve);
+            }
         }
 
         public IEnumerable<NodeModificationVoteViewModel> VotesDown
         {
             get
             {
-                return Votes.Where(m => m.Type == VoteTypes.Reject); 
+                if (Votes == null)
+                {
+                    return null;
+                }
+                return Votes.Where(m => m.Type == VoteTypes.Reject);
             }
         }
+
+        public string FirstName { get; set; }
+        public object LastName { get; set; }
+        public string AvatarFilePath { get; set; }
     }
 
     //public class NodeModification

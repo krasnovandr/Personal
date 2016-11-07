@@ -21,6 +21,9 @@ namespace ServiceLayer.Models.KnowledgeSession
         //public List<ResourceClusterViewModel> Clusters { get; set; }
         //public List<NodeModification> NodeModifications { get; set; }
         //public List<Comment> Comments { get; set; }
+
+        public virtual List<NodeModificationViewModel> NodeModifications { get; set; }
+        public virtual List<CommentViewModel> Comments { get; set; }
     }
 
     public class SuggestionNodeViewModel

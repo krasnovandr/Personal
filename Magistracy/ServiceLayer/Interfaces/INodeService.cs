@@ -11,5 +11,6 @@ namespace ServiceLayer.Interfaces
         //List<NodeViewModel> GetSessionNodeByLevel(int sessionId, int level);
         NodeViewModel GetNode(int nodeId);
         NodeStates GetNodeState(string userId, int nodeId);
+        NodeViewModel GetNodeHistory(int nodeId);
     }
 }

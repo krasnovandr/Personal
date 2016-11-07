@@ -130,7 +130,7 @@ namespace ServiceLayer.Services
                     break;
                 case NodeStates.StructureSuggestionWinner:
                     node.color = "#FFFFFF";
-                    node.backColor = "#0000FF";
+                    node.backColor = "red";
                     break;
                 case NodeStates.WinAndNotLeaf:
                     node.color = "#FFFFFF";
@@ -139,7 +139,7 @@ namespace ServiceLayer.Services
                 case NodeStates.Leaf:
                 case NodeStates.LeafClusteringDone:
                     node.color = "#FFFFFF";
-                    node.backColor = "red";
+                    node.backColor = "#0000FF";
                     break;
             }
         }

@@ -49,7 +49,9 @@ namespace ServiceLayer.Helpers
 
             Mapper.CreateMap<NodeModification, NodeModificationViewModel>()
                 .ForMember(dest => dest.SuggestedBy, opt => opt.MapFrom(src => src.SuggestedBy.Id))
-                .ForMember(dest => dest.SuggestedBy, opt => opt.MapFrom(src => src.SuggestedBy.Id));
+                .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.SuggestedBy.FirstName))
+                .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.SuggestedBy.LastName))
+                .ForMember(dest => dest.AvatarFilePath, opt => opt.MapFrom(src => src.SuggestedBy.AvatarFilePath));
 
             Mapper.CreateMap<NodeModificationVoteViewModel, NodeModificationVote>()
              .ForMember(dest => dest.VoteBy, opt => opt.Ignore())

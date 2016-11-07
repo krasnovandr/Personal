@@ -28,28 +28,28 @@
         $scope.style = { "color": "green" };
         $scope.legendNodes = [
             {
-                status: "StructureSuggestion",
+                status: "Предложение не внесено",
                 color: { "background-color": "#FFFFFF", "color": "#000000" }
             },
             {
-                status: "StructureSuggestionWait",
+                status: "Ожидание предложений",
                 color: { "background-color": "#FFD700", "color" :"#FFFFFF"}
             },
             {
-                status: "StructureSuggestionVote",
+                status: "Голосование",
                 color: { "background-color": "#006400", "color": "#FFFFFF" }
             },
             {
-                status: "StructureSuggestionWinner",
-                color: { "background-color": "#0000FF", "color": "#FFFFFF" }
+                status: "Обсуждение победителя",
+                color: { "background-color": "red", "color": "#FFFFFF" }
             },
             {
-                status: "WinAndNotLeaf",
+                status: "Промежуточный",
                 color: { "background-color": "#808080", "color": "#FFFFFF" }
             },
             {
-                status: "Leaf",
-                color: { "background-color": "red", "color": "#FFFFFF" }
+                status: "Заполнение",
+                color: { "background-color":  "#0000FF" , "color": "#FFFFFF" }
             }
         ];
 

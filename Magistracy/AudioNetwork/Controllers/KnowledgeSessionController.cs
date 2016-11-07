@@ -1,18 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
-using DataLayer.Models;
-using Microsoft.AspNet.Identity;
-using ServiceLayer.Interfaces;
-using ServiceLayer.Models;
-using ServiceLayer.Models.KnowledgeSession;
+﻿using System.Web.Mvc;
 
 namespace AudioNetwork.Web.Controllers
 {
     public class KnowledgeSessionController : Controller
     {
-        // GET: KnowledgeSession
-
-
         public ActionResult Index()
         {
             return View();
@@ -49,11 +40,6 @@ namespace AudioNetwork.Web.Controllers
             return View();
         }
 
-        public ActionResult NodeHitsory()
-        {
-            return View();
-        }
-
         public ActionResult VoteUsersModal()
         {
             return View();
@@ -70,6 +56,11 @@ namespace AudioNetwork.Web.Controllers
         }
 
         public ActionResult MergeTool()
+        {
+            return View();
+        }
+
+        public ActionResult NodeHistory()
         {
             return View();
         }

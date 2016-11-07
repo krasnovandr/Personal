@@ -50,15 +50,15 @@ namespace AudioNetwork.Web.API
         {
             _textMergeSuggestionService.MakeSuggestion(suggestionAddViewModel);
         }
-     
+
         [HttpGet]
         public int? CheckUserTextMergeSuggestion(int clusterId, string userId, int firstResource, int secondResource)
         {
-            return _textMergeSuggestionService.CheckUserSuggestion(clusterId, userId, firstResource,secondResource);
+            return _textMergeSuggestionService.CheckUserSuggestion(clusterId, userId, firstResource, secondResource);
         }
 
         [HttpGet]
-        public List<TextMergeSuggestionViewModel> GetTextMergeSuggestions(int nodeId, int clusterId,string userId)
+        public List<TextMergeSuggestionViewModel> GetTextMergeSuggestions(int nodeId, int clusterId, string userId)
         {
             return _textMergeSuggestionService.GetSuggestions(nodeId, clusterId, userId);
         }
@@ -214,6 +214,11 @@ namespace AudioNetwork.Web.API
             return result;
         }
 
+        [HttpGet]
+        public NodeViewModel GetNodeHistory(int nodeId)
+        {
+            return _nodeService.GetNodeHistory(nodeId);
+        }
         //public List<UserViewModel> GetOrderedMembers(int sessionId, int parentId)
         //{
         //    var result = _knowledgeSessionMemberService.GetOrderedMembers(new NodeIdentifyModel
