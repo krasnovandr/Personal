@@ -89,14 +89,19 @@ namespace AudioNetwork.Web.Controllers
                     if (songData != null)
                     {
                         var artist = songData.artists.FirstOrDefault();
-                        string artistName = null;
+                        string artistName = string.Empty;
+                        string albumName = string.Empty;
                         if (artist != null)
                         {
                             artistName = artist.Name;
                         }
-                        var pictureInfo = SongPictureGetter.CheckContent(artistName, songData.album.Name, songData.title);
+                        if (songData.album != null)
+                        {
+                            albumName = songData.album.Name;
+                        }
+                        var pictureInfo = SongPictureGetter.CheckContent(artistName,albumName , songData.title);
                         model.Artist = artistName;
-                        model.Album = songData.album.Name;
+                        model.Album = albumName;
                         if (pictureInfo != null)
                         {
                             model.AlbumCoverPath = pictureInfo.PicturePath;

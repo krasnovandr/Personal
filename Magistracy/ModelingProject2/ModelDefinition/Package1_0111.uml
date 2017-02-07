@@ -1,0 +1,3528 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
+  dslVersion="1.0.0.0"
+  Id="61d3f927-4938-488f-b71d-8c926a87fcf8"
+  name="Models"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="5ce4e6e3-775d-453f-93c0-6546c6243845"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DMusicRecognition.Models"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="fdf94f19-27e1-4dcd-b850-39e04d601ace"
+        name="Metadata"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="d339194a-9aa1-45cc-b9a3-4dfc2ef8ad45"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DMetadata"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="2731b237-24b5-4538-937d-7918f2a4dbaf"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="aecf2c90-da5f-4fbb-acee-beab6f99c2b3">
+                <propertyInstance
+                  Id="a6f3d300-e18d-4a41-8e9b-7d7a022cfa1e"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e77a4b67-bcfb-41a6-a73c-a7a35a1622ca">
+                <propertyInstance
+                  Id="e848760e-ad75-4ffa-a38c-0e84edb0ea8d"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="86c63ef0-24ec-4607-8ce3-221c0d6b69b4">
+                <propertyInstance
+                  Id="5c4e90be-d146-436e-a1c2-a189053544c7"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="60167993-114d-4cc4-9c3e-29604fccc982">
+                <propertyInstance
+                  Id="08f34d96-9c4c-4a3d-ace1-83d1c5612831"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="45228270-7832-401e-a58b-dc744d2d15d3">
+                <propertyInstance
+                  Id="2f6bdc70-d435-4ef8-a3f9-a89c356a1c2f"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <targetEnds>
+          <association
+            Id="cd2f6631-a997-48b1-96ff-e1bfbc95db5c"
+            isDerived="false"
+            sourceEndRoleName="Metadata"
+            targetEndRoleName="music"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="3e110db8-e7b3-4612-a420-e5331983fc09"
+              LastKnownName="List&lt;Music‎&gt;"
+              LastKnownLocation="Package14_1752.uml" />
+            <description>Property music references type List&lt;Music‎&gt;.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b62ce174-f96c-4496-a734-fc94744111ab"
+                  name="Metadata"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="30d9bf5b-6a0b-4267-95d0-336a9cce9784"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="91df51d8-d92a-484d-a507-9511c30a31e3"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8d7df91a-b1c8-46d1-9eb7-be83d131bceb"
+                  name="music"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="e8c0b91b-e478-41b2-8312-e2d8f170bd8f"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="7cdac9a1-f694-4da8-b0d0-07e5438f1868"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="6b1a759f-e810-43a8-b44c-8ef5a382e183"
+            name="music"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="248e3346-5db5-44c6-865b-4f7dfa2cb174"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DMetadata Member%3Dmusic"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="69bf2e10-a65c-4150-957a-57b598822314"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1c9e7be0-1673-4670-a28c-5557040ec9f4">
+                    <propertyInstance
+                      Id="73462e4e-31c9-49b3-971b-c319d35dbfb6"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1a2464c1-0dd9-4854-ab30-385ee2d1e084">
+                    <propertyInstance
+                      Id="f6b429f1-3018-4a23-aae7-d0cc10408b72"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4aefe69d-8633-4e92-bc85-d0519d73c750">
+                    <propertyInstance
+                      Id="75765ae1-c4ca-48d8-b871-7a47c61e6a0a"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e1d04d0b-0be6-4de4-ab82-1e8152c2e0d2">
+                    <propertyInstance
+                      Id="03c358bc-f764-46b6-bcf3-1465f99776c8"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c8d7b3e8-ec06-4c3f-bfe1-08adf361dd15">
+                    <propertyInstance
+                      Id="b1ea119e-282d-45e1-844b-66227db0034b"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="86f39950-7a08-4cd4-9f72-92dc8ade129b">
+                    <propertyInstance
+                      Id="fa072248-1e98-4c08-bdbc-e5efb51c083e"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="81ad9dad-378b-48db-9d35-ace87c03ad50">
+                    <propertyInstance
+                      Id="1785e840-9a79-4a96-bbde-f050bebfb0c5"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="3e110db8-e7b3-4612-a420-e5331983fc09"
+                LastKnownName="List&lt;Music‎&gt;"
+                LastKnownLocation="Package14_1752.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="f51b3909-b7f1-4740-82c6-27fa6b6e94f3"
+            name="timestamp_utc"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="a450a9e5-273b-435f-98b9-c53567b17071"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DMetadata Member%3Dtimestamp_utc"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="3106d2ec-a5a5-4d77-aa74-fb213d3e9626"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2f2216ef-379a-4daf-b080-998ef6713443">
+                    <propertyInstance
+                      Id="d19d5b02-9c58-4c9a-b502-634374200069"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bc04e118-972c-43ae-aecf-71670ee0cd77">
+                    <propertyInstance
+                      Id="187676ed-ecb3-4ef8-832b-39fca500fcfd"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c72550b0-40cb-49d4-8ce9-c1b1096877fa">
+                    <propertyInstance
+                      Id="7bb9f514-2b75-4ea9-b21e-ea244b2ed490"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9c78c4db-d108-4232-ba90-645affb29368">
+                    <propertyInstance
+                      Id="50254bdd-cf8e-4ab1-a070-17e801dfef19"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1ae2d192-6f43-4924-b823-d5903c7bb4f6">
+                    <propertyInstance
+                      Id="1f9ad8e2-c973-41a1-9baf-98a727927f77"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f6fb202c-f4f7-4b06-a7bc-f17247e6c289">
+                    <propertyInstance
+                      Id="84ff5352-44dc-43d8-99ba-859c388c1799"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d9b09270-08a1-4a0f-a999-430bb7850e4b">
+                    <propertyInstance
+                      Id="8dc12a3f-b97f-4703-bc3e-d4132e5de72d"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ModelingProject2.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="edb73fe8-6dc8-428a-929f-f035ae8cff44"
+            name="Metadata"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="a605425e-7686-4ede-b97f-2730cbf80085"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DMetadata Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="b04f8519-1078-4d52-a4bb-e776c71d9b74"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2cc9c0a0-69d4-4185-be14-4735bfd918fc">
+                    <propertyInstance
+                      Id="6488f9e2-5b56-4c16-97f3-fa700d1d6ce7"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5ee0dbf7-1963-4c17-ad96-d1c6ad7aa6bc">
+                    <propertyInstance
+                      Id="8c056279-c4ef-4f03-99ba-321027542238"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6a5f44b3-c466-463a-a540-71dbab9d95ed">
+                    <propertyInstance
+                      Id="aa61850d-a80c-415b-9516-636e4ec46ca7"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="666b4b80-216d-46ab-8fd6-104af88530db">
+                    <propertyInstance
+                      Id="5483e54b-b2e3-45ac-84f7-876abb94a546"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="98b35262-6dff-4d3c-af0a-8988a11293b0">
+                    <propertyInstance
+                      Id="19f6c759-6623-40b2-a7d3-0d0aa386489a"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="43dd987b-c562-423d-8df5-11c90184ae64">
+                    <propertyInstance
+                      Id="f490f6da-cec1-429f-919b-b1ea7187c57f"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="e6f4e62b-8d5b-4f73-abc2-b53dba6b83f0"
+        name="Music"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="d1bc7379-0296-44e8-90d3-c6f58b79dc9d"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DMusic"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="be749c64-78a1-4028-af2e-464084f92e33"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="0ce65400-3674-4906-8362-c1dea263f8a8">
+                <propertyInstance
+                  Id="ee4c3615-8bcd-4d7a-ac81-07753357be6f"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b1460b44-480c-47ce-8d6a-a53a32e61bd4">
+                <propertyInstance
+                  Id="604a1629-2225-4bed-a023-9745c0318d30"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="43c78eed-a58c-4426-b8c2-c02ab7b51c08">
+                <propertyInstance
+                  Id="3e827f9c-f724-433b-9e77-1914924f219f"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="42161791-1ce0-48bd-b5a5-f1667405ae91">
+                <propertyInstance
+                  Id="a62aac87-29ac-41ef-8754-26a4b35853ec"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b780820e-7cf2-4bfe-b276-a09698d063a2">
+                <propertyInstance
+                  Id="8d1fc71b-e1cf-479a-9184-645f071f0a11"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <targetEnds>
+          <association
+            Id="3b3c5468-e3c6-4a94-8120-883b345591da"
+            isDerived="false"
+            sourceEndRoleName="Music"
+            targetEndRoleName="album"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="057584be-a904-4073-9680-0e985ac0db9c"
+              LastKnownName="Album"
+              LastKnownLocation="Package1_0111.uml" />
+            <description>Property album references type Album.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8f5f1522-dd7d-49e5-9024-1c6f8ee54fe0"
+                  name="Music"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="056dce08-0f2a-4004-9b67-13a6e350e422"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="681493bc-a176-4556-a5bc-1b5862282b2a"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c7a66809-0a49-4b7e-907f-f59bb179ee45"
+                  name="album"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="89d77a5e-0671-4356-83bf-3651e816bbe4"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="86221a83-e046-42d7-837d-33332a09e3fb"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="5a20ad26-f25b-4f9f-a238-fa748b310d44"
+            isDerived="false"
+            sourceEndRoleName="Music"
+            targetEndRoleName="artists"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="561a3c41-bb44-4190-898f-97058067da1a"
+              LastKnownName="List&lt;Artist‎&gt;"
+              LastKnownLocation="Package14_1752.uml" />
+            <description>Property artists references type List&lt;Artist‎&gt;.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="80bd091f-c03d-4dbd-9c20-dcfa64dc69ae"
+                  name="Music"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="c1e53053-77b6-4f9a-b702-1b84ad94c042"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="b78f2e89-a4cd-4891-8cd4-3f4c3d8a3a49"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ded9d365-f924-4e54-83cb-09cabba89c20"
+                  name="artists"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="eedf5477-377b-4a65-9a4d-1e7b569e1711"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="82bc2576-c3f8-4a43-89b4-d638ae6c1864"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="04f13495-8d73-455a-946c-93c756bc92b4"
+            isDerived="false"
+            sourceEndRoleName="Music"
+            targetEndRoleName="external_ids"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="9756fbf6-e576-4979-b330-cd93d1e1077f"
+              LastKnownName="ExternalIds"
+              LastKnownLocation="Package1_0111.uml" />
+            <description>Property external_ids references type ExternalIds.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="60228378-03ca-42da-9da6-a5efdc7e3c45"
+                  name="Music"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="9d29a71f-e985-4a42-9178-25f44f2d0fbe"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="45db3f75-d464-4a90-905c-893b6ab23891"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2c87c607-a9e3-4593-8043-bd6f36aaf2f3"
+                  name="external_ids"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="34305c9c-90ff-4923-b624-f1f807320677"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="a15416d5-77ff-47be-ab88-5d062cea9e28"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="8a6fcabe-6276-4933-b4e2-e545eed524af"
+            isDerived="false"
+            sourceEndRoleName="Music"
+            targetEndRoleName="external_metadata"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="7709ce50-9f7e-4afd-9f55-475847e286e3"
+              LastKnownName="ExternalMetadata"
+              LastKnownLocation="Package1_0111.uml" />
+            <description>Property external_metadata references type ExternalMetadata.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0a6b6c19-4ace-4eb7-a198-eff936ec0b34"
+                  name="Music"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="0f0a5995-e359-458e-b7a4-4493270016f8"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="fde48bd0-c7e3-47f4-bdfb-f24f7d8e79fd"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6f922878-940e-43d0-9d15-c0a5f2da403d"
+                  name="external_metadata"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="354a7796-764f-4a17-8094-d407f6247255"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="d7ef5914-e7d0-4b9a-961c-3dd65aa59806"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="aa0f95e5-0380-4d17-9855-6d7adb797aa3"
+            isDerived="false"
+            sourceEndRoleName="Music"
+            targetEndRoleName="genres"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="97d3d16d-9f15-40af-85b1-0390f40e5ddb"
+              LastKnownName="List&lt;Genre‎&gt;"
+              LastKnownLocation="Package14_1752.uml" />
+            <description>Property genres references type List&lt;Genre‎&gt;.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6f3c19a3-c1f2-4bec-b694-65c55c168821"
+                  name="Music"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="39ddb878-4275-470c-8901-2684d98b4685"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="30ea47da-8636-4991-b6cb-1e4e5dad7398"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6cb56d1b-41f0-44d1-80dd-2cf7872376d8"
+                  name="genres"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="d9b5c68e-549e-4657-a674-7d19c94dac6d"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="0ce12e76-b78a-4af9-82b6-ea1fe26099f5"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="cfdc6d5c-3269-431d-9d51-a73ed34c5473"
+            name="acrid"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="ed13cd49-a71a-49c3-8a0e-a18afd5d0322"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DMusic Member%3Dacrid"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="e2f3635f-bfe0-4838-b2ec-04212918aa8a"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="57aa694d-7b64-45ab-9c80-5ddba65ada8e">
+                    <propertyInstance
+                      Id="bb1131b5-63d3-4469-b5ea-098d8206099a"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="06813892-1d87-4262-a3b6-5e4dc84be9d6">
+                    <propertyInstance
+                      Id="1a9539a6-1f45-40e1-8ef6-5b47d5092ecc"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1ca40701-fb75-4c8a-baab-6ee6de200088">
+                    <propertyInstance
+                      Id="291c5ce8-f992-4dbf-89a8-6e7a8bbf2c37"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dc82c0b7-eb52-40c6-8603-884989aa49c6">
+                    <propertyInstance
+                      Id="7c47359b-afc7-4269-8ab5-2d5f51e4abba"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2265e5ac-ae04-4061-9869-148487a7969b">
+                    <propertyInstance
+                      Id="084810bc-44f3-415d-9961-3349668e0f2b"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="92d9a134-3587-4633-97f5-52a1b8303f24">
+                    <propertyInstance
+                      Id="87018755-b509-4710-a517-e985877e97be"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="36eb0e1e-521c-43b9-905c-d1c15e397de1">
+                    <propertyInstance
+                      Id="089c1bcf-2a5c-4f21-b935-5a204804b5c5"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ModelingProject2.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="93da9657-c5ec-4cf2-af6e-11c55a84c9c4"
+            name="album"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="1306409a-4ffb-4a01-82e5-a2c16f075d28"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DMusic Member%3Dalbum"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="85e9cc4c-1c4d-44dc-98b3-23ebda875ce9"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="901416d2-db7a-4992-9f40-23beebbda2af">
+                    <propertyInstance
+                      Id="8ff72758-37bd-40dc-ab47-d55059d7d854"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a6a4a2f4-b803-440b-9cd3-d3afcd75751b">
+                    <propertyInstance
+                      Id="e80c3184-6d6d-44a5-b7c1-ff0a1a093170"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="00526fa2-cb50-41e0-bbd7-d18471f43eb4">
+                    <propertyInstance
+                      Id="183eaa14-29a3-4140-9909-38a74e1fe882"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9aa4c7da-fa7f-48b9-93d8-644630a549ac">
+                    <propertyInstance
+                      Id="9eb6f532-0cac-494c-bee7-7763eee7f6f7"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="23cc3d59-6e6f-4034-9891-a68a8db7dc72">
+                    <propertyInstance
+                      Id="aff0022a-c03a-4d70-a443-abdd71e1de1f"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7c9b31ba-ffcf-4ced-9088-fbb2584ce8ad">
+                    <propertyInstance
+                      Id="7c8f9354-d9c4-48ff-8772-1137b26ff786"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0af492fa-0033-4987-9c04-9fd236048bb0">
+                    <propertyInstance
+                      Id="44d7bfa4-6a9e-456c-aeb8-25f4502d37ba"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="057584be-a904-4073-9680-0e985ac0db9c"
+                LastKnownName="Album"
+                LastKnownLocation="Package1_0111.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="39ea5576-7de6-43e1-9375-d0b9bb4db685"
+            name="artists"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="0090e752-a592-4b8f-bb6f-c9097e5e5338"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DMusic Member%3Dartists"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="642035bd-8ada-46f8-ac46-080266cea0ed"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="56890ade-0e07-4ffc-b93f-ff02b5dd1b6f">
+                    <propertyInstance
+                      Id="2ba5bd0a-c0a1-4a13-82fb-bbb904e3d910"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="91c20ac0-506c-493c-a98e-72320ca5e117">
+                    <propertyInstance
+                      Id="dd9942cf-a3af-4477-884e-1b6460e81c3d"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4591c37e-6b01-40df-81d3-806c0a7e727f">
+                    <propertyInstance
+                      Id="7a00bae5-e1a1-4ede-a074-ca666d5cb124"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="08bd3340-f130-420b-a3c8-515ac58d77ef">
+                    <propertyInstance
+                      Id="1eb49cf8-9dfb-44b0-bcce-3f954fc9821a"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="82ff6a83-2d6c-478a-a809-b104ce491992">
+                    <propertyInstance
+                      Id="2d8f6923-92f2-4aa5-a550-6274cd8a2bba"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c5f71243-216a-4d17-8591-83b39785ab72">
+                    <propertyInstance
+                      Id="c463406d-81c2-4b2f-ac8b-848d0891fa0f"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c9e2288a-e09b-4c42-8309-4d636e6116cc">
+                    <propertyInstance
+                      Id="fb7768fb-5200-4cc5-8423-3a9acec0c491"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="561a3c41-bb44-4190-898f-97058067da1a"
+                LastKnownName="List&lt;Artist‎&gt;"
+                LastKnownLocation="Package14_1752.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="a6f38c92-f31f-4d8b-ba18-2efbc1bc7d1f"
+            name="duration_ms"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="0e1ed503-122f-4aae-b722-392215d15606"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DMusic Member%3Dduration_ms"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="cdf40260-ab20-46e8-9bb1-7e3eb9d9501a"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="71581ce8-77c7-42c4-a16a-b05c1d8a85ff">
+                    <propertyInstance
+                      Id="dd41c2bf-b57c-457e-8218-5a9df8448aaf"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bee91492-aa9c-4b5f-a340-b84c1187bdf6">
+                    <propertyInstance
+                      Id="9eb2c517-2789-4c21-9362-042fe9b97fd0"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f7f1ff22-b900-4441-a41f-4bb88917ad14">
+                    <propertyInstance
+                      Id="eb75bc16-f33f-4b21-867f-15b51f6b9cdc"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="23267c5c-47f5-49b5-b7b6-aa0f39c6a8e9">
+                    <propertyInstance
+                      Id="912a1d72-0978-469b-8579-669c287e1673"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9e795d54-2b63-4f55-8bd0-c91b6633f96d">
+                    <propertyInstance
+                      Id="78b8f0dd-18f0-4d06-8181-2b870d3ac742"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="340045f5-fab4-4354-96d9-bfcaf2779946">
+                    <propertyInstance
+                      Id="b35a1dbc-5e9b-4e5d-9362-4dd9ed9febf5"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e8e927d3-ea16-4cb8-9997-a0d8c1c97f8d">
+                    <propertyInstance
+                      Id="879fed31-e096-4a4a-b43a-ccae0201c430"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ModelingProject2.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="0e43e9c5-0e2b-47c5-911b-f876e977c786"
+            name="external_ids"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="52e694ae-7dbc-42ae-a1ac-8a1e47f49da9"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DMusic Member%3Dexternal_ids"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="f3b262c4-6093-46f2-81bd-e0da15327ba7"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="959debe6-c190-4bf2-a1fc-7a4565c9c920">
+                    <propertyInstance
+                      Id="d32f2f91-dc72-4910-86b7-e0e5e0203158"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ce244bea-fcf0-49e6-8dd8-979d5c99f52f">
+                    <propertyInstance
+                      Id="98e16c0f-1294-4801-8b3f-39a96d215dac"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7b8bb6fd-d4cb-4279-a017-e163c85d3985">
+                    <propertyInstance
+                      Id="ea019ae3-ad02-4eaa-910b-a2251c2d7162"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="75b5f5fe-2a82-499f-a35b-ded35f285dc4">
+                    <propertyInstance
+                      Id="f758bc1b-7802-4a96-8ae5-4869fe2de6e1"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8d92fbc5-2008-4573-93ca-60d0704e583d">
+                    <propertyInstance
+                      Id="31c5e3cb-9de0-4228-9a82-6e9adf54c545"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b85e8af6-ebeb-40da-8143-dad482b5e59f">
+                    <propertyInstance
+                      Id="e082050e-2fb1-4ea5-82ef-34b0c519bc29"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="593490e6-4d39-49b3-b7c1-b8ee01fb72e2">
+                    <propertyInstance
+                      Id="ec0fae8e-fed8-422f-9258-6d3f05ea3bb6"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="9756fbf6-e576-4979-b330-cd93d1e1077f"
+                LastKnownName="ExternalIds"
+                LastKnownLocation="Package1_0111.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="a2d5531b-a0a1-4430-987e-17fc3b0d2c02"
+            name="external_metadata"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="6a0940ab-6571-451f-ba32-87cbf781552b"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DMusic Member%3Dexternal_metadata"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="042c9ece-ae9d-4e4c-81f6-38b1308243d9"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="74455ee7-326d-4ec8-91d9-d30faec25dea">
+                    <propertyInstance
+                      Id="e6fe1c22-a9a5-461d-8aee-15a45a54e1db"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b8e0edef-0701-4036-b7e4-3cdbda7aff98">
+                    <propertyInstance
+                      Id="57b6c0de-5277-4f2a-a22f-950ade8f216d"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="62a5a0ca-8779-4488-b24e-3175e60754e4">
+                    <propertyInstance
+                      Id="9ab90745-a20d-47ae-b70b-8e94eb8ebdc9"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cea40b86-45da-49ed-9cc0-698bbb82ecd4">
+                    <propertyInstance
+                      Id="af857d77-feef-45b3-805e-1325e234e5f5"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="edf14fbd-567d-4a53-b4f9-f75f11ed2680">
+                    <propertyInstance
+                      Id="540e6806-5f9b-4d33-9281-26734a954303"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c8ca7deb-b54a-46bb-8ec6-01bf3beb47bb">
+                    <propertyInstance
+                      Id="cc667dc8-3019-4c16-a311-a192eba5c650"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1c7c1b27-ca89-4c0d-b07a-148773b7c253">
+                    <propertyInstance
+                      Id="a960b4f2-5de5-4fed-aca9-42b2a08162e7"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="7709ce50-9f7e-4afd-9f55-475847e286e3"
+                LastKnownName="ExternalMetadata"
+                LastKnownLocation="Package1_0111.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="f03c53fb-2200-4d81-8006-f8a93a6b7f74"
+            name="genres"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="42ad2753-a795-47d1-a5bf-b329323e711f"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DMusic Member%3Dgenres"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="b6104000-6590-485e-999c-2c6ecfa0e7ba"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="93b8d838-4ddc-4baf-ac68-dc627576c6ab">
+                    <propertyInstance
+                      Id="8efd7b71-ca85-44ca-9623-ea4281331e71"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2b8ac4c1-59df-4209-994a-aec28d6f1614">
+                    <propertyInstance
+                      Id="ae3c9752-41f1-48a6-80ea-d40382cc5cc7"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="07689607-fdfc-43fb-b365-35be391db4ad">
+                    <propertyInstance
+                      Id="e6cf928d-a215-4f34-9d6e-a15f8a0b97f0"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="160ede56-da5b-45e5-95f1-8fd8fb662065">
+                    <propertyInstance
+                      Id="558d5036-d490-4b82-9c71-2cc5f16527bf"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e9904577-f853-49d4-918e-61a15dbc572b">
+                    <propertyInstance
+                      Id="71fc7175-8e64-45aa-83d3-4ca7125f7b0c"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2fc5f755-f388-4e81-8fd2-cd3c0e5d12fb">
+                    <propertyInstance
+                      Id="ac323d13-eae1-4a38-95be-eb75978b1cd4"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4e2eebf1-7e95-4c5f-83de-9da106bcca30">
+                    <propertyInstance
+                      Id="8f93b59a-9b92-403a-8d32-503c232ddea8"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="97d3d16d-9f15-40af-85b1-0390f40e5ddb"
+                LastKnownName="List&lt;Genre‎&gt;"
+                LastKnownLocation="Package14_1752.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="6e251014-8d5a-4ba9-ab29-6479be4e6840"
+            name="label"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="c4f3aec4-4e69-4799-8e8d-0ef716dc941b"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DMusic Member%3Dlabel"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="a6d51947-7cad-4d1a-9347-804ea7411c40"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="678b0902-7af3-44f5-914a-b027c29b1cb3">
+                    <propertyInstance
+                      Id="c998eacc-f42e-4cec-a8d8-c5abc7397350"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cb112bad-d642-441c-9fea-c7af18ce26ad">
+                    <propertyInstance
+                      Id="13b17693-eb1b-4ed2-9b90-4d16ff857919"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c9c6ec4f-fe2f-49e0-bd31-ea33a6480ffc">
+                    <propertyInstance
+                      Id="f59dd8b5-6651-4d0b-9034-013ebc35b3b1"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="07731927-ad4b-4c21-8813-4cf12342b3a0">
+                    <propertyInstance
+                      Id="bf8b13e2-c026-437a-ac85-2736182c8a5d"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ca99201e-7058-429c-acc6-fd05657dbdc5">
+                    <propertyInstance
+                      Id="ffdf4442-8b7f-4865-bff4-7a8c99955b6a"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b00d7c5e-aa52-4c63-b750-df90511899da">
+                    <propertyInstance
+                      Id="60766425-b1b5-4b64-9bc7-d59671f552b6"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ebf9ec2e-c5d2-4946-abea-7f1d3cb0ac67">
+                    <propertyInstance
+                      Id="1bc21fce-d006-4036-911b-4bd846a1203a"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ModelingProject2.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="1bbdc15c-77b0-4883-9980-be70105e5ce7"
+            name="play_offset_ms"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="5b3e4397-169e-4871-9401-d931d66acb3d"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DMusic Member%3Dplay_offset_ms"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="162a9e01-9ae8-47ff-bc7e-41433ae106a7"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ccad994a-e0a0-45cc-bbd4-3dad057bc5b4">
+                    <propertyInstance
+                      Id="57a28fdb-a510-456d-98e1-bff6240d9f04"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7b9c5c97-1279-480e-b1d0-7e0159c88c43">
+                    <propertyInstance
+                      Id="ebf0d816-142a-4247-b336-9ae6fc89acff"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="df1efdde-99c4-478d-834f-bc24b813ff70">
+                    <propertyInstance
+                      Id="54ed5301-faa4-4ad6-af4c-97d4541917a8"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7ffbbf8b-6e77-46fd-99fd-96f8e02ee07b">
+                    <propertyInstance
+                      Id="b92be85a-66de-4aae-97c6-2e883f31cbfd"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="10868508-f32a-41f0-9247-6fe7565bc2b7">
+                    <propertyInstance
+                      Id="3051cdc9-f218-484d-9cf3-e08a3b4c42d8"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0a30b42d-4326-45ce-ad7a-369724e00954">
+                    <propertyInstance
+                      Id="309efd4b-a087-471e-b140-059b9c14eba8"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bf052596-135e-4b82-88ac-e169f53e5b53">
+                    <propertyInstance
+                      Id="e45f41d7-bdec-4692-b9ed-6d6ed5e2548a"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="ModelingProject2.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="6ff494f4-7612-4221-b5da-1c80c7e8b434"
+            name="release_date"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="e5299701-749e-4637-87f7-8a6dbd20b5dd"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DMusic Member%3Drelease_date"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8ce612da-73f1-4f25-b940-b04e9ad7c52e"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b06f1502-7880-4b07-a114-98eb471aea03">
+                    <propertyInstance
+                      Id="240d23c4-9de9-4192-bd45-cc0dbf0f1f03"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="299d04d9-3ed6-4b3a-afa4-b089cfc00895">
+                    <propertyInstance
+                      Id="dc0f8d9d-e185-4ca9-b902-32561b8c549e"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="27fb6716-b8df-4979-9646-844631ee7f25">
+                    <propertyInstance
+                      Id="11229913-1c84-4fe6-be7d-3f4db6a74a76"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a9adcd5f-1779-44c4-a988-509e1659c32d">
+                    <propertyInstance
+                      Id="7500b89d-1ed1-443b-9491-3acf9b2a672f"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="77786d56-d705-42b9-8a33-1656884817bc">
+                    <propertyInstance
+                      Id="53eb64ec-c441-4664-bc67-0ff344aeb2fa"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b3d34d3f-f12f-440b-b90a-f36f5f75af87">
+                    <propertyInstance
+                      Id="89e24add-7eff-40c7-a63a-bd7917c66a24"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9b89cdcf-d560-466e-aacb-0a69aacec1e2">
+                    <propertyInstance
+                      Id="a0ab33c0-3ea8-40cf-a64d-a014b6e65b4a"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ModelingProject2.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="191f53d5-dbfb-4a1a-b6d6-ab78c86b67f2"
+            name="title"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="8b9a20b9-c631-401c-a7bd-56205a556d84"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DMusic Member%3Dtitle"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="cb8ea0bc-cd2a-4f0e-ac6a-b1a86333b1d1"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ad544a32-289b-40d0-a857-88781fe32851">
+                    <propertyInstance
+                      Id="a6f9e164-beb2-4768-a508-91632287bf90"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0e96011a-22a9-4034-92eb-fe58f05ec1d9">
+                    <propertyInstance
+                      Id="d5ea03bd-ff12-4021-a8d5-06608ad41677"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9f21645a-7592-44f5-a1f0-bbbe0f707fa5">
+                    <propertyInstance
+                      Id="e0869045-4c48-463a-a538-55568ed33700"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d7841bcd-e789-49f2-b87b-49604fb41889">
+                    <propertyInstance
+                      Id="26ffb38d-9749-42aa-b0ff-917ef545a3d6"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f22ce5f9-2865-40e9-be03-656ed309dbe5">
+                    <propertyInstance
+                      Id="1943a3a5-be88-45eb-8f10-4b3d7a994ddd"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3b06f63d-847c-4cca-9089-085f5069a412">
+                    <propertyInstance
+                      Id="3065b825-8393-4756-8354-f39b2e297937"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7610b374-c94c-49ab-9b0b-e63339ccb62c">
+                    <propertyInstance
+                      Id="e3b15475-8072-4ee3-b462-fcec2d3fd4c5"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ModelingProject2.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="764f0044-d546-4324-adff-47ca33afe02c"
+            name="Music"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="5092835e-57b0-4eb8-a520-981c54c76af2"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DMusic Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="6c1f70a9-c34a-4619-ab8e-c1e975e5052c"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="10f488c1-1ce3-44d0-97f9-84418cfe8708">
+                    <propertyInstance
+                      Id="a9424698-3206-4e2d-bdde-ef01da2d7410"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="90f292c2-1bb0-4cf4-af79-25bceb845236">
+                    <propertyInstance
+                      Id="f728f35f-65bb-4e2e-849a-3f0d4bc84a25"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0352db2a-ca7d-449a-8b94-3fb308f0fa61">
+                    <propertyInstance
+                      Id="6d3022ab-53c4-4950-b2b2-771392ca2a09"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5d617cba-b658-472f-968a-e1e07701c5a2">
+                    <propertyInstance
+                      Id="aa27979b-7b88-439d-97c9-53f56232ebed"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f234316d-ac6c-4712-98c1-2a501f960a78">
+                    <propertyInstance
+                      Id="6053b007-5e9d-4afa-aece-3522414626a4"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="00d16279-14f2-4c4b-ac5a-47c68959fb8e">
+                    <propertyInstance
+                      Id="dab2c44a-b496-4bbb-ad74-9c3f915036ff"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="057584be-a904-4073-9680-0e985ac0db9c"
+        name="Album"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="68d7a179-8a6e-4ed0-b239-d188e692e26c"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DAlbum"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="3afc7af5-482f-4c98-9cc4-ed891127298e"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="eb0a2f7d-8e84-4b1d-a4b4-b30071efae38">
+                <propertyInstance
+                  Id="36a87ddc-155f-4628-a864-9c5faf98d96b"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="99a6a6bd-7b9f-4b98-8177-062a2eec87e3">
+                <propertyInstance
+                  Id="f0c259d7-85ab-4d7a-95d2-bedfb93f5766"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f8f0f2f9-0ab4-4408-9c9e-740750c8fc08">
+                <propertyInstance
+                  Id="2d810f38-eab3-4b9c-b2ce-ceafb8e0f580"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="00f7f4f9-92bd-4d73-9c2b-0ad18274fec3">
+                <propertyInstance
+                  Id="f421bedc-384f-47d5-8ea3-3e5b637ef735"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="4bf1d41f-3159-4dec-ad4a-41e82185e564">
+                <propertyInstance
+                  Id="a7b7d0fa-4508-4c79-9f0d-1f1fcdd0c5d3"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="cb9644cd-9d49-4afa-83c8-28917b74ace2"
+            name="Name"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="039e9633-a29c-4c96-8924-8e0d2e033af9"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DAlbum Member%3DName"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="3cb4ea92-0875-4120-9fcc-0441b04f6ab4"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ef01a392-eabd-4278-86c2-681c85f71494">
+                    <propertyInstance
+                      Id="c1f722f5-88c4-4b20-9eab-87b2fc98bfd5"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c965a75a-b9ad-4a38-9a44-2568421346ad">
+                    <propertyInstance
+                      Id="02695346-ac03-418f-b886-2f0b53e31d26"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1238b4db-fcc9-4a81-885a-bd9632d888b8">
+                    <propertyInstance
+                      Id="0e57573d-45a4-4a3e-a63a-0abe547368f0"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0d299572-b26d-4935-8acb-92724f0b936b">
+                    <propertyInstance
+                      Id="c2de6bb6-f75a-4457-909a-6573fdcfa77c"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8227a203-fe5e-4d1a-9e85-d9bdc993c190">
+                    <propertyInstance
+                      Id="80ee065b-b3b1-4c06-b019-8255e6694dc6"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="26c6f05d-aef9-41bb-b90c-cc74ad989ef0">
+                    <propertyInstance
+                      Id="e5c6d620-84c5-4d7c-807a-dfabd3b82143"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="647cafb1-789d-4391-8cdd-b7a2094ce509">
+                    <propertyInstance
+                      Id="5a0cc4fc-d96e-45f3-b5ec-74ba935d1b49"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ModelingProject2.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="de72818a-2876-4a0e-830e-ae449e6899cc"
+            name="Album"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="3e390263-b7e1-44d7-8c2c-5f40c5d0c359"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DAlbum Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="24bc2c12-aa66-4e8c-b5af-ded455fb15b7"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="495db120-e961-429a-9ebf-e569647e5ded">
+                    <propertyInstance
+                      Id="d94233bc-8845-470d-904e-c57a023bfecb"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7d31e2bd-6d65-4f15-b400-a2a075af8c9e">
+                    <propertyInstance
+                      Id="d9758a7f-380a-4b2d-8ad4-c7b4535075ac"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6a74dc7e-93a5-4c4c-8493-981221159718">
+                    <propertyInstance
+                      Id="8b50545b-6bfd-4176-878b-87d35093668a"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3d39b7d2-781f-4fe8-a03c-7359242a5007">
+                    <propertyInstance
+                      Id="a229149d-2a7c-4fae-8008-8371db43a0cc"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e295924b-b4e7-4ab6-9cd3-effa7657466b">
+                    <propertyInstance
+                      Id="6f1e8baf-a489-4f62-b1c3-fb0897dc4499"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1d33e204-9444-40e2-a84a-915dc67087fe">
+                    <propertyInstance
+                      Id="4a03b866-99cb-44d3-ba3e-48320c6599b4"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="c57c6fde-461c-4584-addc-c1da82226776"
+        name="Artist"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="64e2682c-3b2b-4c81-9afe-f0c7df1cb002"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DArtist"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="9020033d-8fba-4c01-875a-4d1cb2f9a5ab"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="bf86b20f-6e4f-4c7c-b692-2aeff7f8f427">
+                <propertyInstance
+                  Id="35ec2453-8f7e-4c5d-8e29-49c7b6029eef"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="15940286-6dd7-4f2c-8b0d-fae7b944497b">
+                <propertyInstance
+                  Id="44f33161-09fe-40b8-af4a-65afa70951ba"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="120e239a-76a3-4b41-978a-b8bd676bf4f5">
+                <propertyInstance
+                  Id="075064c4-1cf9-4ba6-a4c3-95c2a84e79fc"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9f0bf2d4-d78c-4275-8894-0828f3327cf2">
+                <propertyInstance
+                  Id="2478b8ad-b475-4abe-b524-6108278fc41e"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c8e5a64f-e84f-4394-8903-c501e1fef557">
+                <propertyInstance
+                  Id="f5376e4d-213c-4d9f-972f-a99831d8e6d2"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="16f39569-af85-4eec-bdf3-cf323b158c27"
+            name="Name"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="0b6b491c-aa0e-4561-82c6-e7deabcac64e"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DArtist Member%3DName"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="c5cb0fe9-c00e-4f4d-97d7-c947f46860d8"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8e918612-71e9-40c3-b211-45846fb955d8">
+                    <propertyInstance
+                      Id="3b655d92-86df-4ce8-8b71-a3efdb83a484"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="348df24d-5e57-4b3e-a2f8-a81aa5271286">
+                    <propertyInstance
+                      Id="85907b51-965c-4007-a701-f123ede3511c"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="adc20b26-39fa-46ae-97ee-ca00f90c94ac">
+                    <propertyInstance
+                      Id="e2e605ed-3e85-4901-9fe9-60fc4de46eb1"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0a82af5a-2a70-4ca2-9331-58e456094145">
+                    <propertyInstance
+                      Id="49a706ed-b289-43aa-86b9-ac9ec31dd4c6"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9ab763c4-e292-47e4-9669-bd0820c755b9">
+                    <propertyInstance
+                      Id="02c9737b-bb3b-432d-8b9e-72dcbff333ae"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="28e5b4d7-5551-43f2-b903-eb2291965c0b">
+                    <propertyInstance
+                      Id="7d51c508-2fa4-48e4-9651-cd11e6912e40"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="06f1c88b-2232-4b40-937f-5f839c575540">
+                    <propertyInstance
+                      Id="17faa623-a85e-4986-b87a-1a51300ebbde"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ModelingProject2.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="88f43bd7-2d7e-461c-92ef-5746cbe9c085"
+            name="Artist"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="8b65fda7-7fcd-452b-bd6f-a73d17c583cc"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DArtist Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="79b79db1-ad52-448d-93be-e703e19f119a"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7c0d659f-0220-4f14-a7ce-be7dcae8ecae">
+                    <propertyInstance
+                      Id="a9ad1fb1-0e7a-43d3-ab70-4f654d980690"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0ebd462f-19c6-490c-83d3-ca848c9a795a">
+                    <propertyInstance
+                      Id="9db3eccd-589a-4023-9263-0765acf8fa7b"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="20196d57-a988-45aa-9db2-23370eaf2b89">
+                    <propertyInstance
+                      Id="1b40eb46-2709-458b-9b23-08149ce10d06"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4f06c4cb-144f-4c6d-8136-38cbb3fbb5cf">
+                    <propertyInstance
+                      Id="ba55f5cf-9053-45b9-998c-3652d3379905"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c642a9d8-d6cb-411d-9c6e-e14154f2931a">
+                    <propertyInstance
+                      Id="39335926-de41-496a-bae6-58a9bad994ff"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="25e454fa-1681-4bf3-af92-bcb57d51925f">
+                    <propertyInstance
+                      Id="007dd2ac-f48a-441b-b8af-3b9ea84e9d44"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="9756fbf6-e576-4979-b330-cd93d1e1077f"
+        name="ExternalIds"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="9974ad27-b861-4755-8e42-d79d71e97067"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DExternalIds"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="c5b9689a-3204-48e2-994e-bb02e5b28a5b"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="71a029ad-71c7-43b8-b3b2-fc6c6df63495">
+                <propertyInstance
+                  Id="aa961b15-8b1e-4f34-95ff-214601635661"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="691dd8e0-6ca3-4488-9dd3-7b2d97f64d6d">
+                <propertyInstance
+                  Id="a7b7a908-73e8-4cfe-8c0e-c17daa406d60"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="26905e6b-072c-4235-93b6-d9c6edfb3eac">
+                <propertyInstance
+                  Id="57674f88-979c-4bef-9f83-c941fd85db3b"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="2c292600-0b8c-409c-afdd-7221b7d95957">
+                <propertyInstance
+                  Id="04be8279-caff-4f44-b7c4-a795120dd9cd"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5ebed1dc-ad9e-441e-8917-008bf40e8167">
+                <propertyInstance
+                  Id="86cc2b8a-b0a9-4fc7-aba3-f967ba58ca46"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="ee8ca64a-5ad2-4505-88f4-c3c30d0ff428"
+            name="ExternalIds"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="0eca74bc-8cca-4549-8878-76b47f2338c1"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DExternalIds Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="ac98b8ee-4dbc-433a-a71b-52ff125752fe"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d1b64f8f-b46a-415b-a3cd-bdd499300055">
+                    <propertyInstance
+                      Id="92e113a4-1da6-4ffb-9ba5-af9968e27136"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="72d502d5-ae4a-41fb-bde2-34eb3ff60eaa">
+                    <propertyInstance
+                      Id="17cc05dd-7713-425e-8267-61f1aa4eb1c5"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b76d0aa5-fc26-4e5f-a574-be2a6e567531">
+                    <propertyInstance
+                      Id="b38af94e-a4e3-46a3-ac06-8f817d70b654"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ee6f4486-3f38-4062-ae3a-26b12b86ce39">
+                    <propertyInstance
+                      Id="ac11b9ee-1801-4f03-beea-13876faf5047"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a64dc26f-1738-472c-a257-27403e16b17d">
+                    <propertyInstance
+                      Id="84512a2c-eccd-4e1c-ac0f-e171b8d488bd"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="69a1616a-7956-4918-af34-73d13f8c3652">
+                    <propertyInstance
+                      Id="b0ae6929-6a4b-4177-b336-6d12729f678a"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="7709ce50-9f7e-4afd-9f55-475847e286e3"
+        name="ExternalMetadata"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="ea0d82e9-c26f-430f-96ea-3492d1e68dd8"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DExternalMetadata"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="31790828-d444-4fc3-bb3d-828ce07bdf70"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="bb2b0ad8-1862-471c-a4f8-f6c2c1b03bc6">
+                <propertyInstance
+                  Id="43ebc715-236c-4ae7-b938-696a8cb5c7fa"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ea58dbb6-830b-45fe-b316-3b4d5d875db8">
+                <propertyInstance
+                  Id="10e636b9-9f78-4f02-bbf2-55c88ccecc43"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="425c13a9-d1da-4949-8962-a70dc80d50b6">
+                <propertyInstance
+                  Id="c0fe7bcc-538e-4a5b-83bf-445ae31b64f4"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="02dd4aaa-f756-4907-8655-ec3ed30e8a66">
+                <propertyInstance
+                  Id="b5cc478f-7262-403c-a59e-36e8e2a6f750"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="734b02da-69c3-4ef3-9253-ef9f6de45fcb">
+                <propertyInstance
+                  Id="de257b48-c7ab-451e-b278-29fd6084edb1"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="12dd74e5-97cb-4f7f-b325-0cc82c4a90b0"
+            name="ExternalMetadata"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="6936c1a5-0e41-44fa-b7f8-1aa0c5bc0e2c"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DExternalMetadata Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="db6ff246-2911-4491-82fd-6359421802aa"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ccbda978-daf0-4209-b595-8f7d46fa7fff">
+                    <propertyInstance
+                      Id="815547d8-858e-47bb-9c05-ba74c4f944b6"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="86ecbbfd-9cea-43f5-942e-943990af5ebc">
+                    <propertyInstance
+                      Id="d18411e3-c6a9-41f2-a88a-899742e51500"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9c41737b-e01b-4c92-a920-db6c282682ae">
+                    <propertyInstance
+                      Id="79c564bc-c386-4739-9f22-f8ea5875934f"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f06732a7-93c2-4af3-a4f4-5fe0e5d7f1dd">
+                    <propertyInstance
+                      Id="ce0f7d6f-b97e-4786-a189-71d2ffcaa001"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a017358a-ad83-4718-b596-c444166851d9">
+                    <propertyInstance
+                      Id="94c022c8-8b70-458e-963e-eaee2b12962b"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1298dad5-bafc-4e45-b916-27bc6712eca3">
+                    <propertyInstance
+                      Id="3c55b8f4-6e4c-4839-bfae-03b2a3dce254"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="be9bebe2-b549-4895-98b0-7e229529cba3"
+        name="Genre"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="1e854f9d-1407-4097-bcc2-47e4cf19fe52"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DGenre"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="8eb427b2-113f-4222-b7d7-c98db83b52e3"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c8865f96-ddbb-4890-bc58-9ec030bd311a">
+                <propertyInstance
+                  Id="9e96a61f-503d-4f1c-95ab-89e2d149da4d"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ed6f864f-5005-4075-b703-fe772e46cb0d">
+                <propertyInstance
+                  Id="36e4509d-e4aa-4061-aa51-9e71863ab30b"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="0beb307f-edbc-4244-a5a0-abb9f3c90432">
+                <propertyInstance
+                  Id="c6f5fe25-6cc8-49d5-a839-1c3e76b5a452"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="230de72b-f56b-4637-ab8d-77387d021700">
+                <propertyInstance
+                  Id="0317b431-9d7e-48dc-b323-c0cba90c0e7b"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="db78b331-6087-4e74-af33-07819245b2e5">
+                <propertyInstance
+                  Id="5f092d9c-d645-4b16-aed3-09f1ad7221ee"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="244ad7ae-5f25-4acd-957d-a0086b6f480d"
+            name="Name"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="b41c600e-3b18-46d5-98a4-1f4043ded784"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DGenre Member%3DName"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="f93af04e-0f92-4b23-b288-ba2b10070214"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="80995bc0-accd-474f-9c3a-877d061cac4d">
+                    <propertyInstance
+                      Id="da553405-d824-4d27-841c-f7190cc8648c"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e537c1c2-c3d2-495f-8dde-3fa1e6debc0f">
+                    <propertyInstance
+                      Id="ce40aee3-f986-42f4-8829-0b4bed2e0cdb"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="31a260c0-0046-4e93-8c56-365528803da8">
+                    <propertyInstance
+                      Id="32c833be-fc98-4482-a7b3-605ccee861e6"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c7ee691a-47a1-4945-b6ed-a840ea1ce167">
+                    <propertyInstance
+                      Id="3b85b369-2d07-4e64-826e-020da42728c9"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c57a7963-508b-4d8d-9f20-02185107d58e">
+                    <propertyInstance
+                      Id="2666b4b4-ba6a-4748-b603-cd08073052af"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d090d2ba-cc35-4443-bf23-547dbbb1f533">
+                    <propertyInstance
+                      Id="468f44f6-a7f9-4c0a-90f4-33eb1ef867e7"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d08d6bc5-571b-4772-b3e3-3dc81bd536fe">
+                    <propertyInstance
+                      Id="a34a4c69-e7b0-4538-927a-d20ef88c6be9"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ModelingProject2.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="6f01b2a0-b70c-4746-a94a-eb29e762dac3"
+            name="Genre"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="8f9fb2f5-a408-4579-9d83-d9bc907800dd"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DGenre Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="15f14721-7439-4032-bb37-203b6b3c72e1"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="16a90693-9f68-4f6e-9e0a-c754eeb28eb9">
+                    <propertyInstance
+                      Id="99a72ae8-730a-44ee-b5e9-15100bfd0320"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="592640f8-acd5-494c-b56d-253cfc614ce3">
+                    <propertyInstance
+                      Id="bee5d236-aee9-4fad-88c2-c299763000e9"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8493cdc9-7def-472a-8f7b-0444cb551aea">
+                    <propertyInstance
+                      Id="27237b1b-7a6c-42ff-9ed4-08994eb3b9ae"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5c9e4f20-3d85-447e-832a-2cc5328f0f7d">
+                    <propertyInstance
+                      Id="91f1d909-85b2-44fd-a47a-b54f20de0541"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b6eea144-3756-4674-94c0-0ad0d701f5ad">
+                    <propertyInstance
+                      Id="647dd62b-0571-47a6-96f7-333780f79d3a"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e06da50c-a82b-40af-9181-d7002d4bc824">
+                    <propertyInstance
+                      Id="baf88954-9019-4d5c-9478-197133fa6fa2"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="413514a0-deac-4d08-b7a0-df2d3a0364b2"
+        name="RecognizeResult"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="8e48310c-7b50-45ed-9544-fc0c5670d8e3"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DRecognizeResult"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="6f45a6db-6954-4b72-9015-9d3c43729e2c"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="3c11802f-2f5d-4891-8986-e82165f1a923">
+                <propertyInstance
+                  Id="cd68cee9-2784-4574-bfde-4b29c524867f"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="37a0b6b3-d903-464a-bdef-6c4db65dc41f">
+                <propertyInstance
+                  Id="8a05028c-a23b-4af7-8c88-e28ff3cdb3a9"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="749230c0-ed83-4bfb-a3a0-f7f0df265ac4">
+                <propertyInstance
+                  Id="c5d40dbd-948b-425a-83f3-f0ca0b24ed24"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="087dea25-0250-4b26-b81a-4fa61a0c168a">
+                <propertyInstance
+                  Id="36b4bd15-f713-4b21-a2fd-ff5ae21e8c82"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e4498efe-4e68-4bec-8719-5e381d7bca70">
+                <propertyInstance
+                  Id="a088e6ce-d055-4c6b-aa14-a05dcf7c4ab8"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <targetEnds>
+          <association
+            Id="004762b6-626d-4b49-a6bf-216cc60b1616"
+            isDerived="false"
+            sourceEndRoleName="RecognizeResult"
+            targetEndRoleName="metadata"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="fdf94f19-27e1-4dcd-b850-39e04d601ace"
+              LastKnownName="Metadata"
+              LastKnownLocation="Package1_0111.uml" />
+            <description>Property metadata references type Metadata.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="de2db1af-1361-4f8b-bc57-9571cd1b6ab6"
+                  name="RecognizeResult"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="1983f499-0e91-4c1d-8b0d-489803f6fe1f"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="ca89418e-8d88-4e38-8ea3-c8fc36a501ce"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5628ef91-2425-45d4-8107-ef8a3661786e"
+                  name="metadata"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="a4c813ef-0ebc-46a9-a3e3-44e790d01bb0"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="cc1e31f7-ff26-4048-871f-ccd40abd7b48"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="1a592bdc-3c61-4ab3-8a68-0c940c9eecd7"
+            isDerived="false"
+            sourceEndRoleName="RecognizeResult"
+            targetEndRoleName="status"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="7ca8cc03-8099-48f2-9f7c-2efac3b3b7ce"
+              LastKnownName="Status"
+              LastKnownLocation="Package1_0111.uml" />
+            <description>Property status references type Status.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="29e624fd-f2c8-43cc-8682-584e1418c33b"
+                  name="RecognizeResult"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="d495cb7c-b0f7-4b05-ab94-ea761a0f9c61"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="32c0d216-1111-41c7-8b3f-f8f15bd3c748"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="21e83525-7c34-463d-9188-85eb405a23db"
+                  name="status"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="459fd641-04b1-4bb1-a581-d38f7a0c782c"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="5daaf81a-fa58-44ca-932b-0ab387bf080d"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="31fadbf5-49f1-422b-aa02-cb3e5c292b37"
+            name="metadata"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="8e60edd4-7070-42c7-a2f1-f5fa29fb30d3"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DRecognizeResult Member%3Dmetadata"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="71fe2a19-6443-4dc7-b0ba-7721f9575771"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3d0c44c8-df5f-4145-9582-11db1bdeea0b">
+                    <propertyInstance
+                      Id="4527ef0a-ca71-4536-89e4-bb6f56b1095a"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dd56d771-3ab7-4277-ad02-6b1cc57e010a">
+                    <propertyInstance
+                      Id="388543cb-c79b-4a1a-a695-f052fc2c9595"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e7405157-fc99-441d-aee3-d2873faef534">
+                    <propertyInstance
+                      Id="d630302a-9cac-45b9-98b0-feb77f504d1b"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ad83eda3-b94a-4674-b85e-c101db3ac468">
+                    <propertyInstance
+                      Id="23dfdeec-0aa3-474c-a9aa-416d2702e0e4"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2d590993-cc8d-4b98-b1de-3f7447eaccdf">
+                    <propertyInstance
+                      Id="4d779f87-cff6-4ee3-a193-74b96926f09c"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2d84b56d-df77-4b16-9986-dc55f1972e72">
+                    <propertyInstance
+                      Id="d9186b6e-c44f-46a0-8a90-6c2a1438fe3b"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e16e82b3-a19c-473f-a1fa-c572ff3e811d">
+                    <propertyInstance
+                      Id="3d430ff2-cb5d-4d8c-83b1-7a1b96accf3b"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="fdf94f19-27e1-4dcd-b850-39e04d601ace"
+                LastKnownName="Metadata"
+                LastKnownLocation="Package1_0111.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="4af963d1-e94b-486b-9ab7-a5b4e55e0520"
+            name="result_type"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="3812eded-5c97-4e2c-887c-1004b2eb0987"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DRecognizeResult Member%3Dresult_type"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="a81a10db-0571-4a9f-b107-1a710688fcef"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="12734fa0-f5f6-4a9c-813d-77d9da8136bc">
+                    <propertyInstance
+                      Id="5b4d4505-ba1f-4f3d-ba73-5742af7a601b"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4e58e444-832e-45c5-9308-75532714784e">
+                    <propertyInstance
+                      Id="0f79dbcb-1926-4e5b-8a7f-759521b8e01f"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b4b99652-0472-428c-a9c2-a1843d92a962">
+                    <propertyInstance
+                      Id="9373e8e7-d3c7-4847-82e5-370128f39ffe"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dd636748-528d-4405-abfa-a9d8e5ae5fa9">
+                    <propertyInstance
+                      Id="f1aa84e2-4454-4722-ae31-0515dfc949fd"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3e083230-845f-4578-a47d-bae39ba21bec">
+                    <propertyInstance
+                      Id="b61c9d66-fc50-47e9-8630-3df039487efd"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="88a30015-b410-4028-beeb-82dec7dace71">
+                    <propertyInstance
+                      Id="d4904a87-4cf9-420d-959a-3a3d3ad3e31b"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1ced73f0-125b-4ad6-8617-5487c2758846">
+                    <propertyInstance
+                      Id="56cd9daf-8dc5-4792-aca0-265d90965d71"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="ModelingProject2.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="c816edbd-4f0b-441c-bc18-837e3f127b08"
+            name="service_type"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="ac053e6b-ccf5-49ac-9dd1-2adb8e776702"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DRecognizeResult Member%3Dservice_type"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="62665ff2-8262-40a7-b12c-0b3993c8e122"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="656a3acf-0fd4-447e-8751-3264b8095401">
+                    <propertyInstance
+                      Id="d030e563-0e9c-4dc3-b8a3-f3bad61933f0"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3928bb2e-323d-4450-b6c7-eb317f7351ce">
+                    <propertyInstance
+                      Id="8203a064-fd3f-44de-8fd7-1125e7d64e73"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="44788e24-9feb-495b-a37a-7ac68d1a5dfe">
+                    <propertyInstance
+                      Id="8ac7a437-6c81-4f5e-a820-80c46d04438c"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3812ff38-a039-4165-ac2c-104f09db6ae8">
+                    <propertyInstance
+                      Id="6871655f-ea84-45f9-af8c-38b69ae3cfa3"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="41df1a56-debc-4e65-bda8-31d6fdce3b96">
+                    <propertyInstance
+                      Id="a0bb79f9-e3aa-4e35-8d3d-b928459506a9"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8be09ebc-cf5f-4838-a414-6f0e0df0bd77">
+                    <propertyInstance
+                      Id="7e1bd8fa-17d1-4da4-943b-b35fc46774e8"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="78ae30a2-8990-4278-8c1a-68cbb9f1a5cf">
+                    <propertyInstance
+                      Id="fa92ace4-01d7-4307-995a-2e8fed002144"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="ModelingProject2.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="f1ae6d26-50a7-41e5-bc19-71ab104075bd"
+            name="status"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="0b7e714d-d3a3-463b-a1d5-8015d9f70a34"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DRecognizeResult Member%3Dstatus"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="6268bc4b-5f3d-4541-8867-5cf88762bbec"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9a4fb8fe-765c-478c-9b0a-a3152abc3872">
+                    <propertyInstance
+                      Id="6409db25-8140-4a83-b362-d9566a2b58bf"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ae875c50-a48c-4376-988c-db3f2d0c6ed6">
+                    <propertyInstance
+                      Id="3458cb75-5061-4489-809c-5b48f470a1dd"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2daee431-a1ca-4df7-a7f7-ffc74f956055">
+                    <propertyInstance
+                      Id="a2a6e4b1-c927-4c8a-8b4a-74bfa5ffb18b"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e86f8fdd-34b3-4c48-8c4c-5988ab369101">
+                    <propertyInstance
+                      Id="52c45b11-022c-4b6f-a9ee-c3aef13bb618"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fc9f2bae-0223-4b86-8427-77b297b5fa72">
+                    <propertyInstance
+                      Id="f8445203-2c0f-4bcf-9d8c-edf7e767da78"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e73bad73-9f56-4b16-94f1-1589529cb5a0">
+                    <propertyInstance
+                      Id="0fd0abd1-905f-4f8e-8392-18a3330d042e"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4e908370-8420-4dc7-b3a8-e6eb574e9842">
+                    <propertyInstance
+                      Id="32b70303-c582-4426-9e09-e8cd86245d35"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="7ca8cc03-8099-48f2-9f7c-2efac3b3b7ce"
+                LastKnownName="Status"
+                LastKnownLocation="Package1_0111.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="16c32214-04ed-467f-9151-fd67c58e9f43"
+            name="RecognizeResult"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="71d35fd5-9268-4ecc-a28a-ba4b41d4fe96"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DRecognizeResult Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="d7669b5f-5c8d-447c-9bbb-59596b843689"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="043dbb23-2ea2-4436-b695-54b7cb622eba">
+                    <propertyInstance
+                      Id="b42b06af-fd2f-4b88-b813-98c18547e34e"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a95bd1eb-d5f8-4fab-8e66-26f3235f1cc6">
+                    <propertyInstance
+                      Id="8a322ab3-02f8-4eb6-aeda-08c5778d2820"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d1dd6a68-d49f-489c-83b5-75c239a956e1">
+                    <propertyInstance
+                      Id="e4495c36-96a7-49c4-aada-763eddfe9341"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="86cc9c31-88e5-41c3-9ce9-0810f34f84b1">
+                    <propertyInstance
+                      Id="4747a431-18d1-4229-a999-fafd7d95ab24"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e09a909e-3f43-43bb-bfea-df97b93c9c3f">
+                    <propertyInstance
+                      Id="5c57df66-df8d-4092-a539-32b9b9da27fd"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="eaff12a9-a2eb-4cd1-81f2-9720552a8c75">
+                    <propertyInstance
+                      Id="97ca2c90-2c1b-4244-acad-98ef33787adb"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="7ca8cc03-8099-48f2-9f7c-2efac3b3b7ce"
+        name="Status"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="84601934-243e-4baf-97d9-a4fed4e17597"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DStatus"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="64621f82-cddc-4dc8-84c3-6f8dd0e2901d"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5976e7a4-5278-4abb-b099-f004bf49ace9">
+                <propertyInstance
+                  Id="d7213e9c-515c-4438-b873-b0901b9610ca"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="895a2e82-ff03-436b-b741-d7d1cdad5d0e">
+                <propertyInstance
+                  Id="3f7f2c42-2181-4573-88f6-f5de9a9eb0f8"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="bb07f38a-a953-48ea-aa1f-bf7ce927b3a3">
+                <propertyInstance
+                  Id="c3a3006e-ab97-47cc-8fd7-5b8037cd3894"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="30f54b3e-1180-4c8e-bd12-d84436d13b93">
+                <propertyInstance
+                  Id="468b01ce-7b81-42b5-9f34-ae6c6495c4fb"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ecc524bf-586d-44e3-8883-f98e26286d36">
+                <propertyInstance
+                  Id="0e810760-a055-49e2-8ae8-79deed1f6065"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="913fabba-3e5e-4311-aec1-fe0ebf95cb17"
+            name="code"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="09b600e8-882e-4d8f-831b-241545138394"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DStatus Member%3Dcode"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="da69ebc8-a67b-41bc-97e6-6c70a1303757"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="912f14c3-5ba4-4a75-8b0e-d2cb94a59afe">
+                    <propertyInstance
+                      Id="06a3cb3d-9322-4828-8a2e-6cedad215b9a"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1f161d5e-e272-4f0d-abf5-7d4c7515975f">
+                    <propertyInstance
+                      Id="a5067c2f-5eee-4d39-988f-145ff83c19d5"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dff18244-b01c-400e-a489-1c59e96edd39">
+                    <propertyInstance
+                      Id="5237c118-4348-4b85-8688-3655b60ed3a8"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6874d8cf-947e-438d-8956-c9c8d621b41b">
+                    <propertyInstance
+                      Id="08dee518-7aa4-4f46-9412-75c3b4ab1c38"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3d388018-c139-4e03-a42e-59472e89e602">
+                    <propertyInstance
+                      Id="abcea25b-94a0-48ad-b41e-fdcca974d1d1"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a6b34d90-4c85-45b8-823c-aba207a01f90">
+                    <propertyInstance
+                      Id="9db5d211-0031-4291-91a4-bc0d5200ad7f"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c122926a-1590-4323-8896-e8fd127e20de">
+                    <propertyInstance
+                      Id="5b2d8ef0-1a59-4bb7-b4b4-525cacbc0f1b"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="ModelingProject2.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="32e09b7d-6a9a-4b6f-816e-fc28358a3eac"
+            name="msg"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="d6914e76-b649-4e81-9b49-aa360072575c"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DStatus Member%3Dmsg"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="1f01082c-e436-4aa1-913c-c654409a33a7"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6f3a1122-0e9c-4774-ab25-eb41b7a0e90b">
+                    <propertyInstance
+                      Id="0ddcd5cc-d1e7-4c56-b0e9-b8b4d581f873"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c4836ce0-09d9-4307-965d-63e5401093ee">
+                    <propertyInstance
+                      Id="280e72cb-2109-4097-8847-c4bbd2f5db2b"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f72db0af-5c83-45a2-ae82-d04947ea5654">
+                    <propertyInstance
+                      Id="e2e6638d-6402-41d2-981c-8763a07091bb"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="106d23b1-1369-424c-b0ba-8b70baa3d2ed">
+                    <propertyInstance
+                      Id="7b1dcb6b-3f27-4f13-b77a-d8146af35465"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2602bb7f-ee60-4697-a70e-c5240cd0f0b3">
+                    <propertyInstance
+                      Id="30fec6d0-ea20-4296-ba04-886e47feb70a"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f5465ec9-542d-485c-a1d9-e6a27bcf0ecb">
+                    <propertyInstance
+                      Id="c79ea887-a6f4-4bca-83b3-9a7402a5f3a9"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="23af759f-f872-4cd9-9d57-f19dc6521269">
+                    <propertyInstance
+                      Id="80ca5191-c8a7-4f6d-b7fc-5fc09b8d80d1"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ModelingProject2.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="c31eb453-a33d-4ea2-996f-da0f924b4960"
+            name="version"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="961c38f1-551d-467c-87ce-02b6a28e75ea"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DStatus Member%3Dversion"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="afc4918a-a83a-4e7d-8ad4-596abe788c50"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="360bf3e4-7275-457d-a203-7a2ed8b917a5">
+                    <propertyInstance
+                      Id="0a55846a-20dd-4490-8b29-f544294a9530"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5bd3964c-047d-48e5-9f3f-9ea7326853ed">
+                    <propertyInstance
+                      Id="8d19ddaa-2cdc-4676-af19-66e7f5de1739"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6192138d-2183-494f-ac9f-ccc04bec59e1">
+                    <propertyInstance
+                      Id="2a386c90-96c3-4318-9be3-686fd1859e4b"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="341206c7-4be4-43dd-9cfa-9cfc0b4babe9">
+                    <propertyInstance
+                      Id="3f3174ec-8af8-4d90-902a-3a2cadae455f"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5312e74a-2c88-47a2-b606-b88f9e107db8">
+                    <propertyInstance
+                      Id="56261cc4-8a51-4671-8d21-d4a4737d7b3b"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4972c5dc-f399-4739-a75e-7d6a08d859c6">
+                    <propertyInstance
+                      Id="90b5bbdb-b17c-4272-a072-df4df43ae0db"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2a7eccf6-8c39-4f27-9d8d-d8bc46d9397d">
+                    <propertyInstance
+                      Id="a08e66f3-d579-49e6-9628-063cf9709dfb"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ModelingProject2.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="5f27b414-89e7-4b36-89a6-a2c27c0e8e11"
+            name="Status"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="247ca9c0-9725-49d4-b11b-206aa12ad926"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Models Type%3DStatus Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="3a986288-bbaf-48c4-a6ae-610f9e1468ba"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a4968151-d5f4-48f7-99a3-9dfee648bd5e">
+                    <propertyInstance
+                      Id="37e15b8f-441a-42f5-86ed-17fa90fa90ed"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c5182f2d-6e36-464f-9e51-d40904cd5216">
+                    <propertyInstance
+                      Id="1d9ff296-afcd-42b8-a019-82fb156cd75e"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="370c6846-13c1-4bda-b522-b89b868ed3f7">
+                    <propertyInstance
+                      Id="48e3a921-d3cc-4eef-bab8-86263cd7782f"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ebfd6c9a-5352-421a-b0f1-23a35d7ed43b">
+                    <propertyInstance
+                      Id="9c18943f-5721-41c9-abde-b3cbc64a829c"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2f42da7f-d1b5-44eb-a271-4719611afdff">
+                    <propertyInstance
+                      Id="b2401963-7929-4ead-ab8d-8e3e66f31a7c"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="eed5f8ec-de47-477d-8af2-b889d3331f8a">
+                    <propertyInstance
+                      Id="77b22ba8-52a1-4376-9c41-8b8fef02e7ae"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

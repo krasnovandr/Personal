@@ -64,7 +64,10 @@ namespace DataLayer.Repositories
                 foreach (var listenSong in myListenSongs)
                 {
                     var song = GetSongById(db, listenSong.SongId);
-                    result.Add(song);
+                    if (song != null)
+                    {
+                        result.Add(song);
+                    }
                 }
             }
 
@@ -82,7 +85,10 @@ namespace DataLayer.Repositories
                 foreach (var listenSong in myListenSongs)
                 {
                     var song = GetSongById(db, listenSong.SongId);
-                    result.Add(song);
+                    if (song != null)
+                    {
+                        result.Add(song);
+                    }
                 }
             }
 

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SequenceDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" dslVersion="1.0.0.0" Id="a8b095c9-1105-4215-a193-789acbcecc04" name="Sequence3" linkedPackageId="bf9a7f9c-45ec-448d-b70e-c9107acfd5f6" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="3dee7a7c-46f4-4a71-b464-c581549ddcb1">
+      <profileInstance Id="1b43e9e7-88a4-4ee1-918c-37977d466d56" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="2968c8bc-f499-4246-b750-93614818532f">
+      <profileInstance Id="7fc3cd33-177f-4c35-bad9-5bd9b80aae44" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="530fd0d8-5b66-4846-b0ab-f8f0a5ea59f9">
+      <profileInstance Id="bb502950-1274-4cd5-b8af-b335d346cc22" name="CSharpProfile">
+        <elementDefinition Id="c1b6a55c-eb28-4115-b93e-a1f8cc37bcb3" />
+      </profileInstance>
+      <elementDefinition Id="eea44b2c-f277-4ba1-8691-cf8f8288de7b" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <interaction Id="1f5903a1-4286-4f0a-b16d-b51f9b5fcda5" name="Sequence3" collapseFragmentsFlag="false" isActiveClass="false" isAbstract="false" isLeaf="false" isReentrant="false">
+        <elementDefinition Id="d3911b0a-aa5f-4760-bfd6-355f0c50d7d2" />
+        <lifelines>
+          <lifeline Id="8c69a11c-4942-4531-b091-09af6adf9ed7" name="Web-Api" isActor="false" lifelineDisplayName="Web-Api">
+            <elementDefinition Id="42fd80d0-101e-4148-a812-e1f64a0d6c6c" />
+          </lifeline>
+          <lifeline Id="61beae99-30b1-4bcc-8d4e-9409fbb1172b" name="Optical character Recognition Module" isActor="false" lifelineDisplayName="Optical character Recognition Module">
+            <elementDefinition Id="e5a3ed4d-b1e0-4687-be86-e835cbf71c56" />
+          </lifeline>
+          <lifeline Id="efc2a77d-f971-4247-805a-572d76508dc4" name="Matlab Scripts" isActor="false" lifelineDisplayName="Matlab Scripts">
+            <elementDefinition Id="8044a1a1-86e8-4c8c-8bc6-5998e1a064b1" />
+          </lifeline>
+        </lifelines>
+      </interaction>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="bf9a7f9c-45ec-448d-b70e-c9107acfd5f6" name="ModelingProject2">
+    <elementDefinition Id="35dd6734-1bc5-4453-9e0e-7ebd3a7c69e7" />
+  </package>
+</SequenceDesignerModel>

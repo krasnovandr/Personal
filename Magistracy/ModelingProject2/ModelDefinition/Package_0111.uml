@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
+  dslVersion="1.0.0.0"
+  Id="a0388608-85ab-4fd7-9cce-87cb0a67550a"
+  name="MusicRecognition"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="7321ed3a-ce9b-4c1c-8e50-4870b7553d80"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DMusicRecognition"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="61d3f927-4938-488f-b71d-8c926a87fcf8"
+        LastKnownName="Models"
+        LastKnownLocation="Package1_0111.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="0f13c0ec-4bca-484a-89ab-d2a11ee257cd"
+        LastKnownName="Services"
+        LastKnownLocation="Package_0112.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="0d90ea03-d5dc-4d87-b794-72546d47ec60"
+        LastKnownName="Interfaces"
+        LastKnownLocation="Package1_0112.uml" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

@@ -108,7 +108,7 @@ namespace MusicRecognition.Services
         {
             string result = "";
 
-            string BOUNDARYSTR = "acrcloud***copyright***2015***" + DateTime.Now.Ticks.ToString("x");
+            string BOUNDARYSTR = "" + DateTime.Now.Ticks.ToString("x");
             string BOUNDARY = "--" + BOUNDARYSTR + "\r\n";
             var ENDBOUNDARY = Encoding.ASCII.GetBytes("--" + BOUNDARYSTR + "--\r\n\r\n");
 

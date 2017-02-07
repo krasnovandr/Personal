@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sequenceDesignerDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="UMLSequenceDiagram3">
+  <SequenceDesignerModelMoniker Id="a8b095c9-1105-4215-a193-789acbcecc04" />
+  <nestedChildShapes>
+    <lifelineShape Id="d3cff7f6-50d5-4351-a2ec-8a51e6c1bfa4" absoluteBounds="1.025, 1, 0.15, 7" visible="true" visualStyleMode="Modified">
+      <lifelineMoniker Id="8c69a11c-4942-4531-b091-09af6adf9ed7" LastKnownName="Web-Api" />
+      <relativeChildShapes>
+        <umlLifelineHeadShape Id="b65cb2ba-ad8c-4651-8a2e-cad89eeb3178" absoluteBounds="0.59999999999999987, 0.6, 1, 0.4" customColor="White" visualStyleMode="Modified">
+          <lifelineMoniker Id="8c69a11c-4942-4531-b091-09af6adf9ed7" LastKnownName="Web-Api" />
+          <relativeChildShapes />
+        </umlLifelineHeadShape>
+        <lifelineHoverShape Id="39895705-14fa-48f1-a71f-d95a7217d62b" absoluteBounds="1.025, 1, 0, 7">
+          <lifelineMoniker Id="8c69a11c-4942-4531-b091-09af6adf9ed7" LastKnownName="Web-Api" />
+        </lifelineHoverShape>
+      </relativeChildShapes>
+    </lifelineShape>
+    <lifelineShape Id="cca2a7ef-f2f0-4987-98a1-49de40c26c7b" absoluteBounds="3.075, 1, 0.15, 7" visible="true" visualStyleMode="Modified">
+      <lifelineMoniker Id="61beae99-30b1-4bcc-8d4e-9409fbb1172b" LastKnownName="Optical character Recognition Module" />
+      <relativeChildShapes>
+        <umlLifelineHeadShape Id="419fd120-d257-43ec-a4b3-636e50729aa3" absoluteBounds="2.4493510953585309, 0.6, 1.4012978092829389, 0.4" customColor="White" visualStyleMode="Modified">
+          <lifelineMoniker Id="61beae99-30b1-4bcc-8d4e-9409fbb1172b" LastKnownName="Optical character Recognition Module" />
+          <relativeChildShapes />
+        </umlLifelineHeadShape>
+        <lifelineHoverShape Id="5469a962-f509-43e1-aacd-ab82952fb75e" absoluteBounds="3.075, 1, 0, 7">
+          <lifelineMoniker Id="61beae99-30b1-4bcc-8d4e-9409fbb1172b" LastKnownName="Optical character Recognition Module" />
+        </lifelineHoverShape>
+      </relativeChildShapes>
+    </lifelineShape>
+    <lifelineShape Id="4298dff0-c7fd-4e8d-a86a-f7561b5a18d5" absoluteBounds="5.7395833333333339, 1, 0.15, 7" visible="true" visualStyleMode="Modified">
+      <lifelineMoniker Id="efc2a77d-f971-4247-805a-572d76508dc4" LastKnownName="Matlab Scripts" />
+      <relativeChildShapes>
+        <umlLifelineHeadShape Id="3d05e860-3357-4960-8769-53061ce3aa5f" absoluteBounds="5.2796607526143395, 0.6, 1.0698451614379883, 0.4" customColor="White" visualStyleMode="Modified">
+          <lifelineMoniker Id="efc2a77d-f971-4247-805a-572d76508dc4" LastKnownName="Matlab Scripts" />
+          <relativeChildShapes />
+        </umlLifelineHeadShape>
+        <lifelineHoverShape Id="2904ea6a-49ca-4840-8acd-efabad5fc658" absoluteBounds="5.7395833333333339, 1, 0, 7">
+          <lifelineMoniker Id="efc2a77d-f971-4247-805a-572d76508dc4" LastKnownName="Matlab Scripts" />
+        </lifelineHoverShape>
+      </relativeChildShapes>
+    </lifelineShape>
+  </nestedChildShapes>
+</sequenceDesignerDiagram>

@@ -40,7 +40,7 @@
             });
         };
 
-        $scope.getMyFavoriteSongs();
+        //$scope.getMyFavoriteSongs();
 
 
         $scope.changeStatisticType = function () {

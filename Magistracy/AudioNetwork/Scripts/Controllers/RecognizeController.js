@@ -228,6 +228,7 @@
                     success: function (recognizedResultData) {
                         $scope.$apply(function () {
                             $scope.recognizedResult = recognizedResultData;
+                            outputElement.innerHTML = 'Обработка закончена';
                         });
                     },
                     error: function () {

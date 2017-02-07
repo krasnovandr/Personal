@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
+  dslVersion="1.0.0.0"
+  Id="0d90ea03-d5dc-4d87-b794-72546d47ec60"
+  name="Interfaces"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="7facdd64-f708-4437-9d9c-dfe1b8de19aa"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DMusicRecognition.Interfaces"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <Interface
+        Id="b758eeeb-f732-48d0-9b4d-a8edbe0434e4"
+        name="IRecognitionService"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="742e4888-cd76-44be-9a92-4745d86b436c"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3Dfile:%2F%2F%2FD:%2FGitReps%2FPersonal%2FMagistracy%2FACRCloudRecognitionTest%2FACRCloudRecognitionTest%2Fbin%2FDebug%2FMusicRecognition.exe Namespace%3DMusicRecognition.Interfaces Type%3DIRecognitionService"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="adf324bc-b738-4296-8a34-7403aea3f1d7"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7971eab6-f071-44d6-9b3e-7ce7a1a0c273">
+                <propertyInstance
+                  Id="c2177501-2700-4159-b5ae-8b59d0642b47"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="472e880a-9f08-4e37-b70e-0bd9b4a5658f">
+                <propertyInstance
+                  Id="264c7b25-59f8-417b-a3d4-a45f635c301f"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d831ba00-a20d-44e0-9850-e703143b787b">
+                <propertyInstance
+                  Id="c01dd41f-cca4-405e-8b5e-10cf77015abb"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="0ef79c7e-2dc5-4665-8be9-55c6b4602bdc">
+                <propertyInstance
+                  Id="67b9c661-beb7-4348-9a1f-2cff343d1521"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

@@ -96,9 +96,12 @@ namespace ServiceLayer.Models
         {
             get
             {
-                return
-                    HttpContext.Current.Request.Url.GetComponents
+                if (HttpContext.Current != null)
+                {
+                    return HttpContext.Current.Request.Url.GetComponents
                         (UriComponents.SchemeAndServer, UriFormat.Unescaped) + SongPath;
+                }
+                return null;
 
             }
         }

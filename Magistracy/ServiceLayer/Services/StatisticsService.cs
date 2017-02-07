@@ -23,7 +23,8 @@ namespace ServiceLayer.Services
         public IEnumerable<SongViewModel> GetFavouriteSongs(string userId)
         {
             var songs = _statisticsRepository.GetFavoriteSongs(userId).ToList();
-            var resultGroups = ModelConverters.ToSongViewModelList(songs).GroupBy(m => m.SongId);
+            var songView = ModelConverters.ToSongViewModelList(songs).ToList();
+            var resultGroups = songView.GroupBy(m => m.SongId);
             var result = new List<SongViewModel>();
             foreach (var group in resultGroups)
             {
@@ -34,7 +35,7 @@ namespace ServiceLayer.Services
                     result.Add(song);
                 }
             }
-            return result.OrderByDescending(m=>m.ListenCount);
+            return result.OrderByDescending(m => m.ListenCount);
         }
 
         public IEnumerable<SongViewModel> GetFavouriteSongs()
