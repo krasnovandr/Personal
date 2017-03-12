@@ -1,0 +1,130 @@
+﻿@{
+  ViewBag.Title = "";
+}
+@model OurCounter.Models.ImageModel
+<link href="~/Content/flipclock.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.1.0.js"></script>
+<script src="~/Scripts/snow.js"></script>
+<script>
+  var clock;
+
+  $(document).ready(function () {
+    var clock;
+    // Grab the current date
+    var currentDate = new Date();
+
+    // Set some date in the past. In this case, it's always been since Jan 1
+    var pastDate = new Date(2013, 8, 18, 20, 0, 0);
+
+    // Calculate the difference in seconds between the future and current date
+    var diff = currentDate.getTime() / 1000 - pastDate.getTime() / 1000;
+
+    clock = $('#clock').FlipClock(diff, {
+      clockFace: 'DailyCounter',
+      autoStart: false,
+      language: 'russian',
+      callbacks: {
+        stop: function () {
+          $('.message').html('');
+        }
+      },
+
+    });
+
+    clock.setCountdown();
+    clock.start();
+
+    $("#ourDate").change(function () {
+      var oneDay = 24 * 60 * 60 * 1000;
+      var secondDate = new Date($(this).val());
+      var diffDays = Math.round((secondDate.getTime() - pastDate.getTime()) / (oneDay));
+      $("#resultDays").text(diffDays);
+    });
+
+  });
+
+</script>
+<div class="container container-fluid">
+
+  <div class="row">
+    <div class="col-md-6">
+      <img class="img-thumbnail" src="~/Content/2017.jpg" />
+    </div>
+    <div class="col-md-6">
+      <img class="img-thumbnail" src="~/Content/Images.jpg" />
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-9 col-md-offset-2">
+    <h2>Будем вести наш счет тут!</h2>
+    <p>
+      <div id="clock"></div>
+      <div class="message"></div>
+    </p>
+  </div>
+  @*<div class="col-md-9 col-md-offset-2">
+        <img src="~/Content/helen_dr.png" />
+    </div>*@
+
+</div>
+<div class="row" style="margin-top: 20px">
+  <div class="col-md-9 col-md-offset-2">
+    <p>
+      <label for="ourDate">Выбираем дату</label>
+      <input type="date" id="ourDate" />
+
+    </p>
+
+  </div>
+
+  <div class="col-md-9 col-md-offset-2">
+    <h2>И это день:</h2>
+    <h2 id="resultDays"></h2>
+  </div>
+</div>
+
+
+
+<link rel="stylesheet" href="~/Content/ImageGalleryStyles/blueimp-gallery.css">
+<link rel="stylesheet" href="~/Content/ImageGalleryStyles/blueimp-gallery-indicator.css">
+@*<link rel="stylesheet" href="~/Content/ImageGalleryStyles/blueimp-gallery-video.css">*@
+@*<link rel="stylesheet" href="~/Content/ImageGalleryStyles/demo.css">*@
+<div class="container">
+  <div class="row">
+    <h2>Наши фотки!</h2>
+    <!-- The container for the list of example images -->
+    <div id="links" class="links"></div>
+    @foreach (var image in Model.Images)
+    {
+      <a href="@Url.Action("GetImageFull", new { imageName = image })" title="" data-gallery>
+        <img src="@Url.Action("GetImage", new { imageName = image })" alt="@image " width="100" height="100" />
+      </a>
+
+    }
+    <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
+    <div id="blueimp-gallery" class="blueimp-gallery">
+      <div class="slides"></div>
+      <h3 class="title"></h3>
+      <a class="prev">‹</a>
+      <a class="next">›</a>
+      <a class="close">×</a>
+      <a class="play-pause"></a>
+      <ol class="indicator"></ol>
+    </div>
+  </div>
+</div>
+
+<script src="~/Scripts/ImageGallery/blueimp-helper.js"></script>
+<script src="~/Scripts/ImageGallery/blueimp-gallery.js"></script>
+<script src="~/Scripts/ImageGallery/blueimp-gallery-fullscreen.js"></script>
+<script src="~/Scripts/ImageGallery/blueimp-gallery-indicator.js"></script>
+<script src="~/Scripts/ImageGallery/blueimp-gallery-video.js"></script>
+<script src="~/Scripts/ImageGallery/blueimp-gallery-vimeo.js"></script>
+<script src="~/Scripts/ImageGallery/blueimp-gallery-youtube.js"></script>
+<script src="~/Scripts/ImageGallery/vendor/jquery.js"></script>
+<script src="~/Scripts/ImageGallery/jquery.blueimp-gallery.js"></script>
+@*<script src="~/Scripts/ImageGallery/demo.js"></script>*@
+
+
